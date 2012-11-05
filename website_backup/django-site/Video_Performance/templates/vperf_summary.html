@@ -1,0 +1,71 @@
+<html>
+  <head>
+  <title> Summary of all Data </title>
+<style type="text/css">
+table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	-moz-border-radius: ;
+}
+</style>
+</head>
+<table class="sample">
+  <tr>
+      {%for param,value in sample.items%}
+      <td> {{param}} </td>
+      {%endfor%}
+  </tr>
+  {%for entry in dataentries%}
+  <tr>
+      {%for param,value in entry.items%}
+      <td> {{value}} </td>
+      {%endfor%}
+  </tr>
+  {%endfor%}
+</table>
+<h2> Min download Rate </h2>
+<table class="sample">
+      {%for param,value in mindwnldrate.items%}
+  <tr>
+      <td> {{param}} </td>
+      <td> {{value}} </td>
+  </tr>
+      {%endfor%}
+</table>
+<h2> avg download Rate </h2>
+<table class="sample">
+      {%for param,value in avgdwnldrate.items%}
+  <tr>
+      <td> {{param}} </td>
+      <td> {{value}} </td>
+  </tr>
+      {%endfor%}
+</table>
+<h2> Max download Rate </h2>
+<table class="sample">
+      {%for param,value in maxdwnldrate.items%}
+  <tr>
+      <td> {{param}} </td>
+      <td> {{value}} </td>
+  </tr>
+      {%endfor%}
+</table>
+</html>

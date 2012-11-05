@@ -1,0 +1,113 @@
+<html>
+<head>
+<style type="text/css">
+table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	-moz-border-radius: ;
+}
+</style>
+
+  <title>
+    Tcp Connection Trace analysis
+  </title>
+</head>
+  <body>
+    <h1> Trace Analysis for Video Download </h1>
+    <h2> Parameters </h2>
+    <table class="sample">
+      <tr>
+        <td> source ip address </td>
+        <td> {{conn.src_ip}}
+      </tr>
+      <tr>
+        <td> destination ip address </td>
+        <td> {{conn.dst_ip}}
+      </tr>
+      <tr>
+        <td> source port</td>
+        <td> {{conn.src_port}}
+      </tr>
+      <tr>
+        <td> destination port</td>
+        <td> {{conn.dst_port}}
+      </tr>
+      <tr>
+        <td> Video Url</td>
+        <td> {{conn.url}}
+      </tr>
+      <tr>
+        <td> Quality </td>
+        <td> {{conn.quality}}</td>
+      </tr>
+      <tr>
+        <td> Length </td>
+        <td> {{conn.vidlen}} </td>
+      </tr>
+      <tr>
+        <td> Comments </td>
+        <td> {{conn.comments}} </td>
+      </tr>
+    </table>
+    <!--<h2> Packet Trace </h2>-->
+    <!--<table class="sample">-->
+      <!--<tr>-->
+        <!--<td> Direction (src to dst= True) </td>-->
+        <!--<td> Timestamp </td>-->
+        <!--<td> Seq Num </td>-->
+        <!--<td> Ack Num </td>-->
+        <!--<td> Window Size </td>-->
+        <!--<td> Urg </td>-->
+        <!--<td> Ack </td>-->
+        <!--<td> Push  </td>-->
+        <!--<td> Reset </td>-->
+        <!--<td> Syn </td>-->
+        <!--<td> Fin </td>-->
+        <!--<td> Data Length </td>-->
+      <!--</tr>-->
+      <!--{%for pkt in pkts%}-->
+      <!--{%if pkt.src2dst%}-->
+      <!--<tr bgcolor="#CCFF99">-->
+      <!--{%else%}-->
+      <!--<tr bgcolor="#FFFFFF">-->
+      <!--{%endif%}-->
+        <!--<td> {{pkt.src2dst}}  </td>-->
+        <!--<td> {{pkt.timestamp}}  </td>-->
+        <!--<td> {{pkt.seqno}}  </td>-->
+        <!--<td> {{pkt.ackno}}  </td>-->
+        <!--<td> {{pkt.window_size}}  </td>-->
+        <!--<td> {{pkt.urg}}  </td>-->
+        <!--<td> {{pkt.ack}}  </td>-->
+        <!--<td> {{pkt.push}}  </td>-->
+        <!--<td> {{pkt.rst}}  </td>-->
+        <!--<td> {{pkt.syn}}  </td>-->
+        <!--<td> {{pkt.fin}}  </td>-->
+        <!--<td> {{pkt.datalen}}  </td>-->
+      <!--</tr>-->
+      <!--{%endfor%}-->
+    <!--</table>-->
+    <h2> Simulations while varying threshold value</h2>
+    {%for img in imgs%}
+      <img src="{{img}}" />
+    {%endfor%}
+  </body>
+</html>
+

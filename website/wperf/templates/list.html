@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Upload</title>   
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="/static/uploadlist.js"></script>
+        <link href="/static/uploadlist.css" rel="stylesheet" type="text/css" >
+    </head>
+    <body>
+    <!-- List of uploaded documents -->
+    {% if uploadedfiles %}
+        <ul id="file_list">
+        {% for uploadedfile in uploadedfiles %}
+        <li><a href="{{ uploadedfile.uploadedfile.url }}">{{ uploadedfile.shortfilename }}</a>
+        {%if uploadedfile.processed%}
+        <div class="inline tick"></div>
+        
+        {%else%}
+        <div class="inline prog">
+          <progress max="100" value="0">
+          <strong>Progress: 0% done.</strong>
+          </progress> 
+          <div></div>
+        </div>
+        {%endif%}
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p></p>
+    {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{%url wperf.views.upload %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.uploadfile.label }} {{ form.uploadfile.help_text }}</p>
+            <p>
+                {{ form.uploadfile.errors }}
+                {{ form.uploadfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+    </body>
+</html> 

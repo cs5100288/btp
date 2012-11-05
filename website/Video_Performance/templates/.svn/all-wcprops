@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates
+END
+stats.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/stats.html
+END
+vperf_summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/vperf_summary.html
+END
+regression.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/regression.html
+END
+videospecificanalysis.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/videospecificanalysis.html
+END
+timeofday.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/timeofday.html
+END
+analysis.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/analysis.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/index.html
+END
+wperf_index.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/wperf_index.html
+END
+rate.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/minip-server/!svn/ver/33/website/django-site/Video_Performance/templates/rate.html
+END

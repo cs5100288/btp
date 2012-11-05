@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+      function openUrl(){
+        var url=$("#input_url").val()
+        var _date=new Date()
+        starttime=_date.getTime()
+        $("#content").attr('src', url)
+      }
+      function onLoadIframe()
+      {
+        alert('hi')
+      }
+    </script>
+  </head>
+  <body>
+    <input type='text' name='url' id='input_url'style="width:90%;" />
+    <button type="button" onclick="openUrl()">Go</button>
+    <iframe onload="onLoadIframe()"id="content" style="width:100%;height:100%" src="http://www.google.com"></iframe>
+  </body>
+</html>
+

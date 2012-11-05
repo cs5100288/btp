@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/minip-server/!svn/ver/33/website
+END
+manage.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/minip-server/!svn/ver/34/website/manage.py
+END
+tornado_main.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/minip-server/!svn/ver/33/website/tornado_main.py
+END
+runserver.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/minip-server/!svn/ver/34/website/runserver.py
+END
+runserver.sh
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/minip-server/!svn/ver/34/website/runserver.sh
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/minip-server/!svn/ver/34/website/__init__.py
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/minip-server/!svn/ver/34/website/test.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/minip-server/!svn/ver/34/website/settings.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/minip-server/!svn/ver/34/website/urls.py
+END

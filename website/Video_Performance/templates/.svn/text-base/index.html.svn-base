@@ -1,0 +1,127 @@
+<html>
+  <head>
+<title>
+Video Performance Tests
+</title>
+<style type="text/css">
+table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	-moz-border-radius: ;
+}
+</style>
+
+</head>
+<body>
+<h1>Video Performance Tests</h1>
+<!--<h2> Analysis by video parameters </h2>-->
+<!--<p>-->
+    <!--<a href="/vperf/videostats2g">2G</a> <BR/>-->
+    <!--<a href="/vperf/videostats3g">3G</a> <BR/>-->
+<!--</p>-->
+<h2> Analysis of Variations in time of day </h2>
+<table class="sample">
+  <tr>
+    <td> 2G </td>
+    <td> 3G </td>
+   </tr>
+  <tr>
+    <td><a href="/vperf/timeofday2g?quality=small"> small(240px)</a> </td>
+    <td><a href="/vperf/timeofday3g?quality=small"> small(240px)</a> </td>
+   </tr>
+  <tr>
+    <td><a href="/vperf/timeofday2g?quality=medium"> medium(360px)</a> </td>
+    <td><a href="/vperf/timeofday3g?quality=medium"> medium(360px)</a> </td>
+   </tr>
+  <tr>
+    <td><a href="/vperf/timeofday2g?quality=large"> large(480px)</a> </td>
+    <td><a href="/vperf/timeofday3g?quality=large"> large(480px)</a> </td>
+   </tr>
+  <tr>
+    <td><a href="/vperf/timeofday2g?quality=hd720p"> hd720p(720px)</a> </td>
+    <td><a href="/vperf/timeofday3g?quality=hd720p"> hd720p(720px)</a> </td>
+   </tr>
+  <tr>
+    <td><a href="/vperf/timeofday2g?quality=hd1080p"> hd1080p(1080px)</a> </td>
+    <td><a href="/vperf/timeofday3g?quality=hd1080p"> hd1080p(1080px)</a> </td>
+   </tr>
+  </table>
+  <h2>  Regression Study </h2>
+  <p> <a href="/vperf/regression">Click here</a> </p>
+<h2> Individual Test Simulations </h2>
+<table class="sample" border="2">
+  <tr>
+    <td> Source ip</td>
+    <td> Dest ip </td>
+    <td> Source Port </td>
+    <td> Dest Port </td>
+    <td> Url </td>
+    <td> quality </td>
+    <td> Video Length (secs)</td>
+    <td> Comments </td>
+    <td> Simulator </td>
+    <td> Stats </td>
+    </tr>
+{%for tst in entries%}
+<tr>
+  <td> {{tst.src_ip}} </td>
+  <td> {{tst.dst_ip}} </td>
+  <td> {{tst.src_port}} </td>
+  <td> {{tst.dst_port}} </td>
+  <td> <a href="{{tst.url}}"> click here </a> </td>
+  <td> {{tst.quality}} </td>
+  <td> {{tst.vidlen}} </td>
+  <td> {{tst.comments}} </td>
+  <td> <a href="/vperf/analysis?id={{tst.id}}&threshold=1.0">Click Here</a> </td>
+  <td> <a href="/vperf/stats?id={{tst.id}}">Click Here</a> </td>
+</tr>
+{%endfor%}
+</table>
+<h2> Observations </h2>
+<ul>
+  <li> Airtel was giving speeds close to a 3-4 kbps, vodafone gave avg of about 12-13kbps </li>
+  <li> These measuements were done for vodafone network since airtel was tooo slow for our patience.</li>
+  <li> The video is beiing transferred over tcp to the browser so what is the point of being loss tolerant in video formats? Probably udp packets are given too low priority on routers, so youtube prefers tcp.</li>
+  <li> No format was found to be constant bit rate encoded, and so we implemented a bitrate vs time calculator for all formats that vlc media player supports. </li>
+  <li> The parameters for playing of video is client configured. For eg. Firefox figures out available bandwidth, and tries to stall so that continuous playback can be achieved. On Chrome, the browser starts playing as soon as 1s worth of video is buffered. </li>
+  <li> We tried playing the same video in two different proceedures: 
+  <ul>
+    <li> Play 360p, then 480p and finally 720p . The total size transacted was 6131KB,2534KB and 4937KB. The 720p video requires less data than the 360p . Also 480p requires less data than 360p. Indicates some incremental buildup of quality??? Discuss .</li>
+    <li> Now play in decreasing order of quality. The total size transacted was 4937KB, 2534KB, and 1912KB. which is more or less plausible.</li>
+  </ul>
+</ul>
+<h3> Regression </h3>
+<ul>
+  <li> the graphs are available <a href="/vpef/regression"> here</a>  </li>
+  <li> function as of now is: 4.98+0*tinit-3.1*frebuf+0*trebuf </li>
+  <li> this means that QoE depends heavily on frebuf .Consistent with readings from <a href="http://www4.comp.polyu.edu.hk/~oneprobe/doc/im2011-qoe.pdf">paper</a>. </li>
+
+</ul>
+<h2> Demuxing and bitrate of videos </h2>
+<p> A demux is given a video feed which can be from a file or a network stream. This is then, split in audio and video channels passed to audiosink and videosink. Now we are interested with the input rate to the demux. </p>
+Approaches tried :
+<ul>
+  <li> GStreamer: Did not work out. Api only exposes the output rate of the demux. Very very bad documentation.  </li>
+  <li> VLC Media Player: Worked out. Decent Documentation!!!(No examples though. sigh!). Api exposes a Media Stats structure which can be queried when the video is being played. To sample repeatedly we hacked into the function, that is called back periodically to change the seconds played. We simply write these values to a file and send them to the database once the video is played.  </li>
+</ul>
+
+</body>
+</html>

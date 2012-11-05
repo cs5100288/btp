@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-control" content="no-cache">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <meta http-equiv="Expires" content="-1">
+    <title>
+      YouTube Chromeless Player Example page
+    </title>
+    <!-- Use the Google AJAX Libraries API:
+        http://code.google.com/apis/ajaxlibs/ -->
+    <script src="//www.google.com/jsapi"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <!--
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+    -->
+    <script src="/static/jquery.rating.pack.js"></script>
+    <link href="/static/jquery.rating.css" rel="stylesheet" type="text/css" >
+    <script>
+      google.load("swfobject", "2.1");
+    </script>
+    <style type="text/css">
+
+    body {
+      font-family: verdana, helvetica;
+      background-color: white;
+    }
+
+    #timedisplay {
+      border: solid 1px red;
+      width: 50px;
+    }
+    </style>
+    <script type="text/javascript">
+      var makehd720=true;
+      var recommendedQuality="large";
+      var sizex=853;
+      var sizey=480;
+      if(makehd720)
+      {
+        var recommendedQuality="hd720";
+        var sizex=1280;
+        var sizey=720;
+
+      }
+      stalltimes=-1;
+      var starttime;
+      var tinit=0;
+      var totaltime;
+      var finishtime;
+      var bytesDownloaded=new Array();
+      var bytesDownloaded_time=new Array();
+      var stallLocations=new Array();
+      var loc=0;
+      var bitrate_time=new Array();
+      var bitrate=new Array();
+      var tcpconn=0;
+
+function bitrateStateChange(newState)
+{
+  if(newState==1&&stalltimes==0)
+  {
+          //var src=(".getCurrentTime().",".getStartBytes().")";
+    //bitrate_time.push(loc);
+    //bitrate.push(getStartBytes());
+    stalltimes=-1;
+      $.get('/vperf/bitrateadd',{tcpConn:tcpConn, timestamp:loc, datareqd:getStartBytes()});
+      loc-=1;
+      if(loc>=0&&loc<getDuration())
+      {
+        loadNewVideo(document.getElementById('loadvideoid').value , loc);
+      }
+  }
+
+}
+        function bitrateCalculator() {
+          //seek video to a place and see start bytes
+          ytplayer.addEventListener("onStateChange", "bitrateStateChange");
+          loadNewVideo(document.getElementById('loadvideoid').value , loc);
+
+        }
+        function updateHTML(elmId, value) {
+          document.getElementById(elmId).innerHTML = value;
+        }
+        
+        function submitData()
+        {
+          //$.get('/vperf/addqoe',
+            //  {frebuf: stalltimes/getDuration(), trebuf:totaltime-getDuration(), tinit:tinit,
+          $.ajax({url: '/vperf/addqoe',async: false,
+             data: {frebuf: stalltimes/getDuration(), trebuf:totaltime-getDuration(), tinit:tinit,
+qoe:$('input:radio[name=qoe]:checked').val()||-1,
+url:getVideoUrl(), quality:getPlaybackQuality(), vidlen: (document.getElementById('videoduration').innerHTML), phoneConf:{{phoneConf}}}, 
+              //{frebuf: 1, trebuf:1, tinit:1},
+
+              success: function(data, status,xhr){
+             // tcpConn=data;
+             // $("#before_rating").slideToggle();
+             // $("#rating_div").hide();
+             // loc=getDuration();
+
+             // //data now contains the video id.
+             // //send the packet data, in this case the bytes  downloaded vs time.
+             // var lastsent=0;
+             // for (index in bytesDownloaded)
+             // {
+             //   if(bytesDownloaded[index]>0 && (lastsent!=bytesDownloaded[index]))
+             //   {
+             //   lastsent=bytesDownloaded[index];
+             //   jQuery.ajaxSetup({async:false});
+             //   //$.get('/vperf/addtcppacket',{tcpConn:data, timestamp:bytesDownloaded_time[index], ackno:bytesDownloaded[index]});
+             //   updateHTML("playerstate",bytesDownloaded[index]);
+             //   $.ajax({url:'/vperf/addtcppacket',data: {tcpConn:data, timestamp:bytesDownloaded_time[index], ackno:bytesDownloaded[index]}, async:false});
+             //   }
+             //   //jQuery.ajaxSetup({async:true});
+             // }
+             // for (index in stallLocations)
+             // {
+             // if(stallLocations[index]>0)
+             //   $.get('/vperf/addstallloc',{tcpConn:data, timestamp:stallLocations[index]});
+             // }
+              circularload();
+              //alert("Finished sending data");
+
+              }}); 
+        }
+
+        function setytplayerState(newState) {
+          updateHTML("playerstate", newState);
+          if(newState==3)
+          {
+            $("#qualidy_div").html("quality= "+getPlaybackQuality());
+            if(tinit==0)
+            {
+              _date= new Date();
+              tinit=_date.getTime()-starttime;
+            }
+            updateHTML("stalltimes", ++stalltimes);
+            stallLocations.push(getCurrentTime());
+          }
+          else if(newState==1&&stalltimes<=1)
+          {
+            $("#qualidy_div").html("quality= "+getPlaybackQuality());
+            _date= new Date();
+            tinit=_date.getTime()-starttime;
+            if(getPlaybackQuality()!=recommendedQuality)
+            {
+              circularload();
+            }
+          }
+          else if(newState==0)
+          {
+            //the video playing is over here.
+            _date=new Date();
+            finishtime=_date.getTime();
+            totaltime=finishtime-starttime;
+            
+            //   $("#before_rating").slideToggle(1000);
+            $("#rating_div").html("Please rate: <br /><form id='rate_form'>"+
+                "<input class='star' type='radio' name='qoe' value='1' />"+
+                "<input class='star' type='radio' name='qoe' value='2' />"+
+                "<input class='star' type='radio' name='qoe' value='3' />"+
+                "<input class='star' type='radio' name='qoe' value='4' />"+
+                "<input class='star' type='radio' name='qoe' value='5' />"+
+                "<select name='rating_select'>"+
+                "<option selected='selected'>-1</option>"+
+                "<option>1</option>"+
+                "<option>2</option>"+
+                "<option>3</option>"+
+                "<option>4</option>"+
+                "<option>5</option>"+
+                "</select>"+
+                "<input type='submit' value='submit' />"+
+                "</form>"
+
+
+                );
+            //submitData();
+            $("#rate_form :radio.star").rating();
+            $("#rate_form").submit(function(event){
+                event.preventDefault();
+                $("#before_rating").slideDown();
+                $("#rating_div").hide();
+                submitData();
+
+
+                });
+            $("#before_rating").slideUp();
+           
+            //setTimeout(circularload,1000);
+          }
+        }
+
+        function onYouTubePlayerReady(playerId) {
+          ytplayer = document.getElementById("myytplayer");
+          setInterval(updateytplayerInfo, 250);
+          updateytplayerInfo();
+          ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+          ytplayer.addEventListener("onError", "onPlayerError");
+          loadNewVideo(document.getElementById('loadvideoid').value, document.getElementById('startseconds').value);
+        }
+
+        function onytplayerStateChange(newState) {
+          setytplayerState(newState);
+        }
+
+        function onPlayerError(errorCode) {
+          //alert("An error occured: " + errorCode);
+          circularload();
+        }
+
+        function updateytplayerInfo() {
+          _date=new Date();
+
+          bytesDownloaded_time.push(_date.getTime()/1000);
+          bytesDownloaded.push(getBytesLoaded());
+
+          updateHTML("bytesloaded", getBytesLoaded());
+          updateHTML("bytestotal", getBytesTotal());
+          updateHTML("videoduration", getDuration());
+          updateHTML("videotime", getCurrentTime());
+          updateHTML("startbytes", getStartBytes());
+          updateHTML("volume", getVolume());
+          updateHTML("avg_bitrate", "Averate Bitrate= "+getBytesTotal()+"/"+getDuration()+"= "+eval(getBytesTotal())/(1000*eval(getDuration())) +" KBps");
+        }
+
+        var videoCounter=0;
+        function circularload(){
+          //videoids=["Il7FT4p2jqE","Il7FT4p2jqE"];
+          //videoCounter=(videoCounter+1)%videoids.length;
+          //loadNewVideo(videoids[videoCounter],0);
+          //window.location='http://j.mp/ratevideo';
+          window.location.reload(true);
+        } 
+        // functions for the api calls
+        function loadNewVideo(id, startSeconds) {
+          if (ytplayer) {
+            _date=new Date();
+            starttime=_date.getTime()
+            stalltimes=0;
+            ytplayer.loadVideoById(id, parseInt(startSeconds), recommendedQuality);
+            $("#rating_div").html('');
+            ytplayer.setPlaybackQuality(recommendedQuality); 
+            //alert(ytplayer.getPlaybackQuality());
+          }
+        }
+
+        function cueNewVideo(id, startSeconds) {
+          if (ytplayer) {
+            ytplayer.cueVideoById(id, startSeconds);
+          }
+        }
+
+        function play() {
+          if (ytplayer) {
+            ytplayer.playVideo();
+          }
+        }
+
+        function pause() {
+          if (ytplayer) {
+            ytplayer.pauseVideo();
+          }
+        }
+
+        function stop() {
+          if (ytplayer) {
+            ytplayer.stopVideo();
+          }
+        }
+
+        function getPlayerState() {
+          if (ytplayer) {
+            return ytplayer.getPlayerState();
+          }
+        }
+
+        function seekTo(seconds) {
+          if (ytplayer) {
+            ytplayer.seekTo(seconds, true);
+          }
+        }
+
+        function getBytesLoaded() {
+          if (ytplayer) {
+            return ytplayer.getVideoBytesLoaded();
+          }
+        }
+        function getPlaybackQuality() {
+          if (ytplayer) {
+            return ytplayer.getPlaybackQuality();
+          }
+        }
+
+        function getBytesTotal() {
+          if (ytplayer) {
+            return ytplayer.getVideoBytesTotal();
+          }
+        }
+
+        function getCurrentTime() {
+          if (ytplayer) {
+            return ytplayer.getCurrentTime();
+          }
+        }
+
+        function getDuration() {
+          if (ytplayer) {
+            return ytplayer.getDuration();
+          }
+        }
+
+        function getStartBytes() {
+          if (ytplayer) {
+            return ytplayer.getVideoStartBytes();
+          }
+        }
+
+        function mute() {
+          if (ytplayer) {
+            ytplayer.mute();
+          }
+        }
+
+        function unMute() {
+          if (ytplayer) {
+            ytplayer.unMute();
+          }
+        }
+        
+        function getEmbedCode() {
+          alert(ytplayer.getVideoEmbedCode());
+        }
+
+        function getVideoUrl() {
+          if (ytplayer) {
+            return ytplayer.getVideoUrl();
+          }
+
+        }
+        
+        function setVolume(newVolume) {
+          if (ytplayer) {
+            ytplayer.setVolume(newVolume);
+          }
+        }
+
+        function getVolume() {
+          if (ytplayer) {
+            return ytplayer.getVolume();
+          }
+        }
+
+        function clearVideo() {
+          if (ytplayer) {
+            ytplayer.clearVideo();
+          }
+        }
+        
+
+    </script>
+  </head>
+  <body id="page">
+    <div>
+    <!-- embed the player -->
+    <div id="ytapiplayer">
+      You need Flash player 8+ and JavaScript enabled to view this video.
+    </div>
+    <script type="text/javascript">
+      // <![CDATA[
+      // allowScriptAccess must be set to allow the Javascript from one 
+      // domain to access the swf on the youtube domain
+      var params = { allowScriptAccess: "always", bgcolor: "#cccccc" };
+      // this sets the id of the object or embed tag to 'myytplayer'.
+      // You then use this id to access the swf and make calls to the player's API
+      var atts = { id: "myytplayer" };
+      swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer", 
+                         "ytapiplayer", sizex+"", sizey+"", "8", null, null, params, atts);
+      //]]>
+    </script>
+    
+    <!-- HTML below here is for display of the player info + state -->
+    <div>
+      Player state: <span id="playerstate">--</span>
+      No. of  stalls till now: <span id="stalltimes">--</span>
+    </div>
+    <br />
+    <div id= "before_rating" >
+      <a href="javascript:void(0);" onclick="play();">Play</a> | <a href="javascript:void(0);" onclick="pause();">Pause</a> | <a href="javascript:void(0);" onclick="stop();">Stop</a> | <a href="javascript:void(0);" onclick="mute();">Mute</a> | <a href="javascript:void(0);" onclick="unMute();">Unmute</a>
+    <br /><br />
+    <form action="" onsubmit="seekTo(document.getElementById('seekto').value); return false;">
+      <div><input id="seekto" type="text" size="4" /><input type="submit" value="Seek to" /></div>
+    </form>
+    <br />
+    <div>
+      Duration: <span id="videoduration">--:--</span> | Current Time: <span id="videotime">--:--</span>
+    </div>
+    <br />
+    <div id="bytesdisplay">
+      Bytes Total: <span id="bytestotal">--</span> | Start Bytes: <span id="startbytes">--</span> | Bytes Loaded: <span id="bytesloaded">--</span>
+    </div>
+    <div id="avg_bitrate"></div>
+    <br />
+    <div>
+      <input type="text" size="11" id="loadvideoid" value="{{v}}" />
+      <a href="javascript:void(0)" onclick="loadNewVideo(document.getElementById('loadvideoid').value, document.getElementById('startseconds').value)">&lt;-
+      <!--<a href="javascript:void(0)" onclick="circularload()">&lt;--->
+        Load video</a> | Start at: <input type="text" size="4" id="startseconds" value="0" />
+    </div>
+    <br />
+    <div>
+      <input id="vol" type="text" size="2" /> 
+      <a href="javascript:void(0)" onclick="setVolume(document.getElementById('vol').value)">&lt;- Set Volume</a>  | Volume: <span id="volume">--</span>
+    </div>
+    <br />
+  </div>
+  <div id="qualidy_div">quality=NULL</div>
+  <div id ="rating_div">
+  </div>
+  </div>
+  </body>
+</html>

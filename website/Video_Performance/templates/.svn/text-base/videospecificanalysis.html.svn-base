@@ -1,0 +1,86 @@
+<html>
+<head>
+<style type="text/css">
+table.sample {
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: outset;
+  border-color: gray;
+  border-collapse: collapse;
+  background-color: white;
+}
+table.sample th {
+  border-width: 1px;
+  padding: 1px;
+  border-style: inset;
+  border-color: gray;
+  background-color: white;
+  -moz-border-radius: ;
+}
+table.sample td {
+  border-width: 1px;
+  padding: 1px;
+  border-style: inset;
+  border-color: gray;
+  -moz-border-radius: ;
+}
+</style>
+
+  <title>
+    Video Specific analysis 
+  </title>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Age');
+    data.addColumn('number', 'Weight');
+    data.addRows([
+        [8, 12],
+        [4, 5.5],
+        [11, 14],
+        [4, 4.5],
+        [3, 3.5],
+        [6.5, 7]
+        ]);
+
+    var options = {
+title: 'QoE vs Average Bitrate',
+       hAxis: {title: 'Average Bitrate'},
+       vAxis: {title: 'QoE', minValue: 0, maxValue: 5},
+       legend: 'none'
+    };
+
+    var chart = new google.visualization.ScatterChart(document.getElementById('visualization_bitrate'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+</head>
+  <body>
+    <table class="sample">
+      <tr>
+        <td>
+          <div id="visualization_bitrate" style="width: 600px; height: 400px;"></div>
+        </td>
+        </tr>
+      <tr>
+        <td>
+          <div id="visualization_vidsize" style="width: 600px; height: 400px;"></div>
+        </td>
+        </tr>
+      <tr>
+        <td>
+          <div id="visualization_vidlen" style="width: 600px; height: 400px;"></div>
+        </td>
+        </tr>
+      </table>
+
+  </body>
+</html>
+
+

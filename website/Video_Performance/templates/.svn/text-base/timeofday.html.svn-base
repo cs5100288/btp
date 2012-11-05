@@ -1,0 +1,223 @@
+<html>
+<head>
+<style type="text/css">
+table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	-moz-border-radius: ;
+}
+</style>
+
+  <title>
+   Variation of QoE with Time of Day
+  </title>
+
+ <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1');
+    </script>
+
+    <script type="text/javascript">
+      function drawVisualization_stallperc() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in stallperc_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in stallperc_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': 'Percentage of Time Spent In Stalls'},
+          containerId: 'visualization_stallpercentage'
+        });
+        wrapper.draw();
+      }
+      
+      
+      function drawVisualization_dwnldrate() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in dwnldrate_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in dwnldrate_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': '(avg)Download Rate'},
+          containerId: 'visualization_dwnldrate'
+        });
+        wrapper.draw();
+      }
+
+
+      
+      function drawVisualization_qoe() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in qoe_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in qoe_tot_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': 'Average Quality of Experience'},
+          containerId: 'visualization_qoe'
+        });
+        wrapper.draw();
+      }
+
+
+
+      function drawVisualization_obs() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in obs_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in obs_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': 'Number of Readings'},
+          containerId: 'visualization_obs'
+        });
+        wrapper.draw();
+      }
+
+
+
+      function drawVisualization_qoe_max() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in qoe_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in qoe_max_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': 'Max QoE'},
+          containerId: 'visualization_qoe_max'
+        });
+        wrapper.draw();
+      }
+
+
+      function drawVisualization_qoe_min() {
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'ColumnChart',
+          //dataTable: [['', 'Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+            //          ['', 700, 300, 400, 500, 600, 800]],
+          dataTable:[ [''
+          {%for xentry in qoe_time%}
+          ,'{{xentry}}:00 hour'
+          {%endfor%}
+          ]
+          , 
+          [''
+          {%for yentry in qoe_min_reading%}
+          ,{{yentry}}
+          {%endfor%}
+          ]
+          ],
+          options: {'title': 'Min QoE'},
+          containerId: 'visualization_qoe_min'
+        });
+        wrapper.draw();
+      }
+      google.setOnLoadCallback(drawVisualization_stallperc);
+      google.setOnLoadCallback(drawVisualization_dwnldrate);
+      google.setOnLoadCallback(drawVisualization_qoe);
+      google.setOnLoadCallback(drawVisualization_obs);
+      google.setOnLoadCallback(drawVisualization_qoe_max);
+      google.setOnLoadCallback(drawVisualization_qoe_min);
+    </script>
+
+</head>
+  <body>
+    <table class="sample">
+      <tr>
+        <td>
+    <div id="visualization_stallpercentage" style="width: 600px; height: 400px;"></div>
+        </td>
+        <td>
+    <div id="visualization_dwnldrate" style="width: 600px; height: 400px;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+    <div id="visualization_qoe" style="width: 600px; height: 400px;"></div>
+        </td>
+        <td>
+    <div id="visualization_obs" style="width: 600px; height: 400px;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+    <div id="visualization_qoe_max" style="width: 600px; height: 400px;"></div>
+        </td>
+        <td>
+    <div id="visualization_qoe_min" style="width: 600px; height: 400px;"></div>
+        </td>
+      </tr>
+      </table>
+
+  </body>
+</html>
+

@@ -1,0 +1,10 @@
+.inline
+{
+  display:inline-block;
+}
+.tick
+{
+  height:15px;
+  width:15px;
+  background:url("./tick.jpg")
+}

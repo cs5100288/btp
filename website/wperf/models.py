@@ -43,3 +43,7 @@ class UploadedFile(models.Model):
   uploadedfile=models.FileField(upload_to="%Y/%m/%d")
   shortfilename=models.CharField(max_length=100)
   processed=models.BooleanField(default=False)
+
+class PcapFile(models.Model):
+  uploadedfile = models.FileField(upload_to="%Y/%m/%d")
+  shortfilename = models.CharField(max_length=100)

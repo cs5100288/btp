@@ -1,0 +1,18 @@
+  6   0.944445 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0x77ac  A samsungvuiasr.vlingo.com
+ 10   0.991081 122.160.120.56 -> 223.188.204.169 DNS 134 Standard query response 0x77ac  A 63.116.58.131 A 63.116.58.148 A 63.116.58.149
+ 58   6.952262 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x167b  A www.nytimes.com
+ 59   7.105241 122.160.120.56 -> 223.188.204.169 DNS 93 Standard query response 0x167b  A 170.149.173.130
+ 70   8.048598 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0x87f3  A mobile.nytimes.com
+ 71   8.675868 122.160.120.56 -> 223.188.204.169 DNS 219 Standard query response 0x87f3  CNAME nyt-mobilesite-production-1657778754.us-east-1.elb.amazonaws.com A 107.22.241.105 A 184.73.187.253 A 50.19.109.75 A 54.243.100.30
+304  12.329442 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x57be  A b.scorecardresearch.com
+305  12.332770 223.188.204.169 -> 122.160.120.56 DNS 83 Standard query 0x64a3  A graphics8.nytimes.com
+307  12.337106 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0x75b3  A ad.doubleclick.net
+308  12.377201 122.160.120.56 -> 223.188.204.169 DNS 231 Standard query response 0x57be  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 122.160.242.176 A 122.160.242.185 A 122.160.242.169 A 122.160.242.171
+310  12.380962 122.160.120.56 -> 223.188.204.169 DNS 195 Standard query response 0x64a3  CNAME graphics478.nytimes.com.edgesuite.net CNAME a1116.x.akamai.net A 122.160.242.169 A 122.160.242.185
+312  12.383067 122.160.120.56 -> 223.188.204.169 DNS 133 Standard query response 0x75b3  CNAME dart.l.doubleclick.net A 74.125.236.28 A 74.125.236.27
+314  12.388769 223.188.204.169 -> 122.160.120.56 DNS 76 Standard query 0x4f5c  A up.nytimes.com
+315  12.391068 223.188.204.169 -> 122.160.120.56 DNS 82 Standard query 0x4056  A analytics.conmio.com
+356  12.671284 122.160.120.56 -> 223.188.204.169 DNS 223 Standard query response 0x4056  CNAME tracking-pixel-load-balancer-681537794.us-east-1.elb.amazonaws.com A 107.20.194.50 A 107.21.255.55 A 50.17.217.12 A 54.243.133.135
+417  13.069261 122.160.120.56 -> 223.188.204.169 DNS 235 Standard query response 0x4f5c  CNAME lb-up-tracker-1378845633.us-east-1.elb.amazonaws.com A 23.21.55.152 A 23.21.72.16 A 23.21.108.152 A 54.243.90.4 A 54.243.161.208 A 107.20.138.45
+421  13.134491 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0x6e4f  A s0.2mdn.net
+422  13.173159 122.160.120.56 -> 223.188.204.169 DNS 143 Standard query response 0x6e4f  CNAME s0-2mdn-net.l.google.com A 74.125.236.27 A 74.125.236.28

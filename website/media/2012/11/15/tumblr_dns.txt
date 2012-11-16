@@ -1,0 +1,14 @@
+ 38   4.455263 223.188.204.169 -> 122.160.120.56 DNS 76 Standard query 0x19d8  A www.tumblr.com
+ 39   4.804820 122.160.120.56 -> 223.188.204.169 DNS 92 Standard query response 0x19d8  A 66.6.36.14
+ 78   8.130467 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0x1247  A secure.assets.tumblr.com
+ 79   8.192601 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0x1bdb  A edge.quantserve.com
+ 80   8.234563 122.160.120.56 -> 223.188.204.169 DNS 232 Standard query response 0x1bdb  CNAME map-js.quantserve.com.akadns.net CNAME edge.quantserve.com.edgesuite.net CNAME a1811.g.akamai.net A 96.17.182.42 A 96.17.182.57
+ 82   8.277742 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0xd70c  A secure.assets.tumblr.com
+ 86   8.336430 122.160.120.56 -> 223.188.204.169 DNS 140 Standard query response 0x1247  CNAME cs38.wac.edgecastcdn.net A 68.232.44.63
+ 90   8.338709 122.160.120.56 -> 223.188.204.169 DNS 140 Standard query response 0xd70c  CNAME cs38.wac.edgecastcdn.net A 68.232.44.63
+197   9.535717 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0xc756  A ssl.google-analytics.com
+209   9.592571 122.160.120.56 -> 223.188.204.169 DNS 146 Standard query response 0xc756  CNAME ssl-google-analytics.l.google.com A 74.125.236.30
+463  12.357237 223.188.204.169 -> 122.160.120.56 DNS 82 Standard query 0x990f  A pixel.quantserve.com
+464  12.402547 122.160.120.56 -> 223.188.204.169 DNS 283 Standard query response 0x990f  CNAME map-pb.quantserve.com.akadns.net CNAME anycast-asia.quantserve.com.akadns.net A 203.190.124.13 A 203.190.124.15 A 203.190.124.16 A 203.190.124.20 A 203.190.124.21 A 203.190.124.23 A 203.190.124.11 A 203.190.124.12
+484  13.063332 223.188.204.169 -> 122.160.120.56 DNS 88 Standard query 0xdc98  A android.clients.google.com
+485  13.122653 122.160.120.56 -> 223.188.204.169 DNS 288 Standard query response 0xdc98  CNAME android.l.google.com A 74.125.236.3 A 74.125.236.4 A 74.125.236.5 A 74.125.236.6 A 74.125.236.7 A 74.125.236.8 A 74.125.236.9 A 74.125.236.14 A 74.125.236.0 A 74.125.236.1 A 74.125.236.2

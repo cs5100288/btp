@@ -100,48 +100,59 @@ def pcap_upload(request):
     return render_to_response('pcap_list.html', {'pcap_files':[],'form':form},context_instance=RequestContext(request))
 
 class DNS(object):
-  queries=[]
-  responses=[]
   def __init__(self,dns_id):
     self.dns_id=dns_id
+    self.queries=[]
+    self.responses=[]
 
 
-def getDNSPackets(filename) :
-  cmd1 = """tshark -n -R "dns" -r %s"""%(filename)
-  p=subprocess.Popen(cmd1,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
+def getDNSPackets(filename,dnspath=None):
+  if not dnspath:
+    a,b=os.path.splitext(filename)
+    dnspath=a+"_dns.txt"
+  if not os.path.exists(dnspath):
+    cmd1 = """tshark -n -R "dns" -r %s"""%(filename)
+    p=subprocess.Popen(cmd1,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
+    with open(dnspath,'w') as f:
+      r = p.stdout.read()
+      f.write(r)
+
   dns_list={}
   ip_to_dns_id={}
-  for line in p.stdout.read().split("\n"):
-    print line
-    return ({},{})
-    m=re.match(r'\s*(\d+)\s+(.*?)\s+(\d+\.\d+\.\d+\.\d+)\s+->\s+(\d+\.\d+\.\d+\.\d+)\s+DNS\s+\d+\s+Standard\s+query\s+(response\s+)?(.*?)\s+(.*)',line.strip())
-    # print m.groups()
-    # return
-    if m:
-      packet_no, packetTime,fromIp,toIp,whetherResponse,dns_id,dns_string=m.groups()
-      dns_list.setdefault(dns_id,DNS(dns_id))
-      if whetherResponse:
-        dns_list[dns_id].responses.append((packetTime,fromIp,toIp,dns_string))
-        m1=re.findall(r'A\s+(\d+\.\d+\.\d+\.\d+)',dns_string)
-        for ip in m1:
-          ip_to_dns_id.setdefault(ip,[])
-          ip_to_dns_id[ip].append(dns_id)
-      else:
-        dns_list[dns_id].queries.append((packetTime,fromIp,toIp,dns_string))
-  print dns_list
-  print ip_to_dns_id
-  return (dns_list,ip_to_dns_id)
+  with open(dnspath) as f:
+    for line in f.read().split("\n"):
+      if(len(line.strip())==0):
+        continue
+      m=re.match(r'\s*(\d+)\s+(.*?)\s+(\d+\.\d+\.\d+\.\d+)\s+->\s+(\d+\.\d+\.\d+\.\d+)\s+DNS\s+\d+\s+Standard\s+query\s+(response\s+)?(.*?)\s+(.*)',line.strip())
+      # print m.groups()
+      # return
+      if m:
+        packet_no, packetTime,fromIp,toIp,whetherResponse,dns_id,dns_string=m.groups()
+        dns_list.setdefault(dns_id,DNS(dns_id))
+        if whetherResponse:
+          dns_list[dns_id].responses.append((packetTime,fromIp,toIp,dns_string))
+          m1=re.findall(r'A\s+(\d+\.\d+\.\d+\.\d+)',dns_string)
+          for ip in m1:
+            ip_to_dns_id.setdefault(ip,[])
+            ip_to_dns_id[ip].append(dns_id)
+        else:
+          print dns_id, dns_list[dns_id].queries
+          dns_list[dns_id].queries.append((packetTime,fromIp,toIp,dns_string))
+    return (dns_list,ip_to_dns_id)
 
 
 def makeStats(filename,csvpath=None):
   if not csvpath:
     a,b = os.path.splitext(filename)
-    csvpath = a+".csv"
+    csvpath  = a+".csv"
+    csv2path = a+"_ip.csv"
 
   cmd1 = "tshark -n -r %s -T fields -e tcp.stream"%(filename)
+  cmd1_ip = "tshark -r %s -q -z conv,ip"%(filename)
   p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+  p_ip = subprocess.Popen(cmd1_ip, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
   streams =  sorted(list(set(map(int, filter(lambda x: len(x)>0, map(lambda x: x.strip(), p.stdout.read().split('\n')))))))
-
+  
   with open(csvpath,"wb") as csvfile:
     writer = csv.writer(csvfile)
     for s in streams:
@@ -157,10 +168,20 @@ def makeStats(filename,csvpath=None):
 
       objects=map(lambda x:x.strip(),q2.stdout.read().strip().split('\n'))
       num_objects = len(objects)
-      url = "%d objects with url like %s..."%(num_objects,objects[1][:50])
+      url = "%d objects with url like %s..."%(num_objects,objects[0][:50])
       if len(objects[0].strip())==0:
         url = "No objects fetched"      
-      writer.writerow([ip1,ip2,transfer,startTime,duration,'url'])
+      writer.writerow([ip1,ip2,transfer,startTime,duration,url])
+  with open(csv2path, 'wb') as csv2file:
+    writer = csv.writer(csv2file)
+    for line in p_ip.stdout.read().split("\n")[5:]:
+      m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+).*?\s+<->\s+(\d+\.\d+\.\d+\.\d+).*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+?',line)
+      if not m:
+        continue
+      ip1,ip2,transfer,startTime,duration = m.groups(0)
+      writer.writerow([ip1,ip2,transfer,startTime,duration])
+
+
 
 
 def intersect(l1,l2):
@@ -172,8 +193,9 @@ def pcap_analyze(request, pcap_name):
   m       = models.PcapFile.objects.get(shortfilename=pcap_name)
   a,b     = os.path.splitext(m.uploadedfile.path)
   c,d     = os.path.splitext(pcap_name)
-  csvpath =a+".csv"
-  if not os.path.exists(csvpath):
+  csvpath = a+".csv"
+  csv2path= a+"_ip.csv"
+  if not os.path.exists(csvpath) or not os.path.exists(csv2path):
     makeStats(m.uploadedfile.path,csvpath)
   d = {}
   dns_list,ip_to_dns_id = getDNSPackets(m.uploadedfile.path)
@@ -201,41 +223,64 @@ def pcap_analyze(request, pcap_name):
   _myip=myip[0]  
   d2=[]
   ips=[]
-  
-  mydict['no_ip_streams']         = no_ip_streams
-  mydict['no_tcp_streams']        = no_tcp_streams
-  mydict['no_tcp_waste_streams']  = no_tcp_waste_streams
-  mydict['percent_waste_streams'] = 100.0*no_tcp_waste_streams/float(no_tcp_streams)
-  mydict['total_data_transfer']   = total_data_transfer
-  mydict['total_data_waste']      = total_data_waste
-  mydict['percent_data_waste']    = 100*total_data_waste/float(total_data_transfer)
   for k in d:
     l=len(d[k])
     xx=[]
     o_ip =other(_myip,k)
-    for dns_query_id in ip_to_dns_id[o_ip]:
-      if dns_list[dns_query_id].queries and dns_list[dns_query_id].responses:
-        query_time = min(float(q[0]) for q in dns_list[dns_query_id].queries)
-        response_time = min(float(q[0]) for q in dns_list[dns_query_id].responses)
-        xx.append([response_time,response_time,query_time,query_time,'DNS Query for '+dns_list[dns_query_id].queries[0][3]])
+    if ip_to_dns_id.has_key(o_ip):
+      for dns_query_id in ip_to_dns_id[o_ip]:
+        if dns_list[dns_query_id].queries and dns_list[dns_query_id].responses:
+          query_time = min(float(q[0]) for q in dns_list[dns_query_id].queries)
+          response_time = min(float(q[0]) for q in dns_list[dns_query_id].responses)
+          xx.append([response_time+5,response_time,query_time,query_time-5,'DNS Qusadfadfery for '+dns_list[dns_query_id].queries[0][3]])
+    maxlen = max(maxlen, len(d[k])+len(xx))
+  
+  mydict['no_ip_streams']          = no_ip_streams
+  mydict['no_tcp_streams']         = no_tcp_streams
+  mydict['no_tcp_waste_streams']   = no_tcp_waste_streams
+  mydict['percent_waste_streams']  = 100.0*no_tcp_waste_streams/float(no_tcp_streams)
+  mydict['total_data_transfer']    = total_data_transfer
+  mydict['total_data_waste']       = total_data_waste
+  mydict['percent_data_waste']     = 100*total_data_waste/float(total_data_transfer)
+  mydict['total_dns_requests']     = len(dns_list)
+  mydict['mean_dns_response_time'] = (sum(min(float(q[0]) for q in dns_list[k].responses) - min(float(q[0]) for q in dns_list[k].queries) for k in dns_list if dns_list[k].queries and dns_list[k].responses))/len(dns_list)
+
+  for k in d:
+    l=len(d[k])
+    xx=[]
+    o_ip =other(_myip,k)
+    if ip_to_dns_id.has_key(o_ip):
+      for dns_query_id in ip_to_dns_id[o_ip]:
+        # print o_ip, dns_query_id, dns_list[dns_query_id].queries
+        if dns_list[dns_query_id].queries and dns_list[dns_query_id].responses:
+          query_time = min(float(q[0]) for q in dns_list[dns_query_id].queries)
+          response_time = min(float(q[0]) for q in dns_list[dns_query_id].responses)
+          xx.append([response_time+5,response_time,query_time,query_time-5,'DNS Query for '+dns_list[dns_query_id].queries[0][3]])
     for v in d[k]:
       url1 = v[3]
       if(len(url1)>0):
         url1=url1[:50]
       xx.append([float(v[1]),float(v[1]),float(v[1])+float(v[2]),float(v[1])+float(v[2]),url1])
-    xx+=(maxlen-l)*[[0,0,0,0,'']]
+    xx+=(maxlen-len(xx))*[[0,0,0,0,'']]
     ips.append(other(_myip,k))
     d2.append([other(_myip,k),xx])
   # print d2
-  mydict['ips'] = sorted(ips)
-  mydict['myip']=myip[0] if len(myip)==1 else "Could not be determined!"
-  mydict['pcap_url'] = m.uploadedfile.url
-  mydict['pcap_file'] = pcap_name
-  mydict['csv_file'] = c+".csv"
-  mydict['csv_url'] = m.uploadedfile.url[:m.uploadedfile.url.rfind('.')]+'.csv'
+  mydict['ips']           = sorted(ips)
+  mydict['myip']          = myip[0] if len(myip)==1 else "Could not be determined!"
+  mydict['pcap_url']      = m.uploadedfile.url
+  mydict['pcap_file']     = pcap_name
+  mydict['csv_file']      = c+".csv"
+  mydict['csv_url']       = m.uploadedfile.url[:m.uploadedfile.url.rfind('.')]+'.csv'
   mydict['candle_sticks'] = d2
 
+  ip_stats = []
+  with open(csv2path) as csv2file:
+    reader = csv.reader(csv2file)
+    for row in reader:
+      ip1,ip2,transfer,startTime,duration=row
+      ip_stats.append([other(_myip,[ip1,ip2]),transfer])
 
+  mydict['ip_stats'] = ip_stats
   return render_to_response('pcap_analyze.html',mydict)
 
 def map_traceroute(request,ip):

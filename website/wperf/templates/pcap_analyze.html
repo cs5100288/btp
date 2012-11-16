@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pcap List/Upload</title>   
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1', {packages: ['corechart']});
+        </script>
+        <script type="text/javascript">
+            function drawVisualization() {
+
+                d = [
+                {% for c in candle_sticks %}
+                ['{{c.0}}',{%for kk in c.1%} {{kk.0}},{{kk.1}},{{kk.2}},{{kk.3}},"{{kk.4}}",{%endfor%}],
+                {%endfor%}
+                ];
+                var ll = (d[0].length-1)/5;
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string','IP');
+                for (var i = 0; i < ll; i++) {
+                    data.addColumn('number');data.addColumn('number');data.addColumn('number');data.addColumn('number');data.addColumn({type:'string',role:'tooltip'})
+                };
+                data.addRows(d);
+
+                var options = {
+                legend:'none'
+                };
+
+                chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+
+                var data2 = google.visualization.arrayToDataTable([
+                    ['IP', 'Data Transfer'],
+                    {%for ip_stat in ip_stats%}
+                    ['{{ip_stat.0}}',{{ip_stat.1}}],
+                    {%endfor%}
+                    ]);
+
+
+                var options = {
+                    title: 'data transferred per ip',
+                    hAxis: {title: 'Ip vs data transferred', titleTextStyle: {color: 'red'}},
+                    bar:{groupWidth:'30%'}
+                };
+                chart2 = new google.visualization.ColumnChart(document.getElementById('chart2_div'));
+                chart2.draw(data2,options);
+
+            }
+
+            google.setOnLoadCallback(drawVisualization);
+            function redraw()
+            {
+                var selected_options = $(document.getElementsByName("selected_ips")).find("option:selected")
+                var ips=[]
+                for (var i = 0; i < selected_options.length; i++) {
+                    ips.push(selected_options[i].value);
+                };
+                var d2 = [];
+                var maxlen = 0
+                for (var i = 0; i < d.length; i++) {
+                    var loc = $.inArray(d[i][0],ips);
+                    if(loc!=-1)
+                        {
+                            var l = $.inArray(0,d[i])
+                            if(l==-1)
+                                l=d[i].length;
+                            while(l<d[i].length-4)
+                            {
+                                if(d[i][l]==0&&d[i][l+1]==0&&d[i][l+2]==0&&d[i][l+3]==0)
+                                    break;
+                                l+=4;
+                            }
+                            maxlen = maxlen>l?maxlen:l;
+                            d2.push(d[i]);
+                        }
+                    }
+                // alert(maxlen);
+                var d3 = [];
+                for (var i = 0; i < d2.length; i++) {
+                    d3.push(d2[i].slice(0,maxlen))
+                };
+                var data = google.visualization.arrayToDataTable(d3,true);
+
+                var options = {
+                legend:'none'
+                };
+                chart.draw(data, options);
+                
+            }
+    </script>
+    </head>
+    <body>
+    	<table>
+            <tr>
+                <td>Pcap File</td>
+                <td><a href="{{pcap_url}}">{{pcap_file}}</a> </td>
+            </tr>
+            <tr>
+                <td>CSV file</td>
+                <td><a href="{{csv_url}}">{{csv_file}}</a> </td>
+            </tr>
+            <tr>
+                <td>No. of different IP Streams</td>
+                <td>{{no_ip_streams}}</td>
+            </tr>
+            <tr>
+                <td>No. of different TCP Streams</td>
+                <td>{{no_tcp_streams}}</td>
+            </tr>
+            <tr>
+                <td>Total waste TCP Streams</td>
+                <td>{{no_tcp_waste_streams}}({{percent_waste_streams}}%)</td>
+            </tr>
+            <tr>
+                <td>Total Data transfer</td>
+                <td>{{total_data_transfer}}</td>
+            </tr>
+            <tr>
+                <td>Total data wasted</td>
+                <td>{{total_data_waste}}({{percent_data_waste}}%)</td>
+            </tr>
+            <tr>
+                <td>Total dns requests</td>
+                <td>{{total_dns_requests}}</td>
+            </tr>
+            <tr>
+                <td>Mean DNS response time</td>
+                <td>{{mean_dns_response_time}}</td>
+            </tr>                        
+    	</table>	
+        <div id="ips">
+            choose the ips for redrawing the graph:
+            <select multiple="multiple" name="selected_ips" style="height:300px;">
+            {% for ip in ips %}
+            <option value="{{ip}}">{{ip}}</option>
+            {%endfor%}
+            </select>
+            <button onclick="redraw();">Redraw</button>
+        </div>
+        <div id="chart_div" style="width:6900px;height:1000px;overflow:scroll;"></div>
+        <div id="chart2_div" style="width:3900px;height:1000px;overflow:scroll;"></div>
+
+    </body>
+
+</html>

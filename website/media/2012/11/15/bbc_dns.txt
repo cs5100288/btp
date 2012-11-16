@@ -1,0 +1,50 @@
+  2   0.143451 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0xf8fd  A ping.chartbeat.net
+  4   2.486739 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0xbb92  A www.google.co.in
+ 11   2.500128 122.160.120.56 -> 223.188.204.169 DNS 128 Standard query response 0xf8fd  A 75.101.130.100 A 184.73.244.174 A 54.243.68.178
+ 13   2.562437 122.160.120.56 -> 223.188.204.169 DNS 126 Standard query response 0xbb92  A 74.125.236.56 A 74.125.236.63 A 74.125.236.55
+ 74   9.189835 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0x227e  A bs.serving-sys.com
+ 75   9.318337 122.160.120.56 -> 223.188.204.169 DNS 134 Standard query response 0x227e  CNAME bs.eyeblaster.akadns.net A 202.79.210.121
+ 90   9.966909 223.188.204.169 -> 122.160.120.56 DNS 71 Standard query 0x4a38  A bbc.co.uk
+ 92  10.182358 122.160.120.56 -> 223.188.204.169 DNS 87 Standard query response 0x4a38  A 212.58.241.131
+105  10.669149 223.188.204.169 -> 122.160.120.56 DNS 75 Standard query 0x3dfe  A www.bbc.co.uk
+106  10.708589 122.160.120.56 -> 223.188.204.169 DNS 117 Standard query response 0x3dfe  CNAME www.bbc.net.uk A 212.58.246.95
+136  11.972463 223.188.204.169 -> 122.160.120.56 DNS 91 Standard query 0x534e  A pagead2.googlesyndication.com
+137  12.016407 122.160.120.56 -> 223.188.204.169 DNS 179 Standard query response 0x534e  CNAME pagead46.l.doubleclick.net A 74.125.236.13 A 74.125.236.25 A 74.125.236.26
+151  12.183898 223.188.204.169 -> 122.160.120.56 DNS 79 Standard query 0x1a19  A news.bbcimg.co.uk
+155  12.400505 122.160.120.56 -> 223.188.204.169 DNS 212 Standard query response 0x1a19  CNAME newsimg.bbc.net.uk CNAME news.bbc.co.uk.edgesuite.net CNAME a1733.g.akamai.net A 96.17.182.41 A 96.17.182.42
+200  12.559130 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x40ac  A bbc.112.2o7.net
+201  12.559169 223.188.204.169 -> 122.160.120.56 DNS 74 Standard query 0x4777  A sa.bbc.co.uk
+202  12.561783 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0x5d59  A s0.2mdn.net
+203  12.564629 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x6a3c  A ad-emea.doubleclick.net
+229  12.630111 122.160.120.56 -> 223.188.204.169 DNS 138 Standard query response 0x6a3c  CNAME dart.l.doubleclick.net A 74.125.236.27 A 74.125.236.28
+230  12.630210 122.160.120.56 -> 223.188.204.169 DNS 143 Standard query response 0x5d59  CNAME s0-2mdn-net.l.google.com A 74.125.236.28 A 74.125.236.27
+231  12.630245 122.160.120.56 -> 223.188.204.169 DNS 397 Standard query response 0x40ac  A 66.235.132.152 A 66.235.132.232 A 66.235.133.8 A 66.235.133.11 A 66.235.133.14 A 66.235.133.33 A 66.235.133.62 A 66.235.134.160 A 66.235.138.2 A 66.235.138.18 A 66.235.138.19 A 66.235.138.44 A 66.235.138.59 A 66.235.139.118 A 66.235.139.121 A 66.235.139.152 A 66.235.139.153 A 66.235.139.166 A 66.235.132.118 A 66.235.132.121
+283  13.126500 122.160.120.56 -> 223.188.204.169 DNS 122 Standard query response 0x4777  CNAME bbc01.sitestat.com A 77.72.118.168
+367  19.066992 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0xc39a  A m.bbc.co.uk
+368  19.108545 122.160.120.56 -> 223.188.204.169 DNS 139 Standard query response 0xc39a  CNAME m.live.bbc.co.uk CNAME m-live.bbc.net.uk A 212.58.246.173
+393  19.915376 223.188.204.169 -> 122.160.120.56 DNS 79 Standard query 0x73ca  A static.bbci.co.uk
+394  19.958441 122.160.120.56 -> 223.188.204.169 DNS 219 Standard query response 0x73ca  CNAME static-bbci.bbc.net.uk CNAME static.bbci.co.uk.edgesuite.net CNAME a1638.g.akamai.net A 96.17.182.48 A 96.17.182.43
+494  20.582871 223.188.204.169 -> 122.160.120.56 DNS 83 Standard query 0x2d34  A ad.mo.doubleclick.net
+497  20.586202 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x3eec  A stats.bbc.co.uk
+523  20.720267 122.160.120.56 -> 223.188.204.169 DNS 165 Standard query response 0x2d34  CNAME mobile-displayads.l.doubleclick.net A 74.125.236.26 A 74.125.236.13 A 74.125.236.25
+525  20.720317 122.160.120.56 -> 223.188.204.169 DNS 121 Standard query response 0x3eec  CNAME stats.bbc.net.uk A 212.58.244.130
+660  22.167816 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0x5829  A open.live.bbc.co.uk
+662  22.370395 122.160.120.56 -> 223.188.204.169 DNS 129 Standard query response 0x5829  CNAME open-live.bbc.net.uk A 212.58.244.80
+714  23.399473 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0xd71b  A ichef.bbci.co.uk
+715  23.526927 122.160.120.56 -> 223.188.204.169 DNS 216 Standard query response 0xd71b  CNAME ichef-bbci.bbc.net.uk CNAME ichef.bbci.co.uk.edgesuite.net CNAME a948.g2.akamai.net A 96.17.182.43 A 96.17.182.56
+838  25.887058 223.188.204.169 -> 122.160.120.56 DNS 83 Standard query 0x81da  A api-read.facebook.com
+839  25.887242 223.188.204.169 -> 122.160.120.56 DNS 83 Standard query 0x80c8  A api-read.facebook.com
+840  26.007678 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0xea24  A api.facebook.com
+841  26.062635 122.160.120.56 -> 223.188.204.169 DNS 117 Standard query response 0x81da  CNAME api.facebook.com A 69.171.237.34
+843  26.084556 122.160.120.56 -> 223.188.204.169 DNS 117 Standard query response 0x80c8  CNAME api.facebook.com A 69.171.229.17
+845  26.109861 122.160.120.56 -> 223.188.204.169 DNS 94 Standard query response 0xea24  A 69.171.237.34
+847  26.285707 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0x94d0  A graph.facebook.com
+848  26.360725 122.160.120.56 -> 223.188.204.169 DNS 114 Standard query response 0x94d0  CNAME api.facebook.com A 69.171.237.18
+1271  35.695913 223.188.204.169 -> 122.160.120.56 DNS 76 Standard query 0x93c5  A news.bbc.co.uk
+1273  36.050513 122.160.120.56 -> 223.188.204.169 DNS 122 Standard query response 0x93c5  CNAME newswww.bbc.net.uk A 212.58.246.82
+1436  40.703985 223.188.204.169 -> 122.160.120.56 DNS 79 Standard query 0xb448  A polling.bbc.co.uk
+1454  41.012680 122.160.120.56 -> 223.188.204.169 DNS 185 Standard query response 0xb448  CNAME polling.bbc.co.uk.edgesuite.net CNAME a1123.g.akamai.net A 96.17.182.73 A 96.17.182.72
+1756  47.347582 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x9a3e  A wscdn.bbc.co.uk
+1757  47.410713 122.160.120.56 -> 223.188.204.169 DNS 206 Standard query response 0x9a3e  CNAME wscdn.bbc.net.uk CNAME ws.bbc.co.uk.edgesuite.net CNAME a476.ga.akamai.net A 96.17.182.67 A 96.17.182.58
+1992  51.615592 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0xeec3  A www.bbchindi.com
+2001  52.050832 122.160.120.56 -> 223.188.204.169 DNS 94 Standard query response 0xeec3  A 212.58.241.131

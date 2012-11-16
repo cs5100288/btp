@@ -1,0 +1,20 @@
+  7   4.062192 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x2c2b  A tch135397.tch.quora.com
+  8   4.062457 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x2eca  A tch576495.tch.quora.com
+  9   4.849103 122.160.120.56 -> 223.188.204.169 DNS 165 Standard query response 0x2eca  CNAME quora-prod-tch-1408465663.us-east-1.elb.amazonaws.com A 23.23.156.58
+ 10   4.850666 122.160.120.56 -> 223.188.204.169 DNS 165 Standard query response 0x2c2b  CNAME quora-prod-tch-1408465663.us-east-1.elb.amazonaws.com A 23.23.156.58
+ 24   5.945000 223.188.204.169 -> 122.160.120.56 DNS 75 Standard query 0xdabe  A www.quora.com
+ 25   6.432795 122.160.120.56 -> 223.188.204.169 DNS 186 Standard query response 0xdabe  CNAME aws-east-www.edge.quora.com CNAME quora-prod-www-371385872.us-east-1.elb.amazonaws.com A 50.17.246.73
+115  17.963128 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0x9337  A twitter.com
+116  18.086266 122.160.120.56 -> 223.188.204.169 DNS 121 Standard query response 0x9337  A 199.59.150.7 A 199.59.148.10 A 199.59.148.82
+127  19.094212 223.188.204.169 -> 122.160.120.56 DNS 80 Standard query 0x92d2  A mobile.twitter.com
+128  19.182315 223.188.204.169 -> 122.160.120.56 DNS 74 Standard query 0x7aef  A ma.twimg.com
+129  19.244389 122.160.120.56 -> 223.188.204.169 DNS 133 Standard query response 0x7aef  CNAME orig-10015.twitter.cotcdn.net A 184.169.81.30
+131  19.342280 122.160.120.56 -> 223.188.204.169 DNS 112 Standard query response 0x92d2  A 199.59.149.240 A 199.59.148.96
+1259  30.780563 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0x582a  A p.twimg.com
+1263  30.788489 223.188.204.169 -> 122.160.120.56 DNS 74 Standard query 0x7976  A a0.twimg.com
+1264  30.791746 223.188.204.169 -> 122.160.120.56 DNS 73 Standard query 0x0c0d  A o.twimg.com
+1269  30.800191 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x2fd3  A preview.cdn.twitter.com
+1273  30.863179 122.160.120.56 -> 223.188.204.169 DNS 133 Standard query response 0x7976  CNAME orig-10004.twitter.cotcdn.net A 184.169.81.33
+1274  30.863255 122.160.120.56 -> 223.188.204.169 DNS 161 Standard query response 0x0c0d  CNAME si0.twimg.com.edgekey.net CNAME e3826.g.akamaiedge.net A 118.214.111.144
+1275  30.863281 122.160.120.56 -> 223.188.204.169 DNS 176 Standard query response 0x2fd3  CNAME ssl2.twitter.com.edgekey.net CNAME e3826.g.akamaiedge.net A 118.214.111.144
+1446  31.800263 122.160.120.56 -> 223.188.204.169 DNS 164 Standard query response 0x582a  CNAME ssl2.twitter.com.edgekey.net CNAME e3826.g.akamaiedge.net A 118.214.111.144

@@ -1,0 +1,72 @@
+ 34   8.664741 223.226.98.212 -> 122.160.120.56 DNS 73 Standard query 0x0a72  A nytimes.com
+
+ 38   9.005816 122.160.120.56 -> 223.226.98.212 DNS 105 Standard query response 0x0a72  A 170.149.168.130 A 170.149.173.130
+
+ 56  11.037198 223.226.98.212 -> 122.160.120.56 DNS 77 Standard query 0xb855  A www.nytimes.com
+
+ 57  11.140036 122.160.120.56 -> 223.226.98.212 DNS 93 Standard query response 0xb855  A 170.149.172.130
+
+ 72  12.146004 223.226.98.212 -> 122.160.120.56 DNS 80 Standard query 0xe181  A mobile.nytimes.com
+
+ 76  12.839995 122.160.120.56 -> 223.226.98.212 DNS 219 Standard query response 0xe181  CNAME nyt-mobilesite-production-1657778754.us-east-1.elb.amazonaws.com A 184.73.187.253 A 50.19.109.75 A 54.243.100.30 A 107.22.241.105
+
+ 95  15.020673 223.226.98.212 -> 122.160.120.56 DNS 91 Standard query 0xf8c2  A pagead2.googlesyndication.com
+
+ 96  15.115930 122.160.120.56 -> 223.226.98.212 DNS 179 Standard query response 0xf8c2  CNAME pagead46.l.doubleclick.net A 74.125.236.25 A 74.125.236.26 A 74.125.236.13
+
+220  18.979211 223.226.98.212 -> 122.160.120.56 DNS 82 Standard query 0x5eb9  A analytics.conmio.com
+
+221  18.992366 223.226.98.212 -> 122.160.120.56 DNS 76 Standard query 0x09ee  A up.nytimes.com
+
+225  19.021379 223.226.98.212 -> 122.160.120.56 DNS 85 Standard query 0xfbba  A b.scorecardresearch.com
+
+230  19.346035 122.160.120.56 -> 223.226.98.212 DNS 199 Standard query response 0xfbba  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.58 A 96.17.182.41
+
+256  19.615804 122.160.120.56 -> 223.226.98.212 DNS 235 Standard query response 0x09ee  CNAME lb-up-tracker-1378845633.us-east-1.elb.amazonaws.com A 23.21.72.16 A 23.21.108.152 A 54.243.90.4 A 54.243.161.208 A 107.20.138.45 A 23.21.55.152
+
+262  19.788841 223.226.98.212 -> 122.160.120.56 DNS 89 Standard query 0x7760  A googleads.g.doubleclick.net
+
+281  19.948183 122.160.120.56 -> 223.226.98.212 DNS 160 Standard query response 0x7760  CNAME pagead.l.doubleclick.net A 74.125.236.25 A 74.125.236.26 A 74.125.236.13
+
+293  20.405904 122.160.120.56 -> 223.226.98.212 DNS 223 Standard query response 0x5eb9  CNAME tracking-pixel-load-balancer-681537794.us-east-1.elb.amazonaws.com A 107.21.255.55 A 50.17.217.12 A 54.243.133.135 A 107.20.194.50
+
+300  20.641327 223.226.98.212 -> 122.160.120.56 DNS 77 Standard query 0xb72d  A media.admob.com
+
+304  20.809887 122.160.120.56 -> 223.226.98.212 DNS 163 Standard query response 0xb72d  CNAME pagead.l.doubleclick.net A 74.125.236.26 A 74.125.236.13 A 74.125.236.25
+
+652  80.087428 223.226.98.212 -> 122.160.120.56 DNS 80 Standard query 0x854c  A mobile.nytimes.com
+
+653  85.098639 223.226.98.212 -> 202.56.230.7 DNS 80 Standard query 0x854c  A mobile.nytimes.com
+
+654  90.104248 223.226.98.212 -> 122.160.120.56 DNS 80 Standard query 0x854c  A mobile.nytimes.com
+
+659  95.109517 223.226.98.212 -> 202.56.230.7 DNS 80 Standard query 0x854c  A mobile.nytimes.com
+
+661 100.112653 223.226.98.212 -> 122.160.120.56 DNS 80 Standard query 0x660e  A mobile.nytimes.com
+
+673 101.735228 122.160.120.56 -> 223.226.98.212 DNS 219 Standard query response 0x854c  CNAME nyt-mobilesite-production-1657778754.us-east-1.elb.amazonaws.com A 107.22.241.105 A 184.73.187.253 A 50.19.109.75 A 54.243.100.30
+
+674 101.735622 223.226.98.212 -> 122.160.120.56 ICMP 247 Destination unreachable (Port unreachable)
+
+677 102.165289 202.56.230.7 -> 223.226.98.212 DNS 515 Standard query response 0x854c  CNAME nyt-mobilesite-production-1657778754.us-east-1.elb.amazonaws.com A 184.73.187.253 A 50.19.109.75 A 107.22.241.105 A 54.243.100.30
+
+678 102.165711 223.226.98.212 -> 202.56.230.7 ICMP 543 Destination unreachable (Port unreachable)
+
+679 102.465155 122.160.120.56 -> 223.226.98.212 DNS 219 Standard query response 0x660e  CNAME nyt-mobilesite-production-1657778754.us-east-1.elb.amazonaws.com A 107.22.241.105 A 184.73.187.253 A 50.19.109.75 A 54.243.100.30
+
+698 105.999442 223.226.98.212 -> 122.160.120.56 DNS 85 Standard query 0x2d08  A b.scorecardresearch.com
+
+703 106.238774 223.226.98.212 -> 122.160.120.56 DNS 77 Standard query 0x5407  A www.nytimes.com
+
+706 106.374777 122.160.120.56 -> 223.226.98.212 DNS 199 Standard query response 0x2d08  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.41 A 96.17.182.58
+
+720 107.938703 122.160.120.56 -> 223.226.98.212 DNS 93 Standard query response 0x5407  A 170.149.172.130
+
+927 120.223972 223.226.98.212 -> 122.160.120.56 DNS 76 Standard query 0x9394  A up.nytimes.com
+
+928 120.228369 223.226.98.212 -> 122.160.120.56 DNS 82 Standard query 0xacc9  A analytics.conmio.com
+
+935 120.844994 122.160.120.56 -> 223.226.98.212 DNS 223 Standard query response 0xacc9  CNAME tracking-pixel-load-balancer-681537794.us-east-1.elb.amazonaws.com A 107.21.255.55 A 50.17.217.12 A 54.243.133.135 A 107.20.194.50
+
+937 120.925055 122.160.120.56 -> 223.226.98.212 DNS 235 Standard query response 0x9394  CNAME lb-up-tracker-1378845633.us-east-1.elb.amazonaws.com A 107.20.138.45 A 23.21.55.152 A 23.21.72.16 A 23.21.108.152 A 54.243.90.4 A 54.243.161.208
+

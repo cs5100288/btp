@@ -1,0 +1,10 @@
+ 27   4.131626 223.188.204.169 -> 122.160.120.56 DNS 71 Standard query 0x82e3  A gmail.com
+ 28   4.286785 122.160.120.56 -> 223.188.204.169 DNS 103 Standard query response 0x82e3  A 74.125.236.21 A 74.125.236.22
+ 39   4.672591 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x5cb9  A mail.google.com
+ 40   4.724714 122.160.120.56 -> 223.188.204.169 DNS 136 Standard query response 0x5cb9  CNAME googlemail.l.google.com A 74.125.236.21 A 74.125.236.22
+ 48   5.375941 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0xc4f3  A accounts.google.com
+ 49   5.444885 122.160.120.56 -> 223.188.204.169 DNS 122 Standard query response 0xc4f3  CNAME accounts.l.google.com A 74.125.135.84
+125  10.645281 223.188.204.169 -> 122.160.120.56 DNS 76 Standard query 0xeaff  A www.google.com
+130  10.714944 122.160.120.56 -> 223.188.204.169 DNS 156 Standard query response 0xeaff  A 74.125.236.178 A 74.125.236.179 A 74.125.236.180 A 74.125.236.176 A 74.125.236.177
+272  31.453838 223.188.204.169 -> 122.160.120.56 DNS 88 Standard query 0xf6a9  A android.clients.google.com
+273  31.640629 122.160.120.56 -> 223.188.204.169 DNS 288 Standard query response 0xf6a9  CNAME android.l.google.com A 74.125.236.2 A 74.125.236.3 A 74.125.236.4 A 74.125.236.5 A 74.125.236.6 A 74.125.236.7 A 74.125.236.8 A 74.125.236.9 A 74.125.236.14 A 74.125.236.0 A 74.125.236.1

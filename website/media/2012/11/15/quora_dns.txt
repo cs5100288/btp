@@ -1,0 +1,32 @@
+ 27  15.934735 223.188.204.169 -> 122.160.120.56 DNS 75 Standard query 0xa9a7  A www.quora.com
+ 28  16.483211 122.160.120.56 -> 223.188.204.169 DNS 186 Standard query response 0xa9a7  CNAME aws-east-www.edge.quora.com CNAME quora-prod-www-371385872.us-east-1.elb.amazonaws.com A 50.17.246.73
+ 55  18.257495 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0x9d4e  A qsc.cf.quoracdn.net
+ 56  18.262512 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0xa989  A qsf.cf.quoracdn.net
+ 57  18.266789 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0xb698  A assets.insnw.net
+ 58  18.310605 122.160.120.56 -> 223.188.204.169 DNS 249 Standard query response 0xa989  CNAME d1vgw4v7ja2ido.cloudfront.net A 204.246.165.38 A 204.246.165.59 A 204.246.165.109 A 204.246.165.159 A 204.246.165.166 A 204.246.165.223 A 204.246.165.231 A 204.246.165.24
+ 89  18.623019 122.160.120.56 -> 223.188.204.169 DNS 145 Standard query response 0xb698  CNAME ins-001.inscname.net CNAME DEL01.inscname.net A 54.251.36.43
+113  18.778207 122.160.120.56 -> 223.188.204.169 DNS 249 Standard query response 0x9d4e  CNAME d1zlmuwse3cba4.cloudfront.net A 54.240.168.14 A 54.240.168.24 A 54.240.168.53 A 54.240.168.61 A 54.240.168.93 A 54.240.168.118 A 54.240.168.185 A 54.240.168.211
+638  20.356528 223.188.204.169 -> 122.160.120.56 DNS 91 Standard query 0x185d  A d1vgw4v7ja2ido.cloudfront.net
+646  20.366992 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0x314c  A qph.cf.quoracdn.net
+656  20.400605 122.160.120.56 -> 223.188.204.169 DNS 219 Standard query response 0x185d  A 204.246.165.213 A 204.246.165.216 A 204.246.165.247 A 204.246.165.22 A 204.246.165.92 A 204.246.165.175 A 204.246.165.180 A 204.246.165.193
+715  20.792630 122.160.120.56 -> 223.188.204.169 DNS 249 Standard query response 0x314c  CNAME d2o7bfz2il9cb7.cloudfront.net A 54.240.168.76 A 54.240.168.89 A 54.240.168.103 A 54.240.168.145 A 54.240.168.148 A 54.240.168.187 A 54.240.168.202 A 54.240.168.216
+1324  21.751742 223.188.204.169 -> 122.160.120.56 DNS 82 Standard query 0x105c  A connect.facebook.net
+1464  21.968423 122.160.120.56 -> 223.188.204.169 DNS 178 Standard query response 0x105c  CNAME connect.facebook.net.edgekey.net CNAME e3821.dspe1.akamaiedge.net A 118.214.111.139
+2598  24.335820 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x4880  A tch576495.tch.quora.com
+2599  24.345057 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0x64a2  A s-static.ak.facebook.com
+2600  24.345170 223.188.204.169 -> 122.160.120.56 DNS 84 Standard query 0x6431  A static.ak.facebook.com
+2601  24.345569 223.188.204.169 -> 122.160.120.56 DNS 82 Standard query 0x62cb  A platform.twitter.com
+2602  24.347801 223.188.204.169 -> 122.160.120.56 DNS 78 Standard query 0x7a6b  A www.facebook.com
+2603  24.362763 223.188.204.169 -> 122.160.120.56 DNS 86 Standard query 0x21dd  A www.google-analytics.com
+2612  24.437879 122.160.120.56 -> 223.188.204.169 DNS 94 Standard query response 0x7a6b  A 173.252.101.16
+2613  24.437906 122.160.120.56 -> 223.188.204.169 DNS 188 Standard query response 0x64a2  CNAME s-static.ak.facebook.com.edgekey.net CNAME e566.dspe1.akamaiedge.net A 118.214.98.110
+2614  24.437924 122.160.120.56 -> 223.188.204.169 DNS 173 Standard query response 0x62cb  CNAME ssl2.twitter.com.edgekey.net CNAME e3826.g.akamaiedge.net A 118.214.111.144
+2615  24.437941 122.160.120.56 -> 223.188.204.169 DNS 306 Standard query response 0x21dd  CNAME www-google-analytics.l.google.com A 74.125.236.3 A 74.125.236.4 A 74.125.236.5 A 74.125.236.6 A 74.125.236.7 A 74.125.236.8 A 74.125.236.9 A 74.125.236.14 A 74.125.236.0 A 74.125.236.1 A 74.125.236.2
+2616  24.437959 122.160.120.56 -> 223.188.204.169 DNS 197 Standard query response 0x6431  CNAME static.ak.facebook.com.edgesuite.net CNAME a749.dsw4.akamai.net A 96.17.182.65 A 96.17.182.42
+2663  24.864613 122.160.120.56 -> 223.188.204.169 DNS 165 Standard query response 0x4880  CNAME quora-prod-tch-1408465663.us-east-1.elb.amazonaws.com A 23.23.156.58
+4963  64.182337 223.188.204.169 -> 122.160.120.56 DNS 81 Standard query 0xe339  A qph.is.quoracdn.net
+4964  64.210153 223.188.204.169 -> 122.160.120.56 DNS 77 Standard query 0x5676  A img.youtube.com
+4966  64.261036 122.160.120.56 -> 223.188.204.169 DNS 282 Standard query response 0x5676  CNAME ytimg.l.google.com A 74.125.236.5 A 74.125.236.6 A 74.125.236.7 A 74.125.236.8 A 74.125.236.9 A 74.125.236.14 A 74.125.236.0 A 74.125.236.1 A 74.125.236.2 A 74.125.236.3 A 74.125.236.4
+4984  64.388700 122.160.120.56 -> 223.188.204.169 DNS 172 Standard query response 0xe339  CNAME quora-003.inscname.net CNAME ins-001.inscname.net CNAME DEL01.inscname.net A 54.251.36.43
+5333  65.613585 223.188.204.169 -> 122.160.120.56 DNS 85 Standard query 0x0e6c  A tch135397.tch.quora.com
+5340  66.097141 122.160.120.56 -> 223.188.204.169 DNS 165 Standard query response 0x0e6c  CNAME quora-prod-tch-1408465663.us-east-1.elb.amazonaws.com A 23.23.156.58

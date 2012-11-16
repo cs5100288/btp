@@ -3,7 +3,7 @@ import tornado.web,tornado.websocket
 import models
 import settings
 import re,subprocess,json,threading
-from scapy.all import *
+# from scapy.all import *
 class State:
 	START=0
 	AFTERDNS=1

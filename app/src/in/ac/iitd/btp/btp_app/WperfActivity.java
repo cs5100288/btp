@@ -132,7 +132,6 @@ public class WperfActivity extends Activity {
 		rateBtn.setEnabled(false);
 		rateBtn.setOnClickListener(new OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			getRating();	

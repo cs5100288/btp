@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Pcap List/Upload</title>   
+        <title>Pcap List/Upload</title>
         <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
@@ -88,7 +88,7 @@
                 legend:'none'
                 };
                 chart.draw(data, options);
-                
+
             }
     </script>
     </head>
@@ -129,8 +129,8 @@
             <tr>
                 <td>Mean DNS response time</td>
                 <td>{{mean_dns_response_time}}</td>
-            </tr>                        
-    	</table>	
+            </tr>
+    	</table>
         <div id="ips">
             choose the ips for redrawing the graph:
             <select multiple="multiple" name="selected_ips" style="height:300px;">
@@ -140,9 +140,10 @@
             </select>
             <button onclick="redraw();">Redraw</button>
         </div>
-        <div id="chart_div" style="width:19900px;height:1000px;overflow:scroll;"></div>
+        <div id="chart_div" style="width:6900px;height:1000px;overflow:scroll;"></div>
         <div id="chart2_div" style="width:3900px;height:1000px;overflow:scroll;"></div>
 
     </body>
+
 
 </html>

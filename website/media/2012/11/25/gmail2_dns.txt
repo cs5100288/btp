@@ -1,0 +1,22 @@
+  6   2.743043 27.60.129.157 -> 122.160.120.56 DNS 71 Standard query 0x770e  A gmail.com
+  7   2.799479 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0x770e  A 74.125.236.22[Packet size limited during capture]
+ 20   3.162029 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x5536  A mail.google.com
+ 21   3.229514 122.160.120.56 -> 27.60.129.157 DNS 136 Standard query response 0x5536  CNAME[Packet size limited during capture]
+ 37   3.798125 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x1ee1  A accounts.google.com
+ 38   3.857421 122.160.120.56 -> 27.60.129.157 DNS 122 Standard query response 0x1ee1  CNAME[Packet size limited during capture]
+139   9.339402 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x1e7d  A www.google.com
+140   9.397414 122.160.120.56 -> 27.60.129.157 DNS 156 Standard query response 0x1e7d  A 74.125.236.16[Packet size limited during capture]
+291  57.221442 27.60.129.157 -> 122.160.120.56 DNS 72 Standard query 0x6e15  A tumblr.com
+296  57.571731 122.160.120.56 -> 27.60.129.157 DNS 88 Standard query response 0x6e15  A 66.6.36.15
+319  58.501198 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0xa571  A www.tumblr.com
+320  58.593524 122.160.120.56 -> 27.60.129.157 DNS 92 Standard query response 0xa571  A 66.6.36.9
+364  62.310892 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x8c1e  A secure.assets.tumblr.com
+366  62.372913 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x9e88  A edge.quantserve.com
+367  62.397921 122.160.120.56 -> 27.60.129.157 DNS 140 Standard query response 0x8c1e [Packet size limited during capture]
+371  62.461641 122.160.120.56 -> 27.60.129.157 DNS 232 Standard query response 0x9e88  CNAME[Packet size limited during capture]
+469  63.656050 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xc889  A ssl.google-analytics.com
+489  63.772000 122.160.120.56 -> 27.60.129.157 DNS 146 Standard query response 0xc889 [Packet size limited during capture]
+766  68.911497 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0xe6f1  A pixel.quantserve.com
+768  69.100393 122.160.120.56 -> 27.60.129.157 DNS 283 Standard query response 0xe6f1  CNAME[Packet size limited during capture]
+855 124.702934 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x900c  A www.googleapis.com
+856 127.274127 122.160.120.56 -> 27.60.129.157 DNS 130 Standard query response 0x900c  CNAME[Packet size limited during capture]

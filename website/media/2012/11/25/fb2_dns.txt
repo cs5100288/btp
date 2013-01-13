@@ -1,0 +1,12 @@
+ 30   8.545237 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x9f8c  A facebook.com
+ 32   8.628090 122.160.120.56 -> 27.60.129.157 DNS 154 Standard query response 0x9f8c  A 66.220.152.16[Packet size limited during capture]
+ 50   9.653993 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x77ad  A www.facebook.com
+ 51   9.730259 122.160.120.56 -> 27.60.129.157 DNS 117 Standard query response 0x77ad  CNAME[Packet size limited during capture]
+ 59  11.092612 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x8624  A m.facebook.com
+ 60  11.170184 122.160.120.56 -> 27.60.129.157 DNS 113 Standard query response 0x8624  CNAME[Packet size limited during capture]
+ 89  13.637044 27.60.129.157 -> 122.160.120.56 DNS 83 Standard query 0x3118  A m-static.ak.fbcdn.net
+113  13.908796 122.160.120.56 -> 27.60.129.157 DNS 166 Standard query response 0x3118  CNAME[Packet size limited during capture]
+286  15.744647 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x8ab3  A m.ak.fbcdn.net
+312  15.866864 122.160.120.56 -> 27.60.129.157 DNS 153 Standard query response 0x8ab3  CNAME[Packet size limited during capture]
+1769  25.102676 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xd9c8  A ect.channel.facebook.com
+1770  25.280814 122.160.120.56 -> 27.60.129.157 DNS 102 Standard query response 0xd9c8 [Packet size limited during capture]

@@ -1,0 +1,46 @@
+ 12   3.314911 27.60.129.157 -> 122.160.120.56 DNS 69 Standard query 0x81fe  A bbc.com
+ 14   3.556080 122.160.120.56 -> 27.60.129.157 DNS 85 Standard query response 0x81fe  A 212.58.241.131
+ 29   4.274203 27.60.129.157 -> 122.160.120.56 DNS 73 Standard query 0x21fa  A www.bbc.com
+ 30   4.344057 122.160.120.56 -> 27.60.129.157 DNS 125 Standard query response 0x21fa  CNAME[Packet size limited during capture]
+ 42   5.032562 27.60.129.157 -> 122.160.120.56 DNS 75 Standard query 0x50b9  A www.bbc.co.uk
+ 43   5.128240 122.160.120.56 -> 27.60.129.157 DNS 117 Standard query response 0x50b9  CNAME[Packet size limited during capture]
+ 76   6.188790 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0xecae  A news.bbcimg.co.uk
+ 84   6.369879 122.160.120.56 -> 27.60.129.157 DNS 212 Standard query response 0xecae  CNAME[Packet size limited during capture]
+122   6.751496 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x18a8  A bbc.112.2o7.net
+123   6.751602 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x1820  A sa.bbc.co.uk
+159   7.030136 122.160.120.56 -> 27.60.129.157 DNS 397 Standard query response 0x18a8  A 66.235.139.153[Packet size limited during capture]
+161   7.049989 122.160.120.56 -> 27.60.129.157 DNS 122 Standard query response 0x1820  CNAME[Packet size limited during capture]
+279  36.963587 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x5c6e  A cricinfo.com
+281  37.022727 122.160.120.56 -> 27.60.129.157 DNS 90 Standard query response 0x5c6e  A 80.168.92.140
+297  37.591249 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x8ab9  A www.espncricinfo.com
+300  37.660773 122.160.120.56 -> 27.60.129.157 DNS 215 Standard query response 0x8ab9  CNAME[Packet size limited during capture]
+322  40.051299 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x8626  A m.espncricinfo.com
+323  40.119030 122.160.120.56 -> 27.60.129.157 DNS 176 Standard query response 0x8626  CNAME[Packet size limited during capture]
+339  41.472872 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x1962  A criccfimg.mo2do.net
+340  41.483488 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x3212  A miad.mo2do.net
+341  41.493560 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x088a  A adimg.mo2do.net
+342  41.538783 122.160.120.56 -> 27.60.129.157 DNS 249 Standard query response 0x1962  CNAME[Packet size limited during capture]
+351  41.564811 122.160.120.56 -> 27.60.129.157 DNS 150 Standard query response 0x3212  CNAME[Packet size limited during capture]
+354  41.568676 122.160.120.56 -> 27.60.129.157 DNS 245 Standard query response 0x088a  CNAME[Packet size limited during capture]
+381  41.785446 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0x94e1  A w88.m.espn.go.com
+386  41.844784 122.160.120.56 -> 27.60.129.157 DNS 431 Standard query response 0x94e1  CNAME[Packet size limited during capture]
+847  76.284822 27.60.129.157 -> 122.160.120.56 DNS 71 Standard query 0x770e  A gmail.com
+848  76.341258 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0x770e  A 74.125.236.22[Packet size limited during capture]
+861  76.703808 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x5536  A mail.google.com
+862  76.771293 122.160.120.56 -> 27.60.129.157 DNS 136 Standard query response 0x5536  CNAME[Packet size limited during capture]
+878  77.339904 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x1ee1  A accounts.google.com
+879  77.399200 122.160.120.56 -> 27.60.129.157 DNS 122 Standard query response 0x1ee1  CNAME[Packet size limited during capture]
+980  82.881181 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x1e7d  A www.google.com
+981  82.939193 122.160.120.56 -> 27.60.129.157 DNS 156 Standard query response 0x1e7d  A 74.125.236.16[Packet size limited during capture]
+1132 130.763221 27.60.129.157 -> 122.160.120.56 DNS 72 Standard query 0x6e15  A tumblr.com
+1137 131.113510 122.160.120.56 -> 27.60.129.157 DNS 88 Standard query response 0x6e15  A 66.6.36.15
+1160 132.042977 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0xa571  A www.tumblr.com
+1161 132.135303 122.160.120.56 -> 27.60.129.157 DNS 92 Standard query response 0xa571  A 66.6.36.9
+1205 135.852671 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x8c1e  A secure.assets.tumblr.com
+1207 135.914692 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x9e88  A edge.quantserve.com
+1208 135.939700 122.160.120.56 -> 27.60.129.157 DNS 140 Standard query response 0x8c1e [Packet size limited during capture]
+1212 136.003420 122.160.120.56 -> 27.60.129.157 DNS 232 Standard query response 0x9e88  CNAME[Packet size limited during capture]
+1310 137.197829 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xc889  A ssl.google-analytics.com
+1330 137.313779 122.160.120.56 -> 27.60.129.157 DNS 146 Standard query response 0xc889 [Packet size limited during capture]
+1607 142.453276 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0xe6f1  A pixel.quantserve.com
+1609 142.642172 122.160.120.56 -> 27.60.129.157 DNS 283 Standard query response 0xe6f1  CNAME[Packet size limited during capture]

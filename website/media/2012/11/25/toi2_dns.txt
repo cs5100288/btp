@@ -1,0 +1,288 @@
+ 15  12.156792 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0xaff6  A timesofindia.indiatimes.com
+ 16  12.243419 122.160.120.56 -> 27.60.129.157 DNS 205 Standard query response 0xaff6 [Packet size limited during capture]
+ 64  13.095188 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xa0eb  A cdn.optimizely.com
+ 86  13.254155 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0xa0eb  CNAME[Packet size limited during capture]
+130  14.076702 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x686a  A log3.optimizely.com
+141  14.284606 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xbbab  A www.google-analytics.com
+142  14.294156 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0x96e0  A b.scorecardresearch.com
+159  14.443601 122.160.120.56 -> 27.60.129.157 DNS 306 Standard query response 0xbbab [Packet size limited during capture]
+161  14.463313 122.160.120.56 -> 27.60.129.157 DNS 199 Standard query response 0x96e0 [Packet size limited during capture]
+171  14.623255 122.160.120.56 -> 27.60.129.157 DNS 231 Standard query response 0x686a  CNAME[Packet size limited during capture]
+499  17.807855 27.60.129.157 -> 122.160.120.56 DNS 88 Standard query 0xbf86  A adscontent2.indiatimes.com
+518  17.914300 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0xbf86 [Packet size limited during capture]
+1246  30.061286 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x2436  A www.facebook.com
+1249  30.132718 122.160.120.56 -> 27.60.129.157 DNS 117 Standard query response 0x2436  CNAME[Packet size limited during capture]
+1255  30.181777 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xce41  A bs.serving-sys.com
+1261  30.244714 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0xce41  CNAME[Packet size limited during capture]
+1283  30.709545 27.60.129.157 -> 122.160.120.56 DNS 88 Standard query 0x3f8b  A adscontent3.indiatimes.com
+1291  31.014870 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0x3f8b [Packet size limited during capture]
+1343  31.597428 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x764f  A ds.serving-sys.com
+1364  31.694838 122.160.120.56 -> 27.60.129.157 DNS 189 Standard query response 0x764f  CNAME[Packet size limited during capture]
+1681  39.947026 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x6210  A www.speakingtree.in
+1694  40.113495 122.160.120.56 -> 27.60.129.157 DNS 189 Standard query response 0x6210  CNAME[Packet size limited during capture]
+1717  40.542985 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x4adf  A a.visualrevenue.com
+1724  40.548043 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0xb7cf  A p.visualrevenue.com
+1748  40.972940 122.160.120.56 -> 27.60.129.157 DNS 171 Standard query response 0x4adf  CNAME[Packet size limited during capture]
+1753  41.040880 122.160.120.56 -> 27.60.129.157 DNS 153 Standard query response 0xb7cf  CNAME[Packet size limited during capture]
+1804  42.189941 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x2fb5  A static.parsely.com
+1814  42.534867 122.160.120.56 -> 27.60.129.157 DNS 251 Standard query response 0x2fb5  CNAME[Packet size limited during capture]
+1840  43.116890 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xcaa4  A config.parsely.com
+1854  43.337296 27.60.129.157 -> 122.160.120.56 DNS 75 Standard query 0x7464  A p.twitter.com
+1855  43.337775 27.60.129.157 -> 122.160.120.56 DNS 73 Standard query 0x6dda  A r.twimg.com
+1857  43.353540 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0xaf31  A cdn.api.twitter.com
+1860  43.372769 122.160.120.56 -> 27.60.129.157 DNS 166 Standard query response 0x7464  CNAME[Packet size limited during capture]
+1862  43.376724 122.160.120.56 -> 27.60.129.157 DNS 121 Standard query response 0x6dda  A 199.59.149.235[Packet size limited during capture]
+1864  43.411020 122.160.120.56 -> 27.60.129.157 DNS 172 Standard query response 0xaf31  CNAME[Packet size limited during capture]
+1870  43.503649 122.160.120.56 -> 27.60.129.157 DNS 188 Standard query response 0xcaa4  CNAME[Packet size limited during capture]
+2014  52.539578 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x5992  A m.timesofindia.com
+2017  55.063081 122.160.120.56 -> 27.60.129.157 DNS 191 Standard query response 0x5992  CNAME[Packet size limited during capture]
+2051  55.819346 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x92b9  A insight.torbit.com
+2052  55.871052 122.160.120.56 -> 27.60.129.157 DNS 190 Standard query response 0x92b9  CNAME[Packet size limited during capture]
+2057  56.029626 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x9e64  A ping.chartbeat.net
+2058  56.083071 122.160.120.56 -> 27.60.129.157 DNS 128 Standard query response 0x9e64  A 184.73.220.98[Packet size limited during capture]
+2114  57.250900 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x3e0d  A s3.amazonaws.com
+2115  57.258364 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x2302  A bonzaitracker1.cntdy.mobi
+2127  57.340692 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0x615f  A www1.m.timesofindia.com
+2128  57.344586 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x5557  A timeslog.timesofindia.com
+2138  57.359500 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0x2302 [Packet size limited during capture]
+2139  57.359541 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0x3e0d  CNAME[Packet size limited during capture]
+2164  57.399647 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0x5557 [Packet size limited during capture]
+2165  57.399692 122.160.120.56 -> 27.60.129.157 DNS 101 Standard query response 0x615f [Packet size limited during capture]
+2510  67.369758 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xeea7  A www.google.co.in
+2511  67.864605 122.160.120.56 -> 27.60.129.157 DNS 126 Standard query response 0xeea7  A 74.125.236.24[Packet size limited during capture]
+2564  73.361565 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x8ec6  A timesofindia.com
+2566  73.599211 122.160.120.56 -> 27.60.129.157 DNS 94 Standard query response 0x8ec6  A 223.165.25.31
+2582  73.972190 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0x812a  A timesofindia.indiatimes.com
+2583  74.051733 122.160.120.56 -> 27.60.129.157 DNS 205 Standard query response 0x812a [Packet size limited during capture]
+2607  74.655069 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x14d4  A cdn.optimizely.com
+2630  74.877935 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0x14d4  CNAME[Packet size limited during capture]
+2710  75.937300 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x0910  A log3.optimizely.com
+2724  76.371901 122.160.120.56 -> 27.60.129.157 DNS 231 Standard query response 0x0910  CNAME[Packet size limited during capture]
+2746  76.458023 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x16bd  A www.google-analytics.com
+2747  76.469826 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0x6951  A b.scorecardresearch.com
+2764  76.961976 122.160.120.56 -> 27.60.129.157 DNS 306 Standard query response 0x16bd [Packet size limited during capture]
+2769  76.968895 122.160.120.56 -> 27.60.129.157 DNS 199 Standard query response 0x6951 [Packet size limited during capture]
+2999  80.174935 27.60.129.157 -> 122.160.120.56 DNS 96 Standard query 0xe989  A images.photogallery.indiatimes.com
+3003  80.229038 122.160.120.56 -> 27.60.129.157 DNS 218 Standard query response 0xe989 [Packet size limited during capture]
+3655 107.578671 27.60.129.157 -> 122.160.120.56 DNS 83 Standard query 0x3e9e  A api-read.facebook.com
+3656 107.597799 27.60.129.157 -> 122.160.120.56 DNS 83 Standard query 0x7569  A api-read.facebook.com
+3657 107.975728 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xf3be  A graph.facebook.com
+3658 108.352325 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xb2a7  A api.facebook.com
+3659 110.033828 122.160.120.56 -> 27.60.129.157 DNS 141 Standard query response 0x7569  CNAME[Packet size limited during capture]
+3660 110.034121 122.160.120.56 -> 27.60.129.157 DNS 141 Standard query response 0x3e9e  CNAME[Packet size limited during capture]
+3663 110.047087 122.160.120.56 -> 27.60.129.157 DNS 138 Standard query response 0xf3be  CNAME[Packet size limited during capture]
+3665 110.448276 122.160.120.56 -> 27.60.129.157 DNS 118 Standard query response 0xb2a7  CNAME[Packet size limited during capture]
+3890 116.534848 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x6bb1  A c1.whatsapp.net
+3894 117.945478 122.160.120.56 -> 27.60.129.157 DNS 221 Standard query response 0x6bb1  A 50.22.231.46[Packet size limited during capture]
+3917 118.997246 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x1f50  A m.timesofindia.com
+3921 119.072456 122.160.120.56 -> 27.60.129.157 DNS 191 Standard query response 0x1f50  CNAME[Packet size limited during capture]
+3979 120.198170 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x0c65  A bonzaitracker1.cntdy.mobi
+3982 120.248387 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0x0c65 [Packet size limited during capture]
+4079 126.111152 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xe0a3  A samsungvuiasr.vlingo.com
+4086 128.278380 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x55d9  A bs.serving-sys.com
+4087 131.116446 27.60.129.157 -> 202.56.230.7 DNS 86 Standard query 0xe0a3  A samsungvuiasr.vlingo.com
+4088 133.282641 27.60.129.157 -> 202.56.230.7 DNS 80 Standard query 0x55d9  A bs.serving-sys.com
+4101 133.406320 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0xe0a3 [Packet size limited during capture]
+4105 133.406700 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0x55d9  CNAME[Packet size limited during capture]
+4106 133.491996 202.56.230.7 -> 27.60.129.157 DNS 278 Standard query response 0xe0a3 [Packet size limited during capture]
+4113 134.788665 202.56.230.7 -> 27.60.129.157 DNS 527 Standard query response 0x55d9  CNAME[Packet size limited during capture]
+4158 145.780513 27.60.129.157 -> 122.160.120.56 DNS 73 Standard query 0x2a0e  A nytimes.com
+4162 146.288810 122.160.120.56 -> 27.60.129.157 DNS 105 Standard query response 0x2a0e  A 170.149.173.130[Packet size limited during capture]
+4178 148.191847 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x2704  A www.nytimes.com
+4182 148.368902 122.160.120.56 -> 27.60.129.157 DNS 93 Standard query response 0x2704  A 170.149.172.130
+4205 149.977998 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xf3b2  A mobile.nytimes.com
+4215 150.604130 122.160.120.56 -> 27.60.129.157 DNS 219 Standard query response 0xf3b2  CNAME[Packet size limited during capture]
+4456 154.168804 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0x81d3  A b.scorecardresearch.com
+4458 154.184180 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0xc588  A up.nytimes.com
+4459 154.187565 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x368a  A analytics.conmio.com
+4467 154.254541 27.60.129.157 -> 122.160.120.56 DNS 91 Standard query 0x3005  A pagead2.googlesyndication.com
+4475 154.442389 122.160.120.56 -> 27.60.129.157 DNS 199 Standard query response 0x81d3 [Packet size limited during capture]
+4476 154.442608 122.160.120.56 -> 27.60.129.157 DNS 235 Standard query response 0xc588  CNAME[Packet size limited during capture]
+4482 154.912193 122.160.120.56 -> 27.60.129.157 DNS 179 Standard query response 0x3005 [Packet size limited during capture]
+4525 155.204932 122.160.120.56 -> 27.60.129.157 DNS 223 Standard query response 0x368a  CNAME[Packet size limited during capture]
+4597 156.270945 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0x70d1  A googleads.g.doubleclick.net
+4602 156.424120 122.160.120.56 -> 27.60.129.157 DNS 160 Standard query response 0x70d1 [Packet size limited during capture]
+4639 157.526977 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x08fa  A media.admob.com
+4640 157.648134 122.160.120.56 -> 27.60.129.157 DNS 163 Standard query response 0x08fa  CNAME[Packet size limited during capture]
+4729 199.692937 27.60.129.157 -> 122.160.120.56 DNS 69 Standard query 0x81fe  A bbc.com
+4731 199.934106 122.160.120.56 -> 27.60.129.157 DNS 85 Standard query response 0x81fe  A 212.58.241.131
+4746 200.652229 27.60.129.157 -> 122.160.120.56 DNS 73 Standard query 0x21fa  A www.bbc.com
+4747 200.722083 122.160.120.56 -> 27.60.129.157 DNS 125 Standard query response 0x21fa  CNAME[Packet size limited during capture]
+4759 201.410588 27.60.129.157 -> 122.160.120.56 DNS 75 Standard query 0x50b9  A www.bbc.co.uk
+4760 201.506266 122.160.120.56 -> 27.60.129.157 DNS 117 Standard query response 0x50b9  CNAME[Packet size limited during capture]
+4793 202.566816 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0xecae  A news.bbcimg.co.uk
+4801 202.747905 122.160.120.56 -> 27.60.129.157 DNS 212 Standard query response 0xecae  CNAME[Packet size limited during capture]
+4839 203.129522 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x18a8  A bbc.112.2o7.net
+4840 203.129628 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x1820  A sa.bbc.co.uk
+4876 203.408162 122.160.120.56 -> 27.60.129.157 DNS 397 Standard query response 0x18a8  A 66.235.139.153[Packet size limited during capture]
+4878 203.428015 122.160.120.56 -> 27.60.129.157 DNS 122 Standard query response 0x1820  CNAME[Packet size limited during capture]
+4996 233.341613 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x5c6e  A cricinfo.com
+4998 233.400753 122.160.120.56 -> 27.60.129.157 DNS 90 Standard query response 0x5c6e  A 80.168.92.140
+5014 233.969275 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x8ab9  A www.espncricinfo.com
+5017 234.038799 122.160.120.56 -> 27.60.129.157 DNS 215 Standard query response 0x8ab9  CNAME[Packet size limited during capture]
+5039 236.429325 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x8626  A m.espncricinfo.com
+5040 236.497056 122.160.120.56 -> 27.60.129.157 DNS 176 Standard query response 0x8626  CNAME[Packet size limited during capture]
+5056 237.850898 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x1962  A criccfimg.mo2do.net
+5057 237.861514 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x3212  A miad.mo2do.net
+5058 237.871586 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x088a  A adimg.mo2do.net
+5059 237.916809 122.160.120.56 -> 27.60.129.157 DNS 249 Standard query response 0x1962  CNAME[Packet size limited during capture]
+5068 237.942837 122.160.120.56 -> 27.60.129.157 DNS 150 Standard query response 0x3212  CNAME[Packet size limited during capture]
+5071 237.946702 122.160.120.56 -> 27.60.129.157 DNS 245 Standard query response 0x088a  CNAME[Packet size limited during capture]
+5098 238.163472 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0x94e1  A w88.m.espn.go.com
+5103 238.222810 122.160.120.56 -> 27.60.129.157 DNS 431 Standard query response 0x94e1  CNAME[Packet size limited during capture]
+5564 272.662848 27.60.129.157 -> 122.160.120.56 DNS 71 Standard query 0x770e  A gmail.com
+5565 272.719284 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0x770e  A 74.125.236.22[Packet size limited during capture]
+5578 273.081834 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x5536  A mail.google.com
+5579 273.149319 122.160.120.56 -> 27.60.129.157 DNS 136 Standard query response 0x5536  CNAME[Packet size limited during capture]
+5595 273.717930 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x1ee1  A accounts.google.com
+5596 273.777226 122.160.120.56 -> 27.60.129.157 DNS 122 Standard query response 0x1ee1  CNAME[Packet size limited during capture]
+5697 279.259207 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x1e7d  A www.google.com
+5698 279.317219 122.160.120.56 -> 27.60.129.157 DNS 156 Standard query response 0x1e7d  A 74.125.236.16[Packet size limited during capture]
+5849 327.141247 27.60.129.157 -> 122.160.120.56 DNS 72 Standard query 0x6e15  A tumblr.com
+5854 327.491536 122.160.120.56 -> 27.60.129.157 DNS 88 Standard query response 0x6e15  A 66.6.36.15
+5877 328.421003 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0xa571  A www.tumblr.com
+5878 328.513329 122.160.120.56 -> 27.60.129.157 DNS 92 Standard query response 0xa571  A 66.6.36.9
+5922 332.230697 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x8c1e  A secure.assets.tumblr.com
+5924 332.292718 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x9e88  A edge.quantserve.com
+5925 332.317726 122.160.120.56 -> 27.60.129.157 DNS 140 Standard query response 0x8c1e [Packet size limited during capture]
+5929 332.381446 122.160.120.56 -> 27.60.129.157 DNS 232 Standard query response 0x9e88  CNAME[Packet size limited during capture]
+6027 333.575855 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xc889  A ssl.google-analytics.com
+6047 333.691805 122.160.120.56 -> 27.60.129.157 DNS 146 Standard query response 0xc889 [Packet size limited during capture]
+6324 338.831302 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0xe6f1  A pixel.quantserve.com
+6326 339.020198 122.160.120.56 -> 27.60.129.157 DNS 283 Standard query response 0xe6f1  CNAME[Packet size limited during capture]
+6413 394.622739 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x900c  A www.googleapis.com
+6414 397.193932 122.160.120.56 -> 27.60.129.157 DNS 130 Standard query response 0x900c  CNAME[Packet size limited during capture]
+6481 870.511119 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xc3bf  A www.google.co.in
+6485 873.093539 122.160.120.56 -> 27.60.129.157 DNS 126 Standard query response 0xc3bf  A 74.125.236.23[Packet size limited during capture]
+6500 898.770610 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xd5b7  A data.mobclix.com
+6501 899.616427 122.160.120.56 -> 27.60.129.157 DNS 110 Standard query response 0xd5b7  A 107.20.164.39[Packet size limited during capture]
+6541 915.849906 27.60.129.157 -> 122.160.120.56 DNS 74 Standard query 0x1f25  A cricinfo.com
+6546 916.120949 122.160.120.56 -> 27.60.129.157 DNS 90 Standard query response 0x1f25  A 80.168.92.140
+6561 917.368063 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0xf202  A www.espncricinfo.com
+6562 917.857412 122.160.120.56 -> 27.60.129.157 DNS 215 Standard query response 0xf202  CNAME[Packet size limited during capture]
+6570 918.816986 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x992c  A m.espncricinfo.com
+6571 919.230810 122.160.120.56 -> 27.60.129.157 DNS 176 Standard query response 0x992c  CNAME[Packet size limited during capture]
+6590 924.848020 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x21be  A criccfimg.mo2do.net
+6591 924.857981 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x3a41  A miad.mo2do.net
+6592 924.859163 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x3d59  A adimg.mo2do.net
+6593 924.903612 122.160.120.56 -> 27.60.129.157 DNS 249 Standard query response 0x21be  CNAME[Packet size limited during capture]
+6596 924.911469 122.160.120.56 -> 27.60.129.157 DNS 245 Standard query response 0x3d59  CNAME[Packet size limited during capture]
+6604 925.139549 122.160.120.56 -> 27.60.129.157 DNS 150 Standard query response 0x3a41  CNAME[Packet size limited during capture]
+6748 925.808450 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0xb911  A w88.m.espn.go.com
+6819 926.190150 122.160.120.56 -> 27.60.129.157 DNS 431 Standard query response 0xb911  CNAME[Packet size limited during capture]
+7087 966.890180 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0x40fd  A timesofindia.indiatimes.com
+7090 967.058314 122.160.120.56 -> 27.60.129.157 DNS 205 Standard query response 0x40fd [Packet size limited during capture]
+7109 967.911214 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xea64  A cdn.optimizely.com
+7122 968.693162 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x8428  A platform.twitter.com
+7143 969.398348 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0xea64  CNAME[Packet size limited during capture]
+7167 970.158274 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0x8428  CNAME[Packet size limited during capture]
+7255 971.755893 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x8f14  A www.indiatimes.com
+7291 971.994938 122.160.120.56 -> 27.60.129.157 DNS 187 Standard query response 0x8f14  CNAME[Packet size limited during capture]
+7305 972.031895 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x9306  A apis.google.com
+7308 972.034548 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x8889  A ajax.googleapis.com
+7337 972.118717 27.60.129.157 -> 122.160.120.56 DNS 88 Standard query 0xc04a  A timestrends.indiatimes.com
+7342 972.143063 27.60.129.157 -> 122.160.120.56 DNS 91 Standard query 0x6187  A static.rewards.indiatimes.com
+7358 972.187715 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x3336  A connect.facebook.net
+7360 972.194769 27.60.129.157 -> 122.160.120.56 DNS 88 Standard query 0x1efb  A adscontent2.indiatimes.com
+7410 972.586546 122.160.120.56 -> 27.60.129.157 DNS 274 Standard query response 0x9306  CNAME[Packet size limited during capture]
+7472 973.235535 122.160.120.56 -> 27.60.129.157 DNS 131 Standard query response 0x8889  CNAME[Packet size limited during capture]
+7473 973.236117 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0xc04a [Packet size limited during capture]
+7499 973.267561 122.160.120.56 -> 27.60.129.157 DNS 209 Standard query response 0x6187 [Packet size limited during capture]
+7500 973.267744 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0x1efb [Packet size limited during capture]
+7501 973.267890 122.160.120.56 -> 27.60.129.157 DNS 178 Standard query response 0x3336  CNAME[Packet size limited during capture]
+7679 973.694377 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0xff6b  A log3.optimizely.com
+7690 973.738330 122.160.120.56 -> 27.60.129.157 DNS 231 Standard query response 0xff6b  CNAME[Packet size limited during capture]
+7695 973.761286 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0xf1c9  A www.google-analytics.com
+7696 973.763976 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0xef7d  A b.scorecardresearch.com
+7701 973.770438 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0xd61f  A insight.torbit.com
+7703 973.783897 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x19ba  A www.googletagservices.com
+7737 973.853039 122.160.120.56 -> 27.60.129.157 DNS 199 Standard query response 0xef7d [Packet size limited during capture]
+7738 973.853212 122.160.120.56 -> 27.60.129.157 DNS 306 Standard query response 0xf1c9 [Packet size limited during capture]
+7745 973.866262 122.160.120.56 -> 27.60.129.157 DNS 190 Standard query response 0xd61f  CNAME[Packet size limited during capture]
+7750 973.867298 122.160.120.56 -> 27.60.129.157 DNS 175 Standard query response 0x19ba [Packet size limited during capture]
+7835 974.036627 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x80f3  A ssl.gstatic.com
+7838 974.041903 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xf43a  A static.gaana.com
+7918 974.181783 122.160.120.56 -> 27.60.129.157 DNS 93 Standard query response 0x80f3  A 74.125.236.15
+7924 974.215548 122.160.120.56 -> 27.60.129.157 DNS 180 Standard query response 0xf43a  CNAME[Packet size limited during capture]
+8260 975.023483 27.60.129.157 -> 122.160.120.56 DNS 90 Standard query 0xbc38  A partner.googleadservices.com
+8919 978.247634 122.160.120.56 -> 27.60.129.157 DNS 179 Standard query response 0xbc38 [Packet size limited during capture]
+9134 979.430613 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x85e7  A pubads.g.doubleclick.net
+9147 979.764349 122.160.120.56 -> 27.60.129.157 DNS 160 Standard query response 0x85e7 [Packet size limited during capture]
+9197 980.418584 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0xb454  A www.facebook.com
+9220 980.495844 122.160.120.56 -> 27.60.129.157 DNS 117 Standard query response 0xb454  CNAME[Packet size limited during capture]
+9227 980.530794 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x7e6e  A bs.serving-sys.com
+9264 980.596310 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0x7e6e  CNAME[Packet size limited during capture]
+9270 980.604138 27.60.129.157 -> 122.160.120.56 DNS 91 Standard query 0x5830  A pagead2.googlesyndication.com
+9301 980.845187 122.160.120.56 -> 27.60.129.157 DNS 179 Standard query response 0x5830 [Packet size limited during capture]
+9320 980.971847 27.60.129.157 -> 122.160.120.56 DNS 88 Standard query 0x858d  A adscontent3.indiatimes.com
+9325 981.040345 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0x858d [Packet size limited during capture]
+9380 981.299163 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x871e  A ds.serving-sys.com
+9387 981.348245 122.160.120.56 -> 27.60.129.157 DNS 189 Standard query response 0x871e  CNAME[Packet size limited during capture]
+9467 981.760540 27.60.129.157 -> 122.160.120.56 DNS 83 Standard query 0xfd1b  A m-static.ak.fbcdn.net
+9517 981.886254 122.160.120.56 -> 27.60.129.157 DNS 166 Standard query response 0xfd1b  CNAME[Packet size limited during capture]
+9553 982.474310 27.60.129.157 -> 122.160.120.56 DNS 90 Standard query 0x5c88  A netspiderads2.indiatimes.com
+9566 982.584701 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x2385  A media.indiatimes.in
+9613 983.100646 122.160.120.56 -> 27.60.129.157 DNS 106 Standard query response 0x5c88 [Packet size limited during capture]
+9666 983.450741 27.60.129.157 -> 122.160.120.56 DNS 102 Standard query 0x373e [Packet size limited during capture]
+9671 983.459100 122.160.120.56 -> 27.60.129.157 DNS 189 Standard query response 0x2385  CNAME[Packet size limited during capture]
+9809 983.954901 27.60.129.157 -> 122.160.120.56 DNS 77 Standard query 0x47f4  A code.jquery.com
+9892 984.515125 122.160.120.56 -> 27.60.129.157 DNS 209 Standard query response 0x373e [Packet size limited during capture]
+10018 985.215290 122.160.120.56 -> 27.60.129.157 DNS 160 Standard query response 0x47f4  CNAME[Packet size limited during capture]
+10064 985.420364 27.60.129.157 -> 122.160.120.56 DNS 96 Standard query 0xadbb  A images.photogallery.indiatimes.com
+10227 985.866323 122.160.120.56 -> 27.60.129.157 DNS 218 Standard query response 0xadbb [Packet size limited during capture]
+10313 986.176066 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0xe7e1  A googleads.g.doubleclick.net
+10323 986.235883 122.160.120.56 -> 27.60.129.157 DNS 160 Standard query response 0xe7e1 [Packet size limited during capture]
+10611 987.855396 27.60.129.157 -> 122.160.120.56 DNS 84 Standard query 0x0275  A mytimes.indiatimes.com
+10628 987.926003 122.160.120.56 -> 27.60.129.157 DNS 195 Standard query response 0x0275  CNAME[Packet size limited during capture]
+10821 988.994983 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x2319  A www.speakingtree.in
+10828 989.170963 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0xf3fc  A in-cdn.effectivemeasure.net
+10848 989.216880 122.160.120.56 -> 27.60.129.157 DNS 189 Standard query response 0x2319  CNAME[Packet size limited during capture]
+10850 989.222142 122.160.120.56 -> 27.60.129.157 DNS 191 Standard query response 0xf3fc [Packet size limited during capture]
+10893 989.757402 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x8125  A a.visualrevenue.com
+10899 989.898398 122.160.120.56 -> 27.60.129.157 DNS 171 Standard query response 0x8125  CNAME[Packet size limited during capture]
+10957 990.069695 27.60.129.157 -> 122.160.120.56 DNS 84 Standard query 0x07ab  A static.ak.facebook.com
+10959 990.074921 27.60.129.157 -> 122.160.120.56 DNS 86 Standard query 0x6b37  A s-static.ak.facebook.com
+10986 990.255125 122.160.120.56 -> 27.60.129.157 DNS 197 Standard query response 0x07ab  CNAME[Packet size limited during capture]
+10993 990.275798 122.160.120.56 -> 27.60.129.157 DNS 188 Standard query response 0x6b37 [Packet size limited during capture]
+11032 990.430716 27.60.129.157 -> 122.160.120.56 DNS 89 Standard query 0x8529  A images.speakingtree.iimg.in
+11039 990.462341 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x01b6  A www9.effectivemeasure.net
+11053 990.495598 122.160.120.56 -> 27.60.129.157 DNS 197 Standard query response 0x8529 [Packet size limited during capture]
+11062 990.518090 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0x01b6 [Packet size limited during capture]
+11209 991.213424 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x55c9  A static.parsely.com
+11214 991.268359 122.160.120.56 -> 27.60.129.157 DNS 251 Standard query response 0x55c9  CNAME[Packet size limited during capture]
+11305 992.278718 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x572a  A p.visualrevenue.com
+11330 992.667370 122.160.120.56 -> 27.60.129.157 DNS 153 Standard query response 0x572a  CNAME[Packet size limited during capture]
+11357 992.868683 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x10b7  A config.parsely.com
+11381 992.945025 122.160.120.56 -> 27.60.129.157 DNS 188 Standard query response 0x10b7  CNAME[Packet size limited during capture]
+11476 993.758398 27.60.129.157 -> 122.160.120.56 DNS 75 Standard query 0x857e  A p.twitter.com
+11477 993.766992 27.60.129.157 -> 122.160.120.56 DNS 73 Standard query 0xdbb6  A r.twimg.com
+11478 993.779255 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x2bc4  A cdn.api.twitter.com
+11481 993.825864 122.160.120.56 -> 27.60.129.157 DNS 121 Standard query response 0xdbb6  A 199.59.150.43[Packet size limited during capture]
+11482 993.826037 122.160.120.56 -> 27.60.129.157 DNS 166 Standard query response 0x857e  CNAME[Packet size limited during capture]
+11485 993.852532 122.160.120.56 -> 27.60.129.157 DNS 172 Standard query response 0x2bc4  CNAME[Packet size limited during capture]
+11609 994.691014 27.60.129.157 -> 122.160.120.56 DNS 79 Standard query 0x8c69  A pixel.parsely.com
+11611 994.748375 122.160.120.56 -> 27.60.129.157 DNS 95 Standard query response 0x8c69  A 174.143.139.157
+11640 995.622879 27.60.129.157 -> 122.160.120.56 DNS 82 Standard query 0x96a7  A static.chartbeat.com
+11643 995.680358 122.160.120.56 -> 27.60.129.157 DNS 191 Standard query response 0x96a7  CNAME[Packet size limited during capture]
+11659 995.853499 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x09b1  A ping.chartbeat.net
+11661 995.906406 122.160.120.56 -> 27.60.129.157 DNS 128 Standard query response 0x09b1  A 54.243.145.39[Packet size limited during capture]
+12022 1035.266107 27.60.129.157 -> 122.160.120.56 DNS 81 Standard query 0x005e  A log3.optimizely.com
+12039 1035.718370 122.160.120.56 -> 27.60.129.157 DNS 231 Standard query response 0x005e  CNAME[Packet size limited during capture]
+12046 1035.928435 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x2f05  A m.timesofindia.com
+12055 1036.308518 122.160.120.56 -> 27.60.129.157 DNS 191 Standard query response 0x2f05  CNAME[Packet size limited during capture]
+12119 1037.775527 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x3ae4  A s3.amazonaws.com
+12120 1037.780599 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0x2e0f  A bonzaitracker1.cntdy.mobi
+12122 1037.821059 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0x8830  A www1.m.timesofindia.com
+12123 1037.824600 27.60.129.157 -> 122.160.120.56 DNS 87 Standard query 0xfad0  A timeslog.timesofindia.com
+12124 1037.828670 27.60.129.157 -> 122.160.120.56 DNS 85 Standard query 0xeac2  A b.scorecardresearch.com
+12141 1037.892626 122.160.120.56 -> 27.60.129.157 DNS 103 Standard query response 0xfad0 [Packet size limited during capture]
+12143 1037.894974 122.160.120.56 -> 27.60.129.157 DNS 101 Standard query response 0x8830 [Packet size limited during capture]
+12144 1037.895150 122.160.120.56 -> 27.60.129.157 DNS 199 Standard query response 0xeac2 [Packet size limited during capture]
+12223 1038.102306 122.160.120.56 -> 27.60.129.157 DNS 173 Standard query response 0x2e0f [Packet size limited during capture]
+12228 1038.154021 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0x3ae4  CNAME[Packet size limited during capture]
+12434 1040.781424 27.60.129.157 -> 122.160.120.56 DNS 80 Standard query 0x2359  A bs.serving-sys.com
+12477 1041.227744 122.160.120.56 -> 27.60.129.157 DNS 134 Standard query response 0x2359  CNAME[Packet size limited during capture]
+12604 1052.717443 27.60.129.157 -> 122.160.120.56 DNS 76 Standard query 0x2541  A www.google.com
+12605 1052.717671 27.60.129.157 -> 122.160.120.56 DNS 78 Standard query 0x246b  A www.google.co.in
+12610 1054.704480 122.160.120.56 -> 27.60.129.157 DNS 126 Standard query response 0x246b  A 74.125.236.23[Packet size limited during capture]
+12612 1054.707068 122.160.120.56 -> 27.60.129.157 DNS 156 Standard query response 0x2541  A 74.125.236.17[Packet size limited during capture]

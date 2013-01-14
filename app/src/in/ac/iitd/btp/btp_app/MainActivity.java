@@ -38,11 +38,11 @@ public class MainActivity extends TabActivity {
 		Intent in2 = new Intent(this, VperfActivity.class);
 		spec2.setContent(in2);
 		
-		TabSpec spec3 = tabHost.newTabSpec("Tab 2");
-		spec2.setIndicator("Hosts");
+		TabSpec spec3 = tabHost.newTabSpec("Tab 3");
+		spec3.setIndicator("Hosts");
 		// getResources().getDrawable(android.R.drawable.btn_star));
 		Intent in3 = new Intent(this, HostsActivity.class);
-		spec2.setContent(in3);
+		spec3.setContent(in3);
 		
 		
 		tabHost.addTab(spec0);

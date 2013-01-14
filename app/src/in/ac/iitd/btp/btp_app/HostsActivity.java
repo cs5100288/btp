@@ -148,7 +148,8 @@ public class HostsActivity extends Activity {
 				String hostsData = connect("http://agni.iitd.ac.in:8000/wperf/hosts/file");
 				try {
 					String fn = write_file("hosts", hostsData);
-					RootTools.getShell(true).add(new Command(0, "mount -o rw, remount /system",  "cp " + fn + " /etc/hosts")
+					RootTools.remount("/system/", "rw");
+					RootTools.getShell(true).add(new Command(0, "cp " + fn + " /etc/hosts")
 					{
 						@Override
 						public void output(int arg0, String arg1) {
@@ -156,6 +157,7 @@ public class HostsActivity extends Activity {
 							Log.e("HostsActivity", arg1);
 						}
 					}).waitForFinish();
+					RootTools.remount("/system/", "ro");
 					tv_status.setText("Done");
 
 				} catch (Exception ioe) {

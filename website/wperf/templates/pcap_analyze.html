@@ -48,6 +48,60 @@
                 chart2 = new google.visualization.ColumnChart(document.getElementById('chart2_div'));
                 chart2.draw(data2,options);
 
+                var org_stats = [
+                ['Organization Name', 'Data Transferred'],
+                {% for row in org_stats %}
+                ["{{row.0}}", {{row.1.0}}],
+                {% endfor %}
+                ];
+
+                var chart3 = new google.visualization.PieChart(document.getElementById('chart3_div'));
+                chart3.draw(google.visualization.arrayToDataTable(org_stats), {title:"Data Transferred Per Organization"});
+
+                var no_streams_with_time_array = [
+                ["time", "no_streams"],
+                {% for e in no_streams_with_time %}
+                [{{e.0}}, {{e.1}}],
+                {% endfor %}
+                ];
+
+                var no_streams_with_time_data = google.visualization.arrayToDataTable(no_streams_with_time_array);
+
+                var chart4 = new google.visualization.LineChart(document.getElementById('chart4_div'));
+                chart4.draw(no_streams_with_time_data, {'title': 'No. of streams with time'});
+
+
+                var bandwidth_array = [
+                ["time", "bandwidth"],
+                {% for e in bandwidth_data %}
+                [{{e.1}}, {{e.3}}],
+                {% endfor %}
+                ];
+
+                var bandwidth_data = google.visualization.arrayToDataTable(bandwidth_array);
+
+                var chart5 = new google.visualization.LineChart(document.getElementById('chart5_div'));
+                chart5.draw(bandwidth_data, {'title': 'bandwidth with time'});
+
+                var no_streams_per_organization = google.visualization.arrayToDataTable([
+                    ["Organization Name", "No. Streams"],
+                    {% for row in org_stats %}
+                    ["{{row.0}}", {{row.1.1}}],
+                    {% endfor %}
+                    ]);
+
+                var chart6 = new google.visualization.ColumnChart(document.getElementById('chart6_div'));
+                chart6.draw(no_streams_per_organization, {'title': 'no_streams_per_organization'});
+
+                var dns_requests_per_organization = new google.visualization.arrayToDataTable([
+                    ["Organization Name", "DNS Requests"],
+                    {% for row in org_stats %}
+                    ["{{row.0}}", {{row.1.2}}],
+                    {% endfor %}
+                    ]);
+                var chart7 = new google.visualization.ColumnChart(document.getElementById('chart7_div'));
+                chart7.draw(dns_requests_per_organization, {'title': 'dns_requests_per_organization'});
+
             }
 
             google.setOnLoadCallback(drawVisualization);
@@ -88,6 +142,7 @@
                 legend:'none'
                 };
                 chart.draw(data, options);
+
 
             }
     </script>
@@ -142,6 +197,11 @@
         </div>
         <div id="chart_div" style="width:6900px;height:1000px;overflow:scroll;"></div>
         <div id="chart2_div" style="width:3900px;height:1000px;overflow:scroll;"></div>
+        <div id="chart3_div" style="width: 1000px; height: 600px;" name="chart3"></div>
+        <div id="chart4_div" style="width: 1000px; height: 600px;" name="chart4"></div>
+        <div id="chart5_div" style="width: 1000px; height: 600px;" name="chart5"></div>
+        <div id="chart6_div" style="width: 2000px; height: 600px;" name="chart6"></div>
+        <div id="chart7_div" style="width: 2000px; height: 700px;" name="chart7"></div>
         <div id="dns_div">
             {%include "hosts_list_template.html" %}
         </div>

@@ -1,0 +1,37 @@
+<style>
+.odd:hover, .even:hover, .hover {
+background: #CCFFCC;
+color: #000000;
+}
+table tr.even {
+background: #D5D5D5;
+}
+table tr.odd  {
+background: #E5E5E5;
+}
+table tr td div
+{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+table tr td div.blocked
+{
+	background: url("/static/blocked.png")
+}
+table tr td div.allowed
+{
+	background: url("/static/allowed.png")
+}
+</style>
+
+<table width=100%>
+        {% for row in data %}
+        <tr class="{{name}}_row {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+            {% for col in row.cols %}
+            <td>{{col}}</td>
+            {%endfor%}
+
+        </tr>
+        {% endfor %}
+</table>

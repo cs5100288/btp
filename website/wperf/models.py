@@ -56,13 +56,31 @@ class PcapFile(models.Model):
     shortfilename = models.CharField(max_length=100)
 
 
+class Organization(models.Model):
+    name = models.CharField(max_length=1000)
+    ip_range = models.CharField(max_length=500)
+    lower = models.BigIntegerField()
+    higher = models.BigIntegerField()
+
+
+class StreamType(models.Model):
+    class Options:
+        ADS = "Ads"
+        MAIN = "Main"
+        UNKNOWN = "Unknown"
+    name = models.CharField(max_length=100, default=Options.UNKNOWN)
+
+
 class Host(models.Model):
     name = models.CharField(max_length=100)
-    ip = models.CharField(max_length=100)  # Unused
     blocked = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
-    ip_range = models.CharField(max_length=500)
-    org_name = models.CharField(max_length=100)
+    org = models.ForeignKey(Organization)
+    stream_type = models.ForeignKey(StreamType, null=True, blank=True)
+
+
+class IP(models.Model):
+    ip = models.CharField(max_length = 100)
 
 
 class HostIp(models.Model):

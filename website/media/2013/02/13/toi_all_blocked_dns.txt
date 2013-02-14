@@ -1,0 +1,4 @@
+  1   0.000000 223.181.62.13 -> 122.160.120.56 DNS 78 Standard query 0x6a9c  A www.google.co.in
+  6   1.254170 122.160.120.56 -> 223.181.62.13 DNS 126 Standard query response 0x6a9c  A 74.125.236.24 A 74.125.236.31 A 74.125.236.23
+ 24   3.562960 223.181.62.13 -> 122.160.120.56 DNS 89 Standard query 0x9f30  A timesofindia.indiatimes.com
+ 44   5.314142 122.160.120.56 -> 223.181.62.13 DNS 205 Standard query response 0x9f30  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40

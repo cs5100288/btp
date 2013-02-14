@@ -38,7 +38,7 @@ table tr td div.allowed
         <tr class="host_row {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
             <td width=40%>{{host.name}}</td>
             <td width=20%>{{host.ips}}</td>
-            <td width=20%>{{host.org_name}}({{host.ip_range}})</td>
+            <td width=20%>{{host.org.name}}({{host.org.ip_range}})</td>
             <td width=20%><div name="{% if host.blocked %}blocked{% else %}allowed{% endif %}" class="{% if host.blocked %}blocked{% else %}allowed{% endif %}" onclick="toggleBlocked({{host.pk}}, this);"></div></td>
         </tr>
         {% endfor %}

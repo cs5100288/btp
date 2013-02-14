@@ -6,9 +6,11 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="15" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -23,9 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VperfActivity"></activity>
-        <activity android:name=".WperfActivity"></activity>
-        <activity android:name=".BlankActivity"></activity>
+        <activity android:name=".VperfActivity" >
+        </activity>
+        <activity android:name=".WperfActivity" >
+        </activity>
+        <activity android:name=".BlankActivity" >
+        </activity>
+        <activity android:name=".HostsActivity" >
+        </activity>
     </application>
 
 </manifest>

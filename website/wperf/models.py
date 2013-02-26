@@ -54,6 +54,8 @@ class UploadedFile(models.Model):
 class PcapFile(models.Model):
     uploadedfile = models.FileField(upload_to="%Y/%m/%d")
     shortfilename = models.CharField(max_length=100)
+    uploadLimit = models.FloatField(default=132.0/8)
+    downloadLimit = models.FloatField(default=1085.0/8)
 
 
 class Organization(models.Model):

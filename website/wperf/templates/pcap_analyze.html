@@ -72,16 +72,30 @@
 
 
                 var bandwidth_array = [
-                ["time", "bandwidth"],
+                ["time", "bandwidth", "Threshold", "No. of Retransmissions * 10 (for visibility)"],
                 {% for e in bandwidth_data %}
-                [{{e.1}}, {{e.3}}],
+                [{{e.1}}, {{e.4}}, {{e.5}}, {{e.6}}],
                 {% endfor %}
                 ];
 
                 var bandwidth_data = google.visualization.arrayToDataTable(bandwidth_array);
 
-                var chart5 = new google.visualization.LineChart(document.getElementById('chart5_div'));
-                chart5.draw(bandwidth_data, {'title': 'bandwidth with time'});
+                var chart5 = new google.visualization.ComboChart(document.getElementById('chart5_div'));
+                var chart5_1 = new google.visualization.ComboChart(document.getElementById('chart5.1_div'));
+                var chart5_2 = new google.visualization.ComboChart(document.getElementById('chart5.2_div'));
+                chart5.draw(bandwidth_data, {'title': 'bandwidth with time', "seriesType": "line", "series": {2: {type: "bars"}}});
+                chart5_1.draw(new google.visualization.arrayToDataTable([
+                    ["time", "uplink bandwidth", "Threshold", "No. of Retransmissions * 10 (for visibility)"],
+                    {% for e in bandwidth_uplink_data %}
+                    [{{e.1}}, {{e.4}}, {{e.5}}, {{e.6}}],
+                    {% endfor %}
+                    ]), {"title": "uplink bandwidth with time", "seriesType": "line", "series": {2: {type: "bars"}}});
+                chart5_2.draw(new google.visualization.arrayToDataTable([
+                    ["time", "downlink bandwidth", "Threshold", "No. of Retransmissions * 10 (for visibility)"],
+                    {% for e in bandwidth_downlink_data %}
+                    [{{e.1}}, {{e.4}}, {{e.5}}, {{e.6}}],
+                    {% endfor %}
+                    ]), {"title": "downlink bandwidth with time", "seriesType": "line", "series": {2: {type: "bars"}}});
 
                 var no_streams_per_organization = google.visualization.arrayToDataTable([
                     ["Organization Name", "No. Streams"],
@@ -101,6 +115,46 @@
                     ]);
                 var chart7 = new google.visualization.ColumnChart(document.getElementById('chart7_div'));
                 chart7.draw(dns_requests_per_organization, {'title': 'dns_requests_per_organization'});
+
+                var rtt_data = new google.visualization.arrayToDataTable([
+                    ["Time", "RTT"],
+                    {% for row in rtt_data %}
+                    [{{row.0}}, {{row.1}}],
+                    {% endfor %}
+                    ]);
+                var chart8 = new google.visualization.ScatterChart(document.getElementById('chart8_div'));
+                chart8.draw(rtt_data, {'title': 'RTT With Time'});
+
+                var streams_stats = new google.visualization.arrayToDataTable([
+                    ["Stream No.", "Upstream Mean", "Upstream St.Dev.", "Downstream Mean", "Downstream St.Dev."],
+                    {% for row in streams_stats %}
+                    [{{row.0}}, {{row.1.1}}, {{row.1.2}}, {{row.1.3}}, {{row.1.4}}],
+                    {% endfor %}
+                    ]);
+                var chart9 = new google.visualization.LineChart(document.getElementById("chart9_div"));
+                chart9.draw(streams_stats, {"title": "Statistics for different tcp streams"});
+
+
+
+                var chart10 = new google.visualization.LineChart(document.getElementById("chart10_div"));
+                var chart11 = new google.visualization.LineChart(document.getElementById("chart11_div"));
+                chart10.draw(new google.visualization.arrayToDataTable([
+                    ["Stream No.", "Upstream Mean", "Upstream St.Dev."],
+                    {% for row in streams_stats %}
+                    [{{row.0}}, {{row.1.1}} * 1000, {{row.1.2}} * 1000],
+                    {% endfor %}
+                    ]), {"title": "Upstream"});
+                chart11.draw(new google.visualization.arrayToDataTable([
+                    ["Stream No.", "Downstream Mean", "Downstream St.Dev."],
+                    {% for row in streams_stats %}
+                    [{{row.0}}, {{row.1.3}} * 1000, {{row.1.4}} * 1000],
+                    {% endfor %}
+                    ]), {"title": "Downstream"});
+                ip_list = [
+                    {% for row in streams_stats %}
+                    "{{row.1.0}}",
+                    {% endfor %}
+                ]
 
             }
 
@@ -200,8 +254,46 @@
         <div id="chart3_div" style="width: 1000px; height: 600px;" name="chart3"></div>
         <div id="chart4_div" style="width: 1000px; height: 600px;" name="chart4"></div>
         <div id="chart5_div" style="width: 1000px; height: 600px;" name="chart5"></div>
+        <div id="chart5.1_div" style="width: 1000px; height: 600px;" name="chart5.1"></div>
+        <div id="chart5.2_div" style="width: 1000px; height: 600px;" name="chart5.2"></div>
         <div id="chart6_div" style="width: 2000px; height: 600px;" name="chart6"></div>
         <div id="chart7_div" style="width: 2000px; height: 700px;" name="chart7"></div>
+        <div id="chart8_div" style="width: 2000px; height: 700px;" name="chart8"></div>
+        <div id="chart9_div" style="width: 3000px; height: 700px;" name="chart9"></div>
+        <div id="chart10_div" style="width: 3000px; height: 700px;" name="chart10"></div>
+        <div id="chart11_div" style="width: 3000px; height: 700px;" name="chart11"></div>
+        <div id="chart12_div" style="width: 3000px; height: 700px;" name="chart12"></div>
+        <div id="chart13_div" style="width: 3000px; height: 700px;" name="chart13"></div>
+        <div id="all_streams_data_div">
+            <table>
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    <td>Stream No.</td>
+                    <td>Other IP</td>
+                    <td>Data transferred</td>
+                    <td>Start Time</td>
+                    <td>Duration</td>
+                    <td>Number of Objects transferred</td>
+                    <td>urls of objects transferred</td>
+                    <td>Bandwidth for the stream</td>
+                    <td>Mean, variance of rtt(uplink)</td>
+                    <td>Mean, variance of rtt(downlink)</td>
+                </tr>
+                {% for row in all_streams_data %}
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    <td>{{row.0}}</td>
+                    <td>{{row.9}}</td>
+                    <td>{{row.3}}</td>
+                    <td>{{row.4}}</td>
+                    <td>{{row.5}}</td>
+                    <td>{{row.6}}</td>
+                    <td>{{row.7}}</td>
+                    <td>{{row.8}}</td>
+                    <td>{{row.10}}, {{row.11}}</td>
+                    <td>{{row.12}}, {{row.13}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
         <div id="dns_div">
             {%include "hosts_list_template.html" %}
         </div>

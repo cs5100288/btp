@@ -3,12 +3,12 @@
 background: #CCFFCC;
 color: #000000;
 }
-table tr.even {
+/*table tr.even {
 background: #D5D5D5;
 }
 table tr.odd  {
 background: #E5E5E5;
-}
+}*/
 table tr td div
 {
 	width: 30px;
@@ -33,7 +33,16 @@ table tr td div.allowed
 	}
 </script>
 <h3>DNS Hosts</h3>
-<table width=100%>
+<table width=100% class="tablesorter">
+	<thead>
+		<tr class="even">
+			<th>Host name</th>
+			<th>Host IPs</th>
+			<th>Organization Name</th>
+			<th>Allowed/Blocked?</th>
+		</tr>
+	</thead>
+	<tbody>
         {% for host in hosts %}
         <tr class="host_row {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
             <td width=40%>{{host.name}}</td>
@@ -42,5 +51,6 @@ table tr td div.allowed
             <td width=20%><div name="{% if host.blocked %}blocked{% else %}allowed{% endif %}" class="{% if host.blocked %}blocked{% else %}allowed{% endif %}" onclick="toggleBlocked({{host.pk}}, this);"></div></td>
         </tr>
         {% endfor %}
+    </tbody>
 </table>
 

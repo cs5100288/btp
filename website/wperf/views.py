@@ -21,10 +21,15 @@ import urllib2
 import random
 import datetime
 import socket
-import urllib
 from HTMLParser import HTMLParser
 import math
-
+from tornado.options import options, define, parse_command_line
+import tornado.web
+import tornado.websocket
+import models
+import settings
+import json
+import threading
 
 def meanvariance(l):
     s2 = 0
@@ -101,7 +106,6 @@ def whois(ip):
                 b1, b2 = line.rfind("("), line.rfind(")")
                 result['role'] = line[:b1].strip()
                 result['inetnum'] = line[b2 + 1:].strip()
-    print result
     return result
 
 
@@ -217,12 +221,13 @@ def getDNSPackets(filename, dnspath=None):
         a, b = os.path.splitext(filename)
         dnspath = a + "_dns.txt"
     if not os.path.exists(dnspath):
-        print "not exits"
+        print "Writing dns file"
         cmd1 = """tshark -n -R "dns" -r %s""" % (filename)
         p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(dnspath, 'w') as f:
             r = p.stdout.read()
             f.write(r)
+        print "Done writing dns file"
 
     dns_list = {}
     ip_to_dns_id = {}
@@ -250,6 +255,7 @@ def getDNSPackets(filename, dnspath=None):
 
 
 def makeStats(filename, csvpath, bandwidth_path):
+    print "makeStats: Beginning"
     a, b = os.path.splitext(filename)
     csvpath = a + ".csv"
     all_streams_csvpath = a + "_all_streams.csv"
@@ -261,30 +267,40 @@ def makeStats(filename, csvpath, bandwidth_path):
     p_ip = subprocess.Popen(cmd1_ip, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), p.stdout.read().split('\n')))))))
     if not os.path.exists(csvpath) or not os.path.exists(all_streams_csvpath):
+        print "makeStats: Writing stream csvs"
         with open(csvpath, "wb") as csvfile:
             with open(all_streams_csvpath, "wb") as all_streams_csvfile:
                 writer = csv.writer(csvfile)
                 all_streams_writer = csv.writer(all_streams_csvfile)
+                stream_processes = {}
                 for s in streams:
                     cmd2 = """tshark -r %s -q -z conv,tcp,tcp.stream==%d""" % (filename, s)
-                    cmd3 = """tshark -n -R "tcp.stream==%d && http contains GET" -r %s -T fields -e http.request.full_uri """ % (s, filename)
+                    cmd3 = """tshark -n -R "tcp.stream==%d && http contains GET" -r %s -T fields -e http.request.full_uri -e frame.time_relative """ % (s, filename)
 
                     q1 = subprocess.Popen(cmd2, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                     q2 = subprocess.Popen(cmd3, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-
+                    stream_processes[s] = [q1, q2]
+                # for s in streams:
+                    print "makeStats: Writing stream csvs (%d/%d)" % (s, streams[-1])
+                    q1, q2 = stream_processes[s]
                     l = q1.stdout.read().split("\n")[5]
-                    m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+):.*?\s+<->\s+(\d+\.\d+\.\d+\.\d+):.*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+?', l)
+                    m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+):.*?\s+<->\s+(\d+\.\d+\.\d+\.\d+):.*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+', l + "  ")  # trailing space so that last \s+ can act as delimiter
                     ip1, ip2, transfer, startTime, duration = m.groups(0)
 
-                    objects = map(lambda x: x.strip(), q2.stdout.read().strip().split('\n'))
+                    objects = map(lambda x: x, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), q2.stdout.read().strip().split('\n'))))
+                    objs = []
                     num_objects = len(objects)
-                    urls = ", ".join(objects)
-                    url = "%d objects with url like %s..." % (num_objects, objects[0][:50])
-                    if len(objects[0].strip()) == 0:
-                        url = "No objects fetched"
+                    for o in objects:
+                        url, start_time = o.split()
+                        objs.append("'%s'::%s" % (url, start_time))
+                    urls = ", ".join(objs)
+                    url = "%d objects" % num_objects
+                    if num_objects > 0:
+                        url += " with urls like: %s..." % objects[0][:50]
                     writer.writerow([ip1, ip2, transfer, startTime, duration, url])
                     all_streams_writer.writerow([s, ip1, ip2, transfer, startTime, duration, num_objects, urls])
     if not os.path.exists(csv2_path):
+        print "makeStats: Writing ip csvs"
         with open(csv2_path, 'wb') as csv2_file:
             writer = csv.writer(csv2_file)
             for line in p_ip.stdout.read().split("\n")[5:]:
@@ -293,29 +309,36 @@ def makeStats(filename, csvpath, bandwidth_path):
                     continue
                 ip1, ip2, transfer, startTime, duration = m.groups(0)
                 writer.writerow([ip1, ip2, transfer, startTime, duration])
+    print "makeStats: Finished"
 
 
 def makeBandwidthStats(filename, csvpath, bandwidth_path, bandwidth_uplink_path, bandwidth_downlink_path, retransmit_path, myip):
+    print "makeBandwidthStats: Beginning"
+    print "makeBandwidthStats: Bandwidth"
     if not os.path.exists(bandwidth_path):
         cmd4 = """tshark -r %s -q -z io,stat,0.5""" % (filename)
         q4 = subprocess.Popen(cmd4, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_path, 'w') as f:
             f.write(q4.stdout.read())
+    print "makeBandwidthStats: Uplink Bandwidth"
     if not os.path.exists(bandwidth_uplink_path):
         cmd5 = """tshark -r %s -q -z io,stat,0.5,ip.src==%s""" % (filename, myip)  # uplink
         q5 = subprocess.Popen(cmd5, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_uplink_path, 'w') as f:
             f.write(q5.stdout.read())
+    print "makeBandwidthStats: Downlink Bandwidth"
     if not os.path.exists(bandwidth_downlink_path):
         cmd6 = """tshark -r %s -q -z io,stat,0.5,ip.dst==%s""" % (filename, myip)  # downlink
         q6 = subprocess.Popen(cmd6, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_downlink_path, 'w') as f:
             f.write(q6.stdout.read())
+    print "makeBandwidthStats: Retransmissions"
     if not os.path.exists(retransmit_path):
         cmd7 = """tshark -r %s -R "tcp.analysis.retransmission" -T fields -e frame.time_relative""" % (filename)
         q7 = subprocess.Popen(cmd7, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(retransmit_path, 'w') as f:
             f.write(q7.stdout.read())
+    print "makeBandwidthStats: Finished"
 
 
 
@@ -366,7 +389,6 @@ def get_org_from_ip(ip):
                 ip_range = "%s - %s" % (int_to_ip(begin), int_to_ip(end))
         except:
             pass
-    print "hello", ip_range, org_name
     if ip_range and org_name:
         hyphen = ip_range.find('-')
         lower, higher = ip_range[:hyphen].strip(), ip_range[hyphen + 1:].strip()
@@ -382,6 +404,14 @@ def pcap_analyze(request, pcap_name):
     m = models.PcapFile.objects.get(shortfilename=pcap_name)
     a, b = os.path.splitext(m.uploadedfile.path)
     c, d = os.path.splitext(pcap_name)
+    harpath = a + ".har"
+    if not os.path.exists(harpath):
+        try:
+            cmd = "python %s/main.py %s %s" % (settings.PCAP2HAR_LOC, m.uploadedfile.path, harpath)
+            print cmd
+            subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        except Exception as e:
+            print e
     csvpath = a + ".csv"
     csv2_path = a + "_ip.csv"
     csv3_path = a + "_rtt.csv"
@@ -447,19 +477,27 @@ def pcap_analyze(request, pcap_name):
         ip1, ip2, transfer, startTime, duration, url = stream
         startTime = float(startTime)
         duration = float(duration)
-        stream_events.append((startTime, ind, 0))
-        stream_events.append((startTime + duration, ind, 1))
+        stream_events.append((startTime, ind, other(_myip, [ip1, ip2]), 0))
+        stream_events.append((startTime + duration, ind, other(_myip, [ip1, ip2]), 1))
     stream_events.sort(lambda x, y: (cmp(x[0], y[0])))
     no_streams_with_time = []
+    no_toi_connections_with_time = []
     n = 0
+    t = 0
     for stream_event in stream_events:
         if stream_event[-1] == 0:
             n += 1
+            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+                t += 1
         else:
             n -= 1
+            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+                t -= 1
         no_streams_with_time.append((stream_event[0], n))
-
+        if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+            no_toi_connections_with_time.append((stream_event[0], t))
     mydict['no_streams_with_time'] = no_streams_with_time
+    mydict['no_toi_connections_with_time'] = no_toi_connections_with_time
     mydict['no_ip_streams'] = no_ip_streams
     mydict['no_tcp_streams'] = no_tcp_streams
     mydict['no_tcp_waste_streams'] = no_tcp_waste_streams
@@ -474,13 +512,11 @@ def pcap_analyze(request, pcap_name):
     streams_data = {}
     p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     op = p.stdout.read()
-    print op
     streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), op.split('\n')))))))
-    print streams
     all_streams_data = []
     if False or all((not os.path.exists(a + "_streams_%d.csv" % i)) for i in xrange(11)):
         for s in streams:
-            print "%d/%d" % (s, streams[-1])
+            print "Writing Individual stream csvs: (%d/%d)" % (s, streams[-1])
             cmd_stream = "tshark -r %s -R 'tcp.analysis.ack_rtt and tcp.stream == %d' -T fields -e ip.dst -e tcp.analysis.ack_rtt -E separator=, -E quote=n -E occurrence=f" % (m.uploadedfile.path, s)
             p_stream = subprocess.Popen(cmd_stream, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
             stream_csv = a + "_streams_%d.csv" % s
@@ -500,11 +536,12 @@ def pcap_analyze(request, pcap_name):
                     streams_data[s][1].append(row[1])
     streams_stats = {}
     pingTimes = {'74.125.135.84': '1407.641', '122.160.242.176': '336.872', '50.19.220.231': '661.241', '96.17.182.43': '582.973', '96.17.182.42': '393.474', '96.17.182.65': '337.767', '96.17.182.66': '297.358', '96.17.182.40': '415.109', '184.30.50.110': '432.948', '74.125.236.31': '1465.920', '74.125.236.13': '336.650', '74.125.236.16': '348.960', '74.125.236.15': '1052.792', '204.236.220.251': '713.480', '74.125.236.9': '337.358', '118.214.111.144': '386.384', '96.17.182.10': '330.836', '96.17.182.17': '340.267', '96.17.182.50': '343.809', '2.18.147.206': '676.308', '96.17.182.74': '344.712', '31.13.79.23': '398.418', '96.17.182.58': '337.766', '107.20.164.42': '1697.474', '74.125.236.28': '315.357', '74.125.236.27': '338.574', '74.125.236.26': '1697.778', '74.125.236.25': '185.296', '199.59.148.86': '636.341', '107.20.176.85': '658.544', '23.35.84.211': '502.709', '184.30.63.139': '1673.310', '202.79.210.121': '1535.599'}
+
     def searchPingTime(ip):
         try:
             return float(pingTimes[ip])
         except:
-            return 0;
+            return 0
     for s in streams_data:
         if len(streams_data[s][0]) == 0 or len(streams_data[s][1]) == 0 or len(streams_data[s][2]) == 0:
             continue
@@ -515,18 +552,43 @@ def pcap_analyze(request, pcap_name):
         streams_stats[s][5] = searchPingTime(streams_stats[s][0])
 
     mydict['streams_stats'] = streams_stats.items()
+    all_objects_data = []
 
+    def short_url(url):
+        return url if len(url) < 200 else (url[:50] + "...")
     with open(all_streams_csvpath) as all_streams_csvfile:
         reader = csv.reader(all_streams_csvfile)
         for row in reader:
-            if row[6] == 0:  # No objects downloaded
+            if int(row[6]) == 0:  # No objects downloaded
                 continue
-            row.append(float(row[3])/float(row[5]))  # bandwidth
-            row += streams_stats[int(row[0])+1]  # because of tshark version mismatch
+            urls_and_times = row[7].split(", ")
+            url_starttime_list = []
+            for ut in urls_and_times:
+                url, start_time = ut.split("::")
+                url_starttime_list.append((url[1:-1], float(start_time)))
+            url_time_list = []
+            for i, u_st in enumerate(url_starttime_list):
+                url, starttime = u_st
+                dt = 0
+                if i == len(url_starttime_list) - 1:
+                    dt = float(row[4]) + float(row[5]) - starttime
+                else:
+                    u2, st2 = url_starttime_list[i + 1]
+                    dt = st2 - starttime
 
+                url_time_list.append([row[0], short_url(url), url, starttime, dt])
+            row.append(float(row[3]) / 1000 * float(row[5]))  # bandwidth
+            try:
+                row += streams_stats[int(row[0])]
+            except KeyError:
+                row += ([streams_data[s][0]] + (["No Data"] * 4) + [0])
+
+            row.append(url_time_list)
+            all_objects_data += url_time_list
+            row[7] = list([x[1], x[2]] for x in url_time_list)
             all_streams_data.append(row)
     mydict['all_streams_data'] = all_streams_data
-
+    mydict['all_objects_data'] = sorted(all_objects_data, cmp=lambda x, y: cmp(float(x[3]), float(y[3])))
     bandwidth_uplink_path = a + "_bandwidth_uplink.txt"
     bandwidth_downlink_path = a + "_bandwidth_downlink.txt"
     retransmit_path = a + "_retransmit.txt"
@@ -534,12 +596,13 @@ def pcap_analyze(request, pcap_name):
     retransmission_times = []
     with open(retransmit_path) as retransmit_file:
         retransmission_times = map(float, retransmit_file.read().split())
+
     def parse_bandwidth_data(bandwidth_path, threshold, retransmission_times):  # Threshold -- the speed that generally is available on mobile network.
         bandwidth_data = []
         with open(bandwidth_path) as f:
             lines = f.read().split("\n")[7:]
             for line in lines:
-                match = re.match(r'(.*?)-(.*?)\s+(.*?)\s+(.*?)\s+?', line)
+                match = re.match(r'\|\s+(.*?)\s+<>\s+(.*?)\s+\|\s+(.*?)\s+\|\s+(.*?)\s+\|', line)
                 if match:
                     startTime, endTime, frames, bytes = match.groups(0)
                     endTime = (float(endTime))
@@ -577,6 +640,8 @@ def pcap_analyze(request, pcap_name):
     mydict['ips'] = sorted(ips)
     mydict['myip'] = myip[0] if len(myip) == 1 else "Could not be determined!"
     mydict['pcap_url'] = m.uploadedfile.url
+    mydict['HARVIEWER_URL'] = settings.HARVIEWER_URL
+    mydict['har_url'] = m.uploadedfile.url[:-4] + "har"
     mydict['pcap_file'] = pcap_name
     mydict['csv_file'] = c + ".csv"
     mydict['csv_url'] = m.uploadedfile.url[:m.uploadedfile.url.rfind('.')] + '.csv'
@@ -639,7 +704,7 @@ def pcap_analyze(request, pcap_name):
     mydict['hosts'] = list(set(dnshosts))
 
     for h in mydict['hosts']:
-        org_stats.setdefault(h.org.name, [0, 0, 0])
+        org_stats.setdefault(h.org.name, [0, 0,     0])
         org_stats[h.org.name][2] += 1
 
     mydict['org_stats'] = org_stats.items()
@@ -724,3 +789,130 @@ def orgs_list(request):
     mydict = {}
     mydict['orgs'] = orgs
     return render_to_response("orgs_list.html", mydict)
+
+
+
+
+class State:
+    START=0
+    AFTERDNS=1
+    AFTERSYN=2
+
+def dns_for_current_site(packet,cur_site):
+    if not packet.haslayer(DNS):
+        return False
+    else:
+        d=packet[DNS]
+        if d.opcode!=0: #0 means query
+            return False
+        else:
+            q=d.qd.qname
+            if q.find(cur_site)==-1:
+                return False
+            else:
+                return True
+
+
+def psize(packet):
+    #assume 20 from http://stackoverflow.com/questions/6639799/calculate-size-and-start-of-tcp-packet-data-excluding-header
+    return packet[IP].len-packet[IP].ihl*4-4*packet[TCP].dataofs
+def analyzeOneTest(packets,obsID,base): # base is just for debugging
+    print "observation id:",obsID
+    agniIP="180.149.52.3"
+    NEAR_ENOUGH=20
+    sites=['facebook', 'twitter', 'quora','timesofindia','nytimes','bbc.co.uk', 'cricinfo','amazon','dailymotion','tumblr' ]
+    data={}
+    dnsinds=[index for index in xrange(len(packets)) if packets[index].haslayer(DNS)]
+    state=State.START
+    dnsstarttime=0; dnsendtime=0; handshakestarttime=0; handshakeendtime=0; pagesize=0
+    cur_ind=0
+    processing_url=sites[cur_ind]
+    ind=0
+    dns_index=0
+    while ind<len(packets):
+        if state==State.START:
+            while packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind])==-1:
+                dns_index+=1
+            ind=dnsinds[dns_index]
+            state=State.AFTERDNS
+        elif state==State.AFTERDNS:
+            print "site= ",sites[cur_ind], "dns start packet: ",dnsinds[dns_index]+base
+            dnsstarttime=packets[dnsinds[dns_index]].time
+            while dnsinds[dns_index+1]-dnsinds[dns_index]<=NEAR_ENOUGH and packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind])!=-1:
+                dns_index+=1
+            print "last dns packet: ", dnsinds[dns_index]+base
+            cur_ind+=1
+            for pk in xrange(dnsinds[dns_index]+1, len(packets)):
+                packet=packets[pk]
+                if packet.haslayer(TCP) and packet[TCP].flags==2: #2== syn packet
+                    dnsendtime=packet.time
+                    state=State.AFTERSYN
+                    ind=pk
+                    print "Syn found at packet no:",ind+base
+                    break
+                continue
+        elif state==State.AFTERSYN:
+            pack=packets[ind]
+            handshakestarttime=pack.time
+            for pk in xrange(ind,len(packets)):
+                packet=packets[pk]
+                if packet.haslayer(TCP) and packet[TCP].flags==0x10 and  packet[IP].src==pack[IP].dst and packet[IP].dst==pack[IP].src: #flag==0x10 means ACK
+                    handshakeendtime=packet.time
+                    state=State.AFTERDNS
+                    next_dns_site=sites[cur_ind] if cur_ind<len(sites) else "agni"
+                    while dns_index<len(dnsinds) and packets[dnsinds[dns_index]][DNS].qd.qname.find(next_dns_site)==-1:
+                        dns_index+=1
+                    max_ind=dnsinds[dns_index]
+                    if cur_ind==len(sites):
+                        for p in xrange(ind, len(packets)):
+                            p1=packets[p]
+                            if p1.haslayer(TCP) and p1[IP].src==pack[IP].src and p1[IP].dst==agniIP:
+                                max_ind=p
+                                break;
+                    pagesize=sum(psize(packets[j]) for j in xrange(pk,max_ind) if packets[j].haslayer(TCP) and packets[j][IP].dst==pack[IP].src)
+                    data[sites[cur_ind-1]]={'dnsTime':dnsendtime-dnsstarttime, 'pageTotalSize':pagesize}
+                    break
+                continue
+            if cur_ind==len(sites):
+                print data
+                break
+def analyzePcap(pcap):
+    packets=rdpcap(pcap)
+    agniIP="180.149.52.3"
+    fromAgniInds=[index for index in xrange(len(packets)) if packets[index].haslayer(Raw) and packets[index][IP].src==agniIP]
+    idpackets=[]
+    for i in fromAgniInds:
+        packet=packets[i]
+        load=packet[Raw].load
+        data=load.split("\n")[-1]
+        m=re.match(r'id:(\d+)', data)
+        if m:
+            idpackets.append((i, int(m.group(1))))
+    for ind,obsId in idpackets:
+        analyzeOneTest(packets[ind:], obsId, ind)
+
+
+class PcapProgressHandler(tornado.websocket.WebSocketHandler):
+    def open(self,shortfilename):
+        m=models.UploadedFile.objects.get(shortfilename=shortfilename)
+        fieldfile=m.uploadedfile  #https://docs.djangoproject.com/en/dev/ref/models/fields/#filefield-and-fieldfile
+        with open(fieldfile.path) as f:
+            pass
+
+
+    def notify(self,text,prog):
+        self.write_message("{\"Log\":\"%s\",\"prog\":\"%d\"}"%(text,prog))
+
+
+class TracerouteHandler(tornado.websocket.WebSocketHandler):
+    def open(self,ip):
+        self.p = subprocess.Popen(['traceroute',ip],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        t = threading.Thread(target=(lambda : self.send_output()))
+        t.daemon=True
+        t.start()
+    def send_output(self):
+        while self.p.poll() is None: #running
+            line=self.p.stdout.readline()
+            if line!=None and len(line)>0:
+                self.write_message(json.dumps({'stdout':line}))
+        self.write_message(json.dumps({'stdout':'Done! For red marked ip addresses, the location couldn\'t be determined with <a href="http://hostip.info">hostip.info</a>. If you know the correct location, please update it there.'}))

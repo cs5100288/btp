@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Pcap List/Upload</title>
-        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <link rel="stylesheet" href="/static/jquery-plugins/tablesorter/themes/blue/style.css" type="text/css" id="" media="print, projection, screen" />
+        <script src="/static/jquery-latest.js"></script>
+        <script src="/static/jquery-plugins/tablesorter/jquery.tablesorter.min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
             google.load('visualization', '1', {packages: ['corechart']});
@@ -70,6 +72,12 @@
                 var chart4 = new google.visualization.LineChart(document.getElementById('chart4_div'));
                 chart4.draw(no_streams_with_time_data, {'title': 'No. of streams with time'});
 
+                (new google.visualization.LineChart(document.getElementById("chart4_1_div"))).draw(google.visualization.arrayToDataTable([
+                    ["time", "no. connections to toi"],
+                    {% for e in no_toi_connections_with_time%}
+                    [{{e.0}}, {{e.1}}],
+                    {% endfor %}
+                    ]), {'title': 'No. of TOI connections with time'});
 
                 var bandwidth_array = [
                 ["time", "bandwidth", "Threshold", "No. of Retransmissions * 10 (for visibility)"],
@@ -200,9 +208,15 @@
 
             }
     </script>
+    <script type="text/javascript">
+    $(function(){
+        $("table").tablesorter();
+        $("#harviewer").html("<iframe src='{{HARVIEWER_URL}}?inputUrl="+location.origin+"{{har_url}}"+"' style='width:1000px; height:1600px;'></iframe>")
+    });
+    </script>
     </head>
     <body>
-    	<table>
+        <table class="tablesorter">
             <tr>
                 <td>Pcap File</td>
                 <td><a href="{{pcap_url}}">{{pcap_file}}</a> </td>
@@ -239,7 +253,7 @@
                 <td>Mean DNS response time</td>
                 <td>{{mean_dns_response_time}}</td>
             </tr>
-    	</table>
+        </table>
         <div id="ips">
             choose the ips for redrawing the graph:
             <select multiple="multiple" name="selected_ips" style="height:300px;">
@@ -253,6 +267,7 @@
         <div id="chart2_div" style="width:3900px;height:1000px;overflow:scroll;"></div>
         <div id="chart3_div" style="width: 1000px; height: 600px;" name="chart3"></div>
         <div id="chart4_div" style="width: 1000px; height: 600px;" name="chart4"></div>
+        <div id="chart4_1_div" style="width: 1000px; height: 600px;" name="chart4.1"></div>
         <div id="chart5_div" style="width: 1000px; height: 600px;" name="chart5"></div>
         <div id="chart5.1_div" style="width: 1000px; height: 600px;" name="chart5.1"></div>
         <div id="chart5.2_div" style="width: 1000px; height: 600px;" name="chart5.2"></div>
@@ -265,38 +280,65 @@
         <div id="chart12_div" style="width: 3000px; height: 700px;" name="chart12"></div>
         <div id="chart13_div" style="width: 3000px; height: 700px;" name="chart13"></div>
         <div id="all_streams_data_div">
-            <table>
-                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
-                    <td>Stream No.</td>
-                    <td>Other IP</td>
-                    <td>Data transferred</td>
-                    <td>Start Time</td>
-                    <td>Duration</td>
-                    <td>Number of Objects transferred</td>
-                    <td>urls of objects transferred</td>
-                    <td>Bandwidth for the stream</td>
-                    <td>Mean, variance of rtt(uplink)</td>
-                    <td>Mean, variance of rtt(downlink)</td>
-                </tr>
-                {% for row in all_streams_data %}
-                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
-                    <td>{{row.0}}</td>
-                    <td>{{row.9}}</td>
-                    <td>{{row.3}}</td>
-                    <td>{{row.4}}</td>
-                    <td>{{row.5}}</td>
-                    <td>{{row.6}}</td>
-                    <td>{{row.7}}</td>
-                    <td>{{row.8}}</td>
-                    <td>{{row.10}}, {{row.11}}</td>
-                    <td>{{row.12}}, {{row.13}}</td>
-                </tr>
-                {% endfor %}
+            <table class="tablesorter">
+                <thead>
+                    <tr class="even">
+                        <th>Stream No.</th>
+                        <th>Other IP</th>
+                        <th>Data transferred</th>
+                        <th>Start Time</th>
+                        <th>Duration</th>
+                        <th>Number of Objects transferred</th>
+                        <th>Bandwidth for the stream</th>
+                        <th>Mean, variance of rtt(uplink)</th>
+                        <th>Mean, variance of rtt(downlink)</th>
+                        <th>urls of objects transferred</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in all_streams_data %}
+                    <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{row.0}}</td>
+                        <td>{{row.9}}</td>
+                        <td>{{row.3}}</td>
+                        <td>{{row.4}}</td>
+                        <td>{{row.5}}</td>
+                        <td>{{row.6}}</td>
+                        <td>{{row.8}}</td>
+                        <td>{{row.10}}, {{row.11}}</td>
+                        <td>{{row.12}}, {{row.13}}</td>
+                        <td>{%for item in row.7 %}<a href="{{item.1}}" target="_blank">{{item.0}}</a>, {% endfor %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id = "all_objects_div" style="width:1000px;">
+            <table width = 1000px class="tablesorter">
+                <thead>
+                    <tr class = "even" width=1000px>
+                        <th width=300px>Stream No.</th>
+                        <th width=300px>URL</th>
+                        <th width=100px>Download Start time</th>
+                        <th width=100px>Time to download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in all_objects_data %}
+                    <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{item.0}}</td>
+                        <td><a href="{{item.2}}" target = "_blank">{{item.1}}</a></td>
+                        <td>{{item.3}}</td>
+                        <td>{{item.4}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
         <div id="dns_div">
             {%include "hosts_list_template.html" %}
         </div>
+        <div id = "harviewer" style = "width:1000px;height:800px;"> </div>
 
     </body>
 

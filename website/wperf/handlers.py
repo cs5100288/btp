@@ -125,7 +125,7 @@ class TracerouteHandler(tornado.websocket.WebSocketHandler):
 		while self.p.poll() is None: #running
 			line=self.p.stdout.readline()
 			if line!=None and len(line)>0:
-				self.write_message(json.dumps({'stdout':line})) 
+				self.write_message(json.dumps({'stdout':line}))
 		self.write_message(json.dumps({'stdout':'Done! For red marked ip addresses, the location couldn\'t be determined with <a href="http://hostip.info">hostip.info</a>. If you know the correct location, please update it there.'}))
 
 if __name__=="__main__":

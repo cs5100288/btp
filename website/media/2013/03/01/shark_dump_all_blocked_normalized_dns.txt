@@ -1,0 +1,20 @@
+  1   0.000000 223.188.105.168 -> 122.160.120.56 DNS 89 Standard query 0x786d  A timesofindia.indiatimes.com
+  2   0.253982 122.160.120.56 -> 223.188.105.168 DNS 205 Standard query response 0x786d  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.181.48 A 96.17.181.49
+153   4.257005 223.188.105.168 -> 122.160.120.56 DNS 94 Standard query 0x4c72  A geodataservice205.indiatimes.com
+154   4.263617 223.188.105.168 -> 122.160.120.56 DNS 80 Standard query 0x6238  A www.rebelmouse.com
+156   4.282954 223.188.105.168 -> 122.160.120.56 DNS 90 Standard query 0xd695  A economictimes.indiatimes.com
+238   6.027787 122.160.120.56 -> 223.188.105.168 DNS 110 Standard query response 0x4c72  A 223.165.25.205
+240   6.054034 122.160.120.56 -> 223.188.105.168 DNS 96 Standard query response 0x6238  A 23.23.187.175
+245   6.164295 122.160.120.56 -> 223.188.105.168 DNS 197 Standard query response 0xd695  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.181.67 A 96.17.181.59
+675  12.620147 223.188.105.168 -> 122.160.120.56 DNS 80 Standard query 0x3446  A www.indiatimes.com
+698  12.834220 122.160.120.56 -> 223.188.105.168 DNS 187 Standard query response 0x3446  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.181.59 A 96.17.181.67
+719  13.074302 223.188.105.168 -> 122.160.120.56 DNS 81 Standard query 0x065d  A media.indiatimes.in
+724  13.131961 122.160.120.56 -> 223.188.105.168 DNS 189 Standard query response 0x065d  CNAME media.indiatimes.in.edgesuite.net CNAME a1737.g.akamai.net A 96.17.181.48 A 96.17.181.57
+1207  19.708350 223.188.105.168 -> 122.160.120.56 DNS 75 Standard query 0xed0e  A media2.rbl.ms
+1211  19.771109 223.188.105.168 -> 122.160.120.56 DNS 86 Standard query 0xe666  A ssl.google-analytics.com
+1251  20.067938 122.160.120.56 -> 223.188.105.168 DNS 153 Standard query response 0xed0e  CNAME media2.rbl.ms.cdn.cloudflare.net A 190.93.242.190 A 190.93.243.190
+1254  20.367595 122.160.120.56 -> 223.188.105.168 DNS 146 Standard query response 0xe666  CNAME ssl-google-analytics.l.google.com A 74.125.236.62
+1468  22.595314 223.188.105.168 -> 122.160.120.56 DNS 91 Standard query 0x5483  A d1ros97qkrwjf5.cloudfront.net
+1473  22.695790 122.160.120.56 -> 223.188.105.168 DNS 219 Standard query response 0x5483  A 54.240.168.50 A 54.240.168.86 A 54.240.168.90 A 54.240.168.138 A 54.240.168.170 A 54.240.168.198 A 54.240.168.34 A 54.240.168.38
+1523  24.128594 223.188.105.168 -> 122.160.120.56 DNS 83 Standard query 0x73fd  A beacon-1.newrelic.com
+1524  24.224298 122.160.120.56 -> 223.188.105.168 DNS 99 Standard query response 0x73fd  A 204.93.223.146

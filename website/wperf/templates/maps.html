@@ -34,7 +34,7 @@
 	</style>
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script>	
+	<script>
 	flightPlanCoordinates = [
 	// new google.maps.LatLng(-27.46758, 153.027892)
 	new google.maps.LatLng(28.6667, 77.2167) //agni
@@ -51,6 +51,8 @@
         var myscroll = $("#output");
         myscroll.scrollTop(myscroll.get(0).scrollHeight);
         r = /(\d+).*?\((.*?)\).*/g
+        if (j.stdout.search("traceroute to") >= 0)
+        	return
         ip=r.exec(j.stdout)||r.exec(j.stdout) //dunno why doing twice!
         // alert(ip[1])
         if(ip!=null)
@@ -60,14 +62,13 @@
 	}
 	function get_location(ip,i)
 	{
-		$.get('http://api.hostip.info/get_html.php?position=true&ip='+ip, function(data){
-			lines=data.split('\n')
-			cityline=lines[1]
-			latline=lines[3];
-			longline=lines[4];
-			lati=parseFloat(latline.substr(latline.indexOf(':')+1))
-			longi=parseFloat(longline.substr(longline.indexOf(':')+1))
-			city = cityline.substr(cityline.indexOf(':')+1).trim()
+		$.get(location.protocol + "//" + location.host + "/wperf/geoip/" + ip, function(data){
+			d = JSON.parse(data)
+			city = d['city']
+			longi = d['longitude']
+			lati = d['latitude']
+			//if(city == "")
+				//return
 			// alert(city)
 			if(city.search('Unknown')!=-1)
 			{
@@ -75,14 +76,14 @@
 				op = $("#output")
 				op.html(op.html().replace(new RegExp(ip,'g'), "<font color='red'>"+ip+"</font>"))
 			}
-			if(!(isNaN(longi)||isNaN(lati)))
+			if(!(longi == "" || lati == "" || isNaN(longi) || isNaN(lati)))
 			{
 				flightPlanCoordinates[i] = new google.maps.LatLng(lati,longi);
 				flightPath.setPath(flightPlanCoordinates.filter(function(a){return a!=undefined}))
 				var marker = new google.maps.Marker({
 					position:flightPlanCoordinates[i],
 					map:map,
-					title: city
+					title: i + ". " + city + "(" + ip + ")"
 				})
 			}
 		});

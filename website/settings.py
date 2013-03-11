@@ -115,3 +115,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+PCAP2HAR_LOC = os.path.join(os.getcwd(), "pcap2har")
+HARVIEWER_URL = "http://pcapperf.appspot.com/harviewer/index.html"

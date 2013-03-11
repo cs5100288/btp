@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<style>
+.odd:hover, .even:hover, .hover {
+background: #CCFFCC;
+color: #000000;
+}
+table tr.even {
+background: #D5D5D5;
+}
+table tr.odd  {
+background: #E5E5E5;
+}
+table tr td div
+{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+table tr td div.blocked
+{
+	background: url("/static/blocked.png")
+}
+table tr td div.allowed
+{
+	background: url("/static/allowed.png")
+}
+</style>
+
+	</head>
+	<body>
+	<table width=100%>
+	        {% for org in orgs %}
+	        <tr class="org_row {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+	            <td width=40%>{{org.name}}</td>
+	            <td width=20%>{{org.ip_range}}</td>
+	            <td width=20%>{{org.hosts}}</td>
+	        </tr>
+	        {% endfor %}
+	</table>
+	</body>
+</html>

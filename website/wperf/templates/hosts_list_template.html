@@ -1,0 +1,56 @@
+<style>
+.odd:hover, .even:hover, .hover {
+background: #CCFFCC;
+color: #000000;
+}
+/*table tr.even {
+background: #D5D5D5;
+}
+table tr.odd  {
+background: #E5E5E5;
+}*/
+table tr td div
+{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+table tr td div.blocked
+{
+	background: url("/static/blocked.png")
+}
+table tr td div.allowed
+{
+	background: url("/static/allowed.png")
+}
+</style>
+<script type="text/javascript">
+	function toggleBlocked(hostId, div)
+	{
+		$.get('/wperf/hosts/toggleBlocked/' + hostId, function(data){
+			$(div).attr("class", ($(div).attr('class') == 'allowed' ? 'blocked' : 'allowed'))
+		});
+	}
+</script>
+<h3>DNS Hosts</h3>
+<table width=100% class="tablesorter">
+	<thead>
+		<tr class="even">
+			<th>Host name</th>
+			<th>Host IPs</th>
+			<th>Organization Name</th>
+			<th>Allowed/Blocked?</th>
+		</tr>
+	</thead>
+	<tbody>
+        {% for host in hosts %}
+        <tr class="host_row {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+            <td width=40%>{{host.name}}</td>
+            <td width=20%>{{host.ips}}</td>
+            <td width=20%>{{host.org.name}}({{host.org.ip_range}})</td>
+            <td width=20%><div name="{% if host.blocked %}blocked{% else %}allowed{% endif %}" class="{% if host.blocked %}blocked{% else %}allowed{% endif %}" onclick="toggleBlocked({{host.pk}}, this);"></div></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

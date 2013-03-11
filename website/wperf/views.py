@@ -1,4 +1,20 @@
-# Create your views here.
+# Standard Library Imports
+import os
+import re
+import csv
+import sys
+import math
+import json
+import socket
+import random
+import urllib
+import urllib2
+import commands
+import datetime
+import threading
+import subprocess
+
+# django Imports
 from django.views.decorators.csrf import csrf_exempt
 from django.template import *
 from django.shortcuts import render_to_response
@@ -6,30 +22,20 @@ from django.template import RequestContext
 from django.http import *
 from django.core.urlresolvers import reverse
 from django.core.exceptions import *
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
 import models
 import forms
-import os
-import sys
-import commands
-import subprocess
-import re
-import csv
-import urllib
-import urllib2
-import random
-import datetime
-import socket
-from HTMLParser import HTMLParser
-import math
-from tornado.options import options, define, parse_command_line
+import settings
+
+#  Tornado Imports
 import tornado.web
 import tornado.websocket
-import models
-import settings
-import json
-import threading
+# from tornado.options import options, define, parse_command_line
+
+# Third Party Imports
+# from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+# from matplotlib.figure import Figure
+from HTMLParser import HTMLParser
+
 
 def meanvariance(l):
     s2 = 0
@@ -70,13 +76,17 @@ def whois(ip):
     if op.find("Unknown AS number or IP network") == 0:
         print "UNKNOWN"
         h = urllib.urlopen("http://whois.net/ip-address-lookup/%s" % ip).read()
+
         class MYHTMLParser(HTMLParser):
             pre = False
+
             def handle_starttag(self, tag, attrs):
                 if tag == "pre" and dict(attrs)['class'] == "bodyMed":
                     self.pre = True
+
             def handle_endtag(self, tag):
                 self.pre = False
+
             def handle_data(self, data):
                 if self.pre:
                     self.data = data
@@ -132,7 +142,7 @@ def addobservation(request, pk):
         data = eval(datas)
         for key in data.keys():
             w = models.Website()
-            w.testId = models.Test.objects.get(pk = int(pk))
+            w.testId = models.Test.objects.get(pk=int(pk))
             w.url = key
             w.pageLoadTime = data[key]['pageLoadTime']
             w.rating = data[key]['rating']
@@ -161,10 +171,10 @@ def test(request):
 def listfiles(request):
     form = forms.UploadForm()
     return render_to_response(
-                'list.html',
-                {'uploadedfiles': models.UploadedFile.objects.all(), 'form': form},
-                context_instance=RequestContext(request)
-                )
+        'list.html',
+        {'uploadedfiles': models.UploadedFile.objects.all(), 'form': form},
+        context_instance=RequestContext(request)
+    )
 
 
 def upload(request):
@@ -181,10 +191,10 @@ def upload(request):
     else:
         form = forms.UploadForm()
         return render_to_response(
-                'list.html',
-                {'uploadedfiles': [], 'form': form},
-                context_instance=RequestContext(request)
-                )
+            'list.html',
+            {'uploadedfiles': [], 'form': form},
+            context_instance=RequestContext(request)
+        )
 
 
 def pcap_list(request):
@@ -259,9 +269,9 @@ def makeStats(filename, csvpath, bandwidth_path):
     a, b = os.path.splitext(filename)
     csvpath = a + ".csv"
     all_streams_csvpath = a + "_all_streams.csv"
-    csv2_path = a+"_ip.csv"
-    cmd1 = "tshark -n -r %s -T fields -e tcp.stream"%(filename)
-    cmd1_ip = "tshark -r %s -q -z conv,ip"%(filename)
+    csv2_path = a + "_ip.csv"
+    cmd1 = "tshark -n -r %s -T fields -e tcp.stream" % (filename)
+    cmd1_ip = "tshark -r %s -q -z conv,ip" % (filename)
     p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 
     p_ip = subprocess.Popen(cmd1_ip, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -341,7 +351,6 @@ def makeBandwidthStats(filename, csvpath, bandwidth_path, bandwidth_uplink_path,
     print "makeBandwidthStats: Finished"
 
 
-
 def intersect(l1, l2):
     return [x for x in l1 if x in l2] if l2 is not None else l1
 
@@ -384,7 +393,7 @@ def get_org_from_ip(ip):
                 a_int = ip_to_int(a)
                 # begin = a_int & (1<<(32-int(b)))
                 begin = a_int
-                end = a_int | ((1<<(32-int(b))) -1)
+                end = a_int | ((1 << (32 - int(b))) - 1)
                 print int_to_ip(begin), int_to_ip(end)
                 ip_range = "%s - %s" % (int_to_ip(begin), int_to_ip(end))
         except:
@@ -415,7 +424,7 @@ def pcap_analyze(request, pcap_name):
     csvpath = a + ".csv"
     csv2_path = a + "_ip.csv"
     csv3_path = a + "_rtt.csv"
-    csv4_path = a + "_streams.csv"
+    # csv4_path = a + "_streams.csv"
     all_streams_csvpath = a + "_all_streams.csv"
     bandwidth_path = a + "_bandwidth.txt"
     if not os.path.exists(csvpath) or not os.path.exists(csv2_path) or not os.path.exists(bandwidth_path) or not os.path.exists(all_streams_csvpath):
@@ -432,7 +441,6 @@ def pcap_analyze(request, pcap_name):
             rtt_data.append(row)
 
     mydict['rtt_data'] = rtt_data
-
 
     d = {}
     streams = []
@@ -460,10 +468,10 @@ def pcap_analyze(request, pcap_name):
     d2 = []
     ips = []
     for k in d:
-        l = len(d[k])
+        # l = len(d[k])
         xx = []
         o_ip = other(_myip, k)
-        if ip_to_dns_id.has_key(o_ip):
+        if o_ip in ip_to_dns_id:
             for dns_query_id in ip_to_dns_id[o_ip]:
                 if dns_list[dns_query_id].queries and dns_list[dns_query_id].responses:
                     query_time = min(float(q[0]) for q in dns_list[dns_query_id].queries)
@@ -610,18 +618,15 @@ def pcap_analyze(request, pcap_name):
                     bandwidth_data.append((startTime, endTime, frames, bytes, (float(bytes) / (float(endTime) - float(startTime)) / 1000.0), threshold, no_retransmissions*10))
         return bandwidth_data
 
-
     mydict['bandwidth_data'] = parse_bandwidth_data(bandwidth_path, m.uploadLimit + m.downloadLimit, retransmission_times)
     mydict['bandwidth_uplink_data'] = parse_bandwidth_data(bandwidth_uplink_path, m.uploadLimit, retransmission_times)
     mydict['bandwidth_downlink_data'] = parse_bandwidth_data(bandwidth_downlink_path, m.downloadLimit, retransmission_times)
 
-
-
     for k in d:
-        l = len(d[k])
+        # l = len(d[k])
         xx = []
         o_ip = other(_myip, k)
-        if ip_to_dns_id.has_key(o_ip):
+        if o_ip in ip_to_dns_id:
             for dns_query_id in ip_to_dns_id[o_ip]:
                 # print o_ip, dns_query_id, dns_list[dns_query_id].queries
                 if dns_list[dns_query_id].queries and dns_list[dns_query_id].responses:
@@ -791,23 +796,27 @@ def orgs_list(request):
     return render_to_response("orgs_list.html", mydict)
 
 
+class PcapAnalyzeHandler(tornado.web.RequestHandler):
+    def get(self, pcap_name):
+        self.write(pcap_analyze(None, pcap_name).content)
 
 
 class State:
-    START=0
-    AFTERDNS=1
-    AFTERSYN=2
+    START = 0
+    AFTERDNS = 1
+    AFTERSYN = 2
 
-def dns_for_current_site(packet,cur_site):
+
+def dns_for_current_site(packet, cur_site):
     if not packet.haslayer(DNS):
         return False
     else:
-        d=packet[DNS]
-        if d.opcode!=0: #0 means query
+        d = packet[DNS]
+        if d.opcode != 0:  # 0 means query
             return False
         else:
-            q=d.qd.qname
-            if q.find(cur_site)==-1:
+            q = d.qd.qname
+            if q.find(cur_site) == -1:
                 return False
             else:
                 return True
@@ -815,104 +824,140 @@ def dns_for_current_site(packet,cur_site):
 
 def psize(packet):
     #assume 20 from http://stackoverflow.com/questions/6639799/calculate-size-and-start-of-tcp-packet-data-excluding-header
-    return packet[IP].len-packet[IP].ihl*4-4*packet[TCP].dataofs
-def analyzeOneTest(packets,obsID,base): # base is just for debugging
-    print "observation id:",obsID
-    agniIP="180.149.52.3"
-    NEAR_ENOUGH=20
-    sites=['facebook', 'twitter', 'quora','timesofindia','nytimes','bbc.co.uk', 'cricinfo','amazon','dailymotion','tumblr' ]
-    data={}
-    dnsinds=[index for index in xrange(len(packets)) if packets[index].haslayer(DNS)]
-    state=State.START
-    dnsstarttime=0; dnsendtime=0; handshakestarttime=0; handshakeendtime=0; pagesize=0
-    cur_ind=0
-    processing_url=sites[cur_ind]
-    ind=0
-    dns_index=0
-    while ind<len(packets):
-        if state==State.START:
-            while packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind])==-1:
-                dns_index+=1
-            ind=dnsinds[dns_index]
-            state=State.AFTERDNS
-        elif state==State.AFTERDNS:
-            print "site= ",sites[cur_ind], "dns start packet: ",dnsinds[dns_index]+base
-            dnsstarttime=packets[dnsinds[dns_index]].time
-            while dnsinds[dns_index+1]-dnsinds[dns_index]<=NEAR_ENOUGH and packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind])!=-1:
-                dns_index+=1
-            print "last dns packet: ", dnsinds[dns_index]+base
-            cur_ind+=1
-            for pk in xrange(dnsinds[dns_index]+1, len(packets)):
-                packet=packets[pk]
-                if packet.haslayer(TCP) and packet[TCP].flags==2: #2== syn packet
-                    dnsendtime=packet.time
-                    state=State.AFTERSYN
-                    ind=pk
-                    print "Syn found at packet no:",ind+base
+    return packet[IP].len - packet[IP].ihl * 4 - 4 * packet[TCP].dataofs
+
+
+def analyzeOneTest(packets, obsID, base):  # base is just for debugging
+    print "observation id:", obsID
+    agniIP = "180.149.52.3"
+    NEAR_ENOUGH = 20
+    sites = ['facebook', 'twitter', 'quora', 'timesofindia', 'nytimes', 'bbc.co.uk',  'cricinfo', 'amazon', 'dailymotion', 'tumblr']
+    data = {}
+    dnsinds = [index for index in xrange(len(packets)) if packets[index].haslayer(DNS)]
+    state = State.START
+    dnsstarttime = 0
+    dnsendtime = 0
+    handshakestarttime = 0
+    handshakeendtime = 0
+    tcp_handshake_time = 0
+    pagesize = 0
+    cur_ind = 0
+    # processing_url = sites[cur_ind]
+    ind = 0
+    dns_index = 0
+    while ind < len(packets):
+        if state == State.START:
+            while packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind]) == -1:
+                dns_index += 1
+            ind = dnsinds[dns_index]
+            state = State.AFTERDNS
+        elif state == State.AFTERDNS:
+            print "site= ", sites[cur_ind], "dns start packet: ", dnsinds[dns_index] + base
+            dnsstarttime = packets[dnsinds[dns_index]].time
+            while dnsinds[dns_index + 1] - dnsinds[dns_index] <= NEAR_ENOUGH and packets[dnsinds[dns_index]][DNS].qd.qname.find(sites[cur_ind]) != -1:
+                dns_index += 1
+            print "last dns packet: ", dnsinds[dns_index] + base
+            cur_ind += 1
+            for pk in xrange(dnsinds[dns_index] + 1, len(packets)):
+                packet = packets[pk]
+                if packet.haslayer(TCP) and packet[TCP].flags == 2:  # 2== syn packet
+                    dnsendtime = packet.time
+                    state = State.AFTERSYN
+                    ind = pk
+                    print "Syn found at packet no:", ind + base
                     break
                 continue
-        elif state==State.AFTERSYN:
-            pack=packets[ind]
-            handshakestarttime=pack.time
-            for pk in xrange(ind,len(packets)):
-                packet=packets[pk]
-                if packet.haslayer(TCP) and packet[TCP].flags==0x10 and  packet[IP].src==pack[IP].dst and packet[IP].dst==pack[IP].src: #flag==0x10 means ACK
-                    handshakeendtime=packet.time
-                    state=State.AFTERDNS
-                    next_dns_site=sites[cur_ind] if cur_ind<len(sites) else "agni"
-                    while dns_index<len(dnsinds) and packets[dnsinds[dns_index]][DNS].qd.qname.find(next_dns_site)==-1:
-                        dns_index+=1
-                    max_ind=dnsinds[dns_index]
-                    if cur_ind==len(sites):
+        elif state == State.AFTERSYN:
+            pack = packets[ind]
+            handshakestarttime = pack.time
+            for pk in xrange(ind, len(packets)):
+                packet = packets[pk]
+                if packet.haslayer(TCP) and packet[TCP].flags == 0x10 and packet[IP].src == pack[IP].dst and packet[IP].dst == pack[IP].src:  # flag==0x10 means ACK
+                    handshakeendtime = packet.time
+                    tcp_handshake_time = handshakeendtime - handshakestarttime
+                    state = State.AFTERDNS
+                    next_dns_site = sites[cur_ind] if cur_ind < len(sites) else "agni"
+                    while dns_index < len(dnsinds) and packets[dnsinds[dns_index]][DNS].qd.qname.find(next_dns_site) == -1:
+                        dns_index += 1
+                    max_ind = dnsinds[dns_index]
+                    if cur_ind == len(sites):
                         for p in xrange(ind, len(packets)):
-                            p1=packets[p]
-                            if p1.haslayer(TCP) and p1[IP].src==pack[IP].src and p1[IP].dst==agniIP:
-                                max_ind=p
-                                break;
-                    pagesize=sum(psize(packets[j]) for j in xrange(pk,max_ind) if packets[j].haslayer(TCP) and packets[j][IP].dst==pack[IP].src)
-                    data[sites[cur_ind-1]]={'dnsTime':dnsendtime-dnsstarttime, 'pageTotalSize':pagesize}
+                            p1 = packets[p]
+                            if p1.haslayer(TCP) and p1[IP].src == pack[IP].src and p1[IP].dst == agniIP:
+                                max_ind = p
+                                break
+                    pagesize = sum(psize(packets[j]) for j in xrange(pk, max_ind) if packets[j].haslayer(TCP) and packets[j][IP].dst == pack[IP].src)
+                    data[sites[cur_ind-1]] = {'dnsTime': dnsendtime - dnsstarttime, 'pageTotalSize': pagesize, 'tcpHandshakeTime': tcp_handshake_time}
                     break
                 continue
-            if cur_ind==len(sites):
+            if cur_ind == len(sites):
                 print data
                 break
+
+
 def analyzePcap(pcap):
-    packets=rdpcap(pcap)
-    agniIP="180.149.52.3"
-    fromAgniInds=[index for index in xrange(len(packets)) if packets[index].haslayer(Raw) and packets[index][IP].src==agniIP]
-    idpackets=[]
+    packets = rdpcap(pcap)
+    agniIP = "180.149.52.3"
+    fromAgniInds = [index for index in xrange(len(packets)) if packets[index].haslayer(Raw) and packets[index][IP].src == agniIP]
+    idpackets = []
     for i in fromAgniInds:
-        packet=packets[i]
-        load=packet[Raw].load
-        data=load.split("\n")[-1]
-        m=re.match(r'id:(\d+)', data)
+        packet = packets[i]
+        load = packet[Raw].load
+        data = load.split("\n")[-1]
+        m = re.match(r'id:(\d+)', data)
         if m:
             idpackets.append((i, int(m.group(1))))
-    for ind,obsId in idpackets:
+    for ind, obsId in idpackets:
         analyzeOneTest(packets[ind:], obsId, ind)
 
 
 class PcapProgressHandler(tornado.websocket.WebSocketHandler):
-    def open(self,shortfilename):
-        m=models.UploadedFile.objects.get(shortfilename=shortfilename)
-        fieldfile=m.uploadedfile  #https://docs.djangoproject.com/en/dev/ref/models/fields/#filefield-and-fieldfile
-        with open(fieldfile.path) as f:
+    def open(self, shortfilename):
+        m = models.UploadedFile.objects.get(shortfilename=shortfilename)
+        fieldfile = m.uploadedfile   # https://docs.djangoproject.com/en/dev/ref/models/fields/#filefield-and-fieldfile
+        with open(fieldfile.path):
             pass
 
-
-    def notify(self,text,prog):
-        self.write_message("{\"Log\":\"%s\",\"prog\":\"%d\"}"%(text,prog))
+    def notify(self, text, prog):
+        self.write_message("{\"Log\":\"%s\",\"prog\":\"%d\"}" % (text, prog))
 
 
 class TracerouteHandler(tornado.websocket.WebSocketHandler):
-    def open(self,ip):
-        self.p = subprocess.Popen(['traceroute',ip],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        t = threading.Thread(target=(lambda : self.send_output()))
-        t.daemon=True
+    def open(self, ip):
+        self.p = subprocess.Popen(['traceroute', ip], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        t = threading.Thread(target=(lambda: self.send_output()))
+        t.daemon = True
         t.start()
+
     def send_output(self):
-        while self.p.poll() is None: #running
-            line=self.p.stdout.readline()
-            if line!=None and len(line)>0:
-                self.write_message(json.dumps({'stdout':line}))
-        self.write_message(json.dumps({'stdout':'Done! For red marked ip addresses, the location couldn\'t be determined with <a href="http://hostip.info">hostip.info</a>. If you know the correct location, please update it there.'}))
+        while self.p.poll() is None:  # running
+            line = self.p.stdout.readline()
+            if line is not None and len(line) > 0:
+                self.write_message(json.dumps({'stdout': line}))
+        self.write_message(json.dumps({'stdout': 'Done! For red marked ip addresses, the location couldn\'t be determined with <a href="http://hostip.info">hostip.info</a>. If you know the correct location, please update it there.'}))
+
+
+class GeoIpHandler(tornado.web.RequestHandler):
+    """Gives Location for a given IP. Using http://www.geoiptool.com/"""
+    def find_val(self, data, key):
+        a = data[data.find(key):]
+        b = a[a.find("\n"):]
+        c = b[b.find(">"):]
+        e = c[:c.find("\n")]
+        d = e.rfind("<")
+        return c[1:d], c[d:]
+
+    def get(self, ip):
+        wp = urllib.urlopen("http://www.geoiptool.com/en/?IP=%s" % ip).read()
+        op = {}
+        op['host_name'], wp = self.find_val(wp, "Host Name:")
+        op['ip_address'], wp = self.find_val(wp, "IP Address:")
+        country, wp = self.find_val(wp, "Country:")
+        x = country[country.find(">"):]
+        x = x[:x.find("<")]
+        op['country'] = x[1:].strip()
+        op['city'], wp = self.find_val(wp, "City:")
+        op['longitude'], wp = self.find_val(wp, "Longitude:")
+        op['latitude'], wp = self.find_val(wp, "Latitude:")
+        self.write(json.dumps(op))
+

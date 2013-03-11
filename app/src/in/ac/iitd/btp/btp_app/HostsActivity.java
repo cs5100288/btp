@@ -17,6 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -92,37 +93,36 @@ public class HostsActivity extends Activity {
 		}
 		return sb.toString();
 	}
-	String write_file(String filename, String data)
-	{
-		try { 
-		       // catches IOException below
-		       
 
-		       /* We have to use the openFileOutput()-method
-		       * the ActivityContext provides, to
-		       * protect your file from others and
-		       * This is done for security-reasons.
-		       * We chose MODE_WORLD_READABLE, because
-		       *  we have nothing to hide in our file */             
-		       
-		       File sdCard = Environment.getExternalStorageDirectory();
-		       File f = new File(sdCard, "hosts");
-		       FileOutputStream fOut = new FileOutputStream(f);
-		       OutputStreamWriter osw = new OutputStreamWriter(fOut); 
-		       
-		       // Write the string to the file
-		       osw.write(data);
+	String write_file(String filename, String data) {
+		try {
+			// catches IOException below
 
-		       /* ensure that everything is
-		        * really written out and close */
-		       osw.flush();
-		       osw.close();
-		       return f.getAbsolutePath();
+			/*
+			 * We have to use the openFileOutput()-method the ActivityContext
+			 * provides, to protect your file from others and This is done for
+			 * security-reasons. We chose MODE_WORLD_READABLE, because we have
+			 * nothing to hide in our file
+			 */
 
-	
+			File sdCard = Environment.getExternalStorageDirectory();
+			File f = new File(sdCard, "hosts");
+			FileOutputStream fOut = new FileOutputStream(f);
+			OutputStreamWriter osw = new OutputStreamWriter(fOut);
 
-		    } catch (IOException ioe) 
-		      {ioe.printStackTrace();}
+			// Write the string to the file
+			osw.write(data);
+
+			/*
+			 * ensure that everything is really written out and close
+			 */
+			osw.flush();
+			osw.close();
+			return f.getAbsolutePath();
+
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
 		return "";
 	}
 
@@ -130,6 +130,9 @@ public class HostsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		if (!RootTools.isAccessGiven()) {
 			TextView tv = new TextView(this);
 			tv.setText("Root access not given. Please ensure root access.");
@@ -149,15 +152,15 @@ public class HostsActivity extends Activity {
 				try {
 					String fn = write_file("hosts", hostsData);
 					RootTools.remount("/system/", "rw");
-					RootTools.getShell(true).add(new Command(0, "cp " + fn + " /etc/hosts")
-					{
-						@Override
-						public void output(int arg0, String arg1) {
-							// TODO Auto-generated method stub
-							Log.e("HostsActivity", arg1);
-						}
-					}).waitForFinish();
-					RootTools.remount("/system/", "ro");
+					RootTools.getShell(true)
+							.add(new Command(0, "cp " + fn + " /etc/hosts") {
+								@Override
+								public void output(int arg0, String arg1) {
+									// TODO Auto-generated method stub
+									Log.e("HostsActivity", arg1);
+								}
+							}).waitForFinish();
+					 RootTools.remount("/system/", "ro");
 					tv_status.setText("Done");
 
 				} catch (Exception ioe) {

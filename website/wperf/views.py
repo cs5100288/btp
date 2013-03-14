@@ -13,6 +13,7 @@ import commands
 import datetime
 import threading
 import subprocess
+from time import sleep
 
 # django Imports
 from django.views.decorators.csrf import csrf_exempt
@@ -29,6 +30,11 @@ import settings
 #  Tornado Imports
 import tornado.web
 import tornado.websocket
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+from tornado.web import Application, asynchronous, RequestHandler
+from multiprocessing.pool import ThreadPool
+
 # from tornado.options import options, define, parse_command_line
 
 # Third Party Imports
@@ -796,9 +802,58 @@ def orgs_list(request):
     return render_to_response("orgs_list.html", mydict)
 
 
+_workers = ThreadPool(10)
+
+def run_background(func, callback, args=(), kwds={}):
+    def _callback(result):
+        IOLoop.instance().add_callback(lambda: callback(result))
+    _workers.apply_async(func, args, kwds, _callback)
+
+# # blocking task like querying to MySQL
+def blocking_task(n):
+    sleep(n)
+    return "slept %d seconds\n" % n
+
+# class Handler(RequestHandler):
+#     @asynchronous
+#     def get(self):
+#         run_background(blocking_task, self.on_complete, (10,))
+
+#     def on_complete(self, res):
+#         self.write("Test {0}<br/>".format(res))
+#         self.finish()
+
+
 class PcapAnalyzeHandler(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
     def get(self, pcap_name):
-        self.write(pcap_analyze(None, pcap_name).content)
+        self.pcap_name = pcap_name
+        print "Started", pcap_name
+        run_background(self.analyze, self.on_complete, ())
+
+    def analyze(self):
+        print "analyzing", self.pcap_name
+        try:
+            self.result = pcap_analyze(None, self.pcap_name).content
+        except Exception as e:
+            self.result = repr(e)
+        return self.result
+        # self.finish()
+
+    def on_complete(self, result):
+        self.write(result)
+        self.finish()
+
+
+class IdleUrlHandler(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
+    def get(self):
+        sleep_time = self.get_argument("sleep_time", default=300)
+        run_background(blocking_task, self.on_complete, (int(sleep_time),))
+
+    def on_complete(self, result):
+        self.write(result)
+        self.finish()
 
 
 class State:
@@ -960,4 +1015,3 @@ class GeoIpHandler(tornado.web.RequestHandler):
         op['longitude'], wp = self.find_val(wp, "Longitude:")
         op['latitude'], wp = self.find_val(wp, "Latitude:")
         self.write(json.dumps(op))
-

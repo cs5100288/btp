@@ -1,0 +1,16 @@
+ 81   3.187783 106.204.32.66 -> 122.160.120.56 DNS 91 Standard query 0x3746  A static.rewards.indiatimes.com
+108   3.252345 122.160.120.56 -> 106.204.32.66 DNS 209 Standard query response 0x3746  CNAME static.rewards.indiatimes.com.edgesuite.net CNAME a1095.g.akamai.net A 96.17.182.73 A 96.17.182.57
+116   3.267779 106.204.32.66 -> 122.160.120.56 DNS 88 Standard query 0xff68  A adscontent2.indiatimes.com
+146   3.321868 122.160.120.56 -> 106.204.32.66 DNS 195 Standard query response 0xff68  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.74 A 96.17.182.73
+192   3.459210 106.204.32.66 -> 122.160.120.56 DNS 86 Standard query 0x16cb  A www.google-analytics.com
+243   3.602228 122.160.120.56 -> 106.204.32.66 DNS 306 Standard query response 0x16cb  CNAME www-google-analytics.l.google.com A 74.125.236.166 A 74.125.236.167 A 74.125.236.168 A 74.125.236.169 A 74.125.236.174 A 74.125.236.160 A 74.125.236.161 A 74.125.236.162 A 74.125.236.163 A 74.125.236.164 A 74.125.236.165
+745   5.386779 106.204.32.66 -> 122.160.120.56 DNS 80 Standard query 0x7108  A bs.serving-sys.com
+751   5.442795 122.160.120.56 -> 106.204.32.66 DNS 134 Standard query response 0x7108  CNAME bs.eyeblaster.akadns.net A 202.79.210.121
+1729   9.295550 106.204.32.66 -> 122.160.120.56 DNS 89 Standard query 0x5024  A in-cdn.effectivemeasure.net
+1760   9.371536 122.160.120.56 -> 106.204.32.66 DNS 191 Standard query response 0x5024  CNAME effectivemeasure.edgesuite.net CNAME a1015.g.akamai.net A 96.17.182.48 A 96.17.182.43
+1811   9.616116 106.204.32.66 -> 122.160.120.56 DNS 87 Standard query 0x8e04  A www9.effectivemeasure.net
+1840   9.691364 122.160.120.56 -> 106.204.32.66 DNS 103 Standard query response 0x8e04  A 98.124.156.54
+1914  10.399640 106.204.32.66 -> 122.160.120.56 DNS 89 Standard query 0x3da9  A timesofindia.indiatimes.com
+1918  10.471106 122.160.120.56 -> 106.204.32.66 DNS 205 Standard query response 0x3da9  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+2473  16.040807 106.204.32.66 -> 122.160.120.56 DNS 78 Standard query 0x7539  A static.gaana.com
+2478  16.111665 122.160.120.56 -> 106.204.32.66 DNS 180 Standard query response 0x7539  CNAME www.gaana.com.edgesuite.net CNAME a1017.b.akamai.net A 96.17.182.27 A 96.17.182.32

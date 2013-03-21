@@ -14,7 +14,7 @@ import datetime
 import threading
 import subprocess
 from time import sleep
-
+from urlparse import urlparse
 # django Imports
 from django.views.decorators.csrf import csrf_exempt
 from django.template import *
@@ -414,17 +414,57 @@ def get_org_from_ip(ip):
     return org
 
 
+def summarize_har(harpath):
+    with open(harpath) as harfile:
+        hardata = json.loads(harfile.read()[12: -2])
+        totalSize = 0
+        contentTypes = {}
+        for entry in hardata['log']['entries']:
+            # print entry
+            size = int(entry['response']['bodySize'])
+            totalSize += size
+            mT = entry['response']['content']['mimeType']
+
+            # print size, mT
+            contentTypes.setdefault(mT, [0, 0])
+            contentTypes[mT][0] += 1
+            contentTypes[mT][1] += size
+        categories_2 = {}
+        for ct in contentTypes:
+            cat_name = "other"
+            for n in ['html', 'image', 'css', 'xml', 'json', 'flash', 'javascript', 'json']:
+                if n in ct:
+                    cat_name = n
+                    break
+            if cat_name == "other":
+                print ct
+            categories_2.setdefault(cat_name, [0, 0])
+            categories_2[cat_name][0] += contentTypes[ct][0]
+            categories_2[cat_name][1] += contentTypes[ct][1]
+        for ct in categories_2:
+            categories_2[ct][1] /= 1024.0
+            categories_2[ct][1] = round(categories_2[ct][1], 3)
+
+        return totalSize, contentTypes, categories_2
+
+
 def pcap_analyze(request, pcap_name):
     mydict = {}
     m = models.PcapFile.objects.get(shortfilename=pcap_name)
     a, b = os.path.splitext(m.uploadedfile.path)
     c, d = os.path.splitext(pcap_name)
     harpath = a + ".har"
-    if not os.path.exists(harpath):
+    if True or not os.path.exists(harpath):
         try:
             cmd = "python %s/main.py %s %s" % (settings.PCAP2HAR_LOC, m.uploadedfile.path, harpath)
             print cmd
-            subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            harmaker = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            print harmaker.stdout.read()
+            mydict['totalSize'], mydict['categories'], mydict['categories_2'] = summarize_har(harpath)
+            mydict['categories'] = mydict['categories'].items()
+            mydict['categories_2'] = mydict['categories_2'].items()
+
+
         except Exception as e:
             print e
     csvpath = a + ".csv"
@@ -567,6 +607,8 @@ def pcap_analyze(request, pcap_name):
 
     mydict['streams_stats'] = streams_stats.items()
     all_objects_data = []
+    content_wise_data = {}
+    host_wise_data = {}
 
     def short_url(url):
         return url if len(url) < 200 else (url[:50] + "...")
@@ -583,6 +625,11 @@ def pcap_analyze(request, pcap_name):
             url_time_list = []
             for i, u_st in enumerate(url_starttime_list):
                 url, starttime = u_st
+                host = models.Host.objects.get(name=urlparse(url).netloc)
+                content_type = "Unknown"
+                if host:
+                    if host.stream_type:
+                        content_type = host.stream_type.name
                 dt = 0
                 if i == len(url_starttime_list) - 1:
                     dt = float(row[4]) + float(row[5]) - starttime
@@ -590,7 +637,7 @@ def pcap_analyze(request, pcap_name):
                     u2, st2 = url_starttime_list[i + 1]
                     dt = st2 - starttime
 
-                url_time_list.append([row[0], short_url(url), url, starttime, dt])
+                url_time_list.append([row[0], short_url(url), url, starttime, dt, content_type])
             row.append(float(row[3]) / 1000 * float(row[5]))  # bandwidth
             try:
                 row += streams_stats[int(row[0])]
@@ -601,8 +648,22 @@ def pcap_analyze(request, pcap_name):
             all_objects_data += url_time_list
             row[7] = list([x[1], x[2]] for x in url_time_list)
             all_streams_data.append(row)
+            host = models.Host.objects.get(name=urlparse(row[7][0][0]).netloc)
+            content_type = "Unknown"
+            if host:
+                if host.stream_type:
+                    content_type = host.stream_type.name
+            content_wise_data.setdefault(content_type, [0, [], 0])  # data transferred, no. of hosts, no. of objects
+            content_wise_data[content_type][0] += int(row[3])
+            content_wise_data[content_type][1].append(urlparse(row[7][0][0]).netloc)
+            content_wise_data[content_type][2] += len(row[7])
+
+            row.append(content_type)
     mydict['all_streams_data'] = all_streams_data
     mydict['all_objects_data'] = sorted(all_objects_data, cmp=lambda x, y: cmp(float(x[3]), float(y[3])))
+
+    mydict['content_wise_data'] = list([x[0], x[1][0] / 1024.0, len(list(set(x[1][1]))), x[1][2]] for x in content_wise_data.items())
+
     bandwidth_uplink_path = a + "_bandwidth_uplink.txt"
     bandwidth_downlink_path = a + "_bandwidth_downlink.txt"
     retransmit_path = a + "_retransmit.txt"
@@ -684,6 +745,21 @@ def pcap_analyze(request, pcap_name):
     mydict['ip_stats'] = ip_stats
     mydict['dns_list'] = dns_list.values()
     dnshosts = []
+    ip_cdf_stats = [0]
+    for ip, data in sorted(ip_stats, lambda x, y: cmp(int(y[1]), int(x[1]))):
+        ip_cdf_stats.append(ip_cdf_stats[-1] + int(data))
+
+    total = ip_cdf_stats[-1]
+    mydict['ip_cdf_stats'] = list(enumerate(list((1.0 * x) / total for x in ip_cdf_stats)))
+    org_transfers = sorted((v[0] for v in org_stats.values()), lambda x, y: cmp(y, x))
+    org_cdf_stats=[0]
+    for tr in org_transfers:
+        org_cdf_stats.append(org_cdf_stats[-1] + tr)
+    mx = org_cdf_stats[-1]
+    mydict['org_cdf_stats'] = list(enumerate(list(float(x)/mx for x in org_cdf_stats)))
+
+    # print mydict['ip_cdf_stats']
+
 
     def sign(x):
         return 0 if x == 0 else 1 if x > 0 else -1
@@ -766,14 +842,14 @@ def hosts_detail(request, id):
 def hosts_toggleBlocked(request, id):
     try:
         host = models.Host.objects.get(pk=id)
-        print host.blocked
+        # print host.blocked
         host.blocked = not host.blocked
         host.updated = datetime.datetime.today()
         host.save()
+        return HttpResponse(host.blocked)
     except Exception as e:
         print e
-        pass
-    return HttpResponse("")
+        return HttpResponse("")
 
 
 def hosts_file(request):

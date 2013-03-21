@@ -1,0 +1,33 @@
+0,223.181.62.13,107.20.164.42,56,0.000000000,0.0000,0,
+1,223.181.62.13,107.20.164.42,821,0.000555000,0.5031,0,
+2,223.181.62.13,107.20.176.85,3132,0.049789000,1.7632,1,'http://ads.mobclix.com/?p=android&i=B2AA25CC-205D-44BD-A034-A70C8D0A5E26&s=320x50&av=1.0.2&u=353720058047180&andid=bdf850f1d7ee01ae&v=2.1.2&ct=null&l=en_GB&dt=GT-I9300&sv=4.0.4&ua=Mozilla%2F5.0+%28Linux%3B+U%3B+Android+4.0.4%3B+en-gb%3B+GT-I9300+Build%2FIMM76D%29+AppleWebKit%2F534.30+%28KHTML%2C+like+Gecko%29+Version%2F4.0+Mobile+Safari%2F534.30&o=0&ap=0'::0.508964000
+3,223.181.62.13,204.236.220.251,1210,1.946171000,1.9026,1,'http://s.mobclix.com/imp?rid=7ae3897c374d45f4b9a1839e06bbe5ab&aid=27248&pid=104507'::2.546801000
+4,223.181.62.13,204.236.220.251,424,1.955394000,3.1196,0,
+5,223.181.62.13,50.19.220.231,1689,1.983254000,5.0955,1,'http://f121.smaato.net/oapi/getAd.jsp;jsessionid=E99FBB177484F6F4BD6969DE14EEF324.f121'::2.547291000
+6,223.181.62.13,74.125.128.188,550,3.454489000,0.0002,0,
+7,223.181.62.13,207.171.163.132,1368,3.674925000,6.5360,1,'http://smaato-ads.s3.amazonaws.com/136075635808768.jpg'::4.201395000
+8,223.181.62.13,207.171.163.132,368,3.742256000,3.3628,0,
+9,223.181.62.13,74.125.236.31,2683,5.707165000,15.4442,2,"'http://www.google.co.in/m/gne/suggest/v2?q=t&hl=en-GB&app=iss&appv=141338691&platform=android&gl=IN&sll=28.549009,77.187058&acc=669&pff=1&feeds=qs,ns'::5.865965000, 'http://www.google.co.in/m/gne/suggestlog?q=t&app=iss&appv=141338691&platform=android&dist=Web&serverip=-792342025&processid=5036&timestamp=1360778228650000&sig=ANflk8197W8b75t0T6JMtjE46D6izhygjA&action=1&uvlat=865&nlat=823&connection=10'::6.443260000"
+10,223.181.62.13,74.125.236.31,2418,6.457173000,14.6943,1,"'http://www.google.co.in/m/gne/suggest/v2?q=ti&hl=en-GB&app=iss&appv=141338691&platform=android&gl=IN&sll=28.549009,77.187058&acc=669&pff=1&feeds=qs,ns'::6.815364000"
+11,223.181.62.13,96.17.182.40,49365,6.945339000,6.4100,3,"'http://timesofindia.indiatimes.com/'::7.195982000, 'http://timesofindia.indiatimes.com/default_b2_glblnavcss_v6.cms?version=1'::8.456660000, 'http://timesofindia.indiatimes.com/thumb/18485208.cms?width=77&height=50'::10.040598000"
+12,223.181.62.13,23.35.84.211,29612,7.971289000,6.2731,3,"'http://cdn.optimizely.com/js/83181943.js'::8.268820000, 'http://cdn.optimizely.com/js/83181943.js'::9.115516000, 'http://cdn.optimizely.com/js/83181943.js'::10.453566000"
+13,223.181.62.13,96.17.182.40,424,8.176438000,3.0646,0,
+14,223.181.62.13,23.35.84.211,580,8.222101000,3.1431,0,
+15,223.181.62.13,184.30.63.139,61684,8.407763000,6.9568,2,"'http://connect.facebook.net/en_US/all.js'::9.257318000, 'http://connect.facebook.net/en_US/all.js'::10.945975000"
+16,223.181.62.13,223.165.31.15,1386,8.426747000,2.9280,1,'http://ads.indiatimes.com/ads.dll/genptypead?slotid=3736'::9.297433000
+17,223.181.62.13,223.165.31.12,1936,8.431728000,4.9735,1,'http://netspiderads3.indiatimes.com/ads.dll/getjsonad?slotid=1556'::9.306447000
+18,223.181.62.13,223.165.31.19,1868,8.434140000,4.9713,1,'http://netspideradswc.indiatimes.com/ads.dll/getjsonad?slotid=205'::9.344131000
+19,223.181.62.13,184.30.63.139,580,8.659577000,3.8758,0,
+20,223.181.62.13,223.165.31.15,416,8.686233000,3.8490,0,
+21,223.181.62.13,223.165.31.12,416,8.686609000,3.8487,0,
+22,223.181.62.13,223.165.31.19,416,8.686848000,3.8485,0,
+23,223.181.62.13,223.165.25.37,2336,9.997587000,4.2470,1,'http://timeslog.indiatimes.com/timeslog.dll/topcnt?CHUR=timesofindia.indiatimes.com&randomno=0.2588188082445413'::10.952168000
+24,223.181.62.13,223.165.25.37,1688,10.007569000,4.2371,1,'http://cmstrendslog.indiatimes.com/cmslog.dll?cms-msid=4719157&cms-sec0=4719157&cms-sec1=-2128958273&cmsurtype=viewed&randomno=0.2588188082445413'::10.952834000
+25,223.181.62.13,74.125.236.15,5577,10.009816000,27.2256,0,
+26,223.181.62.13,74.125.236.9,19683,10.055847000,5.2888,2,"'http://www.google-analytics.com/ga.js'::11.099110000, 'http://www.google-analytics.com/__utm.gif?utmwv=5.3.9&utms=1&utmn=1880105922&utmhn=timesofindia.indiatimes.com&utmcs=UTF-8&utmsr=720x1280&utmvp=980x1543&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=11.1%20r115&utmdt=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&utmhid=2110447810&utmr=-&utmp=%2F&utmac=UA-198011-4&utmcc=__utma%3D1.471958541.1358311811.1360774222.1360778234.20%3B%2B__utmz%3D1.1360553871.16.3.utmcsr%3Dtimesofindia.indiatimes.com%7Cutmccn%3D(referral)%7Cutmcmd%3Dreferral%7Cutmcct%3D%2F%3B&utmu=qh~'::12.661317000"
+27,223.181.62.13,96.17.182.58,3899,10.057755000,4.5793,2,"'http://b.scorecardresearch.com/beacon.js'::11.083165000, 'http://b.scorecardresearch.com/b?c1=2&c2=6036484&ns__t=1360778232982&ns_c=UTF-8&c8=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&c7=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&c9='::11.872078000"
+28,223.181.62.13,223.165.25.37,416,10.248531000,3.1765,0,
+29,223.181.62.13,223.165.25.37,416,10.259018000,3.1460,0,
+30,223.181.62.13,74.125.236.15,580,10.260408000,3.1250,0,
+31,223.181.62.13,74.125.236.9,580,10.306953000,3.1179,0,
+32,223.181.62.13,96.17.182.58,492,10.308596000,3.0311,0,

@@ -1,0 +1,4 @@
+  1   0.000000 110.225.77.68 -> 122.160.120.56 DNS 89 Standard query 0x4954  A timesofindia.indiatimes.com
+ 10   1.008042 122.160.120.56 -> 110.225.77.68 DNS 205 Standard query response 0x4954  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.40 A 96.17.182.65
+135   1.706908 110.225.77.68 -> 122.160.120.56 DNS 78 Standard query 0xc186  A api.facebook.com
+213   1.888625 122.160.120.56 -> 110.225.77.68 DNS 118 Standard query response 0xc186  CNAME star.c10r.facebook.com A 31.13.79.7

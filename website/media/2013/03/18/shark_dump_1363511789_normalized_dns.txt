@@ -1,0 +1,2 @@
+  1   0.000000 110.225.77.68 -> 122.160.120.56 DNS 89 Standard query 0x8c19  A timesofindia.indiatimes.com
+  7   0.504544 122.160.120.56 -> 110.225.77.68 DNS 205 Standard query response 0x8c19  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.40 A 96.17.182.65

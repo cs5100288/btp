@@ -24,8 +24,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.stericson.RootTools.Command;
 import com.stericson.RootTools.RootTools;
+import com.stericson.RootTools.execution.Command;
 
 public class HostsActivity extends Activity {
 

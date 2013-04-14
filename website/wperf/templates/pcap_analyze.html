@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Pcap List/Upload</title>
+        <link rel="shortcut icon" href="/static/fire.gif" type="image/gif" />
         <link rel="stylesheet" href="/static/jquery-plugins/tablesorter/themes/blue/style.css" type="text/css" id="" media="print, projection, screen" />
         <script src="/static/jquery-latest.js"></script>
         <script src="/static/jquery-plugins/tablesorter/jquery.tablesorter.min.js"></script>
@@ -50,6 +51,14 @@
                 chart2 = new google.visualization.ColumnChart(document.getElementById('chart2_div'));
                 chart2.draw(data2,options);
 
+
+                (new google.visualization.LineChart(document.getElementById("chart2_1_div"))).draw(google.visualization.arrayToDataTable([
+                    ["No. of Ip Addresses", "% Data Transferred", "90% Line"],
+                    {% for row in ip_cdf_stats %}
+                    [{{row.0}}, {{row.1}}, 0.9],
+                    {% endfor %}
+                    ]), {"title": "IP data transfer cdf"});
+
                 var org_stats = [
                 ['Organization Name', 'Data Transferred'],
                 {% for row in org_stats %}
@@ -59,6 +68,13 @@
 
                 var chart3 = new google.visualization.PieChart(document.getElementById('chart3_div'));
                 chart3.draw(google.visualization.arrayToDataTable(org_stats), {title:"Data Transferred Per Organization"});
+
+                (new google.visualization.LineChart(document.getElementById("chart3_1_div"))).draw(google.visualization.arrayToDataTable([
+                    ["No. of Organizations", "% Data Transferred", "90% Line"],
+                    {% for row in org_cdf_stats %}
+                    [{{row.0}}, {{row.1}}, 0.9],
+                    {% endfor %}
+                    ]), {"title": "Org data transfer cdf"});
 
                 var no_streams_with_time_array = [
                 ["time", "no_streams"],
@@ -162,7 +178,53 @@
                     {% for row in streams_stats %}
                     "{{row.1.0}}",
                     {% endfor %}
-                ]
+                ];
+
+
+                (new google.visualization.PieChart(document.getElementById('chart15_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Content Type', "No. of Objects fetched"],
+                    {% for row in categories %}
+                    ["{{row.0}}", {{row.1.0}}],
+                    {% endfor %}
+                    ]), {'title' : 'Content Types and No. of objects fetched', "pieSliceText": "value"});
+                (new google.visualization.PieChart(document.getElementById('chart16_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Content Type', "Data transferred"],
+                    {% for row in categories %}
+                    ["{{row.0}}", {{row.1.1}}],
+                    {% endfor %}
+                    ]), {'title' : 'Content Types and Data transferred', "pieSliceText": "value"});
+
+                (new google.visualization.PieChart(document.getElementById('chart17_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Content Type', "No. of Objects fetched"],
+                    {% for row in categories_2 %}
+                    ["{{row.0}}", {{row.1.0}}],
+                    {% endfor %}
+                    ]), {'title' : 'Content Types and No. of objects fetched', "pieSliceText": "value"});
+                (new google.visualization.PieChart(document.getElementById('chart18_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Content Type', "Data transferred"],
+                    {% for row in categories_2 %}
+                    ["{{row.0}}", {{row.1.1}}],
+                    {% endfor %}
+                    ]), {'title' : 'Content Types and Data transferred', "pieSliceText": "value"});
+
+                (new google.visualization.PieChart(document.getElementById('chart19_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Data Type', "Data transferred"],
+                    {% for row in content_wise_data %}
+                    ["{{row.0}}", {{row.1}}],
+                    {% endfor %}
+                    ]), {'title' : 'Data Types and Data transferred', "pieSliceText": "value"});
+                (new google.visualization.PieChart(document.getElementById('chart20_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Data Type', "No. of hosts"],
+                    {% for row in content_wise_data %}
+                    ["{{row.0}}", {{row.2}}],
+                    {% endfor %}
+                    ]), {'title' : 'Data Types and No. of hosts', "pieSliceText": "value"});
+                (new google.visualization.PieChart(document.getElementById('chart21_div'))).draw(google.visualization.arrayToDataTable([
+                    ['Data Type', "No. of objects fetched"],
+                    {% for row in content_wise_data %}
+                    ["{{row.0}}", {{row.3}}],
+                    {% endfor %}
+                    ]), {'title' : 'Data Types and No. of objects fetched', "pieSliceText": "value"});
 
             }
 
@@ -265,7 +327,9 @@
         </div>
         <div id="chart_div" style="width:6900px;height:1000px;overflow:scroll;"></div>
         <div id="chart2_div" style="width:3900px;height:1000px;overflow:scroll;"></div>
+        <div id="chart2_1_div" style="width:1000px;height:1000px;overflow:scroll;"></div>
         <div id="chart3_div" style="width: 1000px; height: 600px;" name="chart3"></div>
+        <div id="chart3_1_div" style="width:1000px;height:1000px;overflow:scroll;"></div>
         <div id="chart4_div" style="width: 1000px; height: 600px;" name="chart4"></div>
         <div id="chart4_1_div" style="width: 1000px; height: 600px;" name="chart4.1"></div>
         <div id="chart5_div" style="width: 1000px; height: 600px;" name="chart5"></div>
@@ -293,6 +357,7 @@
                         <th>Mean, variance of rtt(uplink)</th>
                         <th>Mean, variance of rtt(downlink)</th>
                         <th>urls of objects transferred</th>
+                        <th>Content Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -308,6 +373,23 @@
                         <td>{{row.10}}, {{row.11}}</td>
                         <td>{{row.12}}, {{row.13}}</td>
                         <td>{%for item in row.7 %}<a href="{{item.1}}" target="_blank">{{item.0}}</a>, {% endfor %}</td>
+                        <td>{{row.16}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="tablesorter">
+                <thead>
+                    <tr class="even">
+                        <th>Other IP</th>
+                        <th>urls of objects transferred</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in all_streams_data %}
+                    <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{row.9}}</td>
+                        <td>{%for item in row.7 %}{{item.1}}::{% endfor %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -321,6 +403,7 @@
                         <th width=300px>URL</th>
                         <th width=100px>Download Start time</th>
                         <th width=100px>Time to download</th>
+                        <th width=100px>Content Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -330,6 +413,7 @@
                         <td><a href="{{item.2}}" target = "_blank">{{item.1}}</a></td>
                         <td>{{item.3}}</td>
                         <td>{{item.4}}</td>
+                        <td>{{item.5}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -337,6 +421,73 @@
         </div>
         <div id="dns_div">
             {%include "hosts_list_template.html" %}
+        </div>
+        <div id = "harsummary">
+            Total Size = {{totalSize}} Bytes
+            <br />
+            <div id = "chart15_div" style = "width:600px; height:500px;"></div>
+            <div id = "chart16_div" style = "width:600px; height:500px;"></div>
+            <div id = "chart17_div" style = "width:600px; height:500px;"></div>
+            <div id = "chart18_div" style = "width:600px; height:500px;"></div>
+            <table width = "1000px" class="tablesorter">
+                <thead>
+                    <tr class="even">
+                        <th width="100px">Type</th>
+                        <th width = "100px">No. of objects</th>
+                        <th width = "100px">Downloaded(KB)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in categories_2 %}
+                    <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{row.0}}</td>
+                        <td>{{row.1.0}}</td>
+                        <td>{{row.1.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            <table width = "1000px" class="tablesorter">
+                <thead>
+                    <tr class="even">
+                        <th width="100px">Type</th>
+                        <th width = "100px">No. of objects</th>
+                        <th width = "100px">Downloaded(KB)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in categories %}
+                    <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{row.0}}</td>
+                        <td>{{row.1.0}}</td>
+                        <td>{{row.1.1}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Data Transferred</th>
+                        <th>No. of Hosts</th>
+                        <th>No. of Objects fetched</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in content_wise_data %}
+                    <tr>
+                        <td>{{item.0}}</td>
+                        <td>{{item.1}}</td>
+                        <td>{{item.2}}</td>
+                        <td>{{item.3}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div id = "chart19_div" style = "width:600px; height:500px;"></div>
+            <div id = "chart20_div" style = "width:600px; height:500px;"></div>
+            <div id = "chart21_div" style = "width:600px; height:500px;"></div>
         </div>
         <div id = "harviewer" style = "width:1000px;height:800px;"> </div>
 

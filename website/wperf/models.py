@@ -93,3 +93,5 @@ class HostIp(models.Model):
 class HostPcap(models.Model):
     hostId = models.ForeignKey(Host)
     pcapId = models.ForeignKey(PcapFile)
+
+

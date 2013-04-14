@@ -7,7 +7,7 @@ import tornado.wsgi
 import sys,os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import tornado_mappings
-
+from tornado import autoreload
 
 def run_tornado_server(p):
     define('port', type=int, default=p)

@@ -1,0 +1,16 @@
+  1   0.000000 110.225.77.68 -> 122.160.120.56 DNS 89 Standard query 0xf988  A timesofindia.indiatimes.com
+  4   2.539978 122.160.120.56 -> 110.225.77.68 DNS 205 Standard query response 0xf988  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+ 85   3.522932 110.225.77.68 -> 122.160.120.56 DNS 91 Standard query 0xe34e  A static.rewards.indiatimes.com
+148   4.677686 122.160.120.56 -> 110.225.77.68 DNS 209 Standard query response 0xe34e  CNAME static.rewards.indiatimes.com.edgesuite.net CNAME a1095.g.akamai.net A 96.17.182.57 A 96.17.182.40
+206   6.287537 110.225.77.68 -> 122.160.120.56 DNS 85 Standard query 0x5c98  A b.scorecardresearch.com
+207   6.298189 110.225.77.68 -> 122.160.120.56 DNS 87 Standard query 0x767f  A www.googletagservices.com
+241   7.117991 122.160.120.56 -> 110.225.77.68 DNS 199 Standard query response 0x5c98  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.41 A 96.17.182.58
+247   7.195779 122.160.120.56 -> 110.225.77.68 DNS 175 Standard query response 0x767f  CNAME pagead46.l.doubleclick.net A 74.125.236.25 A 74.125.236.26 A 74.125.236.13
+792  13.502176 110.225.77.68 -> 122.160.120.56 DNS 80 Standard query 0x939e  A www.indiatimes.com
+815  14.140691 110.225.77.68 -> 122.160.120.56 DNS 102 Standard query 0x1f91  A card.cricket.timesofindia.indiatimes.com
+902  16.335569 122.160.120.56 -> 110.225.77.68 DNS 187 Standard query response 0x939e  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.74 A 96.17.182.50
+923  16.895715 122.160.120.56 -> 110.225.77.68 DNS 209 Standard query response 0x1f91  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.74 A 96.17.182.65
+1060  19.223611 110.225.77.68 -> 122.160.120.56 DNS 84 Standard query 0x5372  A mytimes.indiatimes.com
+1089  19.508016 110.225.77.68 -> 122.160.120.56 DNS 81 Standard query 0xba10  A media.indiatimes.in
+1109  19.727591 122.160.120.56 -> 110.225.77.68 DNS 195 Standard query response 0x5372  CNAME mytimes.indiatimes.com.edgesuite.net CNAME a1095.g.akamai.net A 96.17.182.57 A 96.17.182.40
+1139  19.937308 122.160.120.56 -> 110.225.77.68 DNS 189 Standard query response 0xba10  CNAME media.indiatimes.in.edgesuite.net CNAME a1737.g.akamai.net A 96.17.182.40 A 96.17.182.65

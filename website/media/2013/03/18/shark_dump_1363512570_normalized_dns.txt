@@ -1,0 +1,6 @@
+  1   0.000000 110.225.77.68 -> 122.160.120.56 DNS 89 Standard query 0xe523  A timesofindia.indiatimes.com
+  2   0.179043 122.160.120.56 -> 110.225.77.68 DNS 205 Standard query response 0xe523  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.40 A 96.17.182.65
+741   3.423803 110.225.77.68 -> 122.160.120.56 DNS 80 Standard query 0x6ca0  A www.indiatimes.com
+747   3.482766 122.160.120.56 -> 110.225.77.68 DNS 187 Standard query response 0x6ca0  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.74 A 96.17.182.65
+781   3.700781 110.225.77.68 -> 122.160.120.56 DNS 81 Standard query 0x54ca  A media.indiatimes.in
+789   3.742883 122.160.120.56 -> 110.225.77.68 DNS 189 Standard query response 0x54ca  CNAME media.indiatimes.in.edgesuite.net CNAME a1737.g.akamai.net A 96.17.182.40 A 96.17.182.65

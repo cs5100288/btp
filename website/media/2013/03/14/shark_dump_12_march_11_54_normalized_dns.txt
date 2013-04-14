@@ -1,0 +1,4 @@
+  1   0.000000 106.204.32.66 -> 122.160.120.56 DNS 89 Standard query 0x3da9  A timesofindia.indiatimes.com
+  5   0.071466 122.160.120.56 -> 106.204.32.66 DNS 205 Standard query response 0x3da9  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+560   5.641167 106.204.32.66 -> 122.160.120.56 DNS 78 Standard query 0x7539  A static.gaana.com
+565   5.712025 122.160.120.56 -> 106.204.32.66 DNS 180 Standard query response 0x7539  CNAME www.gaana.com.edgesuite.net CNAME a1017.b.akamai.net A 96.17.182.27 A 96.17.182.32

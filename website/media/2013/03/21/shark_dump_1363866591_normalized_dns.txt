@@ -1,0 +1,22 @@
+  1   0.000000 117.96.39.17 -> 122.160.120.56 DNS 89 Standard query 0xb69d  A timesofindia.indiatimes.com
+ 72   0.777869 117.96.39.17 -> 122.160.120.56 DNS 80 Standard query 0x2ae2  A ads.indiatimes.com
+262   1.635943 117.96.39.17 -> 202.56.230.7 DNS 89 Standard query 0x6b85  A in-cdn.effectivemeasure.net
+265   1.651507 117.96.39.17 -> 202.56.230.7 DNS 81 Standard query 0x2cec  A info.indiatimes.com
+294   1.710182 202.56.230.7 -> 117.96.39.17 DNS 463 Standard query response 0x6b85  CNAME effectivemeasure.edgesuite.net CNAME a1015.g.akamai.net A 96.17.182.48 A 96.17.182.43
+342   2.090522 202.56.230.7 -> 117.96.39.17 DNS 460 Standard query response 0x2cec  CNAME info.indiatimes.com.edgesuite.net CNAME a567.g.akamai.net A 96.17.182.41 A 96.17.182.40
+486   2.519504 117.96.39.17 -> 122.160.120.56 DNS 95 Standard query 0xd368  A blogs.timesofindia.indiatimes.com
+505   2.561961 117.96.39.17 -> 122.160.120.56 DNS 86 Standard query 0x6789  A timesofindia.hotklix.com
+646   5.000967 117.96.39.17 -> 202.56.230.7 DNS 89 Standard query 0xb69d  A timesofindia.indiatimes.com
+661   5.781004 117.96.39.17 -> 202.56.230.7 DNS 80 Standard query 0x2ae2  A ads.indiatimes.com
+663   6.002595 117.96.39.17 -> 122.160.120.56 DNS 89 Standard query 0xbe0e  A timesofindia.indiatimes.com
+721   6.579315 202.56.230.7 -> 117.96.39.17 DNS 477 Standard query response 0xb69d  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.40 A 96.17.182.65
+742   6.589457 202.56.230.7 -> 117.96.39.17 DNS 531 Standard query response 0x2ae2  A 223.165.31.15
+805   7.521814 117.96.39.17 -> 202.56.230.7 DNS 95 Standard query 0xd368  A blogs.timesofindia.indiatimes.com
+806   7.565655 117.96.39.17 -> 202.56.230.7 DNS 86 Standard query 0x6789  A timesofindia.hotklix.com
+813   7.709740 202.56.230.7 -> 117.96.39.17 DNS 474 Standard query response 0xd368  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.65 A 96.17.182.73
+814   7.709824 202.56.230.7 -> 117.96.39.17 DNS 462 Standard query response 0x6789  CNAME www.hotklix.com.edgesuite.net CNAME a1370.b.akamai.net A 23.11.235.42 A 23.11.235.43
+824   7.977291 117.96.39.17 -> 122.160.120.56 DNS 82 Standard query 0x1d0c  A static.chartbeat.com
+825  11.006609 117.96.39.17 -> 202.56.230.7 DNS 89 Standard query 0xbe0e  A timesofindia.indiatimes.com
+826  11.180326 202.56.230.7 -> 117.96.39.17 DNS 477 Standard query response 0xbe0e  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+827  12.983081 117.96.39.17 -> 202.56.230.7 DNS 82 Standard query 0x1d0c  A static.chartbeat.com
+828  13.130172 202.56.230.7 -> 117.96.39.17 DNS 438 Standard query response 0x1d0c  CNAME chartbeat.edgekey.net CNAME e6059.g.akamaiedge.net A 23.35.66.127

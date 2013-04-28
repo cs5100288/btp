@@ -143,17 +143,33 @@ def nextsite(request):
 
 @csrf_exempt
 def addobservation(request, pk):
-    if request.method == 'POST':
+    if True or request.method == 'POST':
         datas = request.POST['data']
+        # print "addobservation"
         data = eval(datas)
-        for key in data.keys():
-            w = models.Website()
-            w.testId = models.Test.objects.get(pk=int(pk))
-            w.url = key
-            w.pageLoadTime = data[key]['pageLoadTime']
-            w.rating = data[key]['rating']
-            w.progressTimeMap = data[key]['progressTimeMap']
-            w.save()
+        # print data
+        for i in ['0', '1']:
+            data_i = (data[i])
+            for key in data_i:
+                # print "key=", key
+                w = models.Website()
+                w.user_agent = int(i)
+                # print "key=", key
+                w.testId = models.Test.objects.get(pk=int(pk))
+                # print "key=", key
+                w.url = key.replace('\/', '/')
+                # print "key=", key
+                data_i_key = eval(data_i[key])
+                w.pageLoadTime = data_i_key['pageLoadTime']
+                # print "key=", key
+                w.rating = data_i_key['rating']
+                w.signalStrength = data_i_key['signalStrength']
+                # print "key=", key
+                w.progressTimeMap = data_i_key['partialPageLoadTimes']
+                # print "key=", key
+                # print "Saving ", key
+                w.save()
+                # print "Saved ", key
         return HttpResponse("")
 
 
@@ -289,15 +305,17 @@ def makeStats(filename, csvpath, bandwidth_path):
                 writer = csv.writer(csvfile)
                 all_streams_writer = csv.writer(all_streams_csvfile)
                 stream_processes = {}
+                print "makeStats: Writing stream csvs"
                 for s in streams:
                     cmd2 = """tshark -r %s -q -z conv,tcp,tcp.stream==%d""" % (filename, s)
-                    cmd3 = """tshark -n -R "tcp.stream==%d && http contains GET" -r %s -T fields -e http.request.full_uri -e frame.time_relative """ % (s, filename)
+                    cmd3 = """tshark -n -R "tcp.stream==%d && http.request==1" -r %s -T fields -e http.request.full_uri -e frame.time_relative """ % (s, filename)
 
                     q1 = subprocess.Popen(cmd2, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                     q2 = subprocess.Popen(cmd3, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                     stream_processes[s] = [q1, q2]
                 # for s in streams:
-                    print "makeStats: Writing stream csvs (%d/%d)" % (s, streams[-1])
+                    sys.stdout.write("\rmakeStats: Writing stream csvs (%04d/%04d)" % (s, streams[-1]))
+                    sys.stdout.flush()
                     q1, q2 = stream_processes[s]
                     l = q1.stdout.read().split("\n")[5]
                     m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+):.*?\s+<->\s+(\d+\.\d+\.\d+\.\d+):.*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+', l + "  ")  # trailing space so that last \s+ can act as delimiter
@@ -371,10 +389,13 @@ def get_org_from_ip(ip):
         orgs = models.Organization.objects.filter(lower__lt=i, higher__gt=i)
         if len(orgs) == 1:
             return orgs[0]
-    except:
-        pass
+    except Exception as e:
+        print e
+
     s = ip
+    # print "trying whois"
     whois_result = whois(s)
+    # print "whois_result:", whois_result
     ip_range, org_name = None, None
     try:
         ip_range = whois_result['NetRange']
@@ -405,12 +426,14 @@ def get_org_from_ip(ip):
         except:
             pass
     if ip_range and org_name:
+        # print "ip_range and org_name found"
         hyphen = ip_range.find('-')
         lower, higher = ip_range[:hyphen].strip(), ip_range[hyphen + 1:].strip()
         lower_int, higher_int = map(ip_to_int, (lower, higher))
         org, org_created = models.Organization.objects.get_or_create(name=org_name, ip_range=ip_range, lower=lower_int, higher=higher_int)
         if org_created:
             org.save()
+    # print "org:", org
     return org
 
 
@@ -538,17 +561,19 @@ def pcap_analyze(request, pcap_name):
     no_toi_connections_with_time = []
     n = 0
     t = 0
+    # toi_ips = ["96.17.181.16", "96.17.181.27", "96.17.181.18", "96.17.182.25", "125.252.226.152"]
+    toi_ips = ["96.17.182.25", "125.252.226.152"]
     for stream_event in stream_events:
         if stream_event[-1] == 0:
             n += 1
-            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+            if stream_event[-2] in toi_ips:
                 t += 1
         else:
             n -= 1
-            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+            if stream_event[-2] in toi_ips:
                 t -= 1
         no_streams_with_time.append((stream_event[0], n))
-        if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+        if stream_event[-2] in toi_ips:
             no_toi_connections_with_time.append((stream_event[0], t))
     mydict['no_streams_with_time'] = no_streams_with_time
     mydict['no_toi_connections_with_time'] = no_toi_connections_with_time
@@ -569,8 +594,10 @@ def pcap_analyze(request, pcap_name):
     streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), op.split('\n')))))))
     all_streams_data = []
     if False or all((not os.path.exists(a + "_streams_%d.csv" % i)) for i in xrange(11)):
+        print "Writing Individual stream csvs"
         for s in streams:
-            print "Writing Individual stream csvs: (%d/%d)" % (s, streams[-1])
+            sys.stdout.write("\rWriting Individual stream csvs: (%04d/%04d)" % (s, streams[-1]))
+            sys.stdout.flush()
             cmd_stream = "tshark -r %s -R 'tcp.analysis.ack_rtt and tcp.stream == %d' -T fields -e ip.dst -e tcp.analysis.ack_rtt -E separator=, -E quote=n -E occurrence=f" % (m.uploadedfile.path, s)
             p_stream = subprocess.Popen(cmd_stream, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
             stream_csv = a + "_streams_%d.csv" % s
@@ -625,7 +652,18 @@ def pcap_analyze(request, pcap_name):
             url_time_list = []
             for i, u_st in enumerate(url_starttime_list):
                 url, starttime = u_st
-                host = models.Host.objects.get(name=urlparse(url).netloc)
+                try:
+                    h = models.Host.objects.get(name=urlparse(url).netloc)
+                except ObjectDoesNotExist:
+                    sock_addrs = socket.gethostbyname_ex(urlparse(url).netloc)[-1]
+                    s = sock_addrs[0]
+                    org = get_org_from_ip(s)
+                    h = models.Host.objects.create(org=org, stream_type=None, name=urlparse(url).netloc)
+                    h.save()
+                    for s in sock_addrs:
+                        ip = models.HostIp.objects.get_or_create(hostId=h, ip=s)[0]
+                        ip.save()
+                host = h
                 content_type = "Unknown"
                 if host:
                     if host.stream_type:
@@ -642,7 +680,8 @@ def pcap_analyze(request, pcap_name):
             try:
                 row += streams_stats[int(row[0])]
             except KeyError:
-                row += ([streams_data[s][0]] + (["No Data"] * 4) + [0])
+                # row += ([streams_data[s][0]] + (["No Data"] * 4) + [0])
+                row += ([s] + (["No Data"] * 4) + [0])
 
             row.append(url_time_list)
             all_objects_data += url_time_list
@@ -672,6 +711,8 @@ def pcap_analyze(request, pcap_name):
     with open(retransmit_path) as retransmit_file:
         retransmission_times = map(float, retransmit_file.read().split())
 
+    print "Evaluated list of retransmission times"
+
     def parse_bandwidth_data(bandwidth_path, threshold, retransmission_times):  # Threshold -- the speed that generally is available on mobile network.
         bandwidth_data = []
         with open(bandwidth_path) as f:
@@ -688,7 +729,7 @@ def pcap_analyze(request, pcap_name):
     mydict['bandwidth_data'] = parse_bandwidth_data(bandwidth_path, m.uploadLimit + m.downloadLimit, retransmission_times)
     mydict['bandwidth_uplink_data'] = parse_bandwidth_data(bandwidth_uplink_path, m.uploadLimit, retransmission_times)
     mydict['bandwidth_downlink_data'] = parse_bandwidth_data(bandwidth_downlink_path, m.downloadLimit, retransmission_times)
-
+    print "parsed bandwidth data (total, uplink, downlink)"
     for k in d:
         # l = len(d[k])
         xx = []
@@ -708,6 +749,7 @@ def pcap_analyze(request, pcap_name):
         xx += (maxlen - len(xx)) * [[0, 0, 0, 0, '']]
         ips.append(other(_myip, k))
         d2.append([other(_myip, k), xx])
+    print "evaluated candle_sticks"
     # print d2
     mydict['ips'] = sorted(ips)
     mydict['myip'] = myip[0] if len(myip) == 1 else "Could not be determined!"
@@ -725,22 +767,34 @@ def pcap_analyze(request, pcap_name):
         for row in reader:
             ip1, ip2, transfer, startTime, duration = row
             ip_stats.append([other(_myip, [ip1, ip2]), transfer])
-
+    print "Evaluated ip_stats from csv2_path"
     org_stats = {}
-    for ip, transfer in ip_stats:
+    print "starting to get organization for ips"
+    for ctr, [ip, transfer] in enumerate(ip_stats):
+        sys.stdout.write("\rcalling get_org_from_ip for %15s......%04d/%04d" % (ip, ctr, len(ip_stats)))
+        sys.stdout.flush()
         org = get_org_from_ip(ip)
         org_stats.setdefault(org.name, [0, 0, 0])  # data transferred, streams, no. dns requests
         org_stats[org.name][0] += int(transfer)
+    print "Evaluated org_stat from ip_stats"
+
     stream_stats = []
     with open(csvpath) as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             ip1, ip2, transfer, startTime, duration, url = row
             stream_stats.append(other(_myip, [ip1, ip2]))
-    for ip in stream_stats:
+    print "Evaluated stream_stats from csvpath"
+
+    print "more org stats"
+    print ""
+    for ctr, ip in enumerate(stream_stats):
+        sys.stdout.write("\rcalling get_org_from_ip for %15s......%04d/%04d" % (ip, ctr, len(stream_stats)))
+        sys.stdout.flush()
         on = get_org_from_ip(ip).name
         org_stats.setdefault(on, [0, 0, 0])
         org_stats[on][1] += 1
+    print "Evaluated more org_stat from stream_stats"
 
     mydict['ip_stats'] = ip_stats
     mydict['dns_list'] = dns_list.values()
@@ -757,6 +811,7 @@ def pcap_analyze(request, pcap_name):
         org_cdf_stats.append(org_cdf_stats[-1] + tr)
     mx = org_cdf_stats[-1]
     mydict['org_cdf_stats'] = list(enumerate(list(float(x)/mx for x in org_cdf_stats)))
+    print "Evaluated ip_cdf_stats and org_cdf_stats"
 
     # print mydict['ip_cdf_stats']
 
@@ -793,6 +848,7 @@ def pcap_analyze(request, pcap_name):
     for h in mydict['hosts']:
         org_stats.setdefault(h.org.name, [0, 0,     0])
         org_stats[h.org.name][2] += 1
+    print "Evaluated more org_stats from list of dnshosts"
 
     mydict['org_stats'] = org_stats.items()
     return render_to_response('pcap_analyze.html', mydict)

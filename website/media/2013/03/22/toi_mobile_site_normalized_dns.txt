@@ -1,0 +1,28 @@
+  1   0.000000 117.96.39.17 -> 122.160.120.56 DNS 89 Standard query 0x697a  A timesofindia.indiatimes.com
+  2   0.014027 117.96.39.17 -> 122.160.120.56 DNS 85 Standard query 0x23c7  A www1.m.timesofindia.com
+ 26   4.373410 117.96.39.17 -> 202.56.230.7 DNS 77 Standard query 0xc793  A wap.bonzai.mobi
+ 28   4.738856 202.56.230.7 -> 117.96.39.17 DNS 461 Standard query response 0xc793  CNAME bonzaidelivery-1424264725.ap-southeast-1.elb.amazonaws.com A 122.248.235.235
+ 32   5.005982 117.96.39.17 -> 202.56.230.7 DNS 89 Standard query 0x697a  A timesofindia.indiatimes.com
+ 33   5.019827 117.96.39.17 -> 202.56.230.7 DNS 85 Standard query 0x23c7  A www1.m.timesofindia.com
+ 39   5.444443 202.56.230.7 -> 117.96.39.17 DNS 477 Standard query response 0x697a  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+ 45   5.495207 202.56.230.7 -> 117.96.39.17 DNS 536 Standard query response 0x23c7  A 223.165.25.44
+ 70   6.025198 117.96.39.17 -> 122.160.120.56 DNS 93 Standard query 0xc8f7  A s3-ap-southeast-1.amazonaws.com
+ 73   6.042765 117.96.39.17 -> 122.160.120.56 DNS 86 Standard query 0xb256  A bonzaitracker.cntdy.mobi
+141  11.030845 117.96.39.17 -> 202.56.230.7 DNS 93 Standard query 0xc8f7  A s3-ap-southeast-1.amazonaws.com
+142  11.045660 117.96.39.17 -> 202.56.230.7 DNS 86 Standard query 0xb256  A bonzaitracker.cntdy.mobi
+204  16.036328 117.96.39.17 -> 122.160.120.56 DNS 93 Standard query 0xc8f7  A s3-ap-southeast-1.amazonaws.com
+205  16.051018 117.96.39.17 -> 122.160.120.56 DNS 86 Standard query 0xb256  A bonzaitracker.cntdy.mobi
+225  17.724142 202.56.230.7 -> 117.96.39.17 DNS 331 Standard query response 0xc8f7  A 103.246.148.192
+236  18.579317 202.56.230.7 -> 117.96.39.17 DNS 468 Standard query response 0xb256  CNAME bonzaitracker-677895152.ap-southeast-1.elb.amazonaws.com A 54.251.115.88
+273  20.850612 117.96.39.17 -> 122.160.120.56 DNS 87 Standard query 0xa188  A timeslog.timesofindia.com
+274  20.854487 117.96.39.17 -> 122.160.120.56 DNS 85 Standard query 0x517c  A b.scorecardresearch.com
+277  21.041546 117.96.39.17 -> 202.56.230.7 DNS 93 Standard query 0xc8f7  A s3-ap-southeast-1.amazonaws.com
+280  21.052269 117.96.39.17 -> 202.56.230.7 DNS 86 Standard query 0xb256  A bonzaitracker.cntdy.mobi
+335  24.604874 202.56.230.7 -> 117.96.39.17 DNS 331 Standard query response 0xc8f7  A 103.246.148.192
+336  24.605132 117.96.39.17 -> 202.56.230.7 ICMP 359 Destination unreachable (Port unreachable)
+350  25.238874 202.56.230.7 -> 117.96.39.17 DNS 452 Standard query response 0xb256  CNAME bonzaitracker-677895152.ap-southeast-1.elb.amazonaws.com A 54.251.115.88
+351  25.239156 117.96.39.17 -> 202.56.230.7 ICMP 480 Destination unreachable (Port unreachable)
+370  25.856104 117.96.39.17 -> 202.56.230.7 DNS 87 Standard query 0xa188  A timeslog.timesofindia.com
+371  25.856314 117.96.39.17 -> 202.56.230.7 DNS 85 Standard query 0x517c  A b.scorecardresearch.com
+419  28.475256 202.56.230.7 -> 117.96.39.17 DNS 471 Standard query response 0x517c  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.41 A 96.17.182.58
+420  28.475493 202.56.230.7 -> 117.96.39.17 DNS 538 Standard query response 0xa188  A 223.165.25.37

@@ -23,7 +23,9 @@ def run_tornado_server(p):
                 ('.*', tornado.web.FallbackHandler, dict(fallback=wsgi_app)),
                 ]
         url_mappings = tornado_mappings.tornado_urlpatterns + url_mappings
-        tornado_app = tornado.web.Application(url_mappings, debug=True)
+        tornado_app = tornado.web.Application(url_mappings, debug=True,
+            static_path=os.path.join(os.path.dirname(__file__), "Video_Performance", "static")
+            )
         server = tornado.httpserver.HTTPServer(tornado_app)
         server.listen(options.port)
         tornado.ioloop.IOLoop.instance().start()

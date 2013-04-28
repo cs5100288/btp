@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Pcap List/Upload</title>   
+        <title>Pcap List/Upload</title>
         <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     </head>
     <body>
@@ -12,7 +12,8 @@
         {% for uploadedfile in pcap_files %}
         <li>
             <a href="{{ uploadedfile.uploadedfile.url }}">{{ uploadedfile.shortfilename }}</a>
-            <a href="/wperf/pcap/analyze/{{uploadedfile.shortfilename}}">analysis</a>
+            <a href="/wperf/pcap/analyze/{{uploadedfile.shortfilename}}">analysis(non-blocking)</a>
+            <a href="/wperf/pcap/analyze_old/{{uploadedfile.shortfilename}}">analysis(blocking)</a>
         </li>
         {% endfor %}
         </ul>
@@ -32,4 +33,4 @@
             <p><input type="submit" value="Upload" /></p>
         </form>
     </body>
-</html> 
+</html>

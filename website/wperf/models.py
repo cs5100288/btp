@@ -30,6 +30,8 @@ class Website(models.Model):
     pageTotalSize = models.IntegerField(default=0)
     rating = models.FloatField(default=0)
     progressTimeMap = models.CharField(max_length=1000)
+    signalStrength = models.IntegerField(default=0)
+    user_agent = models.IntegerField()
     #gsmLocationAreaCode=models.BigIntegerField(default=0)
 
 

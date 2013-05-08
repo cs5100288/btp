@@ -60,6 +60,11 @@ class PcapFile(models.Model):
     downloadLimit = models.FloatField(default=1085.0/8)
 
 
+class ObsPcapFile(models.Model):
+    uploadedfile = models.FileField(upload_to="%Y/%m/%d")
+    shortfilename = models.CharField(max_length=100)
+
+
 class Organization(models.Model):
     name = models.CharField(max_length=1000)
     ip_range = models.CharField(max_length=500)

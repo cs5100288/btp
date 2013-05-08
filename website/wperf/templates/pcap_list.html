@@ -14,6 +14,7 @@
             <a href="{{ uploadedfile.uploadedfile.url }}">{{ uploadedfile.shortfilename }}</a>
             <a href="/wperf/pcap/analyze/{{uploadedfile.shortfilename}}">analysis(non-blocking)</a>
             <a href="/wperf/pcap/analyze_old/{{uploadedfile.shortfilename}}">analysis(blocking)</a>
+            <a href="/wperf/experiment_pcap/analyze/{{uploadedfile.shortfilename}}">analysis(for whole experiment)</a>
         </li>
         {% endfor %}
         </ul>

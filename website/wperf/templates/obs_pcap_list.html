@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pcap List/Upload</title>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    </head>
+    <body>
+    <!-- List of uploaded documents -->
+    <a href="/wperf/pcap/obs_analyze_pca">PCA Analysis</a>
+    {% if pcap_files %}
+        <ul id="file_list">
+        {% for uploadedfile in pcap_files %}
+        <li>
+            <a href="{{ uploadedfile.uploadedfile.url }}">{{ uploadedfile.shortfilename }}</a>
+            <a href="/wperf/pcap/obs_analyze/{{uploadedfile.shortfilename}}">Analysis</a>
+            <!-- <a href="/wperf/experiment_pcap/analyze/{{uploadedfile.shortfilename}}">analysis(for whole experiment)</a> -->
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p></p>
+    {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{%url wperf.views.obs_pcap_upload %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.uploadfile.label }} {{ form.uploadfile.help_text }}</p>
+            <p>
+                {{ form.uploadfile.errors }}
+                {{ form.uploadfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+    </body>
+</html>

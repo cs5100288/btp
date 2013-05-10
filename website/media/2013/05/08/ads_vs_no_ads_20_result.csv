@@ -1,0 +1,3 @@
+name,first_dns_addr,first_get_addr,dns_lookup_time,tcp_handshake_time,redirection_time,peak_bandwidth,total_page_size,num_objects,rtt_mean,rtt_std_deviation,pageLoadTime,signalStrength
+withoutads_toi,,,7.200865999999998,0.05116199999999971,-5.163102999999996,168.928,1225250,199,0.4284376471291868,1.549045001029084,0,0
+withads_toi,,,8.628970999999979,0.1272209999999916,-1.8491219999999657,98.31,760599,147,2.471771994949497,9.655434368640249,0,0

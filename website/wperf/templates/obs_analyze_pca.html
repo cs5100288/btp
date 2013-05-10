@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pcap List/Upload</title>
+        <link rel="stylesheet" href="/static/jquery-plugins/tablesorter/themes/blue/style.css" type="text/css" id="" media="print, projection, screen" />
+        <script src="/static/jquery-latest.js"></script>
+        <script src="/static/jquery-plugins/tablesorter/jquery.tablesorter.min.js"></script>
+    </head>
+    <body>
+    <!-- List of uploaded documents -->
+    <p>Regression Score: {{regr_score}}</p>
+    <p>svr_rbf Score: {{svr_rbf_score}}</p>
+    <p>svr_lin Score: {{svr_lin_score}}</p>
+    <p>svr_poly Score: {{svr_poly_score}}</p>
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coeff in coeffs %}
+            <tr>
+                <td>{{coeff.0}}</td>
+                <td>{{coeff.1}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Scores of different parameters according to <a href="http://scikit-learn.org/0.13/auto_examples/plot_feature_selection.html#example-plot-feature-selection-py">Univariate Feature Selection</a></p>
+    <img src="data:image/png;base64,{{scores_img}}"/>
+    </body>
+    <script type="text/javascript">
+    $(function(){
+        $("table").tablesorter();
+        $("#harviewer").html("<iframe src='{{HARVIEWER_URL}}?inputUrl="+location.origin+"{{har_url}}"+"' style='width:1000px; height:1600px;'></iframe>")
+    });
+    </script>
+</html>

@@ -13,12 +13,36 @@ import commands
 import datetime
 import threading
 import subprocess
+import collections
+from PIL import Image
+from StringIO import StringIO
 from time import sleep
 from urlparse import urlparse
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as pyplot
+from pylab import figure, axes, pie, title
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+import mpl_toolkits.axisartist as AA
+import numpy as np
+import matplotlib.mlab as mlab
+import sklearn
+from sklearn import svm
+from sklearn.svm import SVC
+from sklearn.svm import SVR
+from sklearn.cross_validation import StratifiedKFold
+from sklearn.feature_selection import RFECV
+from sklearn.datasets import make_classification
+from sklearn.metrics import zero_one_loss
+from sklearn import datasets, linear_model
+from sklearn import datasets, svm
+from sklearn.feature_selection import SelectPercentile, f_classif
+import pylab as pl
 # django Imports
 from django.views.decorators.csrf import csrf_exempt
 from django.template import *
 from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.http import *
 from django.core.urlresolvers import reverse
@@ -26,7 +50,7 @@ from django.core.exceptions import *
 import models
 import forms
 import settings
-
+# from runserver import printOpenFiles
 #  Tornado Imports
 import tornado.web
 import tornado.websocket
@@ -41,6 +65,33 @@ from multiprocessing.pool import ThreadPool
 # from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 # from matplotlib.figure import Figure
 from HTMLParser import HTMLParser
+
+
+def read_and_close_stdout(self):
+    op = self.stdout.read()
+    try:
+        self.stdout.close()
+    except:
+        pass
+    try:
+        self.stdin.close()
+    except:
+        pass
+    try:
+        self.stderr.close()
+    except:
+        pass
+    return op
+
+setattr(subprocess.Popen, 'read_and_close_stdout', read_and_close_stdout)
+
+def open_subprocess(cmd):
+    return subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+
+
+def apply(fns, values):
+    assert len(fns) == len(values)
+    return list(fns[i](values[i]) for i in xrange(len(fns)))
 
 
 def meanvariance(l):
@@ -78,7 +129,7 @@ def int_to_ip(i):
 
 def whois(ip):
     p = subprocess.Popen(" ".join(["whois", ip]), stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    op = p.stdout.read()
+    op = p.read_and_close_stdout()
     if op.find("Unknown AS number or IP network") == 0:
         print "UNKNOWN"
         h = urllib.urlopen("http://whois.net/ip-address-lookup/%s" % ip).read()
@@ -143,17 +194,66 @@ def nextsite(request):
 
 @csrf_exempt
 def addobservation(request, pk):
-    if request.method == 'POST':
+    if True or request.method == 'POST':
         datas = request.POST['data']
+        # print "addobservation"
         data = eval(datas)
-        for key in data.keys():
-            w = models.Website()
-            w.testId = models.Test.objects.get(pk=int(pk))
-            w.url = key
-            w.pageLoadTime = data[key]['pageLoadTime']
-            w.rating = data[key]['rating']
-            w.progressTimeMap = data[key]['progressTimeMap']
-            w.save()
+        # print data
+        for i in ['0', '1']:
+            data_i = (data[i])
+            for key in data_i:
+                # print "key=", key
+                w = models.Website()
+                w.user_agent = int(i)
+                # print "key=", key
+                w.testId = models.Test.objects.get(pk=int(pk))
+                # print "key=", key
+                w.url = key.replace('\/', '/')
+                # print "key=", key
+                data_i_key = eval(data_i[key])
+                w.pageLoadTime = data_i_key['pageLoadTime']
+                # print "key=", key
+                w.rating = data_i_key['rating']
+                w.signalStrength = data_i_key['signalStrength']
+                # print "key=", key
+                w.progressTimeMap = data_i_key['partialPageLoadTimes']
+                # print "key=", key
+                # print "Saving ", key
+                w.save()
+                # print "Saved ", key
+        return HttpResponse("")
+
+
+@csrf_exempt
+def addobservation_adcomparison(request, pk):
+    # print "hello"
+    if True or request.method == 'POST':
+        datas = request.POST['data']
+        # print "addobservation"
+        data = eval(datas)
+        # print data
+        for i in ['0', '1']:
+            data_i = (data[i])
+            for key in data_i:
+                # print "key=", key
+                w = models.Website_AdComparison()
+                w.ads_blocked = int(i)
+                # print "key=", key
+                w.testId = models.Test.objects.get(pk=int(pk))
+                # print "key=", key
+                w.url = key.replace('\/', '/')
+                # print "key=", key
+                data_i_key = eval(data_i[key])
+                w.pageLoadTime = data_i_key['pageLoadTime']
+                # print "key=", key
+                w.rating = data_i_key['rating']
+                w.signalStrength = data_i_key['signalStrength']
+                # print "key=", key
+                w.progressTimeMap = data_i_key['partialPageLoadTimes']
+                # print "key=", key
+                # print "Saving ", key
+                w.save()
+                # print "Saved ", key
         return HttpResponse("")
 
 
@@ -221,7 +321,49 @@ def pcap_upload(request):
             return HttpResponseRedirect(reverse(pcap_list))
     else:
         form = forms.UploadForm()
-        return render_to_response('pcap_list.html', {'pcap_files': [], 'form': form}, context_instance=RequestContext(request))
+        return render_to_response('obs_pcap_list.html', {'pcap_files': [], 'form': form}, context_instance=RequestContext(request))
+
+
+def obs_pcap_list(request):
+    form = forms.UploadForm()
+    return render_to_response('obs_pcap_list.html', {'pcap_files': models.ObsPcapFile.objects.all(), 'form': form}, context_instance=RequestContext(request))
+
+
+def obs_pcap_upload(request):
+    if request.method == 'POST':
+        form = forms.UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            newpcap = models.ObsPcapFile(uploadedfile=request.FILES['uploadfile'], shortfilename=request.FILES['uploadfile'].name)
+            newpcap.save()
+            s = newpcap.uploadedfile.name
+            s = s[s.rfind('/') + 1:]
+            newpcap.shortfilename = s
+            newpcap.save()
+            return HttpResponseRedirect(reverse(obs_pcap_list))
+    else:
+        form = forms.UploadForm()
+        return render_to_response('obs_pcap_list.html', {'pcap_files': [], 'form': form}, context_instance=RequestContext(request))
+
+
+def ads_vs_no_ads_pcap_list(request):
+    form = forms.UploadForm()
+    return render_to_response('ads_vs_no_ads_pcap_list.html', {'pcap_files': models.AdsVsNoAdsPcapFile.objects.all(), 'form': form}, context_instance=RequestContext(request))
+
+
+def ads_vs_no_ads_pcap_upload(request):
+    if request.method == 'POST':
+        form = forms.UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            newpcap = models.AdsVsNoAdsPcapFile(uploadedfile=request.FILES['uploadfile'], shortfilename=request.FILES['uploadfile'].name)
+            newpcap.save()
+            s = newpcap.uploadedfile.name
+            s = s[s.rfind('/') + 1:]
+            newpcap.shortfilename = s
+            newpcap.save()
+            return HttpResponseRedirect(reverse(ads_vs_no_ads_pcap_list))
+    else:
+        form = forms.UploadForm()
+        return render_to_response('ads_vs_no_ads_pcap_list.html', {'pcap_files': [], 'form': form}, context_instance=RequestContext(request))
 
 
 class DNS(object):
@@ -241,7 +383,9 @@ def getDNSPackets(filename, dnspath=None):
         cmd1 = """tshark -n -R "dns" -r %s""" % (filename)
         p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(dnspath, 'w') as f:
-            r = p.stdout.read()
+            r = p.read_and_close_stdout()
+            p.stdout.close()
+            p.stderr.close()
             f.write(r)
         print "Done writing dns file"
 
@@ -281,7 +425,7 @@ def makeStats(filename, csvpath, bandwidth_path):
     p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 
     p_ip = subprocess.Popen(cmd1_ip, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), p.stdout.read().split('\n')))))))
+    streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), p.read_and_close_stdout().split('\n')))))))
     if not os.path.exists(csvpath) or not os.path.exists(all_streams_csvpath):
         print "makeStats: Writing stream csvs"
         with open(csvpath, "wb") as csvfile:
@@ -289,21 +433,23 @@ def makeStats(filename, csvpath, bandwidth_path):
                 writer = csv.writer(csvfile)
                 all_streams_writer = csv.writer(all_streams_csvfile)
                 stream_processes = {}
+                print "makeStats: Writing stream csvs"
                 for s in streams:
                     cmd2 = """tshark -r %s -q -z conv,tcp,tcp.stream==%d""" % (filename, s)
-                    cmd3 = """tshark -n -R "tcp.stream==%d && http contains GET" -r %s -T fields -e http.request.full_uri -e frame.time_relative """ % (s, filename)
+                    cmd3 = """tshark -n -R "tcp.stream==%d && http.request==1" -r %s -T fields -e http.request.full_uri -e frame.time_relative """ % (s, filename)
 
                     q1 = subprocess.Popen(cmd2, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                     q2 = subprocess.Popen(cmd3, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                     stream_processes[s] = [q1, q2]
                 # for s in streams:
-                    print "makeStats: Writing stream csvs (%d/%d)" % (s, streams[-1])
+                    sys.stdout.write("\rmakeStats: Writing stream csvs (%04d/%04d)" % (s, streams[-1]))
+                    sys.stdout.flush()
                     q1, q2 = stream_processes[s]
-                    l = q1.stdout.read().split("\n")[5]
+                    l = q1.read_and_close_stdout().split("\n")[5]
                     m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+):.*?\s+<->\s+(\d+\.\d+\.\d+\.\d+):.*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+', l + "  ")  # trailing space so that last \s+ can act as delimiter
                     ip1, ip2, transfer, startTime, duration = m.groups(0)
 
-                    objects = map(lambda x: x, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), q2.stdout.read().strip().split('\n'))))
+                    objects = map(lambda x: x, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), q2.read_and_close_stdout().strip().split('\n'))))
                     objs = []
                     num_objects = len(objects)
                     for o in objects:
@@ -319,7 +465,7 @@ def makeStats(filename, csvpath, bandwidth_path):
         print "makeStats: Writing ip csvs"
         with open(csv2_path, 'wb') as csv2_file:
             writer = csv.writer(csv2_file)
-            for line in p_ip.stdout.read().split("\n")[5:]:
+            for line in p_ip.read_and_close_stdout().split("\n")[5:]:
                 m = re.match(r'\s*(\d+\.\d+\.\d+\.\d+).*?\s+<->\s+(\d+\.\d+\.\d+\.\d+).*?\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)\s+(.*?)\s+(.*?)\s+?', line)
                 if not m:
                     continue
@@ -328,33 +474,40 @@ def makeStats(filename, csvpath, bandwidth_path):
     print "makeStats: Finished"
 
 
-def makeBandwidthStats(filename, csvpath, bandwidth_path, bandwidth_uplink_path, bandwidth_downlink_path, retransmit_path, myip):
-    print "makeBandwidthStats: Beginning"
-    print "makeBandwidthStats: Bandwidth"
-    if not os.path.exists(bandwidth_path):
+def makeBandwidthStats(filename, csvpath=None, bandwidth_path=None, bandwidth_uplink_path=None, bandwidth_downlink_path=None, retransmit_path=None, myip=None, debug=True):
+    if debug:
+        print "makeBandwidthStats: Beginning"
+    if debug:
+        print "makeBandwidthStats: Bandwidth"
+    if bandwidth_path and not os.path.exists(bandwidth_path):
         cmd4 = """tshark -r %s -q -z io,stat,0.5""" % (filename)
         q4 = subprocess.Popen(cmd4, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_path, 'w') as f:
-            f.write(q4.stdout.read())
-    print "makeBandwidthStats: Uplink Bandwidth"
-    if not os.path.exists(bandwidth_uplink_path):
+            f.write(q4.read_and_close_stdout())
+    if debug:
+        print "makeBandwidthStats: Uplink Bandwidth"
+    if bandwidth_uplink_path and not os.path.exists(bandwidth_uplink_path):
         cmd5 = """tshark -r %s -q -z io,stat,0.5,ip.src==%s""" % (filename, myip)  # uplink
         q5 = subprocess.Popen(cmd5, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_uplink_path, 'w') as f:
-            f.write(q5.stdout.read())
-    print "makeBandwidthStats: Downlink Bandwidth"
-    if not os.path.exists(bandwidth_downlink_path):
+            f.write(q5.read_and_close_stdout())
+    if debug:
+        print "makeBandwidthStats: Downlink Bandwidth"
+    if bandwidth_downlink_path and not os.path.exists(bandwidth_downlink_path):
         cmd6 = """tshark -r %s -q -z io,stat,0.5,ip.dst==%s""" % (filename, myip)  # downlink
         q6 = subprocess.Popen(cmd6, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(bandwidth_downlink_path, 'w') as f:
-            f.write(q6.stdout.read())
-    print "makeBandwidthStats: Retransmissions"
-    if not os.path.exists(retransmit_path):
+            f.write(q6.read_and_close_stdout())
+    if debug:
+        print "makeBandwidthStats: Retransmissions"
+    if retransmit_path and not os.path.exists(retransmit_path):
         cmd7 = """tshark -r %s -R "tcp.analysis.retransmission" -T fields -e frame.time_relative""" % (filename)
         q7 = subprocess.Popen(cmd7, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         with open(retransmit_path, 'w') as f:
-            f.write(q7.stdout.read())
-    print "makeBandwidthStats: Finished"
+            f.write(q7.read_and_close_stdout())
+    if debug:
+        print "makeBandwidthStats: Finished"
+
 
 
 def intersect(l1, l2):
@@ -371,10 +524,13 @@ def get_org_from_ip(ip):
         orgs = models.Organization.objects.filter(lower__lt=i, higher__gt=i)
         if len(orgs) == 1:
             return orgs[0]
-    except:
-        pass
+    except Exception as e:
+        print e
+
     s = ip
+    # print "trying whois"
     whois_result = whois(s)
+    # print "whois_result:", whois_result
     ip_range, org_name = None, None
     try:
         ip_range = whois_result['NetRange']
@@ -405,12 +561,14 @@ def get_org_from_ip(ip):
         except:
             pass
     if ip_range and org_name:
+        # print "ip_range and org_name found"
         hyphen = ip_range.find('-')
         lower, higher = ip_range[:hyphen].strip(), ip_range[hyphen + 1:].strip()
         lower_int, higher_int = map(ip_to_int, (lower, higher))
         org, org_created = models.Organization.objects.get_or_create(name=org_name, ip_range=ip_range, lower=lower_int, higher=higher_int)
         if org_created:
             org.save()
+    # print "org:", org
     return org
 
 
@@ -448,6 +606,35 @@ def summarize_har(harpath):
         return totalSize, contentTypes, categories_2
 
 
+def parse_bandwidth_data(bandwidth_path, threshold, retransmission_times):  # Threshold -- the speed that generally is available on mobile network.
+    bandwidth_data = []
+    with open(bandwidth_path) as f:
+        lines = f.read().split("\n")[7:]
+        for line in lines:
+            match = re.match(r'\|\s+(.*?)\s+<>\s+(.*?)\s+\|\s+(.*?)\s+\|\s+(.*?)\s+\|', line)
+            if match:
+                startTime, endTime, frames, bytes = match.groups(0)
+                endTime = (float(endTime))
+                startTime = (float(startTime))
+                no_retransmissions = len(filter(lambda x: True if float(startTime) <= x < float(endTime) else False, retransmission_times))
+                bandwidth_data.append((startTime, endTime, int(frames), int(bytes), (float(bytes) / (float(endTime) - float(startTime)) / 1000.0), threshold, no_retransmissions*10))
+    return bandwidth_data
+
+
+def makeRttStats(filename, rtt_csv_path):
+    if not os.path.exists(rtt_csv_path):
+        cmd_rtt = """tshark -r %s -R "tcp.analysis.ack_rtt" -T fields -e frame.number -e frame.time_relative -e tcp.analysis.ack_rtt -E separator=, -E quote=n -E occurrence=f""" % (filename)
+        p_rtt = subprocess.Popen(cmd_rtt, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        with open(rtt_csv_path, "w") as csv3_file:
+            csv3_file.write(p_rtt.read_and_close_stdout())
+    rtt_data = []
+    with open(rtt_csv_path) as csv3_file:
+        csvreader = csv.reader(csv3_file)
+        for row in csvreader:
+            rtt_data.append(apply([int, float, float], row))
+    return rtt_data
+
+
 def pcap_analyze(request, pcap_name):
     mydict = {}
     m = models.PcapFile.objects.get(shortfilename=pcap_name)
@@ -459,11 +646,10 @@ def pcap_analyze(request, pcap_name):
             cmd = "python %s/main.py %s %s" % (settings.PCAP2HAR_LOC, m.uploadedfile.path, harpath)
             print cmd
             harmaker = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            print harmaker.stdout.read()
+            print harmaker.read_and_close_stdout()
             mydict['totalSize'], mydict['categories'], mydict['categories_2'] = summarize_har(harpath)
             mydict['categories'] = mydict['categories'].items()
             mydict['categories_2'] = mydict['categories_2'].items()
-
 
         except Exception as e:
             print e
@@ -475,17 +661,8 @@ def pcap_analyze(request, pcap_name):
     bandwidth_path = a + "_bandwidth.txt"
     if not os.path.exists(csvpath) or not os.path.exists(csv2_path) or not os.path.exists(bandwidth_path) or not os.path.exists(all_streams_csvpath):
         makeStats(m.uploadedfile.path, csvpath, bandwidth_path)
-    if True or not os.path.exists(csv3_path):
-        cmd_rtt = "tshark -r %s -R 'tcp.analysis.ack_rtt' -T fields -e frame.time_relative -e tcp.analysis.ack_rtt -E separator=, -E quote=n -E occurrence=f" % (m.uploadedfile.path)
-        p_rtt = subprocess.Popen(cmd_rtt, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-        with open(csv3_path, "w") as csv3_file:
-            csv3_file.write(p_rtt.stdout.read())
-    rtt_data = []
-    with open(csv3_path) as csv3_file:
-        csvreader = csv.reader(csv3_file)
-        for row in csvreader:
-            rtt_data.append(row)
-
+    rtt_data = makeRttStats(m.uploadedfile.path, csv3_path)
+    # print rtt_data
     mydict['rtt_data'] = rtt_data
 
     d = {}
@@ -538,17 +715,19 @@ def pcap_analyze(request, pcap_name):
     no_toi_connections_with_time = []
     n = 0
     t = 0
+    # toi_ips = ["96.17.181.16", "96.17.181.27", "96.17.181.18", "96.17.182.25", "125.252.226.152"]
+    toi_ips = ["96.17.182.25", "125.252.226.152"]
     for stream_event in stream_events:
         if stream_event[-1] == 0:
             n += 1
-            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+            if stream_event[-2] in toi_ips:
                 t += 1
         else:
             n -= 1
-            if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+            if stream_event[-2] in toi_ips:
                 t -= 1
         no_streams_with_time.append((stream_event[0], n))
-        if stream_event[-2] in ["96.17.181.16", "96.17.181.27", "96.17.181.18"]:
+        if stream_event[-2] in toi_ips:
             no_toi_connections_with_time.append((stream_event[0], t))
     mydict['no_streams_with_time'] = no_streams_with_time
     mydict['no_toi_connections_with_time'] = no_toi_connections_with_time
@@ -565,17 +744,19 @@ def pcap_analyze(request, pcap_name):
     cmd1 = "tshark -n -r %s -T fields -e tcp.stream" % (m.uploadedfile.path)
     streams_data = {}
     p = subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    op = p.stdout.read()
+    op = p.read_and_close_stdout()
     streams = sorted(list(set(map(int, filter(lambda x: len(x) > 0, map(lambda x: x.strip(), op.split('\n')))))))
     all_streams_data = []
     if False or all((not os.path.exists(a + "_streams_%d.csv" % i)) for i in xrange(11)):
+        print "Writing Individual stream csvs"
         for s in streams:
-            print "Writing Individual stream csvs: (%d/%d)" % (s, streams[-1])
+            sys.stdout.write("\rWriting Individual stream csvs: (%04d/%04d)" % (s, streams[-1]))
+            sys.stdout.flush()
             cmd_stream = "tshark -r %s -R 'tcp.analysis.ack_rtt and tcp.stream == %d' -T fields -e ip.dst -e tcp.analysis.ack_rtt -E separator=, -E quote=n -E occurrence=f" % (m.uploadedfile.path, s)
             p_stream = subprocess.Popen(cmd_stream, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
             stream_csv = a + "_streams_%d.csv" % s
             with open(stream_csv, 'w') as f:
-                f.write(p_stream.stdout.read())
+                f.write(p_stream.read_and_close_stdout())
 
     for s in streams:
         stream_csv = a + "_streams_%d.csv" % s
@@ -625,7 +806,18 @@ def pcap_analyze(request, pcap_name):
             url_time_list = []
             for i, u_st in enumerate(url_starttime_list):
                 url, starttime = u_st
-                host = models.Host.objects.get(name=urlparse(url).netloc)
+                try:
+                    h = models.Host.objects.get(name=urlparse(url).netloc)
+                except ObjectDoesNotExist:
+                    sock_addrs = socket.gethostbyname_ex(urlparse(url).netloc)[-1]
+                    s = sock_addrs[0]
+                    org = get_org_from_ip(s)
+                    h = models.Host.objects.create(org=org, stream_type=None, name=urlparse(url).netloc)
+                    h.save()
+                    for s in sock_addrs:
+                        ip = models.HostIp.objects.get_or_create(hostId=h, ip=s)[0]
+                        ip.save()
+                host = h
                 content_type = "Unknown"
                 if host:
                     if host.stream_type:
@@ -642,7 +834,8 @@ def pcap_analyze(request, pcap_name):
             try:
                 row += streams_stats[int(row[0])]
             except KeyError:
-                row += ([streams_data[s][0]] + (["No Data"] * 4) + [0])
+                # row += ([streams_data[s][0]] + (["No Data"] * 4) + [0])
+                row += ([s] + (["No Data"] * 4) + [0])
 
             row.append(url_time_list)
             all_objects_data += url_time_list
@@ -672,22 +865,90 @@ def pcap_analyze(request, pcap_name):
     with open(retransmit_path) as retransmit_file:
         retransmission_times = map(float, retransmit_file.read().split())
 
-    def parse_bandwidth_data(bandwidth_path, threshold, retransmission_times):  # Threshold -- the speed that generally is available on mobile network.
-        bandwidth_data = []
-        with open(bandwidth_path) as f:
-            lines = f.read().split("\n")[7:]
-            for line in lines:
-                match = re.match(r'\|\s+(.*?)\s+<>\s+(.*?)\s+\|\s+(.*?)\s+\|\s+(.*?)\s+\|', line)
-                if match:
-                    startTime, endTime, frames, bytes = match.groups(0)
-                    endTime = (float(endTime))
-                    no_retransmissions = len(filter(lambda x: True if float(startTime) <= x < float(endTime) else False, retransmission_times))
-                    bandwidth_data.append((startTime, endTime, frames, bytes, (float(bytes) / (float(endTime) - float(startTime)) / 1000.0), threshold, no_retransmissions*10))
-        return bandwidth_data
+    print "Evaluated list of retransmission times"
 
     mydict['bandwidth_data'] = parse_bandwidth_data(bandwidth_path, m.uploadLimit + m.downloadLimit, retransmission_times)
     mydict['bandwidth_uplink_data'] = parse_bandwidth_data(bandwidth_uplink_path, m.uploadLimit, retransmission_times)
     mydict['bandwidth_downlink_data'] = parse_bandwidth_data(bandwidth_downlink_path, m.downloadLimit, retransmission_times)
+    print "parsed bandwidth data (total, uplink, downlink)"
+
+    #combined b/w and no. of streams figure
+
+    # ax = axes([0.1, 0.1, 0.8, 0.8])
+    # labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+    # fracs = [15,30,45, 10]
+    # explode=(0, 0.05, 0, 0)
+    # pie(fracs, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True)
+    # title('Raining Hogs and Dogs', bbox={'facecolor':'0.8', 'pad':5})
+
+    bandwidth_data_x = list(float(a[1]) for a in mydict['bandwidth_data'])
+    bandwidth_data_y = list(float(a[4]) for a in mydict['bandwidth_data'])
+    bandwidth_cdf_y = list(bandwidth_data_y)
+    for i in xrange(1, len(bandwidth_cdf_y)):
+        bandwidth_cdf_y[i] = bandwidth_cdf_y[i] + bandwidth_cdf_y[i - 1]
+
+    no_streams_with_time_x = list(float(a[0]) for a in no_streams_with_time)
+    no_streams_with_time_y = list(float(a[1]) for a in no_streams_with_time)
+
+    f = figure(figsize=(16,6))
+    plt1 = f.add_subplot(111)
+    pyplot.subplots_adjust(right=0.75)
+    plt2 = plt1.twinx()
+    plt1.set_xlim(0, max(bandwidth_data_x[-1], no_streams_with_time_x[-1]))
+    plt1.set_ylim(0, max(bandwidth_data_y)*1.1)
+    plt2.set_ylim(0, max(no_streams_with_time_y)*1.1)
+
+    plt1.set_xlabel("Time")
+    plt1.set_ylabel("Bandwidth")
+    plt2.set_ylabel("No. of Streams")
+
+    p1, = plt1.plot(bandwidth_data_x, bandwidth_data_y, label="Bandwidth")
+    p2, = plt2.plot(no_streams_with_time_x, no_streams_with_time_y, label="No. Streams", color="r")
+
+    plt1.legend([p1, p2], ["Bandwidth", "No. of Streams"])
+
+
+    # plt1.axis["left"].label.set_color(p1.get_color())
+    # plt2.axis["right"].label.set_color(p2.get_color())
+
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    # x.save(output, "PNG")
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    # f.close()
+    mydict['bandwidth_numstreams_image_data'] = contents
+
+    f = figure(figsize=(16,6))
+    plt1 = f.add_subplot(111)
+    pyplot.subplots_adjust(right=0.75)
+    plt2 = plt1.twinx()
+    plt1.set_xlim(0, max(bandwidth_data_x[-1], no_streams_with_time_x[-1]))
+    plt1.set_ylim(0, max(bandwidth_cdf_y)*1.1)
+    plt2.set_ylim(0, max(no_streams_with_time_y)*1.1)
+
+    plt1.set_xlabel("Time")
+    plt1.set_ylabel("Bandwidth cdf")
+    plt2.set_ylabel("No. of Streams")
+
+    p1, = plt1.plot(bandwidth_data_x, bandwidth_cdf_y, label="Bandwidth CDF")
+    p2, = plt2.plot(no_streams_with_time_x, no_streams_with_time_y, label="No. Streams", color="r")
+
+    plt1.legend([p1, p2], ["Bandwidth CDF", "No. of Streams"])
+
+
+    # plt1.axis["left"].label.set_color(p1.get_color())
+    # plt2.axis["right"].label.set_color(p2.get_color())
+
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    # x.save(output, "PNG")
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    # f.close()
+    mydict['bandwidthcdf_numstreams_image_data'] = contents
 
     for k in d:
         # l = len(d[k])
@@ -708,6 +969,7 @@ def pcap_analyze(request, pcap_name):
         xx += (maxlen - len(xx)) * [[0, 0, 0, 0, '']]
         ips.append(other(_myip, k))
         d2.append([other(_myip, k), xx])
+    print "evaluated candle_sticks"
     # print d2
     mydict['ips'] = sorted(ips)
     mydict['myip'] = myip[0] if len(myip) == 1 else "Could not be determined!"
@@ -725,22 +987,34 @@ def pcap_analyze(request, pcap_name):
         for row in reader:
             ip1, ip2, transfer, startTime, duration = row
             ip_stats.append([other(_myip, [ip1, ip2]), transfer])
-
+    print "Evaluated ip_stats from csv2_path"
     org_stats = {}
-    for ip, transfer in ip_stats:
+    print "starting to get organization for ips"
+    for ctr, [ip, transfer] in enumerate(ip_stats):
+        sys.stdout.write("\rcalling get_org_from_ip for %15s......%04d/%04d" % (ip, ctr, len(ip_stats)))
+        sys.stdout.flush()
         org = get_org_from_ip(ip)
         org_stats.setdefault(org.name, [0, 0, 0])  # data transferred, streams, no. dns requests
         org_stats[org.name][0] += int(transfer)
+    print "Evaluated org_stat from ip_stats"
+
     stream_stats = []
     with open(csvpath) as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             ip1, ip2, transfer, startTime, duration, url = row
             stream_stats.append(other(_myip, [ip1, ip2]))
-    for ip in stream_stats:
+    print "Evaluated stream_stats from csvpath"
+
+    print "more org stats"
+    print ""
+    for ctr, ip in enumerate(stream_stats):
+        sys.stdout.write("\rcalling get_org_from_ip for %15s......%04d/%04d" % (ip, ctr, len(stream_stats)))
+        sys.stdout.flush()
         on = get_org_from_ip(ip).name
         org_stats.setdefault(on, [0, 0, 0])
         org_stats[on][1] += 1
+    print "Evaluated more org_stat from stream_stats"
 
     mydict['ip_stats'] = ip_stats
     mydict['dns_list'] = dns_list.values()
@@ -752,15 +1026,14 @@ def pcap_analyze(request, pcap_name):
     total = ip_cdf_stats[-1]
     mydict['ip_cdf_stats'] = list(enumerate(list((1.0 * x) / total for x in ip_cdf_stats)))
     org_transfers = sorted((v[0] for v in org_stats.values()), lambda x, y: cmp(y, x))
-    org_cdf_stats=[0]
+    org_cdf_stats = [0]
     for tr in org_transfers:
         org_cdf_stats.append(org_cdf_stats[-1] + tr)
     mx = org_cdf_stats[-1]
     mydict['org_cdf_stats'] = list(enumerate(list(float(x)/mx for x in org_cdf_stats)))
+    print "Evaluated ip_cdf_stats and org_cdf_stats"
 
     # print mydict['ip_cdf_stats']
-
-
     def sign(x):
         return 0 if x == 0 else 1 if x > 0 else -1
     # for dns in sorted(dns_list.values(), cmp=(lambda a, b: sign(min(float(q[0]) for q in a.queries) - min(float(q[0]) for q in b.queries)))):
@@ -793,9 +1066,444 @@ def pcap_analyze(request, pcap_name):
     for h in mydict['hosts']:
         org_stats.setdefault(h.org.name, [0, 0,     0])
         org_stats[h.org.name][2] += 1
+    print "Evaluated more org_stats from list of dnshosts"
 
     mydict['org_stats'] = org_stats.items()
+
     return render_to_response('pcap_analyze.html', mydict)
+
+
+def ff_analyze(request):
+    ff_pcaps = models.PcapFile.objects.filter(shortfilename__startswith="ff_nocache")
+    mydict = {}
+    plts = []
+    legends = []
+    f = figure(figsize=(16, 6))
+    plt1 = f.add_subplot(111)
+    for ff_pcap in ff_pcaps:
+        mydict['pcaps'] = []
+        name, ext = os.path.splitext(ff_pcap.uploadedfile.path)
+        bandwidth_path = name + "_bandwidth.txt"
+        bandwidth_data = parse_bandwidth_data(bandwidth_path, 0, [])
+
+        plt1.set_xlabel("Time")
+        plt1.set_ylabel("Bandwidth cdfs")
+        bandwidth_data_x = list(float(a[1]) for a in bandwidth_data)
+        bandwidth_data_y = list(float(a[4]) for a in bandwidth_data)
+        bandwidth_cdf_y = list(bandwidth_data_y)
+        for i in xrange(1, len(bandwidth_cdf_y)):
+            bandwidth_cdf_y[i] = bandwidth_cdf_y[i] + bandwidth_cdf_y[i - 1]
+        p1, = plt1.plot(bandwidth_data_x, bandwidth_cdf_y, label="Bandwidth CDF")
+        plts.append(p1)
+        legends.append(ff_pcap.shortfilename)
+
+    # plt1.set_ylim(0, 4000)
+    plt1.legend(plts, legends, "lower right")
+    plt1.set_yticks(list(xrange(0, 4500, 250)))
+    f.patch.set_visible(False)
+    plt1.patch.set_visible(False)
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    # x.save(output, "PNG")
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    # f.close()
+    mydict['graph'] = contents
+
+    return HttpResponse('<img src="data:image/png;base64,%s"/>' % contents)
+
+
+class Website():
+
+    __slots__ = ('name',
+                 'first_dns_addr',
+                 'first_get_addr',
+                 'dns_lookup_time',
+                 'tcp_handshake_time',
+                 'redirection_time',
+                 'peak_bandwidth',
+                 'total_page_size',
+                 'num_objects',
+                 # 'median_bandwidth',
+                 'rtt_mean',
+                 'rtt_std_deviation',
+                 'pageLoadTime',
+                 'signalStrength'
+                 )
+
+    def items(self):
+        return [
+            (field_name, getattr(self, field_name))
+            for field_name in self.__slots__]
+
+    def __iter__(self):
+        for field_name in self.__slots__:
+            yield getattr(self, field_name)
+
+    def __getitem__(self, index):
+        return getattr(self, self.__slots__[index])
+
+    def __init__(self, *args):
+        assert (len(self.__slots__) == len(args))
+        self.bandwidth = []
+        self.stream_events = []
+        self.no_streams_with_time = []
+        # setattr(self, 'bandwidths', [])
+        # setattr(self, 'stream_events', [])
+        # setattr(self, 'no_streams_with_time', [])
+        for i in xrange(len(args)):
+            setattr(self, self.__slots__[i], args[i])
+
+    def to_dict(self):
+        d = dict()
+        for s in self.__slots__:
+            d[s] = getattr(self, s)
+        return d
+
+    def __str__(self):
+        return str(self.to_dict())
+
+    def __repr__(self):
+        return repr(self.to_dict())
+
+    def calculate_pgsize_numobjects(self, filename, begin_frame, end_frame):
+        cmd1 = """tshark -r %s -R "frame.number>%d && frame.number<%d" -T fields -e tcp.len """ % (filename, begin_frame, end_frame)
+        cmd2 = """tshark -r %s -R "frame.number>%d && frame.number<%d && http.request==1" -T fields -e tcp.len""" % (filename, begin_frame, end_frame)
+        p1, p2 = open_subprocess(cmd1), open_subprocess(cmd2)
+        self.total_page_size = sum(int(x.strip()) for x in p1.read_and_close_stdout().strip().split("\n") if len(x.strip()) > 0)
+        self.num_objects = len(p2.read_and_close_stdout().strip().split("\n"))
+
+
+class MToi(Website):
+    def calculate_delays(self, filename, begin_frame, begin_time, end_frame, end_time):
+        cmd1 = """tshark -r %s -R dns.qry.name==%s -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, self.first_dns_addr)
+        # print cmd1
+        p1 = open_subprocess(cmd1)
+        first_dns_frame_no, first_dns_req_time = apply([int, float], p1.read_and_close_stdout().split())
+
+        cmd2 = """tshark -r %s -R "frame.number>%d&&dns.resp.name==%s" -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_dns_frame_no, self.first_dns_addr)
+        p2 = open_subprocess(cmd2)
+        first_dns_resp_frame_no, first_dns_resp_time = apply([int, float], p2.read_and_close_stdout().split())
+
+        self.dns_lookup_time = first_dns_resp_time - first_dns_req_time
+
+        cmd3 = """tshark -r %s -R 'http.request.full_uri=="%s"&&frame.number>%d' -c 1 -T fields -e frame.number -e frame.time_relative -e tcp.stream """ % (filename, self.first_get_addr, first_dns_resp_frame_no)
+        p3 = open_subprocess(cmd3)
+        first_get_frame, first_get_time, first_get_stream_no = apply([int, float, int], p3.read_and_close_stdout().split())
+
+        cmd4 = """tshark -r %s -R "tcp.stream eq %d && tcp.flags.syn==1 && tcp.flags.ack==0" -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_get_stream_no)
+        cmd5 = """tshark -r %s -R "tcp.stream eq %d && tcp.flags.syn==0 && tcp.flags.ack==1" -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_get_stream_no)
+        p4 = open_subprocess(cmd4)
+        p5 = open_subprocess(cmd5)
+        first_syn_frame, first_syn_time = apply([int, float], p4.read_and_close_stdout().split())
+        first_ack_frame, first_ack_time = apply([int, float], p5.read_and_close_stdout().split())
+
+        self.tcp_handshake_time = first_ack_time - first_syn_time
+        self.redirection_time = first_syn_time - first_dns_resp_time
+        self.calculate_pgsize_numobjects(filename, begin_frame, end_frame)
+
+
+class DToi(Website):
+    def calculate_delays(self, filename, begin_frame, begin_time, end_frame, end_time):
+        cmd1 = """tshark -r %s -R 'http.request.full_uri=="http://timesofindia.com/"&&frame.number>=%d' -c 1 -T fields -e frame.number -e frame.time_relative -e tcp.stream """ % (filename, begin_frame)
+        p1 = open_subprocess(cmd1)
+        first_try_stream_no = int(p1.read_and_close_stdout().split()[-1])
+        # print first_try_stream_no
+        cmd2 = """tshark -r %s -R 'tcp.stream eq %d && tcp.flags.syn==1 && tcp.flags.ack==0 && frame.number>=%d' -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_try_stream_no, begin_frame)
+        p2 = open_subprocess(cmd2)
+        first_stream_syn_frane_no, first_stream_syn_time = apply([int, float], p2.read_and_close_stdout().split())
+
+        cmd3 = """tshark -r %s -R 'frame.number>=%d && dns.qry.name=="www.indiatimes.com" ' -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_stream_syn_frane_no)
+        cmd4 = """tshark -r %s -R 'frame.number>=%d && dns.resp.name=="www.indiatimes.com" ' -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, first_stream_syn_frane_no)
+        p3 = open_subprocess(cmd3)
+        p4 = open_subprocess(cmd4)
+        dns_qry_time = float(p3.read_and_close_stdout().split()[-1])
+        dns_resp_time = float(p4.read_and_close_stdout().split()[-1])
+        self.dns_lookup_time = dns_resp_time - dns_qry_time
+        delay1 = dns_qry_time - first_stream_syn_time
+
+        cmd5 = """tshark -r %s -R 'http.request.full_uri=="http://timesofindia.indiatimes.com/"&&frame.number>=%d' -c 1 -T fields -e frame.number -e frame.time_relative -e tcp.stream """ % (filename, first_stream_syn_frane_no)
+        # print cmd5
+        p5 = open_subprocess(cmd5)
+        op = p5.read_and_close_stdout().split()
+        # print op
+        arbit, real_begin_time, good_stream_no = apply([int, float, int], (op))
+
+        cmd4 = """tshark -r %s -R "tcp.stream eq %d && tcp.flags.syn==1 && tcp.flags.ack==0" -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, good_stream_no)
+        cmd5 = """tshark -r %s -R "tcp.stream eq %d && tcp.flags.syn==0 && tcp.flags.ack==1" -c 1 -T fields -e frame.number -e frame.time_relative """ % (filename, good_stream_no)
+        p4 = open_subprocess(cmd4)
+        p5 = open_subprocess(cmd5)
+        good_syn_frame, good_syn_time = apply([int, float], p4.read_and_close_stdout().split())
+        good_ack_frame, good_ack_time = apply([int, float], p5.read_and_close_stdout().split())
+        self.tcp_handshake_time = good_ack_time - good_syn_time
+        self.redirection_time = delay1 + real_begin_time - dns_resp_time
+        self.calculate_pgsize_numobjects(filename, begin_frame, end_frame)
+
+
+class MNytimes(MToi):
+    pass
+
+
+class DNytimes(MToi):
+    pass
+
+
+class MCricinfo(MToi):
+    pass
+
+
+class DCricinfo(MToi):
+    pass
+
+
+def compare_ads_vs_no_ads(filename):
+    sites = [
+        DToi('withoutads_toi', '', '', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+        DToi('withads_toi', '', '', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+    ]
+    return analyze_experiment_pcap(filename, sites)
+
+
+def analyze_experiment_pcap(filename, sites=None):
+    name, ext = os.path.splitext(filename)
+    makestats_csvpath = name + ".csv"
+    resultcsvpath = name + "_result.csv"
+    if not sites and os.path.exists(resultcsvpath):
+        sites = []
+        with open(resultcsvpath) as f:
+            r = csv.reader(f)
+            rows = list(r)
+            for row in rows[1:]:
+                for x in xrange(3, 9):
+                    row[x] = float(row[x])
+                w = Website(*row)
+                sites.append(w)
+        return sites
+    bandwidth_path = name + "_bandwidth.txt"
+    stream_events = []
+    if sites:
+        makeStats(filename, makestats_csvpath, None)
+        streams = []
+        with open(makestats_csvpath) as csvfile:
+            csvreader = csv.reader(csvfile)
+            for row in csvreader:
+                streams.append(row)
+
+        stream_events = []  # opening/closing times
+
+        for ind, stream in enumerate(streams):
+            ip1, ip2, transfer, startTime, duration, url = stream
+            startTime = float(startTime)
+            duration = float(duration)
+            stream_events.append((startTime, ind, None, 0))
+            stream_events.append((startTime + duration, ind, None, 1))
+        stream_events.sort(lambda x, y: (cmp(x[0], y[0])))
+        no_streams_with_time = []
+    n = 0
+    # t = 0
+    # toi_ips = ["96.17.181.16", "96.17.181.27", "96.17.181.18", "96.17.182.25", "125.252.226.152"]
+
+    makeBandwidthStats(filename, None, bandwidth_path, debug=False)
+    bandwidth_data = parse_bandwidth_data(bandwidth_path, 0, [])
+    # print bandwidth_data
+    rtt_csv_path = name + "_rtt.csv"
+    rtt_stats = makeRttStats(filename, rtt_csv_path)
+    # print rtt_stats
+    cmd5 = """tshark -r %s -d tcp.port==8000,http -R 'http.request.full_uri contains "http://agni.iitd.ac.in:8000/wperf/idle_url?sleep_time=" ' -T fields -e frame.number -e frame.time_relative """ % (filename)
+    p5 = open_subprocess(cmd5)
+    p5_result = p5.read_and_close_stdout()
+    separator_times = list(apply([int, float], line.strip().split()) for line in p5_result.strip().split("\n"))
+
+    if not sites:
+        sites = [
+            MToi('m-toi', 'timesofindia.com', 'http://m.timesofindia.com/', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+            DToi('toi', '', '', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+            MNytimes('m-nytimes', 'www.nytimes.com', 'http://mobile.nytimes.com/', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+            DNytimes('nytimes', 'www.nytimes.com', 'http://www.nytimes.com/', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+            MCricinfo('m-cricinfo', 'www.cricinfo.com', 'http://m.espncricinfo.com/', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0, 0),
+            DCricinfo('cricinfo', 'www.cricinfo.com', 'http://www.espncricinfo.com/', 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0., 0.0, 0, 00)
+        ]
+
+    if(len(separator_times) >= len(sites)):
+        separator_times = separator_times[1 + len(separator_times) - len(sites):]
+    separator_times.append([1000000000, 1000000000])
+
+    begin_frame, begin_time, [end_frame, end_time] = 0, 0, separator_times[0]
+    bandwidth_ind, rtt_ind, stream_event_ind = 0, 0, 0
+    separator_ctr = 0
+    while separator_ctr < len(separator_times):
+        # print "\t%s" % sites[separator_ctr].name
+        # print "calculate delays for", sites[separator_ctr]
+        sites[separator_ctr].calculate_delays(filename, begin_frame, begin_time, end_frame, end_time)
+
+        bandwidths = []
+        while(bandwidth_ind < len(bandwidth_data) and bandwidth_data[bandwidth_ind][1] <= end_time):
+            bandwidths.append(bandwidth_data[bandwidth_ind][4])
+            bandwidth_ind += 1
+
+        sites[separator_ctr].peak_bandwidth = max(bandwidths)
+        sites[separator_ctr].median_bandwidth = 0  # calculate this one too!
+
+        sites[separator_ctr].stream_events = []
+
+        # print sites[separator_ctr].stream_events
+        while(stream_event_ind < len(stream_events) and float(stream_events[stream_event_ind][0]) < end_time):
+            sites[separator_ctr].stream_events.append(stream_events[stream_event_ind])
+            stream_event_ind += 1
+
+        # print sites[separator_ctr].stream_events
+        for stream_event in sites[separator_ctr].stream_events:
+            if stream_event[-1] == 0:
+                n += 1
+            else:
+                n -= 1
+            sites[separator_ctr].no_streams_with_time.append((stream_event[0] - begin_time, n))
+
+        rtts = []
+        while(rtt_ind < len(rtt_stats) and rtt_stats[rtt_ind][0] <= end_frame):
+            rtts.append(rtt_stats[rtt_ind][-1])
+            rtt_ind += 1
+
+        sites[separator_ctr].rtt_mean, sites[separator_ctr].rtt_std_deviation = meanvariance(rtts) if rtts else (0, 0)
+
+        # print sites[separator_ctr]
+        separator_ctr += 1
+        if separator_ctr != len(separator_times):
+            begin_frame, begin_time, [end_frame, end_time] = end_frame, end_time, separator_times[separator_ctr]
+
+
+        # max_bandwidth = max(a[4] for a in bandwidth_data if a[1] <= separator_times[0][1])
+        # print max_bandwidth
+    # print sites
+    with open(resultcsvpath, "wb") as f:
+        wr = csv.writer(f)
+        slots = Website.__slots__
+        wr.writerow(slots)
+        for site in sites:
+            # print list(getattr(site, slot) for slot in Website.__slots__)
+            wr.writerow(list(getattr(site, slot) for slot in slots))
+    return sites
+
+
+def obs_pcap_analyze(request, pcap_name):
+    m = models.ObsPcapFile.objects.get(shortfilename=pcap_name)
+    mydict = {}
+    sites = analyze_experiment_pcap(m.uploadedfile.path)
+    mydict['cols'] = sites[0].__slots__
+    mydict['sites'] = list(list(getattr(site, slot) for slot in site.__slots__) for site in sites)
+    return render_to_response("obs_pcap_analyze.html", mydict)
+
+
+def ads_vs_no_ads_summary(request):
+    objs = models.AdsVsNoAdsPcapFile.objects.all()
+    mydict = {}
+
+    def avg(l):
+        return sum(l)/float(len(l))
+    successful_pcaps = []
+    without_ads_sites = []
+    with_ads_sites = []
+    for m in objs:
+        try:
+            sites = analyze_experiment_pcap(m.uploadedfile.path)
+            successful_pcaps.append(m)
+            obs_no = int(re.match(r'ads_vs_no_ads_(.*?)(_.*)?.pcap', m.shortfilename).groups()[0])
+            test = models.Test.objects.get(pk=obs_no)
+            # ws = models.Website.objects.filter(testId=test)
+            # m-toi:
+            without_ads_site = models.Website_AdComparison.objects.filter(testId=test, url="http://timesofindia.com", ads_blocked=0)[0]
+            with_ads_site = models.Website_AdComparison.objects.filter(testId=test, url="http://timesofindia.com", ads_blocked=1)[0]
+            sites[0].pageLoadTime, sites[0].signalStrength, sites[0].rating = without_ads_site.pageLoadTime, without_ads_site.signalStrength, without_ads_site.rating
+            sites[1].pageLoadTime, sites[1].signalStrength, sites[1].rating = with_ads_site.pageLoadTime, with_ads_site.signalStrength, with_ads_site.rating
+            without_ads_sites.append(without_ads_site)
+            with_ads_sites.append(with_ads_site)
+        except Exception:
+            pass
+    without_ads_ratings = list(float(s.rating) for s in without_ads_sites)
+    with_ads_ratings = list(float(s.rating) for s in with_ads_sites)
+    a, b = meanvariance(without_ads_ratings)
+    c, d = meanvariance(with_ads_ratings)
+
+    without_ads_ratings_sorted = sorted(without_ads_ratings)
+    with_ads_ratings_sorted = sorted(with_ads_ratings)
+
+    f = figure(figsize=(16, 6))
+    plt1 = f.add_subplot(111)
+    plt1.set_ylabel("number(count) of ratings")
+    plt1.set_xlabel("Ratings")
+
+    def drange(begin, end, step):
+        x = begin
+        while x < end:
+            yield x
+            x += step
+
+    without_ads_ratings_cdf = list(sum(1 for x in without_ads_ratings_sorted if x <= i) for i in drange(0, 5.1, 0.5))
+    with_ads_ratings_cdf = list(sum(1 for x in with_ads_ratings_sorted if x <= i) for i in drange(0, 5.1, 0.5))
+
+    p1 = plt1.plot(list(drange(0, 5.1, 0.5)), without_ads_ratings_cdf, label="Ratings Without Ads")
+    p2 = plt1.plot(list(drange(0, 5.1, 0.5)), with_ads_ratings_cdf, label="Ratings With Ads")
+
+    plt1.legend([p1[0], p2[0]], ["Without Ads ratings", "With ads ratings"], "lower right")
+    f.patch.set_visible(False)
+    plt1.patch.set_visible(False)
+
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    mydict['rating_cdf_image'] = contents
+
+    mydict['summary_data'] = []
+    mydict['summary_data'].append(["Average rating", a, c])
+    mydict['summary_data'].append(["St. Deviation rating", b, d])
+
+    return render_to_response("ads_vs_no_ads_sumary.html", mydict)
+
+
+def ads_vs_no_ads(request, pcap_name):
+    m = models.AdsVsNoAdsPcapFile.objects.get(shortfilename=pcap_name)
+    mydict = {}
+    sites = compare_ads_vs_no_ads(m.uploadedfile.path)
+    mydict['cols'] = sites[0].__slots__
+    mydict['sites'] = list(list(getattr(site, slot) for slot in site.__slots__) for site in sites)
+    # print sites[0].no_streams_with_time
+    # print sites[1].no_streams_with_time
+    withoutads_streams_x = list(a[0] for a in sites[0].no_streams_with_time)
+    withoutads_streams_y = list(a[1] for a in sites[0].no_streams_with_time)
+    withads_streams_x = list(a[0] for a in sites[1].no_streams_with_time)
+    withads_streams_y = list(a[1] for a in sites[1].no_streams_with_time)
+
+    f = figure(figsize=(16,6))
+    plt1 = f.add_subplot(111)
+    # pyplot.subplots_adjust(right=0.75)
+    # plt2 = plt1.twinx()
+    # plt1.set_xlim(0, max(bandwidth_data_x[-1], no_streams_with_time_x[-1]))
+    # plt1.set_ylim(0, max(bandwidth_cdf_y)*1.1)
+    # plt2.set_ylim(0, max(no_streams_with_time_y)*1.1)
+
+    plt1.set_xlabel("Time")
+    plt1.set_ylabel("No. of streams")
+
+    p1, = plt1.plot(withoutads_streams_x, withoutads_streams_y, label="Without Ads")
+    p2, = plt1.plot(withads_streams_x, withads_streams_y, label="With Ads")
+
+    plt1.legend([p1, p2], ["Without ads", "With Ads"])
+
+    f.patch.set_visible(False)
+    plt1.patch.set_visible(False)
+
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    # x.save(output, "PNG")
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    # f.close()
+    mydict['no_streams_graph'] = contents
+    return render_to_response('ads_vs_no_ads_analyze.html', mydict)
 
 
 def pcap_dnsquerylist(request, pcap_name):
@@ -854,18 +1562,17 @@ def hosts_toggleBlocked(request, id):
 
 def hosts_file(request):
     blocked_hosts = models.Host.objects.filter(blocked=True)
-    hosts_begin = """
-127.0.0.1 localhost
-
-# The following lines are desirable for IPv6 capable hosts
-::1     ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-
-#Blocked Hosts begin:
-"""
+    hosts_begin = "\n".join(["127.0.0.1 localhost",
+                            "",
+                            "# The following lines are desirable for IPv6 capable hosts",
+                            "::1     ip6-localhost ip6-loopback",
+                            "fe00::0 ip6-localnet",
+                            "ff00::0 ip6-mcastprefix",
+                            "ff02::1 ip6-allnodes",
+                            "ff02::2 ip6-allrouters",
+                            "",
+                            "#Blocked Hosts begin:",
+                             ])
     return HttpResponse(hosts_begin + "\n".join("127.0.0.1 %s" % h.name for h in blocked_hosts))
 
 
@@ -880,24 +1587,17 @@ def orgs_list(request):
 
 _workers = ThreadPool(10)
 
+
 def run_background(func, callback, args=(), kwds={}):
     def _callback(result):
         IOLoop.instance().add_callback(lambda: callback(result))
     _workers.apply_async(func, args, kwds, _callback)
 
+
 # # blocking task like querying to MySQL
 def blocking_task(n):
     sleep(n)
     return "slept %d seconds\n" % n
-
-# class Handler(RequestHandler):
-#     @asynchronous
-#     def get(self):
-#         run_background(blocking_task, self.on_complete, (10,))
-
-#     def on_complete(self, res):
-#         self.write("Test {0}<br/>".format(res))
-#         self.finish()
 
 
 class PcapAnalyzeHandler(tornado.web.RequestHandler):
@@ -914,11 +1614,29 @@ class PcapAnalyzeHandler(tornado.web.RequestHandler):
         except Exception as e:
             self.result = repr(e)
         return self.result
-        # self.finish()
 
     def on_complete(self, result):
         self.write(result)
         self.finish()
+
+
+class ObsPcapAnalyzeHandler(PcapAnalyzeHandler):
+    def analyze(self):
+        print "analyzing", self.pcap_name
+        try:
+            self.result = obs_pcap_analyze(None, self.pcap_name).content
+        except Exception as e:
+            self.result = repr(e)
+        return self.result
+
+
+class AdsVsNoAdsPcapAnalyzeHandler(PcapAnalyzeHandler):
+    def analyze(self):
+        try:
+            self.result = ads_vs_no_ads(None, self.pcap_name).content
+        except Exception as e:
+            self.result = repr(e)
+        return self.result
 
 
 class IdleUrlHandler(tornado.web.RequestHandler):
@@ -1091,3 +1809,188 @@ class GeoIpHandler(tornado.web.RequestHandler):
         op['longitude'], wp = self.find_val(wp, "Longitude:")
         op['latitude'], wp = self.find_val(wp, "Latitude:")
         self.write(json.dumps(op))
+
+
+def obs_analyze_pca(request):
+    mydict = {}
+    obs_pcaps = models.ObsPcapFile.objects.all()
+    successful_pcaps = []
+    pca_data = []
+    ratings = []
+    slots = Website.__slots__[3:]
+    slots = [
+             'pageLoadTime',
+             'rtt_mean',
+             'rtt_std_deviation',
+             'num_objects',
+             'redirection_time',
+             'signalStrength',
+             'dns_lookup_time',
+             'tcp_handshake_time',
+             'total_page_size',
+             'peak_bandwidth'
+             ]
+    # slots = ['rtt_mean', 'dns_lookup_time', 'tcp_handshake_time']
+    for m in obs_pcaps:
+        try:
+            sites = analyze_experiment_pcap(m.uploadedfile.path)
+            successful_pcaps.append(m)
+            obs_no = int(re.match(r'obs_(.*?)(_.*)?.pcap', m.shortfilename).groups()[0])
+            test = models.Test.objects.get(pk=obs_no)
+            # ws = models.Website.objects.filter(testId=test)
+            # m-toi:
+            m_toi_site = models.Website.objects.filter(testId=test, url="http://timesofindia.com", user_agent=0)[0]
+            d_toi_site = models.Website.objects.filter(testId=test, url="http://timesofindia.com", user_agent=1)[0]
+            sites[0].pageLoadTime, sites[0].signalStrength = m_toi_site.pageLoadTime, m_toi_site.signalStrength
+            sites[1].pageLoadTime, sites[1].signalStrength = d_toi_site.pageLoadTime, d_toi_site.signalStrength
+
+            m_nytimes_site = models.Website.objects.filter(testId=test, url="http://www.nytimes.com", user_agent=0)[0]
+            d_nytimes_site = models.Website.objects.filter(testId=test, url="http://www.nytimes.com", user_agent=1)[0]
+            sites[2].pageLoadTime, sites[2].signalStrength = m_nytimes_site.pageLoadTime, m_nytimes_site.signalStrength
+            sites[3].pageLoadTime, sites[3].signalStrength = d_nytimes_site.pageLoadTime, d_nytimes_site.signalStrength
+
+            m_cricinfo_site = models.Website.objects.filter(testId=test, url="http://www.cricinfo.com", user_agent=0)[0]
+            d_cricinfo_site = models.Website.objects.filter(testId=test, url="http://www.cricinfo.com", user_agent=1)[0]
+            sites[4].pageLoadTime, sites[4].signalStrength = m_cricinfo_site.pageLoadTime, m_cricinfo_site.signalStrength
+            sites[5].pageLoadTime, sites[5].signalStrength = d_cricinfo_site.pageLoadTime, d_cricinfo_site.signalStrength
+
+            ratings += list(float(x) for x in [m_toi_site.rating, d_toi_site.rating, m_nytimes_site.rating, d_nytimes_site.rating,
+                                               m_cricinfo_site.rating, d_cricinfo_site.rating])
+            for i in xrange(6):
+                pca_data.append(list(getattr(sites[i], slot) for slot in slots))
+                # print pca_data
+
+        except Exception as e:
+            print e
+            # pass
+    pca_data = np.array(pca_data).astype(np.float)
+
+    svc = SVC(kernel="linear")
+    # X, y = make_classification(n_samples=1000, n_features=25, n_informative=3,
+    #                        n_redundant=2, n_repeated=0, n_classes=8,
+    #                        n_clusters_per_class=1, random_state=0)
+    # print X
+    # print y
+    # print "beginning rfc"
+    # collection
+
+    def find_ind(lst, elem):
+        for i in xrange(len(lst)):
+            if lst[i] == elem:
+                return i
+    print ratings
+    inds_to_remove = []
+    ctr = collections.Counter(ratings)
+    for x in ctr:
+        if ctr[x] == 1:  # i.e. less than 2
+            inds_to_remove.append(find_ind(ratings, x))
+    _data = []
+    _ratings = []
+    for i in xrange(len(ratings)):
+        if i not in inds_to_remove:
+            _data.append(pca_data[i])
+            _ratings.append(ratings[i])
+    _ratings = np.array(_ratings)
+
+    # rfecv = RFECV(estimator=svc, step=1, cv=StratifiedKFold(_ratings, 2),
+    #               loss_func=zero_one_loss, verbose=10)
+    # rfecv.fit(_data, _ratings)
+    # print "fit complete"
+    # print dir(rfecv)
+    # print "n_features_:", rfecv.n_features_
+    # print "ranking_:", rfecv.ranking_
+    # print "estimator_:", rfecv.estimator_
+    # print "cv_scores_:", rfecv.cv_scores_
+    selector = SelectPercentile(f_classif, percentile=10)
+    selector.fit(_data, _ratings)
+    scores = -np.log10(selector.pvalues_)
+    scores /= scores.max()
+
+    f = figure(figsize=(2 * len(slots), 6))
+    plt1 = f.add_subplot(111)
+    # plt1.set_xlim(0, max(bandwidth_data_x[-1], no_streams_with_time_x[-1]))
+    # plt1.set_ylim(0, max(bandwidth_cdf_y)*1.1)
+    # plt2.set_ylim(0, max(no_streams_with_time_y)*1.1)
+
+    plt1.set_xlabel("Parameters")
+    plt1.set_ylabel("Scores")
+
+    p1 = plt1.bar(np.arange(len(scores)), scores, label="Scores of Parameters")
+
+    plt1.legend([p1[0]], ["Scores of Parameters"])
+    plt1.set_xticks(np.arange(len(scores)) + 0.35)
+    plt1.set_xticklabels(slots)
+    f.patch.set_visible(False)
+    plt1.patch.set_visible(False)
+
+    # plt1.axis["left"].label.set_color(p1.get_color())
+    # plt2.axis["right"].label.set_color(p2.get_color())
+
+    canvas = FigureCanvasAgg(f)
+    output = StringIO()
+    # x.save(output, "PNG")
+    canvas.print_png(output)
+    contents = output.getvalue().encode("base64")
+    output.close()
+    # f.close()
+    mydict['scores_img'] = contents
+    # svr = svm.SVR()
+    # svr.fit(pca_data, ratings)
+    # p = mlab.PCA(pca_data)
+    regr = linear_model.LinearRegression(normalize=True)
+    regr.fit(_data, _ratings)
+    coefs = regr.coef_
+    intercepts = regr.intercept_
+    mydict['regr_score'] = regr.score(_data, _ratings)
+    svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
+    svr_lin = SVR(kernel='linear', C=1e3)
+    svr_poly = SVR(kernel='poly', C=1e3, degree=2)
+    # print "svr_rbf_fit begin"
+    # try:
+    #     svr_rbf_fit = svr_rbf.fit(_data, _ratings)
+    #     mydict['svr_rbf_fit_score'] = svr_rbf_fit.score(_data, _ratings)
+    #     print "svr_rbf_fit score:", mydict['svr_rbf_fit_score']
+    # except Exception as e:
+    #     print e
+    #     pass
+    # print "svr_poly_fit begin"
+    # try:
+    #     svr_poly_fit = svr_poly.fit(_data, _ratings)
+    #     mydict['svr_poly_fit_score'] = svr_poly_fit.score(_data, _ratings)
+    #     print "svr_poly_fit score:", mydict['svr_poly_fit_score']
+    #     # print "svr_rbf score"
+    # except Exception as e:
+    #     print e
+    #     pass
+    # print "svr_lin_fit begin"
+    # try:
+    #     svr_lin_fit = svr_lin.fit(_data, _ratings)
+    #     mydict['svr_lin_fit_score'] = svr_lin_fit.score(_data, _ratings)
+    #     print "svr_lin_fit score:", mydict['svr_lin_fit_score']
+    # except Exception as e:
+    #     print e
+    #     pass
+    # mydict['svr_rbf_score'] = svr_rbf.score(_data, _ratings)
+
+    # print slots, coefs
+    # print list((slots[i], regr.coef_[i]) for i in xrange(len(slots)))
+    mydict['coeffs'] = [('intercept', regr.intercept_)] + list((slots[i], regr.coef_[i]) for i in xrange(len(slots)))
+    return render_to_response("obs_analyze_pca.html", mydict)
+
+
+class PCAHandler(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
+    def get(self):
+        run_background(self.analyze, self.on_complete, ())
+
+    def analyze(self):
+        try:
+            self.result = obs_analyze_pca(None)
+        except Exception as e:
+            self.result = repr(e)
+        return self.result
+
+    def on_complete(self, result):
+        self.write(result)
+        self.finish()
+

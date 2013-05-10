@@ -1,0 +1,103 @@
+  1   0.000000 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0x1cf4  A timesofindia.indiatimes.com
+  3   3.418922 122.160.120.56 -> 110.225.91.4 DNS 205 Standard query response 0x1cf4  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.40 A 96.17.182.65
+ 22   3.552630 110.225.91.4 -> 122.160.120.56 DNS 77 Standard query 0x8c70  A ssl.gstatic.com
+298   8.216370 110.225.91.4 -> 122.160.120.56 DNS 91 Standard query 0x69da  A static.rewards.indiatimes.com
+299   8.224827 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0x8a9b  A ads.indiatimes.com
+300   8.229031 110.225.91.4 -> 122.160.120.56 DNS 90 Standard query 0x9b11  A netspiderads3.indiatimes.com
+301   8.233722 110.225.91.4 -> 122.160.120.56 DNS 88 Standard query 0xadc7  A adscontent2.indiatimes.com
+302   8.237636 110.225.91.4 -> 122.160.120.56 DNS 81 Standard query 0xbd79  A ajax.googleapis.com
+408   8.553640 110.225.91.4 -> 202.56.230.7 DNS 77 Standard query 0x8c70  A ssl.gstatic.com
+437   8.790879 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0xec1f  A timesofindia.indiatimes.com
+442   8.893622 122.160.120.56 -> 110.225.91.4 DNS 106 Standard query response 0x9b11  A 223.165.31.12
+443   8.893838 122.160.120.56 -> 110.225.91.4 DNS 96 Standard query response 0x8a9b  A 223.165.31.15
+444   8.893939 122.160.120.56 -> 110.225.91.4 DNS 195 Standard query response 0xadc7  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.66 A 96.17.182.65
+445   8.901190 122.160.120.56 -> 110.225.91.4 DNS 209 Standard query response 0x69da  CNAME static.rewards.indiatimes.com.edgesuite.net CNAME a1095.g.akamai.net A 96.17.182.73 A 96.17.182.57
+446   8.901334 122.160.120.56 -> 110.225.91.4 DNS 131 Standard query response 0xbd79  CNAME googleapis.l.google.com A 74.125.135.95
+523   9.745231 202.56.230.7 -> 110.225.91.4 DNS 236 Standard query response 0x8c70  A 74.125.236.143
+537  10.956589 110.225.91.4 -> 122.160.120.56 DNS 86 Standard query 0x73ab  A www.google-analytics.com
+538  11.015441 110.225.91.4 -> 122.160.120.56 DNS 90 Standard query 0x598e  A netspiderads2.indiatimes.com
+539  11.017119 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0x603e  A in-cdn.effectivemeasure.net
+545  11.073614 122.160.120.56 -> 110.225.91.4 DNS 306 Standard query response 0x73ab  CNAME www-google-analytics.l.google.com A 173.194.36.69 A 173.194.36.70 A 173.194.36.71 A 173.194.36.72 A 173.194.36.73 A 173.194.36.78 A 173.194.36.64 A 173.194.36.65 A 173.194.36.66 A 173.194.36.67 A 173.194.36.68
+546  11.073704 122.160.120.56 -> 110.225.91.4 DNS 106 Standard query response 0x598e  A 223.165.25.20
+547  11.073736 122.160.120.56 -> 110.225.91.4 DNS 191 Standard query response 0x603e  CNAME effectivemeasure.edgesuite.net CNAME a1015.g.akamai.net A 96.17.182.48 A 96.17.182.43
+560  13.793166 110.225.91.4 -> 202.56.230.7 DNS 89 Standard query 0xec1f  A timesofindia.indiatimes.com
+562  14.444005 202.56.230.7 -> 110.225.91.4 DNS 477 Standard query response 0xec1f  CNAME timesofindia.indiatimes.com.edgesuite.net CNAME a1521.g.akamai.net A 96.17.182.65 A 96.17.182.40
+626  15.022598 110.225.91.4 -> 122.160.120.56 DNS 87 Standard query 0x758c  A www9.effectivemeasure.net
+629  15.123964 122.160.120.56 -> 110.225.91.4 DNS 103 Standard query response 0x758c  A 98.124.156.54
+639  15.706104 110.225.91.4 -> 122.160.120.56 DNS 87 Standard query 0xe37d  A www9.effectivemeasure.net
+643  15.836026 122.160.120.56 -> 110.225.91.4 DNS 103 Standard query response 0xe37d  A 98.124.156.54
+724  26.030587 110.225.91.4 -> 122.160.120.56 DNS 81 Standard query 0x9360  A info.indiatimes.com
+725  26.036783 110.225.91.4 -> 122.160.120.56 DNS 86 Standard query 0xabf8  A advertise.indiatimes.com
+726  26.040061 110.225.91.4 -> 122.160.120.56 DNS 79 Standard query 0xb9d7  A www.timesjobs.com
+730  26.620016 122.160.120.56 -> 110.225.91.4 DNS 188 Standard query response 0x9360  CNAME info.indiatimes.com.edgesuite.net CNAME a567.g.akamai.net A 96.17.182.40 A 96.17.182.41
+731  26.622784 110.225.91.4 -> 122.160.120.56 DNS 88 Standard query 0x9d7a  A syndication.indiatimes.com
+738  27.060340 122.160.120.56 -> 110.225.91.4 DNS 95 Standard query response 0xb9d7  A 115.112.206.11
+739  27.060476 122.160.120.56 -> 110.225.91.4 DNS 104 Standard query response 0x9d7a  A 223.165.25.32
+741  27.060583 122.160.120.56 -> 110.225.91.4 DNS 102 Standard query response 0xabf8  A 223.165.24.182
+864  28.762215 110.225.91.4 -> 122.160.120.56 DNS 85 Standard query 0xbe04  A b.scorecardresearch.com
+873  28.886382 110.225.91.4 -> 122.160.120.56 DNS 87 Standard query 0x6092  A www.googletagservices.com
+901  29.245732 122.160.120.56 -> 110.225.91.4 DNS 199 Standard query response 0xbe04  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.41 A 96.17.182.58
+902  29.245905 122.160.120.56 -> 110.225.91.4 DNS 175 Standard query response 0x6092  CNAME pagead46.l.doubleclick.net A 74.125.236.26 A 74.125.236.13 A 74.125.236.25
+1191  34.968214 110.225.91.4 -> 122.160.120.56 DNS 85 Standard query 0x9f2c  A b.scorecardresearch.com
+1195  35.218900 122.160.120.56 -> 110.225.91.4 DNS 199 Standard query response 0x9f2c  CNAME b.scorecardresearch.com.edgesuite.net CNAME a1294.w20.akamai.net A 96.17.182.58 A 96.17.182.41
+1249  35.772776 110.225.91.4 -> 122.160.120.56 DNS 90 Standard query 0xa59a  A partner.googleadservices.com
+1250  35.818152 122.160.120.56 -> 110.225.91.4 DNS 179 Standard query response 0xa59a  CNAME partnerad.l.doubleclick.net A 74.125.236.13 A 74.125.236.25 A 74.125.236.26
+1288  36.577577 110.225.91.4 -> 122.160.120.56 DNS 86 Standard query 0xed73  A pubads.g.doubleclick.net
+1289  36.708141 122.160.120.56 -> 110.225.91.4 DNS 160 Standard query response 0xed73  CNAME partnerad.l.doubleclick.net A 173.194.36.90 A 173.194.36.77 A 173.194.36.89
+1299  37.135530 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0x2dbc  A ad.doubleclick.net
+1300  37.175678 122.160.120.56 -> 110.225.91.4 DNS 133 Standard query response 0x2dbc  CNAME dart.l.doubleclick.net A 173.194.36.123 A 173.194.36.124
+1367  38.315619 110.225.91.4 -> 122.160.120.56 DNS 88 Standard query 0xed9d  A adscontent3.indiatimes.com
+1380  39.680644 110.225.91.4 -> 122.160.120.56 DNS 94 Standard query 0x7e69  A geodataservice205.indiatimes.com
+1381  39.817756 122.160.120.56 -> 110.225.91.4 DNS 110 Standard query response 0x7e69  A 223.165.25.205
+1382  43.321455 110.225.91.4 -> 202.56.230.7 DNS 88 Standard query 0xed9d  A adscontent3.indiatimes.com
+1383  43.598660 202.56.230.7 -> 110.225.91.4 DNS 467 Standard query response 0xed9d  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.66 A 96.17.182.65
+1385  43.827114 110.225.91.4 -> 122.160.120.56 DNS 88 Standard query 0x791f  A adscontent3.indiatimes.com
+1424  48.832689 110.225.91.4 -> 202.56.230.7 DNS 88 Standard query 0x791f  A adscontent3.indiatimes.com
+1425  49.095924 202.56.230.7 -> 110.225.91.4 DNS 467 Standard query response 0x791f  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.65 A 96.17.182.66
+1715  62.008825 110.225.91.4 -> 122.160.120.56 DNS 78 Standard query 0x3ffe  A static.gaana.com
+1725  62.266110 122.160.120.56 -> 110.225.91.4 DNS 180 Standard query response 0x3ffe  CNAME www.gaana.com.edgesuite.net CNAME a1017.b.akamai.net A 96.17.182.32 A 96.17.182.27
+1923  66.752368 110.225.91.4 -> 122.160.120.56 DNS 91 Standard query 0x9808  A pagead2.googlesyndication.com
+1947  66.813844 122.160.120.56 -> 110.225.91.4 DNS 179 Standard query response 0x9808  CNAME pagead46.l.doubleclick.net A 74.125.236.26 A 74.125.236.13 A 74.125.236.25
+2083  72.215681 110.225.91.4 -> 122.160.120.56 DNS 87 Standard query 0x67af  A www.googletagservices.com
+2105  73.963805 122.160.120.56 -> 110.225.91.4 DNS 175 Standard query response 0x67af  CNAME pagead46.l.doubleclick.net A 173.194.36.90 A 173.194.36.77 A 173.194.36.89
+2362  87.121722 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0xf9df  A googleads.g.doubleclick.net
+2364  87.380525 122.160.120.56 -> 110.225.91.4 DNS 162 Standard query response 0xf9df  CNAME pagead46.l.doubleclick.net A 173.194.36.89 A 173.194.36.90 A 173.194.36.77
+2368  87.544158 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0x6bf6  A googleads.g.doubleclick.net
+2369  87.589865 122.160.120.56 -> 110.225.91.4 DNS 162 Standard query response 0x6bf6  CNAME pagead46.l.doubleclick.net A 173.194.36.90 A 173.194.36.77 A 173.194.36.89
+2430  93.874059 110.225.91.4 -> 122.160.120.56 DNS 82 Standard query 0x30e6  A static.chartbeat.com
+2432  93.879059 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0x452f  A www.indiatimes.com
+2433  93.882910 110.225.91.4 -> 122.160.120.56 DNS 81 Standard query 0x5233  A www.speakingtree.in
+2434  93.889138 110.225.91.4 -> 122.160.120.56 DNS 82 Standard query 0x6d9d  A connect.facebook.net
+2435  93.891489 110.225.91.4 -> 122.160.120.56 DNS 78 Standard query 0x74b4  A www.facebook.com
+2436  93.893232 110.225.91.4 -> 122.160.120.56 DNS 82 Standard query 0x7d8d  A platform.twitter.com
+2437  94.689987 122.160.120.56 -> 110.225.91.4 DNS 166 Standard query response 0x30e6  CNAME chartbeat.edgekey.net CNAME e6059.g.akamaiedge.net A 23.35.34.127
+2443  94.809370 122.160.120.56 -> 110.225.91.4 DNS 118 Standard query response 0x74b4  CNAME star.c10r.facebook.com A 31.13.79.1
+2444  94.809410 122.160.120.56 -> 110.225.91.4 DNS 178 Standard query response 0x6d9d  CNAME connect.facebook.net.edgekey.net CNAME e3821.dspe1.akamaiedge.net A 118.215.159.139
+2445  94.809442 122.160.120.56 -> 110.225.91.4 DNS 172 Standard query response 0x7d8d  CNAME san.twitter.com.edgekey.net CNAME e5903.g.akamaiedge.net A 23.35.33.224
+2447  94.818501 122.160.120.56 -> 110.225.91.4 DNS 187 Standard query response 0x452f  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.66 A 96.17.182.65
+2448  94.818574 122.160.120.56 -> 110.225.91.4 DNS 189 Standard query response 0x5233  CNAME www.speakingtree.in.edgesuite.net CNAME a1768.b.akamai.net A 96.17.182.9 A 96.17.182.17
+2677 110.004184 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0x2cb1  A ping.chartbeat.net
+2678 110.007240 110.225.91.4 -> 122.160.120.56 DNS 81 Standard query 0x3899  A media.indiatimes.in
+2680 110.552337 110.225.91.4 -> 122.160.120.56 DNS 89 Standard query 0x8b4b  A images.speakingtree.iimg.in
+2681 111.056325 110.225.91.4 -> 122.160.120.56 DNS 84 Standard query 0xf8c9  A static.ak.facebook.com
+2682 111.059115 110.225.91.4 -> 122.160.120.56 DNS 86 Standard query 0x05dc  A s-static.ak.facebook.com
+2683 112.330599 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0x294b  A ajax.aspnetcdn.com
+2684 112.335037 110.225.91.4 -> 122.160.120.56 DNS 102 Standard query 0x3be3  A card.cricket.timesofindia.indiatimes.com
+2685 112.338846 110.225.91.4 -> 122.160.120.56 DNS 98 Standard query 0x492a  A crifeeds.timesofindia.indiatimes.com
+2686 112.489810 122.160.120.56 -> 110.225.91.4 DNS 128 Standard query response 0x2cb1  A 50.17.187.173 A 54.225.238.175 A 54.243.222.88
+2689 112.490962 110.225.91.4 -> 122.160.120.56 DNS 83 Standard query 0x9af7  A m-static.ak.fbcdn.net
+2691 112.519543 122.160.120.56 -> 110.225.91.4 DNS 149 Standard query response 0x294b  CNAME mscomajax.vo.msecnd.net A 65.54.82.153 A 65.54.82.150
+2692 112.519645 122.160.120.56 -> 110.225.91.4 DNS 114 Standard query response 0x492a  A 223.165.26.45
+2693 112.519684 122.160.120.56 -> 110.225.91.4 DNS 188 Standard query response 0x05dc  CNAME s-static.ak.facebook.com.edgekey.net CNAME e566.dspe1.akamaiedge.net A 122.252.138.110
+2694 112.529674 122.160.120.56 -> 110.225.91.4 DNS 209 Standard query response 0x3be3  CNAME www.indiatimes.com.edgesuite.net CNAME a1934.g.akamai.net A 96.17.182.66 A 96.17.182.65
+2695 112.529797 122.160.120.56 -> 110.225.91.4 DNS 197 Standard query response 0xf8c9  CNAME static.ak.facebook.com.edgesuite.net CNAME a749.dsw4.akamai.net A 96.17.182.42 A 96.17.182.65
+2696 112.529833 122.160.120.56 -> 110.225.91.4 DNS 197 Standard query response 0x8b4b  CNAME www.speakingtree.in.edgesuite.net CNAME a1768.b.akamai.net A 96.17.182.9 A 96.17.182.17
+2697 112.533488 122.160.120.56 -> 110.225.91.4 DNS 166 Standard query response 0x9af7  CNAME m-static.ak.edgekey.net CNAME e906.cc.akamaiedge.net A 184.29.227.206
+2698 112.698095 110.225.91.4 -> 122.160.120.56 DNS 80 Standard query 0xc252  A ping.chartbeat.net
+2699 112.739521 122.160.120.56 -> 110.225.91.4 DNS 128 Standard query response 0xc252  A 50.16.209.140 A 54.225.239.77 A 54.225.239.79
+2789 114.715498 110.225.91.4 -> 122.160.120.56 DNS 79 Standard query 0x09f3  A ocsp.verisign.com
+2790 114.750405 110.225.91.4 -> 122.160.120.56 DNS 84 Standard query 0x919e  A mytimes.indiatimes.com
+2791 114.835417 122.160.120.56 -> 110.225.91.4 DNS 126 Standard query response 0x09f3  CNAME ocsp.verisign.net A 199.7.57.72
+2792 114.841319 122.160.120.56 -> 110.225.91.4 DNS 195 Standard query response 0x919e  CNAME mytimes.indiatimes.com.edgesuite.net CNAME a1095.g.akamai.net A 96.17.182.73 A 96.17.182.57
+2795 115.012559 110.225.91.4 -> 202.56.230.7 DNS 81 Standard query 0x3899  A media.indiatimes.in
+2796 115.079893 202.56.230.7 -> 110.225.91.4 DNS 461 Standard query response 0x3899  CNAME media.indiatimes.in.edgesuite.net CNAME a1737.g.akamai.net A 96.17.182.40 A 96.17.182.65

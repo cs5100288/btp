@@ -1,0 +1,271 @@
+0,106.195.235.161,180.149.52.3,945,0.000000000,2.3799,0,
+1,106.195.235.161,223.165.25.18,1635,3.523503000,4.0486,1,'http://timesofindia.com/'::5.232499000
+2,106.195.235.161,223.165.25.18,492,3.774592000,3.5989,0,
+3,106.195.235.161,96.17.182.40,1412,5.511611000,2.2764,1,'http://www.timesofindia.com/'::5.570110000
+4,106.195.235.161,96.17.182.65,71582,5.812044000,5.7266,4,"'http://timesofindia.indiatimes.com/'::5.879054000, 'http://timesofindia.indiatimes.com/css_min.cms?version=3'::6.586218000, 'http://timesofindia.indiatimes.com/photo/19949717.cms'::7.958978000, 'http://timesofindia.indiatimes.com/photo/17489305.cms'::8.200521000"
+5,106.195.235.161,96.17.182.65,9739,6.348523000,5.1897,3,"'http://timesofindia.indiatimes.com/before_body_js.cms?version=11'::6.597102000, 'http://timesofindia.indiatimes.com/thumb/19948760.cms?width=77&height=50'::7.954381000, 'http://timesofindia.indiatimes.com/photo/11350517.cms'::8.179574000"
+6,106.195.235.161,96.17.182.65,9765,6.354291000,5.1841,3,"'http://timesofindia.indiatimes.com/double_google_ads/msid-4719157,subid-0.cms'::6.597576000, 'http://timesofindia.indiatimes.com/thumb/19945617.cms?width=77&height=50'::7.950301000, 'http://timesofindia.indiatimes.com/photo.cms?msid=1748421'::8.150381000"
+7,106.195.235.161,96.17.182.65,18441,6.363834000,5.1646,2,"'http://timesofindia.indiatimes.com/double_google_ads_call/msid-4719157,subid-0.cms'::6.597946000, 'http://timesofindia.indiatimes.com/thumb/19947334.cms?width=238&height=160'::7.947668000"
+8,106.195.235.161,96.17.182.65,7247,6.369764000,5.1592,3,"'http://timesofindia.indiatimes.com/timestrendstopcommoncssnewv.cms?version=1'::6.598441000, 'http://timesofindia.indiatimes.com/photo/13820331.cms'::7.945864000, 'http://timesofindia.indiatimes.com/photo/4580293.cms'::8.080077000"
+9,106.195.235.161,96.17.182.65,15844,6.580279000,4.9485,3,"'http://timesofindia.indiatimes.com/tpoint_js_v12.cms?version=6'::6.630704000, 'http://timesofindia.indiatimes.com/photo/14649051.cms'::7.942834000, 'http://timesofindia.indiatimes.com/photo/19913639.cms'::8.077054000"
+10,106.195.235.161,96.17.182.65,54316,6.584880000,4.9230,3,"'http://timesofindia.indiatimes.com/after_body_js.cms?version=15'::6.638427000, 'http://timesofindia.indiatimes.com/photo/19928334.cms'::7.937632000, 'http://timesofindia.indiatimes.com/photo/19949983.cms'::8.070116000"
+11,106.195.235.161,223.165.31.15,1478,6.593504000,0.5747,1,'http://ads.indiatimes.com/ads.dll/genptypead?slotid=3736'::6.841096000
+12,106.195.235.161,223.165.31.12,2028,6.593940000,2.8459,1,'http://netspiderads3.indiatimes.com/ads.dll/getjsonad?slotid=1556'::6.842830000
+13,106.195.235.161,74.125.135.95,37232,6.598749000,4.8652,1,'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'::6.992262000
+14,106.195.235.161,96.17.182.65,12556,6.598974000,4.9499,2,"'http://timesofindia.indiatimes.com/photo/19943720.cms'::7.969280000, 'http://timesofindia.indiatimes.com/photo/17767460.cms'::8.219702000"
+15,106.195.235.161,96.17.182.66,3166,6.811387000,2.5725,1,'http://adscontent2.indiatimes.com/nsjsonrequest_v1.js'::6.991084000
+16,106.195.235.161,96.17.182.66,424,6.846965000,2.5332,0,
+17,106.195.235.161,74.125.135.95,368,6.847698000,2.6245,0,
+18,106.195.235.161,173.194.36.77,15757,6.981639000,4.6274,1,'http://www.googletagservices.com/tag/js/gpt.js'::7.080150000
+19,106.195.235.161,96.17.182.58,3911,7.079551000,4.3268,2,"'http://b.scorecardresearch.com/beacon.js'::7.170150000, 'http://b.scorecardresearch.com/b?c1=2&c2=6036484&ns__t=1368010757618&ns_c=UTF-8&c8=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&c7=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&c9='::7.487704000"
+20,106.195.235.161,173.194.36.64,20220,7.080572000,4.5281,2,"'http://www.google-analytics.com/ga.js'::7.298759000, 'http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=11&utmn=742656834&utmhn=timesofindia.indiatimes.com&utmcs=UTF-8&utmsr=720x1280&utmvp=340x423&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&utmhid=951892270&utmr=-&utmp=%2F&utmht=1368010757868&utmac=UA-198011-4&utmcc=__utma%3D1.1623862784.1365488234.1367999787.1368008266.30%3B%2B__utmz%3D1.1365488234.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qh~'::7.736625000"
+21,106.195.235.161,173.194.36.64,424,7.225505000,4.3833,0,
+22,106.195.235.161,74.125.236.26,24629,7.528488000,3.8835,1,'http://partner.googleadservices.com/gampad/google_ads_gpt.js'::7.590932000
+23,106.195.235.161,173.194.36.79,2037,7.936220000,242.1920,0,
+24,106.195.235.161,96.17.182.65,13788,7.972438000,3.5661,1,'http://timesofindia.indiatimes.com/photo/18728895.cms'::8.215615000
+25,106.195.235.161,96.17.182.65,9879,7.972926000,3.5756,1,'http://timesofindia.indiatimes.com/photo.cms?msid=9649288'::8.221664000
+26,106.195.235.161,96.17.182.65,6796,7.984003000,3.5647,1,'http://timesofindia.indiatimes.com/photo/11964050.cms'::8.220816000
+27,106.195.235.161,96.17.182.65,7284,7.984488000,3.5645,1,'http://timesofindia.indiatimes.com/photo/4467783.cms'::8.222443000
+28,106.195.235.161,96.17.182.65,10594,7.984755000,3.5644,1,'http://timesofindia.indiatimes.com/photo/16627036.cms'::8.222071000
+29,106.195.235.161,96.17.182.65,424,7.985367000,3.4547,0,
+30,106.195.235.161,96.17.182.65,492,7.985616000,3.4723,0,
+31,106.195.235.161,96.17.182.65,424,7.985857000,3.5023,0,
+32,106.195.235.161,96.17.182.65,424,7.986161000,3.5139,0,
+33,106.195.235.161,96.17.182.65,424,7.988576000,3.4793,0,
+34,106.195.235.161,173.194.36.109,7789,8.359374000,3.1005,1,'http://pubads.g.doubleclick.net/gampad/ads?gdfp_req=1&correlator=2063240640069632&output=json_html&callback=googletag.impl.pubads.setAdContentsBySlotForSync&impl=ss&json_a=1&eid=108809002&iu_parts=7176%2CTOI%2CTOI_Home%2CTOI_Home_Home%2CTOI_HP_ATF_300%2CTOI_HP_BTF_300%2CTOI_HP_BTF_2_300%2CTOI_HP_BTF_728%2CTOI_HP_OP_Innov1%2CTOI_HP_OP_Innov2%2CTOI_HP_OP_Inter%2CTOI_HP_OP_Pop%2CTOI_HP_OP_Shosh&enc_prev_ius=%2F0%2F1%2F2%2F3%2F4%2C%2F0%2F1%2F2%2F3%2F5%2C%2F0%2F1%2F2%2F3%2F6%2C%2F0%2F1%2F2%2F3%2F7%2C%2F0%2F1%2F2%2F3%2F8%2C%2F0%2F1%2F2%2F3%2F9%2C%2F0%2F1%2F2%2F3%2F10%2C%2F0%2F1%2F2%2F3%2F11%2C%2F0%2F1%2F2%2F3%2F12&prev_iu_szs=300x250%7C300x1050%2C300x250%2C300x250%2C728x90%7C1003x90%2C1x1%2C1x1%2C1x1%2C1x1%2C1x1&ists=31&prev_scp=L1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D%7CL1%3D%26L2%3D%26L3%3D%26H1%3D%26ARC1%3D%26Hyp1%3D&cust_params=article%3D&cookie_enabled=1&lmt=1367990439&dt=1368010758131&biw=340&bih=423&oid=3&gut=v2&ifi=1&u_tz=330&u_his=16&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_sd=2&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adks=2183620676%2C3382079902%2C3201633559%2C2461631983%2C2925889651%2C3177099842%2C1289472957%2C75062424%2C2018634876&vrg=20&vrp=20&ga_vid=1902658712.1368010758&ga_sid=1368010758&ga_hid=2051175949'::8.541736000
+35,106.195.235.161,125.252.226.154,2083,11.649249000,2.3093,1,'http://static.rewards.indiatimes.com/js/lb.js'::11.697091000
+36,106.195.235.161,74.125.236.92,3199,14.031050000,3.0773,2,"'http://ad.doubleclick.net/N7176/adj/IPL2013_MKT/IPL2013_TOI_HP;sz=1003x33,980x30;ord=7715895874425769?'::14.146759000, 'http://ad.doubleclick.net/N7176/adj/TOI/Google_Hangouts_TOI_HP_337x46;sz=337x46;ord=7715895874425769?'::14.600213000"
+37,106.195.235.161,96.17.182.40,34636,14.461278000,4.3566,7,"'http://timesofindia.indiatimes.com/photo/9719649.cms'::14.506630000, 'http://timesofindia.indiatimes.com/assemblyresult_karnataka.cms'::14.605268000, 'http://timesofindia.indiatimes.com/photo/17663799.cms'::14.751213000, 'http://timesofindia.indiatimes.com/configspace/ads/TOI_home_top.html'::14.920859000, 'http://timesofindia.indiatimes.com/thumb.cms?msid=19947334&width=77&height=51'::15.293175000, 'http://timesofindia.indiatimes.com/niftysensexhome1.cms'::15.605790000, 'http://timesofindia.indiatimes.com/photo/11339279.cms'::16.253821000"
+38,106.195.235.161,223.165.31.12,2087,14.549505000,2.5591,1,'http://netspiderads3.indiatimes.com/ads.dll/getad?slotid=1202'::14.641961000
+39,106.195.235.161,223.165.31.12,7364,14.556303000,3.8335,4,"'http://netspiderads3.indiatimes.com/ads.dll/getad?slotid=1203'::14.652285000, 'http://netspiderads3.indiatimes.com/ads.dll/getad?slotid=667'::14.912146000, 'http://netspiderads3.indiatimes.com/ads.dll/getad?slotid=160'::15.583635000, 'http://netspiderads3.indiatimes.com/ads.dll/getad?slotid=679'::16.064841000"
+40,106.195.235.161,96.17.182.40,50093,14.596651000,4.2116,8,"'http://timesofindia.indiatimes.com/photo/9783775.cms'::14.651514000, 'http://timesofindia.indiatimes.com/breakingnews/karnatakaepolling.htm'::14.744721000, 'http://timesofindia.indiatimes.com/assemblywidget_karnataka.cms'::14.925279000, 'http://timesofindia.indiatimes.com/photo/19947985.cms?width=130&height=98'::15.291418000, 'http://timesofindia.indiatimes.com/shadiadcodenri.cms?section=homepage'::15.534818000, 'http://timesofindia.indiatimes.com/configspace/ads/TOIHP_Right.html'::15.718785000, 'http://timesofindia.indiatimes.com/poll.cms'::16.049016000, 'http://timesofindia.indiatimes.com/photo/17572538.cms'::16.252221000"
+41,106.195.235.161,96.17.182.40,78942,14.603892000,9.1064,10,"'http://timesofindia.indiatimes.com/photo/5539187.cms'::14.679316000, 'http://timesofindia.indiatimes.com/photo/4583284.cms'::14.958270000, 'http://timesofindia.indiatimes.com/photo/19801235.cms'::15.284379000, 'http://timesofindia.indiatimes.com/photo/11339010.cms'::16.255391000, 'http://timesofindia.indiatimes.com/photo/10857613.cms'::18.339293000, 'http://timesofindia.indiatimes.com/photo/5715878.cms'::18.727072000, 'http://timesofindia.indiatimes.com/latestnewstab/1221656.cms'::20.259149000, 'http://timesofindia.indiatimes.com/personalisation_reco.cms'::20.645485000, 'http://timesofindia.indiatimes.com/ipl2013widgethome.cms'::20.743755000, 'http://timesofindia.indiatimes.com/jquery_toi.cms'::20.963359000"
+42,106.195.235.161,96.17.182.40,51317,14.604176000,9.1063,16,"'http://timesofindia.indiatimes.com/photo/4748680.cms'::14.681338000, 'http://timesofindia.indiatimes.com/photo/5711192.cms'::14.957884000, 'http://timesofindia.indiatimes.com/thumb.cms?msid=19949112&width=91&height=59'::15.287942000, 'http://timesofindia.indiatimes.com/configspace/ads/toigoogleads.html'::15.617544000, 'http://timesofindia.indiatimes.com/tmoney.cms?msid=-2128958273'::16.076455000, 'http://timesofindia.indiatimes.com/photo/12502589.cms'::16.249094000, 'http://timesofindia.indiatimes.com/photo/4410559.cms'::16.355821000, 'http://timesofindia.indiatimes.com/shopadcode.cms'::17.291303000, 'http://timesofindia.indiatimes.com/photo/10857615.cms'::18.338703000, 'http://timesofindia.indiatimes.com/horoscopeshow.cms?msid=121233212&contenttype=1&popup=1&arc=1&sunsign=1&timetype=1&astroid=1&B1=Go'::20.263126000, 'http://timesofindia.indiatimes.com/photo/4156181.cms'::20.493440000, 'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::20.631349000, 'http://timesofindia.indiatimes.com/photo/6713473.cms'::20.710952000, 'http://timesofindia.indiatimes.com/tpoint_fans2.cms?type=toi'::20.790388000, 'http://timesofindia.indiatimes.com/iplwidgetcss.cms?version=4'::20.952310000, 'http://timesofindia.indiatimes.com/photo/11961332.cms'::21.215497000"
+43,106.195.235.161,96.17.182.40,9353,14.604365000,5.9440,3,"'http://timesofindia.indiatimes.com/photo/11788630.cms'::16.256272000, 'http://timesofindia.indiatimes.com/configspace/xml/TOI-R2I-Thumbnail2.gif'::17.356625000, 'http://timesofindia.indiatimes.com/photo/10857611.cms'::18.315667000"
+44,106.195.235.161,96.17.182.27,15144,14.830232000,2.3497,1,'http://ipl.indiatimes.com/interface/skins/default/images/loader.gif'::14.933108000
+45,106.195.235.161,223.165.25.20,5248,14.884141000,3.5217,3,"'http://netspiderads2.indiatimes.com/ads.dll/getad?slotid=38763'::14.997269000, 'http://netspiderads2.indiatimes.com/ads.dll/getad?slotid=38767'::15.539542000, 'http://netspiderads2.indiatimes.com/ads.dll/getad?slotid=36441'::15.690210000"
+46,106.195.235.161,202.79.210.121,5653,15.063168000,0.4651,1,'http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=6951125&PluID=0&w=300&h=250&ord=1452272882&ncu=$$http://adclick.g.doubleclick.net/aclk?sa=L&ai=B_vHMBzCKUbiQD4LOigeGkoH4DMv_39QFAAAAEAEgi6SNJzgAWJOl1cl7YOXC5IOkDrIBG3RpbWVzb2ZpbmRpYS5pbmRpYXRpbWVzLmNvbboBCWdmcF9pbWFnZcgBCdoBI2h0dHA6Ly90aW1lc29maW5kaWEuaW5kaWF0aW1lcy5jb20vqQJFD-J6C9dTPsACAuACAOoCLy83MTc2L1RPSS9UT0lfSG9tZS9UT0lfSG9tZV9Ib21lL1RPSV9IUF9BVEZfMzAw-AL_0R6AAwGQA5oImAOaCKgDAeAEAaAGFg&num=0&sig=AOD64_2cwY59ZupyNIsFIm8rJgsVW54YgA&client=ca-pub-7652860482476689&adurl=$$'::15.198706000
+47,106.195.235.161,96.17.182.66,36870,15.100185000,4.6178,5,"'http://adscontent2.indiatimes.com/googletiladsense_stn_v14.js'::15.161058000, 'http://adscontent2.indiatimes.com/photo/19679178.cms'::15.330900000, 'http://adscontent2.indiatimes.com/googletiladsense_stn_v13.js'::16.242712000, 'http://adscontent2.indiatimes.com/photo/19722338.cms'::16.906937000, 'http://adscontent2.indiatimes.com/photo/19031243.cms'::17.355148000"
+48,106.195.235.161,173.194.36.90,9650,15.118887000,2.7598,1,'http://pagead2.googlesyndication.com/pagead/osd.js'::15.214587000
+49,106.195.235.161,173.194.36.90,31038,15.119089000,2.7595,2,"'http://pagead2.googlesyndication.com/pagead/show_ads.js'::15.239372000, 'http://pagead2.googlesyndication.com/pagead/js/r20130502/r20130206/show_ads_impl.js'::15.483933000"
+50,106.195.235.161,202.79.210.121,344,15.185087000,2.2968,0,
+51,106.195.235.161,96.17.182.50,22093,15.569201000,2.7805,1,'http://ds.serving-sys.com/BurstingRes///Site-16555/Type-0/56de0899-2d49-4bcf-b28b-9a987d5adca6.jpg'::15.622289000
+52,106.195.235.161,223.165.25.20,416,15.581034000,2.3067,0,
+53,106.195.235.161,96.17.182.40,424,16.258696000,2.5699,0,
+54,106.195.235.161,173.194.36.109,3824,17.079196000,2.6895,1,'http://googleads.g.doubleclick.net/pagead/ads?client=ca-timesofindia_site_js&output=js&num_ads=2&channel=TOI_home_top&ad_type=text&adtest=off&ea=0&color_line=ff0000&feedback_link=on&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adsafe=high&dt=1368010765610&shv=r20130502&cbv=r20130206&saldr=sb&correlator=1368010766900&frm=23&adk=511001906&ga_vid=408731349.1368010767&ga_sid=1368010767&ga_hid=1346490175&ga_fc=0&u_tz=330&u_his=16&u_java=0&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_nplug=0&u_nmime=0&dff=sans-serif&dfs=16&biw=340&bih=423&isw=670&ish=90&ifk=2971393465&eid=86860102&oid=3&loc=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&fu=4&ifi=1&dtd=1420'::17.170792000
+55,106.195.235.161,173.194.36.109,3787,17.079403000,2.6891,1,'http://googleads.g.doubleclick.net/pagead/ads?client=ca-timesofindia_site_js&output=js&num_ads=2&channel=home&ad_type=text&adtest=off&ea=0&color_line=ff0000&feedback_link=on&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adsafe=high&dt=1368010767079&shv=r20130502&cbv=r20130206&saldr=sb&correlator=1368010767094&frm=23&adk=511001906&ga_vid=1590594846.1368010767&ga_sid=1368010767&ga_hid=1989119619&ga_fc=0&u_tz=330&u_his=16&u_java=0&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_nplug=0&u_nmime=0&dff=sans-serif&dfs=16&biw=340&bih=423&isw=670&ish=82&ifk=1011271187&eid=86860102&oid=3&loc=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&fu=4&ifi=1&dtd=52'::17.182515000
+56,106.195.235.161,173.194.36.109,3430,17.131324000,2.6373,1,'http://googleads.g.doubleclick.net/pagead/ads?client=ca-timesofindia_site_js&output=js&num_ads=1&skip=2&channel=home_right1&ad_type=text&adtest=off&ea=0&color_line=ff0000&feedback_link=on&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adsafe=high&dt=1368010767209&shv=r20130502&cbv=r20130206&saldr=sb&correlator=1368010767228&frm=23&adk=511001906&ga_vid=1935120561.1368010767&ga_sid=1368010767&ga_hid=371504811&ga_fc=0&u_tz=330&u_his=16&u_java=0&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_nplug=0&u_nmime=0&dff=sans-serif&dfs=16&biw=340&bih=423&isw=300&ish=85&ifk=2296946616&eid=86860103&oid=3&loc=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&fu=4&ifi=1&dtd=55'::17.220832000
+57,106.195.235.161,173.194.36.109,6266,17.155350000,3.6748,2,"'http://googleads.g.doubleclick.net/pagead/ads?client=ca-timesofindia_site_js&output=js&image_size=300x250&lmt=1367990439&num_ads=1&channel=TOI_BTF_300&ad_type=text&adtest=off&ea=0&color_line=ff0000&feedback_link=on&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adsafe=high&dt=1368010767437&shv=r20130502&cbv=r20130206&saldr=sb&correlator=1368010758137&frm=20&adk=3889902208&ga_vid=359703521.1368010767&ga_sid=1368010767&ga_hid=951892270&ga_fc=0&u_tz=330&u_his=16&u_java=0&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_nplug=0&u_nmime=0&dff=arial&dfs=16&biw=340&bih=423&eid=86860103&oid=3&fu=0&ifi=11&dtd=50'::17.351944000, 'http://googleads.g.doubleclick.net/pagead/ads?client=ca-timesofindia_site_js&output=js&lmt=1367990439&num_ads=1&channel=TOI_ATF_728&ad_type=text%2Cimage%2Cflash%2Chtml&adtest=off&ea=0&color_line=ff0000&feedback_link=on&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adsafe=high&dt=1368010768259&shv=r20130502&cbv=r20130206&saldr=sb&correlator=1368010758137&frm=20&adk=2998382752&ga_vid=359703521.1368010767&ga_sid=1368010767&ga_hid=951892270&ga_fc=0&u_tz=330&u_his=16&u_java=0&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_nplug=0&u_nmime=0&dff=arial&dfs=16&biw=340&bih=423&eid=86860103&oid=3&fu=0&ifi=12&dtd=174'::18.299632000"
+58,106.195.235.161,173.194.36.109,4203,17.780839000,2.5779,1,'http://pubads.g.doubleclick.net/gampad/ads?gdfp_req=1&correlator=4288903441809408&output=json_html&callback=window.parent.googletag.impl.pubads.setAdContentsBySlotForAsync&impl=fifs&json_a=1&eid=108809002&iu_parts=7176%2CTOI%2CTOI_Home%2CTOI_Home_Slug%2CTOI_SLG_HP_RHS_BTF_300&enc_prev_ius=%2F0%2F1%2F2%2F3%2F4&prev_iu_szs=300x80&cookie=ID%3D517aa7dd5390625b%3AT%3D1368010759%3AS%3DALNI_MbothrXrD_5mqPu1HL4DyDLtV6Waw&cdm=timesofindia.indiatimes.com&lmt=1367887032&dt=1368010767776&cc=100&ea=0&biw=-12245933&bih=-12245933&oid=3&gut=v2&ifi=1&ifk=3415297738&u_tz=330&u_his=16&u_h=1280&u_w=720&u_ah=1280&u_aw=720&u_cd=32&u_sd=2&flash=0&url=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&ref=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&adks=4281759372&vrg=20&vrp=20&ga_vid=1479195700.1368010768&ga_sid=1368010768&ga_hid=183082946'::17.879588000
+59,106.195.235.161,192.150.16.64,1718,18.449453000,3.1205,1,'http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif'::18.810365000
+60,106.195.235.161,192.150.16.64,496,18.581724000,2.7665,0,
+61,106.195.235.161,96.17.182.48,7075,19.283085000,3.1958,1,'http://in-cdn.effectivemeasure.net/em.js'::19.336794000
+62,106.195.235.161,223.165.25.20,1453,19.349107000,0.3589,1,'http://netspiderads2.indiatimes.com/ads.dll/genptypead?slotid=35823&srands=1368010769000&shtype=3'::19.469244000
+63,106.195.235.161,96.17.182.40,3313,19.430181000,3.0488,1,'http://wwwimages.adobe.com/www.adobe.com/images/shared/download_buttons/get_flash_player.gif'::19.481036000
+64,106.195.235.161,98.124.156.54,2308,19.671843000,3.0646,1,'http://www9.effectivemeasure.net/v4/em_js?flag=0&v=&vt=&hl=&sv=0&pv=&pn=&p=aHR0cDovL3RpbWVzb2ZpbmRpYS5pbmRpYXRpbWVzLmNvbS8%3D&r=&f=0&ns=_em&rnd=0.09435000456869602&u=&sf=0&'::19.986670000
+65,106.195.235.161,223.165.25.20,2499,19.677257000,2.8515,1,'http://netspiderads2.indiatimes.com/ads.dll/getad?slotid=36300'::19.780526000
+66,106.195.235.161,125.252.226.155,6178,19.868960000,2.6097,1,'http://adscontent3.indiatimes.com/photo/19913588.cms'::19.953489000
+67,106.195.235.161,125.252.226.155,6151,19.869215000,2.6094,1,'http://adscontent3.indiatimes.com/photo/19689106.cms'::19.953138000
+68,106.195.235.161,125.252.226.155,7582,19.869405000,2.6094,1,'http://adscontent3.indiatimes.com/photo/17823394.cms'::19.952717000
+69,106.195.235.161,98.124.156.54,424,19.956036000,2.7802,0,
+70,106.195.235.161,96.17.182.66,3057,20.382716000,2.3834,1,'http://adscontent2.indiatimes.com/NS_Flash_v8.js'::20.440820000
+71,106.195.235.161,96.17.182.66,2660,20.660595000,3.0578,1,'http://www.indiatimes.com/static_pages/indiatimes.json'::20.742409000
+72,106.195.235.161,23.35.34.127,5155,20.664406000,3.0386,1,'http://static.chartbeat.com/js/chartbeat.js'::20.745094000
+73,106.195.235.161,96.17.182.17,2883,20.692828000,3.0253,1,'http://www.speakingtree.in/cache/toi?feed=article&type=featured&limit=46&callback=sptree'::20.748655000
+74,106.195.235.161,118.215.159.139,64839,20.709052000,2.9194,1,'http://connect.facebook.net/en_US/all.js'::20.762561000
+75,106.195.235.161,68.232.44.139,30646,20.711831000,3.6005,1,'http://platform.twitter.com/widgets.js'::20.860538000
+76,106.195.235.161,96.17.182.65,424,20.740895000,2.9619,0,
+77,106.195.235.161,96.17.182.65,2268,20.741234000,2.9695,1,'http://timesofindia.indiatimes.com/photo/11790044.cms'::21.217413000
+78,106.195.235.161,96.17.182.65,424,20.741497000,2.9693,0,
+79,106.195.235.161,31.13.79.1,7813,20.870359000,2.9278,1,'http://www.facebook.com/plugins/like.php?app_id=117787264903013&href=http%3A%2F%2Fwww.facebook.com%2FTimesofIndia&send=false&layout=button_count&width=450&show_faces=false&action=like&colorscheme=light&font=arial&height=21'::21.030570000
+80,106.195.235.161,96.17.182.40,8216,20.911142000,2.7389,1,'http://media.indiatimes.in/media/photogallery/2013/May/946325_501694459878305_1784533185_n_1367993987_1367993994_100x75.jpg'::21.009880000
+81,106.195.235.161,65.54.82.149,48819,20.961341000,4.0576,1,'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js'::21.156102000
+82,106.195.235.161,223.165.26.45,3151,20.968941000,0.4670,1,'http://crifeeds.timesofindia.indiatimes.com/GetCalender.json'::21.155549000
+83,106.195.235.161,31.13.79.1,492,21.009002000,2.7798,0,
+84,106.195.235.161,125.252.226.154,2766,21.052707000,2.6497,1,'http://static.rewards.indiatimes.com/fns/daily/daily_TOI.json'::21.221078000
+85,106.195.235.161,54.243.154.93,1649,21.282873000,1.1344,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=0&x=0&y=5429&w=423&j=45&R=1&W=0&I=0&E=0&e=0&r=&b=13647&t=gf6fzpxzi7yj55xb&V=11&D=bergyqzd261ze234&i=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&_'::21.659575000
+86,106.195.235.161,96.17.182.17,2898,21.292723000,2.3433,1,'http://images.speakingtree.iimg.in/files/rsz/fit_s_60x54/files/05-2013/1/924a0a0735e42d092b0e58756e7b40f0_1367385701.jpg'::21.382109000
+87,106.195.235.161,54.243.154.93,492,21.444033000,2.5218,0,
+88,106.195.235.161,31.13.79.1,7869,22.362350000,122.0042,0,
+89,106.195.235.161,122.252.138.110,17652,22.488920000,2.5428,0,
+90,106.195.235.161,96.17.182.65,13069,22.489201000,2.2890,1,'http://static.ak.facebook.com/connect/xd_arbiter.php?version=24'::22.538736000
+91,106.195.235.161,96.17.182.65,30838,23.494839000,3.0871,1,'http://timesofindia.indiatimes.com/photo/12530922.cms'::23.730235000
+92,106.195.235.161,96.17.182.73,3956,23.731158000,2.8476,1,'http://mytimes.indiatimes.com/image/thumb/3/1996649'::23.849696000
+93,106.195.235.161,96.17.182.73,3672,23.731596000,2.8475,1,'http://mytimes.indiatimes.com/image/thumb/12/3768'::23.851792000
+94,106.195.235.161,96.17.182.73,3196,23.731924000,2.8470,1,'http://mytimes.indiatimes.com/image/thumb/0/default'::23.850246000
+95,106.195.235.161,96.17.182.73,4181,23.732188000,2.8471,1,'http://mytimes.indiatimes.com/image/thumb/1/5177'::23.871302000
+96,106.195.235.161,96.17.182.73,4204,23.732430000,2.8467,1,'http://mytimes.indiatimes.com/image/thumb/1/453859'::23.870398000
+97,106.195.235.161,23.0.131.206,2080,23.732755000,3.4211,1,'http://m-static.ak.fbcdn.net/rsrc.php/v2/yF/r/wtsky0Emo_J.png'::24.156529000
+98,106.195.235.161,23.0.131.206,46524,23.732994000,5.4097,1,'http://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/QUuHwa0yzTP.js'::24.154127000
+99,106.195.235.161,96.17.182.73,492,23.735160000,2.8439,0,
+100,106.195.235.161,23.0.131.206,492,23.818893000,3.0551,0,
+101,106.195.235.161,96.17.182.65,13069,24.679916000,4.3238,1,'http://static.ak.facebook.com/connect/xd_arbiter.php?version=24'::24.800955000
+102,106.195.235.161,68.232.44.139,29888,25.075632000,3.8610,1,'http://platform.twitter.com/widgets/follow_button.1367516458.html'::25.198802000
+103,106.195.235.161,23.35.33.224,1893,25.719092000,3.1392,1,'http://p.twitter.com/f.gif?_=1368010775203&id=twitter-widget-0&lang=en&screen_name=timesofindia&show_count=false&show_screen_name=true&size=m&twttr_variant=2.0&twttr_referrer=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&twttr_widget=1&twttr_hask=0&twttr_li=0&twttr_pid=v3%3A1365706410881478607143060'::25.790870000
+104,106.195.235.161,125.252.226.152,4058,26.109849000,2.7287,2,"'http://card.cricket.timesofindia.indiatimes.com/cricketscorecard/htmlscore/flvmapjson.html'::26.171316000, 'http://card.cricket.timesofindia.indiatimes.com/cricketscorecard/htmlscore/getcalenderjson.html'::26.506952000"
+105,106.195.235.161,96.17.182.65,3600,26.515931000,5.3367,1,'http://timesofindia.indiatimes.com/photo/18627811.cms'::26.659548000
+106,106.195.235.161,199.59.150.43,7428,31.244324000,34.2531,0,
+107,106.195.235.161,96.17.182.65,2856,32.814006000,2.6594,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::32.918645000
+108,106.195.235.161,74.125.128.188,7540,32.864176000,486.0355,0,
+109,106.195.235.161,63.116.58.121,3111,39.867427000,16.8051,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::40.817269000
+110,106.195.235.161,96.17.182.32,6960,46.754675000,7.2193,1,'http://static.gaana.com/images/albums/53/108553/crop_110x110_108553.jpg'::47.642820000
+111,106.195.235.161,96.17.182.32,6514,46.754878000,8.0475,1,'http://static.gaana.com/images/albums/32/106632/crop_110x110_106632.jpg'::47.643243000
+112,106.195.235.161,96.17.182.32,4939,46.755052000,9.1187,1,'http://static.gaana.com/images/albums/46/106646/crop_110x110_106646.jpg'::47.643888000
+113,106.195.235.161,96.17.182.32,16413,46.755293000,9.1672,1,'http://static.gaana.com/images/albums/16/72716/crop_110x110_72716.jpg'::47.644162000
+114,106.195.235.161,96.17.182.32,4301,46.755597000,9.1591,1,'http://static.gaana.com/images/albums/50/95550/crop_110x110_95550.jpg'::47.644421000
+115,106.195.235.161,96.17.182.32,6807,46.755805000,9.1590,1,'http://static.gaana.com/images/albums/20/93820/crop_110x110_93820.jpg'::47.644661000
+116,106.195.235.161,96.17.182.65,10256,46.756242000,10.2586,2,"'http://timesofindia.indiatimes.com/thumb/19930133.cms?width=81&height=53'::47.645782000, 'http://timesofindia.indiatimes.com/photo/4761631.cms'::50.254751000"
+117,106.195.235.161,96.17.182.65,14764,46.756506000,10.2563,2,"'http://timesofindia.indiatimes.com/thumb/9147805.cms?width=81&height=53'::47.660933000, 'http://timesofindia.indiatimes.com/photo/19949280.cms'::50.602807000"
+118,106.195.235.161,96.17.182.65,11556,46.756719000,13.7357,2,"'http://timesofindia.indiatimes.com/thumb/19948989.cms?width=81&height=53'::47.681968000, 'http://timesofindia.indiatimes.com/photo/19876907.cms'::50.903791000"
+119,106.195.235.161,96.17.182.65,14457,46.756940000,13.7356,2,"'http://timesofindia.indiatimes.com/thumb/9579724.cms?width=81&height=53'::47.720951000, 'http://timesofindia.indiatimes.com/photo/19556161.cms'::51.249222000"
+120,106.195.235.161,96.17.182.65,8437,46.757160000,13.7355,2,"'http://timesofindia.indiatimes.com/thumb/19929229.cms?width=81&height=53'::47.741383000, 'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::51.618004000"
+121,106.195.235.161,96.17.182.65,6495,46.757418000,9.4459,1,'http://timesofindia.indiatimes.com/thumb/19948487.cms?width=81&height=53'::47.801243000
+122,106.195.235.161,96.17.182.65,5638,46.757684000,10.0891,1,'http://timesofindia.indiatimes.com/thumb/19949278.cms?width=81&height=53'::47.821300000
+123,106.195.235.161,96.17.182.65,5683,46.757911000,10.1242,1,'http://timesofindia.indiatimes.com/thumb/19878429.cms?width=81&height=53'::47.861168000
+124,106.195.235.161,96.17.182.65,5685,46.758137000,10.0920,1,'http://timesofindia.indiatimes.com/thumb/19943846.cms?width=88&height=65'::47.881738000
+125,106.195.235.161,96.17.182.65,6240,46.758365000,10.1159,1,'http://timesofindia.indiatimes.com/thumb/19945097.cms?width=88&height=65'::47.941134000
+126,106.195.235.161,96.17.182.65,6109,46.758580000,10.1416,1,'http://timesofindia.indiatimes.com/thumb/19943767.cms?width=88&height=65'::47.973488000
+127,106.195.235.161,96.17.182.65,5657,46.758788000,10.1516,1,'http://timesofindia.indiatimes.com/thumb/19946394.cms?width=88&height=65'::48.001258000
+128,106.195.235.161,96.17.182.65,5864,46.759007000,10.1733,1,'http://timesofindia.indiatimes.com/thumb/19926078.cms?width=88&height=65'::48.021104000
+129,106.195.235.161,96.17.182.65,6306,46.759207000,10.1812,1,'http://timesofindia.indiatimes.com/thumb/19944127.cms?width=88&height=65'::48.080942000
+130,106.195.235.161,96.17.182.65,5021,46.759371000,10.1945,1,'http://timesofindia.indiatimes.com/thumb/19948876.cms?width=81&height=53'::48.121244000
+131,106.195.235.161,96.17.182.65,5103,46.759565000,10.2130,1,'http://timesofindia.indiatimes.com/photo/19944446.cms'::48.140927000
+132,106.195.235.161,96.17.182.65,5863,46.759970000,10.2305,1,'http://timesofindia.indiatimes.com/photo/19933031.cms'::48.180925000
+133,106.195.235.161,96.17.182.65,5371,46.760258000,10.2416,1,'http://timesofindia.indiatimes.com/thumb/19942036.cms?width=81&height=53'::48.225151000
+134,106.195.235.161,54.243.154.93,1732,51.240408000,5.7397,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=0.5&x=3423&y=5429&w=443&j=30&R=1&W=0&I=0&E=7&e=7&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::55.122535000
+135,106.195.235.161,54.243.154.93,724,51.490852000,10.5217,0,
+136,106.195.235.161,63.116.58.121,1984,56.499548000,5.5520,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::56.925501000
+137,106.195.235.161,54.243.154.93,1503,66.239387000,1.6435,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=0.75&x=4912&y=5429&w=443&j=30&R=1&W=0&I=0&E=17&e=10&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::66.667479000
+138,106.195.235.161,54.243.154.93,492,66.489765000,2.8282,0,
+139,106.195.235.161,96.17.182.40,2992,67.948626000,3.5449,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::68.016910000
+140,106.195.235.161,63.116.58.121,2682,68.994851000,18.1592,1,'http://samsungvuiasr.vlingo.com/voicepad/activitylog'::69.350045000
+141,106.195.235.161,54.243.154.93,1499,81.242421000,3.1961,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=1&x=4912&y=5429&w=443&j=45&R=0&W=0&I=1&E=17&e=0&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::83.576228000
+142,106.195.235.161,54.243.154.93,492,81.494634000,4.8633,0,
+143,106.195.235.161,96.17.182.40,2856,83.305260000,4.4843,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::83.392955000
+144,106.195.235.161,96.17.182.40,2856,95.619174000,6.9702,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::98.391830000
+145,106.195.235.161,96.17.182.40,424,95.867672000,4.7190,0,
+146,106.195.235.161,63.116.58.121,3255,110.073314000,13.4984,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::113.256769000
+147,106.195.235.161,54.243.154.93,1501,111.239363000,3.1485,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=1.5&x=4912&y=5429&w=443&j=60&R=0&W=0&I=1&E=17&e=0&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::113.317090000
+148,106.195.235.161,54.243.154.93,492,111.494760000,4.4153,0,
+149,106.195.235.161,96.17.182.65,2856,113.139008000,5.2434,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::113.194346000
+150,106.195.235.161,96.17.182.65,2856,125.370119000,5.1174,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::125.522596000
+151,106.195.235.161,63.116.58.121,1984,125.744963000,7.7175,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::127.604480000
+152,106.195.235.161,96.17.182.65,2856,139.993539000,3.3514,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::140.283944000
+153,106.195.235.161,96.17.182.65,3048,153.914634000,9.5484,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::154.224215000
+154,106.195.235.161,54.243.154.93,1902,156.251849000,7.2115,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=2.25&x=4912&y=5429&w=443&j=90&R=0&W=0&I=1&E=17&e=0&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::156.901154000
+155,106.195.235.161,54.243.154.93,492,156.491333000,6.9723,0,
+156,106.195.235.161,96.17.182.65,2856,167.674767000,4.5984,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::167.945739000
+157,106.195.235.161,63.116.58.121,2060,181.588098000,9.7541,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::184.671214000
+158,106.195.235.161,96.17.182.40,3360,184.211596000,3.3876,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::184.378999000
+159,106.195.235.161,96.17.182.40,2856,197.459522000,6.0733,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::197.894715000
+160,106.195.235.161,96.17.182.40,492,197.711805000,3.4754,0,
+161,106.195.235.161,96.17.182.65,2856,215.684778000,5.1878,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::216.099389000
+162,106.195.235.161,96.17.182.40,3592,231.173599000,11.3534,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::236.290068000
+163,106.195.235.161,54.243.154.93,1390,231.246237000,11.2805,1,'http://ping.chartbeat.net/ping?h=timesofindia.indiatimes.com&p=%2F&u=s2yvnrbijufx8ed1&d=timesofindia.indiatimes.com&g=10538&g0=Home%20Page&n=0&f=14&c=3.5&x=4912&y=5429&w=443&j=150&R=0&W=0&I=1&E=17&e=0&b=13647&t=gf6fzpxzi7yj55xb&V=11&_'::236.290583000
+164,106.195.235.161,54.243.154.93,724,231.499484000,11.3071,0,
+165,106.195.235.161,96.17.182.65,2788,250.003193000,4.8693,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::250.086272000
+166,106.195.235.161,96.17.182.65,2856,262.443961000,6.8991,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::264.734383000
+167,106.195.235.161,96.17.182.65,424,262.698939000,4.4395,0,
+168,106.195.235.161,96.17.182.40,2788,279.704399000,3.3336,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::279.985117000
+169,106.195.235.161,96.17.182.40,2788,292.374640000,7.3382,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::294.709212000
+170,106.195.235.161,96.17.182.40,424,292.625144000,4.3579,0,
+171,106.195.235.161,96.17.182.40,2856,311.003420000,2.8453,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::311.121117000
+172,106.195.235.161,96.17.182.40,2856,323.675498000,7.4176,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::326.149857000
+173,106.195.235.161,96.17.182.40,424,323.927056000,4.3877,0,
+174,106.195.235.161,96.17.182.65,2788,340.874092000,2.8885,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::341.056484000
+175,106.195.235.161,96.17.182.65,2856,353.411499000,6.9714,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::355.848571000
+176,106.195.235.161,96.17.182.65,424,353.662543000,4.4506,0,
+177,106.195.235.161,63.116.58.121,2681,364.800640000,10.8363,1,'http://samsungvuiasr.vlingo.com/voicepad/activitylog'::365.614519000
+178,106.195.235.161,96.17.182.40,2856,368.916319000,2.9348,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::369.065807000
+179,106.195.235.161,96.17.182.65,2856,382.383692000,4.4539,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::382.684427000
+180,106.195.235.161,96.17.182.40,2856,398.259632000,2.9008,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::398.322285000
+181,106.195.235.161,96.17.182.40,2856,410.593902000,8.2190,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::413.205937000
+182,106.195.235.161,96.17.182.40,424,410.837305000,4.5937,0,
+183,106.195.235.161,54.243.154.93,436,426.268423000,23.9779,0,
+184,106.195.235.161,54.243.154.93,436,426.519283000,23.7271,0,
+185,106.195.235.161,180.149.52.3,1329,440.269653000,14.1615,0,
+186,106.195.235.161,63.116.58.121,3263,440.422672000,22.6220,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::450.248575000
+187,106.195.235.161,96.17.182.65,208,449.750340000,0.8218,0,
+188,106.195.235.161,223.165.25.18,2364,453.841789000,8.9087,1,'http://timesofindia.com/'::454.431382000
+189,106.195.235.161,223.165.25.18,424,454.078414000,2.9850,0,
+190,106.195.235.161,31.13.79.1,7135,456.929875000,128.4236,0,
+191,106.195.235.161,31.13.79.1,26041,456.944331000,133.3440,0,
+192,106.195.235.161,31.13.79.17,11986,457.064245000,141.1992,0,
+193,106.195.235.161,96.17.182.65,1412,457.865199000,10.7479,1,'http://www.timesofindia.com/'::458.205745000
+194,106.195.235.161,31.13.79.1,7202,462.757320000,133.0711,0,
+195,106.195.235.161,96.17.182.65,56260,464.241553000,39.3505,2,"'http://timesofindia.indiatimes.com/'::465.361138000, 'http://timesofindia.indiatimes.com/tpoint_js_v12.cms?version=6'::492.286297000"
+196,106.195.235.161,96.17.182.65,3817,469.388791000,23.0557,1,"'http://timesofindia.indiatimes.com/double_google_ads/msid-4719157,subid-0.cms'::477.502721000"
+197,106.195.235.161,96.17.182.65,3714,469.388971000,23.0556,1,"'http://timesofindia.indiatimes.com/double_google_ads_call/msid-4719157,subid-0.cms'::477.505523000"
+198,106.195.235.161,96.17.182.65,106979,469.754976000,66.9449,13,"'http://timesofindia.indiatimes.com/css_min.cms?version=3'::477.492940000, 'http://timesofindia.indiatimes.com/timestrendstopcommoncssnewv.cms?version=1'::491.869390000, 'http://timesofindia.indiatimes.com/after_body_js.cms?version=15'::493.809153000, 'http://timesofindia.indiatimes.com/photo/19928334.cms'::505.011175000, 'http://timesofindia.indiatimes.com/latestnewstab/1221656.cms'::525.821786000, 'http://timesofindia.indiatimes.com/horoscopeshow.cms?msid=121233212&contenttype=1&popup=1&arc=1&sunsign=1&timetype=1&astroid=1&B1=Go'::526.092264000, 'http://timesofindia.indiatimes.com/thumb/19930133.cms?width=81&height=53'::526.351915000, 'http://timesofindia.indiatimes.com/thumb/9147805.cms?width=81&height=53'::527.033882000, 'http://timesofindia.indiatimes.com/thumb/19948989.cms?width=81&height=53'::527.712683000, 'http://timesofindia.indiatimes.com/thumb/9579724.cms?width=81&height=53'::528.413966000, 'http://timesofindia.indiatimes.com/thumb/19929229.cms?width=81&height=53'::529.102302000, 'http://timesofindia.indiatimes.com/thumb/19948487.cms?width=81&height=53'::529.814349000, 'http://timesofindia.indiatimes.com/photo/19876907.cms'::530.911952000"
+199,106.195.235.161,96.17.182.65,5366,469.765998000,22.5184,1,'http://timesofindia.indiatimes.com/before_body_js.cms?version=11'::477.499255000
+200,106.195.235.161,31.13.79.17,1876,480.596092000,11.7051,0,
+201,106.195.235.161,96.17.182.41,4307,492.644816000,20.5643,2,"'http://b.scorecardresearch.com/beacon.js'::495.053129000, 'http://b.scorecardresearch.com/b?c1=2&c2=6036484&ns__t=1368011247137&ns_c=UTF-8&c8=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&c7=http%3A%2F%2Ftimesofindia.indiatimes.com%2F&c9='::497.014620000"
+202,106.195.235.161,173.194.36.90,16070,492.645369000,11.4178,1,'http://www.googletagservices.com/tag/js/gpt.js'::495.054250000
+203,106.195.235.161,173.194.36.68,24419,492.645782000,25.9430,3,"'http://www.google-analytics.com/ga.js'::495.055808000, 'http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=12&utmn=1090581177&utmhn=timesofindia.indiatimes.com&utmcs=UTF-8&utmsr=720x1280&utmvp=340x423&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&utmhid=1165402155&utmr=-&utmp=%2F&utmht=1368011255932&utmac=UA-198011-4&utmcc=__utma%3D1.1623862784.1365488234.1367999787.1368008266.30%3B%2B__utmz%3D1.1365488234.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qh~'::505.798916000, 'http://www.google-analytics.com/__utm.gif?utmwv=5.4.1&utms=12&utmn=1090581177&utmhn=timesofindia.indiatimes.com&utmcs=UTF-8&utmsr=720x1280&utmvp=340x423&utmsc=32-bit&utmul=en-gb&utmje=0&utmfl=-&utmdt=The%20Times%20of%20India%3A%20Latest%20News%20India%2C%20World%20%26%20Business%20News%2C%20Cricket%20%26%20Sports%2C%20Bollywood&utmhid=1165402155&utmr=-&utmp=%2F&utmht=1368011255932&utmac=UA-198011-4&utmcc=__utma%3D1.1623862784.1365488234.1367999787.1368008266.30%3B%2B__utmz%3D1.1365488234.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B&utmu=qh~'::513.748372000"
+204,106.195.235.161,74.125.135.95,39120,493.808499000,31.8363,1,'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'::496.339662000
+205,106.195.235.161,96.17.182.73,2184,504.069039000,10.8006,1,'http://static.rewards.indiatimes.com/js/lb.js'::505.205934000
+206,106.195.235.161,96.17.182.65,2535,504.087419000,18.0616,1,'http://timesofindia.indiatimes.com/photo/14649051.cms'::505.207186000
+207,106.195.235.161,96.17.182.65,2962,504.087922000,18.0792,1,'http://timesofindia.indiatimes.com/photo/13820331.cms'::505.208065000
+208,106.195.235.161,96.17.182.65,1803,504.088224000,22.2622,1,'http://timesofindia.indiatimes.com/thumb/19947334.cms?width=238&height=160'::505.230119000
+209,106.195.235.161,96.17.182.65,76944,504.088447000,33.7305,5,"'http://timesofindia.indiatimes.com/thumb/19948760.cms?width=77&height=50'::505.564304000, 'http://timesofindia.indiatimes.com/thumb/19948760.cms?width=77&height=50'::532.068464000, 'http://timesofindia.indiatimes.com/photo/6713473.cms'::532.438897000, 'http://timesofindia.indiatimes.com/jquery_toi.cms'::532.752116000, 'http://timesofindia.indiatimes.com/photo/12530922.cms'::533.887460000"
+210,106.195.235.161,96.17.182.65,21151,504.088642000,32.6120,5,"'http://timesofindia.indiatimes.com/thumb/19945617.cms?width=77&height=50'::505.563686000, 'http://timesofindia.indiatimes.com/thumb/19945617.cms?width=77&height=50'::532.068387000, 'http://timesofindia.indiatimes.com/ipl2013widgethome.cms'::532.442162000, 'http://timesofindia.indiatimes.com/iplwidgetcss.cms?version=4'::532.747140000, 'http://timesofindia.indiatimes.com/photo/11961332.cms'::532.921043000"
+211,106.195.235.161,96.17.182.65,25258,504.088820000,17.7601,4,"'http://timesofindia.indiatimes.com/photo/19943720.cms'::505.565790000, 'http://timesofindia.indiatimes.com/photo/4467783.cms'::510.563587000, 'http://timesofindia.indiatimes.com/configspace/ads/TOIHP_Right.html'::514.703411000, 'http://timesofindia.indiatimes.com/photo/5715878.cms'::516.231079000"
+212,106.195.235.161,96.17.182.65,20536,504.088988000,17.8198,4,"'http://timesofindia.indiatimes.com/photo/19949983.cms'::505.566316000, 'http://timesofindia.indiatimes.com/assemblyresult_karnataka.cms'::511.024966000, 'http://timesofindia.indiatimes.com/poll.cms'::514.709839000, 'http://timesofindia.indiatimes.com/breakingnews/karnatakaepolling.htm'::516.334446000"
+213,106.195.235.161,96.17.182.65,24265,504.089157000,17.8401,4,"'http://timesofindia.indiatimes.com/photo/19913639.cms'::505.566856000, 'http://timesofindia.indiatimes.com/photo/9719649.cms'::511.495742000, 'http://timesofindia.indiatimes.com/tmoney.cms?msid=-2128958273'::514.870523000, 'http://timesofindia.indiatimes.com/photo/17663799.cms'::516.452780000"
+214,106.195.235.161,96.17.182.65,17972,504.089317000,17.7399,4,"'http://timesofindia.indiatimes.com/photo/19949717.cms'::505.564990000, 'http://timesofindia.indiatimes.com/photo/16627036.cms'::510.151653000, 'http://timesofindia.indiatimes.com/configspace/ads/toigoogleads.html'::513.754540000, 'http://timesofindia.indiatimes.com/photo/4410559.cms'::515.764704000"
+215,106.195.235.161,96.17.182.65,12023,504.089482000,17.9197,4,"'http://timesofindia.indiatimes.com/photo.cms?msid=1748421'::505.567919000, 'http://timesofindia.indiatimes.com/photo/5539187.cms'::512.511420000, 'http://timesofindia.indiatimes.com/photo/4583284.cms'::515.021268000, 'http://timesofindia.indiatimes.com/thumb.cms?msid=19949112&width=91&height=59'::516.833041000"
+216,106.195.235.161,96.17.182.65,35626,504.089648000,18.0535,4,"'http://timesofindia.indiatimes.com/photo/11350517.cms'::505.568597000, 'http://timesofindia.indiatimes.com/photo/4748680.cms'::512.513083000, 'http://timesofindia.indiatimes.com/photo/12502589.cms'::515.100308000, 'http://timesofindia.indiatimes.com/photo/19947985.cms?width=130&height=98'::516.957604000"
+217,106.195.235.161,96.17.182.65,6854,504.089870000,32.6104,3,"'http://timesofindia.indiatimes.com/photo/17489305.cms'::505.569340000, 'http://timesofindia.indiatimes.com/photo/17489305.cms'::532.148399000, 'http://timesofindia.indiatimes.com/personalisation_reco.cms'::532.431636000"
+218,106.195.235.161,96.17.182.65,12277,504.090047000,17.8791,4,"'http://timesofindia.indiatimes.com/photo/4580293.cms'::505.567376000, 'http://timesofindia.indiatimes.com/photo/9783775.cms'::511.834639000, 'http://timesofindia.indiatimes.com/photo/5711192.cms'::514.961318000, 'http://timesofindia.indiatimes.com/photo/19801235.cms'::516.641936000"
+219,106.195.235.161,96.17.182.65,22848,504.090226000,17.9591,4,"'http://timesofindia.indiatimes.com/photo/18728895.cms'::505.570160000, 'http://timesofindia.indiatimes.com/configspace/ads/TOI_home_top.html'::512.860805000, 'http://timesofindia.indiatimes.com/photo/17572538.cms'::515.142116000, 'http://timesofindia.indiatimes.com/thumb.cms?msid=19947334&width=77&height=51'::517.063637000"
+220,106.195.235.161,96.17.182.65,16765,504.090388000,17.9787,4,"'http://timesofindia.indiatimes.com/photo/17767460.cms'::505.570849000, 'http://timesofindia.indiatimes.com/assemblywidget_karnataka.cms'::512.957941000, 'http://timesofindia.indiatimes.com/photo/11339279.cms'::515.232162000, 'http://timesofindia.indiatimes.com/configspace/xml/TOI-R2I-Thumbnail2.gif'::517.185433000"
+221,106.195.235.161,96.17.182.65,11017,504.090550000,15.6582,3,"'http://timesofindia.indiatimes.com/photo/11964050.cms'::505.571974000, 'http://timesofindia.indiatimes.com/shadiadcodenri.cms?section=homepage'::513.050618000, 'http://timesofindia.indiatimes.com/photo/11339010.cms'::515.265285000"
+222,106.195.235.161,96.17.182.65,16405,504.090709000,15.7180,3,"'http://timesofindia.indiatimes.com/photo.cms?msid=9649288'::505.572844000, 'http://timesofindia.indiatimes.com/niftysensexhome1.cms'::513.210631000, 'http://timesofindia.indiatimes.com/photo/11788630.cms'::515.392221000"
+223,106.195.235.161,74.125.236.79,6803,504.956072000,143.0135,0,
+224,106.195.235.161,63.116.58.121,3255,509.545270000,19.3552,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::513.759332000
+225,106.195.235.161,96.17.182.48,7075,513.461217000,6.2677,1,'http://in-cdn.effectivemeasure.net/em.js'::515.393371000
+226,106.195.235.161,96.17.182.32,15066,516.332361000,5.4776,1,'http://ipl.indiatimes.com/interface/skins/default/images/loader.gif'::517.749415000
+227,106.195.235.161,98.124.156.54,2307,517.593035000,5.0336,1,'http://www9.effectivemeasure.net/v4/em_js?flag=0&v=&vt=&hl=&sv=0&pv=&pn=&p=aHR0cDovL3RpbWVzb2ZpbmRpYS5pbmRpYXRpbWVzLmNvbS8%3D&r=&f=0&ns=_em&rnd=0.9566828147508204&u=&sf=0&'::518.805853000
+228,106.195.235.161,98.124.156.54,424,517.842026000,4.7839,0,
+229,106.195.235.161,96.17.182.11,4754,529.121933000,4.8888,1,'http://timesofindia.indiatimes.com/thumb/19949278.cms?width=81&height=53'::529.816405000
+230,106.195.235.161,96.17.182.11,17495,529.122546000,7.5780,4,"'http://timesofindia.indiatimes.com/thumb/19878429.cms?width=81&height=53'::529.817061000, 'http://timesofindia.indiatimes.com/photo/4156181.cms'::531.678583000, 'http://timesofindia.indiatimes.com/tpoint_fans2.cms?type=toi'::532.444819000, 'http://timesofindia.indiatimes.com/photo/11790044.cms'::532.922219000"
+231,106.195.235.161,96.17.182.11,13564,529.122930000,7.5771,2,"'http://timesofindia.indiatimes.com/thumb/19943846.cms?width=88&height=65'::529.817641000, 'http://timesofindia.indiatimes.com/photo/19556161.cms'::531.665207000"
+232,106.195.235.161,96.17.182.11,5356,529.123359000,4.7194,1,'http://timesofindia.indiatimes.com/thumb/19945097.cms?width=88&height=65'::529.849846000
+233,106.195.235.161,96.17.182.11,7924,529.124860000,7.5755,3,"'http://timesofindia.indiatimes.com/thumb/19943767.cms?width=88&height=65'::529.890179000, 'http://timesofindia.indiatimes.com/thumb/19943767.cms?width=88&height=65'::532.188387000, 'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::532.417100000"
+234,106.195.235.161,96.17.182.11,4929,529.125412000,4.8856,1,'http://timesofindia.indiatimes.com/thumb/19946394.cms?width=88&height=65'::529.913429000
+235,106.195.235.161,96.17.182.11,4980,529.125774000,4.8851,1,'http://timesofindia.indiatimes.com/thumb/19926078.cms?width=88&height=65'::529.951459000
+236,106.195.235.161,96.17.182.11,5490,529.126099000,4.9636,1,'http://timesofindia.indiatimes.com/thumb/19944127.cms?width=88&height=65'::530.016488000
+237,106.195.235.161,96.17.182.11,4361,529.126404000,7.5537,1,'http://timesofindia.indiatimes.com/thumb/19948876.cms?width=81&height=53'::530.030337000
+238,106.195.235.161,96.17.182.11,4287,529.126741000,7.5532,1,'http://timesofindia.indiatimes.com/photo/19944446.cms'::530.070458000
+239,106.195.235.161,96.17.182.11,5135,529.127114000,7.5531,1,'http://timesofindia.indiatimes.com/photo/19933031.cms'::530.090549000
+240,106.195.235.161,96.17.182.11,4487,529.127465000,7.5526,1,'http://timesofindia.indiatimes.com/thumb/19942036.cms?width=81&height=53'::530.150880000
+241,106.195.235.161,96.17.182.11,3319,529.127831000,7.5723,1,'http://timesofindia.indiatimes.com/photo/4761631.cms'::530.170305000
+242,106.195.235.161,96.17.182.11,9353,529.128743000,7.5714,1,'http://timesofindia.indiatimes.com/photo/19949280.cms'::530.210609000
+243,106.195.235.161,223.165.26.45,3071,532.754968000,1.0349,1,'http://crifeeds.timesofindia.indiatimes.com/GetCalender.json'::533.024981000
+244,106.195.235.161,65.54.82.170,63989,532.863457000,5.0051,1,'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js'::533.029002000
+245,106.195.235.161,65.54.82.170,628,533.002944000,3.7480,0,
+246,106.195.235.161,223.165.26.45,580,533.006569000,3.7441,0,
+247,106.195.235.161,96.17.182.73,424,533.071567000,3.5993,0,
+248,106.195.235.161,96.17.182.73,2688,533.164934000,4.6476,1,'http://static.rewards.indiatimes.com/fns/daily/daily_TOI.json'::533.370435000
+249,106.195.235.161,96.17.182.73,3118,534.035894000,3.7736,1,'http://mytimes.indiatimes.com/image/thumb/0/default'::534.171680000
+250,106.195.235.161,96.17.182.73,3878,534.036107000,3.7732,1,'http://mytimes.indiatimes.com/image/thumb/3/1996649'::534.170914000
+251,106.195.235.161,96.17.182.73,3594,534.036251000,4.3124,1,'http://mytimes.indiatimes.com/image/thumb/12/3768'::534.172130000
+252,106.195.235.161,96.17.182.73,4126,534.036376000,5.8329,1,'http://mytimes.indiatimes.com/image/thumb/1/453859'::534.172663000
+253,106.195.235.161,96.17.182.73,4103,534.036491000,5.8466,1,'http://mytimes.indiatimes.com/image/thumb/1/5177'::534.173166000
+254,106.195.235.161,96.17.182.73,424,534.131434000,3.6587,0,
+255,106.195.235.161,63.116.58.121,1984,535.023991000,7.0771,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::537.030618000
+256,106.195.235.161,125.252.226.155,2582,537.550891000,4.4682,1,'http://www.indiatimes.com/static_pages/indiatimes.json'::537.612751000
+257,106.195.235.161,125.252.226.152,3074,537.850175000,4.0208,2,"'http://card.cricket.timesofindia.indiatimes.com/cricketscorecard/htmlscore/flvmapjson.html'::537.979512000, 'http://card.cricket.timesofindia.indiatimes.com/cricketscorecard/htmlscore/getcalenderjson.html'::538.283301000"
+258,106.195.235.161,96.17.182.40,8216,537.944688000,3.9340,1,'http://media.indiatimes.in/media/photogallery/2013/May/946325_501694459878305_1784533185_n_1367993987_1367993994_100x75.jpg'::537.999651000
+259,106.195.235.161,96.17.182.65,2524,538.644708000,3.2743,1,'http://timesofindia.indiatimes.com/photo/18627811.cms'::538.739468000
+260,106.195.235.161,96.17.182.9,1972,550.445560000,2.2453,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::550.512691000
+261,106.195.235.161,31.13.79.17,5957,552.171520000,1.3491,0,
+262,106.195.235.161,96.17.182.9,1972,562.696510000,8.5534,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::565.277751000
+263,106.195.235.161,96.17.182.9,424,562.951034000,4.4778,0,
+264,106.195.235.161,96.17.182.40,2164,578.244339000,14.0348,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::578.680995000
+265,106.195.235.161,63.116.58.121,3111,590.164784000,13.1260,1,'http://samsungvuiasr.vlingo.com/voicepad/lmtt'::592.158770000
+266,106.195.235.161,96.17.182.40,1972,598.227221000,4.5389,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::599.012264000
+267,106.195.235.161,96.17.182.65,1972,617.035596000,2.9742,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::617.090478000
+268,106.195.235.161,96.17.182.65,1972,629.937758000,7.2824,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::632.592776000
+269,106.195.235.161,96.17.182.65,424,630.188709000,4.5970,0,
+270,106.195.235.161,96.17.182.65,1972,647.300601000,0.6211,1,'http://timesofindia.indiatimes.com/breakingnews/breakingnews.html'::647.368545000

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pcap List/Upload</title>
+        <link rel="stylesheet" href="/static/jquery-plugins/tablesorter/themes/blue/style.css" type="text/css" id="" media="print, projection, screen" />
+        <script src="/static/jquery-latest.js"></script>
+        <script src="/static/jquery-plugins/tablesorter/jquery.tablesorter.min.js"></script>
+    </head>
+    <body>
+    <!-- List of uploaded documents -->
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value(without ads)</th>
+                <th>Value(with ads)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in summary_data %}
+            <tr>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <img src="data:image/png;base64,{{rating_cdf_image}}"/>
+    </body>
+    <script type="text/javascript">
+    $(function(){
+        $("table").tablesorter();
+        $("#harviewer").html("<iframe src='{{HARVIEWER_URL}}?inputUrl="+location.origin+"{{har_url}}"+"' style='width:1000px; height:1600px;'></iframe>")
+    });
+    </script>
+</html>

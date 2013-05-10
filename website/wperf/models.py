@@ -41,6 +41,20 @@ class Website(models.Model):
     #MNC=mobile network code
 
 
+class Website_AdComparison(models.Model):
+    testId = models.ForeignKey(Test)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    url = models.CharField(max_length=1000)
+    dnsTime = models.BigIntegerField(default=0)
+    pageLoadTime = models.BigIntegerField(default=0)
+    javascriptTime = models.BigIntegerField(default=0)
+    pageTotalSize = models.IntegerField(default=0)
+    rating = models.FloatField(default=0)
+    progressTimeMap = models.CharField(max_length=1000)
+    signalStrength = models.IntegerField(default=0)
+    ads_blocked = models.IntegerField()  # 0 means blocked, 1 means allowed. Weird, I know!
+
+
 class WebSiteResource(models.Model):
     resourceId = models.ForeignKey(Resource)
     websiteId = models.ForeignKey(Website)
@@ -61,6 +75,11 @@ class PcapFile(models.Model):
 
 
 class ObsPcapFile(models.Model):
+    uploadedfile = models.FileField(upload_to="%Y/%m/%d")
+    shortfilename = models.CharField(max_length=100)
+
+
+class AdsVsNoAdsPcapFile(models.Model):
     uploadedfile = models.FileField(upload_to="%Y/%m/%d")
     shortfilename = models.CharField(max_length=100)
 

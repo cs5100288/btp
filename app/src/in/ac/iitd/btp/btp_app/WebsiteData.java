@@ -12,6 +12,7 @@ public class WebsiteData {
 	public String url;
 	public long pageLoadTime;
 	public int signalStrength;
+	
 	public HashMap<Integer, Long> partialPageLoadTimes;
 	
 	public String toString() {

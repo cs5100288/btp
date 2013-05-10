@@ -1,6 +1,9 @@
 package in.ac.iitd.btp.btp_app;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +13,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,6 +29,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.os.StrictMode;
 import android.telephony.PhoneStateListener;
@@ -52,6 +57,7 @@ import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.execution.Command;
 
 public class WperfActivity extends Activity {
+	public static final String separator_website_url = "http://agni.iitd.ac.in:8000/wperf/idle_url?sleep_time=2";
 	public int user_agent = 0;
 	Command currentWebsiteTcpdump;
 	ServiceConnection mConnection;
@@ -79,7 +85,9 @@ public class WperfActivity extends Activity {
 	// "http://www.twitter.com", "http://www.quora.com",
 	"http://timesofindia.com",
 	// "http://www.nytimes.com",
-	// "http://bbc.co.uk", "http://cricinfo.com", "http://www.amazon.com",
+	// "http://bbc.co.uk",
+	// "http://www.cricinfo.com",
+	// "http://www.amazon.com",
 	// "http://www.dailymotion.com", "http://www.tumblr.com"
 	};
 	public static final String[] TEST_WEBSITE_SHORT_NAMES = {
@@ -87,16 +95,19 @@ public class WperfActivity extends Activity {
 	// "http://www.twitter.com", "http://www.quora.com",
 	"toi",
 	// "nytimes",
-	// "http://bbc.co.uk", "http://cricinfo.com", "http://www.amazon.com",
+	// "http://bbc.co.uk",
+	// "cricinfo",
+	// "http://www.amazon.com",
 	// "http://www.dailymotion.com", "http://www.tumblr.com"
 	};
 	public int current_site = 0;
 	public HashMap<String, WebsiteData> dataMap0;
 	public HashMap<String, WebsiteData> dataMap1;
+	HashMap<String, String> noCacheHeaders = new HashMap<String, String>(2);
 
 	void loadUrl(String url) {
 		et.setText(url);
-		webView1.loadUrl(url);
+		webView1.loadUrl(url, noCacheHeaders);
 	}
 
 	void setUrl(String url) {
@@ -105,6 +116,95 @@ public class WperfActivity extends Activity {
 
 	String getUrl() {
 		return url;
+	}
+
+	String write_file(String filename, String data) {
+		try {
+			// catches IOException below
+
+			/*
+			 * We have to use the openFileOutput()-method the ActivityContext
+			 * provides, to protect your file from others and This is done for
+			 * security-reasons. We chose MODE_WORLD_READABLE, because we have
+			 * nothing to hide in our file
+			 */
+
+			File sdCard = Environment.getExternalStorageDirectory();
+			File f = new File(sdCard, "hosts");
+			FileOutputStream fOut = new FileOutputStream(f);
+			OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+			// Write the string to the file
+			osw.write(data);
+
+			/*
+			 * ensure that everything is really written out and close
+			 */
+			osw.flush();
+			osw.close();
+			return f.getAbsolutePath();
+
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return "";
+	}
+
+	String hosts_allowed = "127.0.0.1 localhost\n" + "\n"
+			+ "# The following lines are desirable for IPv6 capable hosts\n"
+			+ "::1     ip6-localhost ip6-loopback\n" + "fe00::0 ip6-localnet\n"
+			+ "ff00::0 ip6-mcastprefix\n" + "ff02::1 ip6-allnodes\n"
+			+ "ff02::2 ip6-allrouters\n" + "\n" + "#Blocked Hosts begin:\n";
+
+	void block_ads() throws Exception {
+		RootTools.remount("/system/", "rw");
+		String hosts_blocked = hosts_allowed + "";
+		String[] blocked_list = new String[] { "connect.facebook.net",
+				"ads.indiatimes.com", "netspiderads3.indiatimes.com",
+				"netspideradswc.indiatimes.com", "adscontent2.indiatimes.com",
+				"log3.optimizely.com", "static.gaana.com",
+				"partner.googleadservices.com", "pubads.g.doubleclick.net",
+				"www.facebook.com", "bs.serving-sys.com",
+				"pagead2.googlesyndication.com", "adscontent3.indiatimes.com",
+				"m-static.ak.fbcdn.net", "netspiderads2.indiatimes.com",
+				"googleads.g.doubleclick.net", "www.speakingtree.in",
+				"images.speakingtree.iimg.in", "platform.twitter.com",
+				"p.twitter.com", "r.twimg.com", "cdn.api.twitter.com",
+				"static.chartbeat.com", "ping.chartbeat.net",
+				"anywhere.platform.twitter.com", "m.ak.fbcdn.net",
+				"api.twitter.com", "adimg.mo2do.net",
+				"adscontent.indiatimes.com", "ad-apac.doubleclick.net",
+				"s.mobclix.com", "smaato-ads.s3.amazonaws.com",
+				"met.adwhirl.com", "ads.mobclix.com", "ad.doubleclick.net",
+				"images.ads.ibcdn.com", "ads.ibibo.com",
+				"advertise.indiatimes.com", "adsmediaturf.indiatimes.com" };
+		for (String h : blocked_list)
+			hosts_blocked += "127.0.0.1 " + h + "\n";
+		String fn = write_file("hosts", hosts_blocked);
+		RootTools.getShell(true)
+		
+				.add(new Command(0, "cp " + fn + " /etc/hosts") {
+					@Override
+					public void output(int arg0, String arg1) {
+						// TODO Auto-generated method stub
+						Log.e("HostsActivity", arg1);
+					}
+				}).waitForFinish();
+		RootTools.remount("/system/", "ro");
+	}
+
+	void allow_ads() throws Exception {
+		RootTools.remount("/system/", "rw");
+		String fn = write_file("hosts", hosts_allowed);
+		RootTools.getShell(true)
+				.add(new Command(0, "cp " + fn + " /etc/hosts") {
+					@Override
+					public void output(int arg0, String arg1) {
+						// TODO Auto-generated method stub
+						Log.e("HostsActivity", arg1);
+					}
+				}).waitForFinish();
+		RootTools.remount("/system/", "ro");
 	}
 
 	void obtainOneTimeData() {
@@ -125,23 +225,43 @@ public class WperfActivity extends Activity {
 	public void loadNextWebsite() {
 		if (current_site == 0 && user_agent == 0) {
 
-			String name = "obs_" + obsId;
+			String name = "ads_vs_no_ads_" + obsId;
 			tcpdumpService.startTcpdump(obsId, current_site, name);
 		}
-		user_agent = 1;
-		webView1.getSettings().setUserAgent(user_agent);
+		try {
+			if (user_agent == 1)
+				allow_ads();
+			else
+				block_ads();
+		} catch (Exception e) {
+			Log.e("WperfActivity", e.toString());
+		}
+		// user_agent = 1;
+		webView1.getSettings().setUserAgent(1);
 		loadWebSiteNumber(current_site);
 		user_agent = 1 - user_agent;
 	}
 
 	public void loadWebSiteNumber(int n) {
 
-		webView1.clearHistory();
-		webView1.clearFormData();
-		webView1.clearCache(true);
-		webView1.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		this.deleteDatabase("webview.db");
-		this.deleteDatabase("webviewCache.db");
+		fetchSeparatorWebsite();
+		webView1.stopLoading();
+		webView1.loadUrl("about:blank");
+
+		try {
+
+			// webView1.clearHistory();
+			// webView1.clearFormData();
+			webView1.clearCache(true);
+			webView1.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+			webView1.getSettings().setAppCacheEnabled(false);
+			webView1.getSettings().setAppCacheMaxSize(1);
+
+			// this.deleteDatabase("webview.db");
+			// this.deleteDatabase("webviewCache.db");
+		} catch (Exception e) {
+			Log.e("WperfActivity", e.toString());
+		}
 
 		String ws = TEST_WEBSITES[n];
 		// if(mBounded)
@@ -154,7 +274,7 @@ public class WperfActivity extends Activity {
 		keyCtr = 0;
 		signalStrengthAtTest = mSignalStrength;
 		pageLoadStartTime = System.currentTimeMillis();
-		webView1.loadUrl(ws);
+		webView1.loadUrl(ws, noCacheHeaders);
 	}
 
 	PhoneStateListener phoneStateListener;
@@ -173,6 +293,8 @@ public class WperfActivity extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
+		noCacheHeaders.put("Pragma", "no-cache");
+		noCacheHeaders.put("Cache-Control", "no-cache");
 		phoneStateListener = new PhoneStateListener() {
 			@Override
 			public void onSignalStrengthsChanged(SignalStrength signalStrength) {
@@ -229,6 +351,7 @@ public class WperfActivity extends Activity {
 		et = (EditText) findViewById(R.id.editText1);
 		pb = (ProgressBar) findViewById(R.id.progressBar1);
 		ratingWidget = (RatingBar) findViewById(R.id.ratingBar1);
+
 		startBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -269,7 +392,10 @@ public class WperfActivity extends Activity {
 				resources.add(url);
 				super.onLoadResource(view, url);
 			}
+
 		});
+		webView1.getSettings().setSupportZoom(true);
+		webView1.getSettings().setBuiltInZoomControls(true);
 		webView1.getSettings().setJavaScriptEnabled(true);
 		webView1.setWebChromeClient(new WebChromeClient() {
 			@Override
@@ -287,7 +413,7 @@ public class WperfActivity extends Activity {
 					// Toast.LENGTH_SHORT).show();
 					pb.setVisibility(ProgressBar.GONE);
 					rateBtn.setEnabled(true);
-					getRating();
+					// getRating();
 
 				}
 				if (keyCtr < partialPageLoadTimeKeys.length
@@ -302,6 +428,7 @@ public class WperfActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				}
 			}
+
 		});
 	}
 
@@ -314,6 +441,7 @@ public class WperfActivity extends Activity {
 
 	void getRating() {
 		int x = 0;
+		x++;
 		x++;
 		if (x == 1) {
 			WebsiteData d = new WebsiteData();
@@ -355,11 +483,15 @@ public class WperfActivity extends Activity {
 						d.pageLoadTime = pageLoadTime;
 						d.partialPageLoadTimes = new HashMap<Integer, Long>(
 								partialPageLoadTimes);
-						if (user_agent == 0)
+						Toast.makeText(WperfActivity.this,
+								"user_agent=" + user_agent, Toast.LENGTH_LONG)
+								.show();
+						if (user_agent == 1)
 							dataMap0.put(TEST_WEBSITES[current_site], d);
 						else
 							dataMap1.put(TEST_WEBSITES[current_site], d);
-						current_site++;
+						if (user_agent == 0)
+							current_site++;
 						// rateBtn.setEnabled(false);
 						if (current_site == TEST_WEBSITES.length
 								&& user_agent == 0) {
@@ -412,6 +544,27 @@ public class WperfActivity extends Activity {
 		return id;
 	}
 
+	public void fetchSeparatorWebsite() {
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpGet httpget = new HttpGet(separator_website_url);
+		try {
+			// set post parameters
+			// Execute HTTP Post Request
+
+			HttpResponse response = httpclient.execute(httpget);
+			String respStr = EntityUtils.toString(response.getEntity());
+
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			Log.e(tag, e.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.e(tag, e.toString());
+		} catch (Exception e) {
+			Log.e(tag, e.toString());
+		}
+	}
+
 	public void sendDataToServer() {
 		Toast.makeText(this, "Sending data to server", Toast.LENGTH_SHORT)
 				.show();
@@ -422,27 +575,30 @@ public class WperfActivity extends Activity {
 
 			String data = "{";
 			String sep = "";
-			for (String key : dataMap0.keySet()) {
-				data += sep;
-				sep = ", ";
-				data += "'" + key + "':" + dataMap0.get(key);
-			}
-			data += "}";
-			j.put("0", data);
-			data = "{";
-			sep = "";
-			for (String key : dataMap0.keySet()) {
-				data += sep;
-				sep = ", ";
-				data += "'" + key + "':" + dataMap1.get(key);
-			}
-			data += "}";
-			j.put("1", data);
+			Log.d("WperfActivity", dataMap0.toString());
+			Log.d("WperfActivity", dataMap1.toString());
+			// for (String key : dataMap0.keySet()) {
+			// data += sep;
+			// sep = ", ";
+			// data += "'" + key + "':" + dataMap0.get(key);
+			// }
+			// data += "}";
+			j.put("0", new JSONObject(dataMap0));
+			// data = "{";
+			// sep = "";
+			// for (String key : dataMap0.keySet()) {
+			// data += sep;
+			// sep = ", ";
+			// data += "'" + key + "':" + dataMap1.get(key);
+			// }
+			// data += "}";
+			j.put("1", new JSONObject(dataMap1));
+			Log.d("WperfActivity", j.toString());
 			nameValuePairs.add(new BasicNameValuePair("data", j.toString()));
 			// nameValuePairs.add(new BasicNameValuePair("resources",
 			// resources.toString()));
 			HttpPost httppost = new HttpPost(SERVER_BASE
-					+ "/wperf/addobservation/id/" + obsId);
+					+ "/wperf/addobservation_adcomparison/id/" + obsId);
 
 			// Add your data
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));

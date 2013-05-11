@@ -1,0 +1,94 @@
+
+function Delete_Ckie(name,path,domain){
+	try{
+	if(Get_Ckie(name)){
+		document.cookie=name+"="+((path)? ";path="+path : "")+((domain)? ";domain="+domain : "")+";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+		}	
+	}
+	catch(ex){
+	
+	}
+}
+function Set_Ckie(name,value,expires,path,domain,secure){
+	var today=new Date()
+	today.setTime(today.getTime())
+	if(expires){expires=expires*1000*60*60*24}
+	var expires_date=new Date(today.getTime()+(expires))
+	document.cookie=name+"="+escape(value)+((expires)? ";expires="+expires_date.toGMTString(): "")+((path)? ";path="+path : "")+((domain)? ";domain="+domain : "")+((secure)? ";secure" : "")
+	
+	
+}
+
+	function Get_Ckie(name){
+	var start=document.cookie.indexOf(name+"=")
+	var len=start+name.length+1
+	if((!start)&&(name !=document.cookie.substring(0,name.length))){
+		return null
+	}
+	if(start==-1)return null;
+	var end=document.cookie.indexOf(";",len)
+	if(end==-1)end=document.cookie.length
+	return unescape(document.cookie.substring(len,end))
+}
+
+function Set_Ckie_Mng(sName,sValue,selfImgID,imgpos,cName,expiredays){var exdate=new Date();if(expiredays==-1){exdate.setDate(exdate.getDate()+expiredays);document.cookie=sName+"="+escape(sValue)+"$"+selfImgID+"$"+imgpos+"$"+cName+"; expires="+exdate.toGMTString()+";path=/";}}
+function Get_Ckie_Mng(name){var start=document.cookie.indexOf(name+"=")
+var len=start+name.length+1
+if((!start)&&(name!=document.cookie.substring(0,name.length))){return null}
+if(start==-1)return null;var end=document.cookie.indexOf(";",len)
+if(end==-1)end=document.cookie.length
+return unescape(document.cookie.substring(len,end))}
+function cook_custom(cName,status){var flag=false;var cook_List="";if(status==true){cook_List="disableautolg,autologin,TicketId,CMSSSO,CommLogU,user,CommLogP,Fboauthid,Fbimage,FaceBookEmail,Fbsecuritykey,Twoauthid,Twimage,TwitterUserName,Twsecuritykey,fbookname,fbooklocation,tbookname,tbooklocation,fbook_image,MSCSAuth,MSCSAuthDetail,MSCSAuthDetails,fbook_image,tbook_image,usercomt,nsIstial_Cook,_iibeat_session,_ibeat_session,_chartbeat2,UID,UIDR,__utma,__utmb,__utmc,__utmz,_SUPERFLY_nosample,RegionID,homepagecityselection,homepagecityselectionname,joincampnew";}else{cook_List="disableautolg,autologin,TicketId,nsIstial_Cook,_iibeat_session,_ibeat_session,_chartbeat2,UID,UIDR,__utma,__utmb,__utmc,__utmz,_SUPERFLY_nosample,RegionID,homepagecityselection,homepagecityselectionname,joincampnew";}
+var tmpList=cook_List.split(',');for(var i=0;i<tmpList.length;i++){if(tmpList[i]==cName){flag=true;break;}else{flag=false;}}
+return flag;}
+var tmpCook="";function Delete_Ckie_Mng(name,path,domain){try{if(Get_Ckie_Mng(name)){document.cookie=name+"="+((path)?";path="+path:"")+((domain)?";domain="+domain:"")+";expires=Thu, 01-Jan-1970 00:00:01 GMT";}}catch(ex){}}
+function get_customised_cookies_array(status){var cookies={};if(document.cookie&&document.cookie!=''){var split=document.cookie.split(';');for(var i=0;i<split.length;i++){var name_value=split[i].split("=");name_value[0]=name_value[0].replace(/^ /,'');cookies[decodeURIComponent(name_value[0])]=decodeURIComponent(name_value[1]);tmpCook=cook_custom(name_value[0],status);if(tmpCook==false){Delete_Ckie_Mng(name_value[0],"/",".indiatimes.com");}}}
+return cookies;}
+function flushCookies(){if(Get_Ckie_Mng('MSCSAuth')==null){get_customised_cookies_array(false);}else{get_customised_cookies_array(true);}}
+flushCookies();var domainname=document.domain;if(domainname.indexOf('indiatimes.com')==-1){nsShowCook=1;}
+var nsIstial_expDays=1;var nsIstial_exp=new Date();nsIstial_exp.setTime(nsIstial_exp.getTime()+(nsIstial_expDays*24*60*60*1000)-100000);var val1="";function setSessionCook()
+{Set_Ckie("iplclosenonp","1",0,"/",".indiatimes.com","");}
+function Get_Ckie(name){var start=document.cookie.indexOf(name+"=")
+var len=start+name.length+1
+if((!start)&&(name!=document.cookie.substring(0,name.length))){return null}
+if(start==-1)return null;var end=document.cookie.indexOf(";",len)
+if(end==-1)end=document.cookie.length
+return unescape(document.cookie.substring(len,end))}
+function Set_Ckie(name,value,expires,path,domain,secure){var today=new Date()
+today.setTime(today.getTime())
+if(expires){expires=expires*1000*60*60*24}
+var expires_date=new Date(today.getTime()+(expires))
+document.cookie=name+"="+escape(value)+((expires)?";expires="+expires_date.toGMTString():"")+((path)?";path="+path:"")+((domain)?";domain="+domain:"")+((secure)?";secure":"")}
+function nsIstial_getcookie(cookiename)
+{var nsIstial_cookiestring=document.cookie;var i=0;var index1=nsIstial_cookiestring.indexOf(cookiename);if(index1==-1||cookiename=="")
+return"";var index2=nsIstial_cookiestring.indexOf(';',index1);if(index2==-1)
+index2=nsIstial_cookiestring.length;return unescape(nsIstial_cookiestring.substring(index1+cookiename.length+1,index2));}
+function nsIstial_setcookie(name,value,duration)
+{nsIstial_cookiestring=name+"="+escape(value);document.cookie=nsIstial_cookiestring;if(!nsIstial_getcookie(name))
+return false;else
+return true;}
+function nsIstial_checkcookie(name,value,duration)
+{if(nsIstial_getcookie(name)<1)
+{if(nsIstial_setcookie(name,value,duration)==true)
+{window.location.replace("/defaultinterstitial.cms");return false;}}}
+var nsIstial_count=nsIstial_getcookie('nsIstial_Cook')
+if((nsIstial_count==null)||(nsIstial_count==""))
+{nsIstial_count=1;}
+else
+{nsIstial_count++;}
+if(nsShowCook==1)
+nsIstial_checkcookie('nsIstial_Cook',nsIstial_count,1);function df(sd,i){var tmpsd=sd;if(sd==""||sd==null)return;sd=new Date(sd);if(cd.getTime()<sd.getTime())return;var chk=0;var ss=document.getElementById('dtformt'+i);var diff=Math.abs(cd.getTime()-sd.getTime());diff=((diff/1000)/60);chk=diff%60;if(diff<=360){if(diff<60){if(diff<2){document.write("<span style=color:#B4B4B4;font-size:10px;> | </span>"+diff+" min ago");}
+else{document.write("<span style=color:#B4B4B4;font-size:10px;> | </span>"+diff+" min ago");}}
+else{if(diff<120){document.write("<span style=color:#B4B4B4;font-size:10px;> | </span>"+Math.floor(diff/60)+" hr ago");}
+else{document.write("<span style=color:#B4B4B4;font-size:10px;> | </span>"+Math.floor(diff/60)+" hrs ago");}}
+ss.style.color="red"
+ss.style.fontSize="11px";}}
+function closeAlertCoke(){document.getElementById('fixeddiv').style.display='none';}
+
+
+
+
+
+
+
+		

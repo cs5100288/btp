@@ -1,0 +1,41 @@
+{
+
+var google_ads = new Array();
+var google_ad;
+var google_radlinks = new Array();
+var google_radlink;
+var google_info = new Object();
+google_ad = {}; 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=CnIchnTsmUeGtPOXaigfj14DQCbnQyIQDifP0v03AjbcBEAEgqPCmBigCUM_O3cEEYOXC5IOkDqABr9Tz5QPIAQGpAoO6tb5otlM-qAMBqgR1T9D3UHnYhKQYyYEhClsG7c38eBZ9ymtx_Gfv6XoszYSP74Ed9-YWjqOGcJNRLRjL8qzSbyYRPdeiOxZfij_UA5hHapPvH82_R4N9dm3VjTMBVvyMEy5QT3WvLp81byTWVULAqwTazb138Zc71Lsoj8bF1Jw4gAe5q4wa&amp;num=1&amp;sig=AOD64_0yi8D_WD9fCygW96Q3jJaks_WMKA&amp;client=ca-timesofindia_site_js&amp;adurl=http://www.policybazaar.com/life-insurance/pension_landingpage_google.aspx%3Futm_source%3Dgoogle%26utm_medium%3Dppc_content%26utm_term%3Dpension_text_ads%26utm_campain%3Dpb_pension"; 
+google_ad.visible_url = "SBI-Pension.Policybazaar.com"; 
+google_ad.line1 = "Pension Plans"; 
+google_ad.line2 = "Invest 50,000 only\x26amp; Get 63 Lacs"; 
+google_ad.line3 = "Compare All Plans with SBI Life"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_ad = {}; 
+google_ad.n = 2; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "site"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=COAM0nTsmUeGtPOXaigfj14DQCY-Eza8D_6LyzEvV06HpARACIKjwpgYoAlDSkKToBWDlwuSDpA6gAYXsnf0DyAEBqQKDurW-aLZTPqgDAaoEe0_QpyBD0oSnGMmBIQpbBu3N_HgWfcprcfxn7-l6LM2Ej--BHffmFo6jhnCTUS0Yy_Ks0m8mET3XojsWX4o_1AOYR2qT7x_Nv0eDfXZt1cUzkUpknDMvUp8fhNZ049DPPUY6x8YEMM4tdfGXGdS7LprDfCpCIjju3wqH64AH45PiAg&amp;num=2&amp;sig=AOD64_288HB_qEqPO56yQvCVkVJq7bPZng&amp;client=ca-timesofindia_site_js&amp;adurl=https://asia.citi.com/india/Search/apply-online-citibank-rewards-credit-card.htm%3Fhid%3D2%26site%3DGOOGLE%26creative%3DGENERIC%26section%3DSEARCH%26agencyCode%3DiPC2%26campaignCode%3DManaged_Placement%26productCode%3DCARDS%26eOfferCode%3DCMP"; 
+google_ad.visible_url = "citi.com/CreditCard"; 
+google_ad.line1 = "Citibank\x26#8482; Credit Card"; 
+google_ad.line2 = "Rs 1000 Worth Activation Benefits,"; 
+google_ad.line3 = "10 Times The Reward Points. Apply!"; 
+google_ad.regionname = ""; 
+google_ads[1] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://timesofindia.indiatimes.com/%26gl%3DIN%26hl%3Den%26client%3Dca-timesofindia_site_js%26hideleadgen%3D1%26ai0%3DCnIchnTsmUeGtPOXaigfj14DQCbnQyIQDifP0v03AjbcBEAEgqPCmBigCUM_O3cEEYOXC5IOkDqABr9Tz5QPIAQGpAoO6tb5otlM-qAMBqgR1T9D3UHnYhKQYyYEhClsG7c38eBZ9ymtx_Gfv6XoszYSP74Ed9-YWjqOGcJNRLRjL8qzSbyYRPdeiOxZfij_UA5hHapPvH82_R4N9dm3VjTMBVvyMEy5QT3WvLp81byTWVULAqwTazb138Zc71Lsoj8bF1Jw4gAe5q4wa%26ai1%3DCOAM0nTsmUeGtPOXaigfj14DQCY-Eza8D_6LyzEvV06HpARACIKjwpgYoAlDSkKToBWDlwuSDpA6gAYXsnf0DyAEBqQKDurW-aLZTPqgDAaoEe0_QpyBD0oSnGMmBIQpbBu3N_HgWfcprcfxn7-l6LM2Ej--BHffmFo6jhnCTUS0Yy_Ks0m8mET3XojsWX4o_1AOYR2qT7x_Nv0eDfXZt1cUzkUpknDMvUp8fhNZ049DPPUY6x8YEMM4tdfGXGdS7LprDfCpCIjju3wqH64AH45PiAg\x26usg\x3dAFQjCNEi_kJPubkY0n1DJmOpwAjhIMnHjw";
+var google_attribution_text = "AdChoices";
+var google_is_rtl = false;
+if (window.google_ad_request_done) {
+google_ad_request_done(google_ads);
+}
+if (window.google_radlink_request_done) {
+google_radlink_request_done(google_radlinks);
+}
+}

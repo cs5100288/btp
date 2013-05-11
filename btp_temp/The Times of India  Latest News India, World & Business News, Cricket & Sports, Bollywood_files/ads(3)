@@ -1,0 +1,41 @@
+{
+
+var google_ads = new Array();
+var google_ad;
+var google_radlinks = new Array();
+var google_radlink;
+var google_info = new Object();
+google_ad = {}; 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=CS_-UnTsmUceQO87bigff8IHYB8v0v4MDk5qLykHh783XBxABIKjwpgYoAlCjpPfHB2DlwuSDpA6gAaOg0_0DyAEBqAMBqgR3T9A1sSrJOnLGIwaFv5yK8OZTfDUIDzL5ZBEnZpoj66sM3CXA0uxQkxPlssz6av3kWH8X1Tdbl3vnZchGRbaVcuDbaLHIFpUI0SHFB2faBm6HFBYZK-q5OeLlTsszY-1PstkAhyVgp5EEes67cuNZvsb71ERHrpSAB8XfrAI&amp;num=1&amp;sig=AOD64_32OLerx57D3UKLpzR6mXgoOJ6GiQ&amp;client=ca-timesofindia_site_js&amp;adurl=http://aboutastro.com/cgi-bin/regjen_2.cgi%3Fr%3D1tb46-rc"; 
+google_ad.visible_url = "AboutAstro.com/horoscope"; 
+google_ad.line1 = "Horoscope for all 2013"; 
+google_ad.line2 = "Claim your Free Reading from this"; 
+google_ad.line3 = "accurate \x26amp; talented Astrologer now"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_ad = {}; 
+google_ad.n = 2; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "site"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=CyqzJnTsmUceQO87bigff8IHYB5P1vMUE87TgpG6zpb2yahACIKjwpgYoAlChhYXSBGDlwuSDpA6gAc3ZxtMDyAEBqQKDurW-aLZTPqgDAaoEeE_QZeTv3SNI_pG1n9CBjvjwT3U6DwU_8StWIGyXK_62CNQznZ_gUiTIx_nQ-m638VgkCtE_TYty6GLCS0350nXq1mCk1RKdHoxsyQUldcRtTt7rSBo2TdI0F4EgIJsG1Cky6xSxkVGQBnrISITAeb7GGzKzLNhX_4AHm6a5LA&amp;num=2&amp;sig=AOD64_1U2WYlgHDpEGxMUbUO3DTGaSb59g&amp;client=ca-timesofindia_site_js&amp;adurl=http://www.unitechgroup.com/gurgaon-apartments/index.asp%3Fsourcetype%3DGoogle-adwords"; 
+google_ad.visible_url = "unitechgroup.com/gurgaon-apartments"; 
+google_ad.line1 = "New Properties in Gurgaon"; 
+google_ad.line2 = "Choose from the best locations in"; 
+google_ad.line3 = "Gurgaon for your dream home. Hurry!"; 
+google_ad.regionname = ""; 
+google_ads[1] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://timesofindia.indiatimes.com/%26gl%3DIN%26hl%3Den%26client%3Dca-timesofindia_site_js%26hideleadgen%3D1%26ai0%3DCS_-UnTsmUceQO87bigff8IHYB8v0v4MDk5qLykHh783XBxABIKjwpgYoAlCjpPfHB2DlwuSDpA6gAaOg0_0DyAEBqAMBqgR3T9A1sSrJOnLGIwaFv5yK8OZTfDUIDzL5ZBEnZpoj66sM3CXA0uxQkxPlssz6av3kWH8X1Tdbl3vnZchGRbaVcuDbaLHIFpUI0SHFB2faBm6HFBYZK-q5OeLlTsszY-1PstkAhyVgp5EEes67cuNZvsb71ERHrpSAB8XfrAI%26ai1%3DCyqzJnTsmUceQO87bigff8IHYB5P1vMUE87TgpG6zpb2yahACIKjwpgYoAlChhYXSBGDlwuSDpA6gAc3ZxtMDyAEBqQKDurW-aLZTPqgDAaoEeE_QZeTv3SNI_pG1n9CBjvjwT3U6DwU_8StWIGyXK_62CNQznZ_gUiTIx_nQ-m638VgkCtE_TYty6GLCS0350nXq1mCk1RKdHoxsyQUldcRtTt7rSBo2TdI0F4EgIJsG1Cky6xSxkVGQBnrISITAeb7GGzKzLNhX_4AHm6a5LA\x26usg\x3dAFQjCNHrIQwR_oegbHtlJKQJp5irmikAfw";
+var google_attribution_text = "AdChoices";
+var google_is_rtl = false;
+if (window.google_ad_request_done) {
+google_ad_request_done(google_ads);
+}
+if (window.google_radlink_request_done) {
+google_radlink_request_done(google_radlinks);
+}
+}

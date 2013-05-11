@@ -1,0 +1,599 @@
+
+
+			var badgefullname="";
+				var badgeemail="";
+				var badgefname="";
+				var badgelname="";
+				var badgepicurl="";
+				var _tp_email;
+				var _tp_uid;	
+				var isLoggedSsonw=Get_Ckie('MSCSAuth');		
+				var isLoggedSsobadge = Get_Ckie('MSCSAuth');				
+				if(isLoggedSsonw!=null && isLoggedSsonw!=undefined)
+				{
+					var rewardemail=Get_Ckie('MSCSAuthDetails').split('=')[1];
+					var _tp_uid=Get_Ckie('MSCSAuthDetails').split('=')[1];
+					if(_tp_uid.indexOf('@')==-1)
+					{
+					_tp_uid=_tp_uid+"@indiatimes.com";
+					}	
+					if(rewardemail.indexOf('@')==-1)
+					{
+					rewardemail=rewardemail+'@indiatimes.com';
+					}				
+					_tp_email=rewardemail;	
+				}
+				//var tpointuid=Get_Ckie('MSCSAuthDetails').split('=')[1];
+				var _tp_url = document.location.href;
+				_tp_url=escape(_tp_url);
+				var _tp_action="read";	
+				function badgedinit()
+				{
+					var isLogged = Get_Ckie('MSCSAuth');
+					tmpUfNVal1=Get_Ckie('MSCSAuthDetail');
+					if(Get_Ckie('MSCSAuthDetail')!=null)
+					{
+						tmpUfNVal1=tmpUfNVal1.split("~");
+						if(tmpUfNVal1[3].split('=')[1]!=null)
+						{							
+							var _tp_emailtst=tmpUfNVal1[3].split('=')[1];								
+								if(_tp_emailtst!="null" && _tp_emailtst!="" && _tp_emailtst!=" ")
+								{
+									_tp_email=_tp_emailtst;
+									
+								}
+								
+						}
+						if(tmpUfNVal1[4].split('=')[1]!=null)
+						{
+							tmpUfN1=tmpUfNVal1[4].split('=')[1];
+								if(tmpUfN1=="null")
+								{
+									tmpUfN1="";
+								}		
+						}
+						else 
+						{
+							tmpUfN1="";
+						}
+
+						if(tmpUfNVal1[5].split('=')[1]!=null)
+						{
+							tmpUlN1=tmpUfNVal1[5].split('=')[1];	
+								if(tmpUlN1=="null")	
+								{
+									tmpUlN1="";
+								}
+						}
+						else 
+						{
+							tmpUlN1="";
+						}
+						tmpUFullN1=tmpUfN1+tmpUlN1;		
+						if(tmpUFullN1!="")
+						{
+							//username=tmpUfN1+" "+tmpUlN1;
+							var tmplower=tmpUfN1.toLowerCase();
+							var tmplower1=tmpUlN1.toLowerCase();								
+							if (tmplower.indexOf(tmplower1) !=-1) {username=tmpUfN1;}
+							else if (tmpUfN1.indexOf(tmpUlN1) !=-1) {username=tmpUfN1;}	
+							else {username=tmpUfN1+" "+tmpUlN1;}
+						}
+					else 
+					{
+						if(Get_Ckie('MSCSAuthDetails')!=null)
+						{
+							username=Get_Ckie('MSCSAuthDetails').split('=')[1];
+						}
+
+					}
+					username=username.replace("+"," ");
+					badgefullname=username;
+					badgefname=tmpUfN1;
+					badgelname=tmpUlN1;
+					isLoggedtmpSSO = Get_Ckie('MSCSAuthDetails').split('=')[1];
+					if(isLoggedtmpSSO.indexOf('@')==-1){							
+						isLoggedtmpSSO=isLoggedtmpSSO.split('@')[0];
+						isLoggedtmpSSO=isLoggedtmpSSO+"@indiatimes.com";
+					}							
+					userEmailSFT=isLoggedtmpSSO;
+					badgeemail=isLoggedtmpSSO;
+					var isimgpath = Get_Ckie('fbook_image');
+					if(Get_Ckie('fbook_image')!=null)
+					{
+					badgepicurl=isimgpath;
+					}
+				}				
+				}
+				//for newsleteer and link and delink script
+				var isLoggedSso1 = Get_Ckie('MSCSAuth');
+				function setbvcredit()
+				{
+					var newsltr=document.getElementById('nwsltr').value;
+					if(newsltr=="0")
+					{
+						//Badgeville.credit('Subscribe TOI Newsletter');
+						log('sub_dn','');
+						var tmpurl3="/setewsletterbadgeville.cms?txt_id="+badgeemail+"&txt_sid=9&status=1";
+						populate_wf(tmpurl3,"getnewsletter1","no","");
+					}
+					if(newsltr=="3")
+					{
+						//Badgeville.credit('Unsubscribe TOI Newsletter');
+						//var tmpurl2="/setewsletterbadgeville.cms?txt_id="+badgeemail+"&txt_sid=9&status=2";
+						//populate_wf(tmpurl2,"getnewsletter1","no","");
+					}
+						
+				}
+				function setbvcredittw()
+				{
+					try{
+					twloyalitystatus=document.getElementById('twloyalitystatus').value;
+					twtoauthidval=document.getElementById('twtoauthid').value;
+					var setreward1="";
+					if(twloyalitystatus=="0" && twtoauthidval!="T" && twtoauthidval!="0" && twtoauthidval!="" && twtoauthidval!=" ")
+						{
+							//Badgeville.credit('Connect Twitter Profile');
+							loyalitypointstw();							
+							setreward1="http://socialappsintegrator.indiatimes.com/socialsite/RewardsUpdate?loyalityStatus=1&oauthsite=twitter&email="+badgeemail;
+							//alert(setreward1);
+							document.getElementById("myprefoptionbv1").src=setreward1;
+							
+						}
+						if(twloyalitystatus=="3")
+						{						
+							//Badgeville.credit('Disconnect Twitter Profile');
+							setreward1="http://socialappsintegrator.indiatimes.com/socialsite/RewardsUpdate?loyalityStatus=2&oauthsite=twitter&email="+badgeemail;
+							//alert(setreward1);
+							document.getElementById("myprefoptionbv1").src=setreward1;
+							
+						}
+					}catch(ex){}
+				}
+				function setbvcreditfb()
+				{
+					try{
+					fbloyalitystatus=document.getElementById('fbloyalitystatus').value;
+					fboauthidval=document.getElementById('fboauthid').value;
+					var setreward="";					
+					if(fbloyalitystatus=="0" && fboauthidval!='F' && fboauthidval!="0" && fboauthidval!="" && fboauthidval!=" ")
+						{							
+							//Badgeville.credit('Connect Facebook Profile');
+							loyalitypointsfb();							
+							setreward="http://socialappsintegrator.indiatimes.com/socialsite/RewardsUpdate?loyalityStatus=1&oauthsite=facebook&email="+badgeemail;
+							//alert(setreward);							
+							document.getElementById("myprefoptionbv").src=setreward;							
+							
+						}
+						if(fbloyalitystatus=="3")
+						{							
+							//Badgeville.credit('Disconnect Facebook Profile');							
+							setreward="http://socialappsintegrator.indiatimes.com/socialsite/RewardsUpdate?loyalityStatus=2&oauthsite=facebook&email="+badgeemail;
+							//alert(setreward);							
+							document.getElementById("myprefoptionbv").src=setreward;							
+							
+						}
+					}catch(ex){}
+				}
+				function setbvcreditsignup()
+				{
+					var signupval=document.getElementById('signupbvpoint').value;
+					if(signupval=="0")
+					{					
+					//Badgeville.credit('Register on TOI');
+					loyalitypointsregister();
+					setrewardsignup="http://socialappsintegrator.indiatimes.com/socialsite/RewardsUpdate?oauthsite=sso&loyalityStatus=1&channel=toi&email="+badgeemail;							
+					document.getElementById("bvsignupiframe").src=setrewardsignup;
+					}
+				}
+				function loyalitypointsregister()
+				{
+				//lbsubmit("http://timesofindia.indiatimes.com","toi","b39b9b02b0ef4bc6a0f38eef3e4618fe","","register",badgeemail);
+				log('register','');
+				}
+				function getbvdetails()
+				{
+					if(isLoggedSso1!=null)
+					{
+						try
+						{	
+							tmpur2="/fbauthapimypage_loyal.cms?email="+badgeemail+"&oauthsite=facebook";
+							populate_wf(tmpur2,"facebookbv","no","setbvcreditfb()");
+							tmpur3="/fbauthapimypage_loyal.cms?email="+badgeemail+"&oauthsite=twitter";
+							populate_wf(tmpur3,"twitterbv","no","setbvcredittw()");
+							tmpur4="/signupbadgevillestatus.cms?email="+badgeemail+"&oauthsite=sso";
+							populate_wf(tmpur4,"bvsignupdetail","no","setbvcreditsignup()");
+							//tmpur5="/getnewsletterinfobadgeville.cms?emailid="+badgeemail+"&serviceid=9";
+							//populate_wf(tmpur5,"getnewsletter","no","setbvcredit()");
+							
+						}
+						catch(ex){}
+					}
+				}
+				function loyalitypointstw()
+					{
+						//lbsubmit("http://timesofindia.indiatimes.com/mypage.cms","toi","b39b9b02b0ef4bc6a0f38eef3e4618fe","","connect_tw",badgeemail);
+						log('connect_tw','');
+					}
+					function loyalitypointsfb()
+					{																
+					//lbsubmit("http://timesofindia.indiatimes.com/mypage.cms","toi","b39b9b02b0ef4bc6a0f38eef3e4618fe","","connect_fb",badgeemail);					
+					log('connect_fb','');
+					}
+
+				
+					function ucfirst(str) {
+    				var firstLetter = str.substr(0, 1);
+    				return firstLetter.toUpperCase() + str.substr(1);
+					}
+					
+					var fbtwBSharepath;	
+					var fbtwBSharepath1;
+					var fbtwBSharepath2;					
+					var username="";						
+					username = unescape(username);						
+					if(username.indexOf(' ') !=-1)
+					fstnameonly=username.split(' ')[0];
+					else
+					fstnameonly=ucfirst(username);	
+					var _tp_UID1 = fstnameonly;					
+					
+					var datashorturlval="";	
+					function posttoTwitter(badgeurl,badgetext)
+					{
+						var datashorturl="";
+						try{
+						datashorturl=document.getElementById('shortenurlresponse').innerHTML;
+						 if(datashorturl=="" || datashorturl==" ")
+							 datashorturlval='https://twitter.com/intent/tweet?&text='+badgetext+'&url='+badgeurl;
+						else
+						 datashorturlval='https://twitter.com/intent/tweet?&text='+badgetext+'&url='+datashorturl;
+						var newwindow;
+						newwindow1=window.open(datashorturlval,'Badgeshare1','height=320,width=550,left=400,top=200');
+						if (window.focus) {newwindow1.focus()}
+						//return false;
+						}
+						catch(ex){}
+					}	
+					
+					function getshortenURL(badgeurl,badgetext)
+					{						
+						//alert(badgetext);alert(badgeurl);
+						//newwindow1=window.open('https://twitter.com/intent/tweet?&text='+badgetext+'&url='+badgeurl,'Badgeshare1','height=320,width=550,left=400,top=200');
+						//if (window.focus) {newwindow1.focus()}
+						try{
+							$.ajax({
+							  url: '/getshorturl.cms?url='+badgeurl,
+							  dataType: "html",
+							  async: false,
+							  success: function(data) {
+							  document.getElementById('shortenurlresponse').innerHTML=data;
+								posttoTwitter(badgeurl,badgetext);
+								
+							  }
+							});
+							}catch(ex){
+							posttoTwitter(badgeurl,badgetext);
+							}		
+					}
+					function fbtwBShare(param,fbtwBSharepath,levelname)
+					{		
+						
+						 document.getElementById('shortenurlresponse').innerHTML="";					
+						var badgeurl="";
+						// tpbar1 included to avail fstnameonly to the function
+						//tpbar1();		
+						//alert("1");	
+						//alert(apifstnameonlyfl);
+						//alert(apifstnameonly);			
+						if(fbtwBSharepath=="Member")							
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",badgetype-1.cms";														
+						if(fbtwBSharepath=="Well Connected")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",badgetype-2.cms";
+						if(fbtwBSharepath=="Inboxer")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",badgetype-3.cms";							
+						if(fbtwBSharepath=="Frequent Flyer")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-4.cms";
+						if(fbtwBSharepath=="News King")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-5.cms";
+						if(fbtwBSharepath=="Wordsmith")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-6.cms";
+						if(fbtwBSharepath=="ShareKhaan" || fbtwBSharepath=="Sharekhaan")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-7.cms";
+						if(fbtwBSharepath=="Moderator")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-8.cms";
+						if(fbtwBSharepath=="Influencer")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-9.cms";
+						if(fbtwBSharepath=="Networker")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-10.cms";
+						if(fbtwBSharepath=="Movie Buff")
+							badgeurl="http://timesofindia.indiatimes.com/aboutbadges/uid-"+apifstnameonlyfl+",email-"+ userInfo.getpublicprofileurl +",blevel-"+levelname+",badgetype-11.cms";
+						if(param==2)
+						{
+							
+							if(fbtwBSharepath=="Member")							
+								var badgetext=" "+apifstnameonlyfl+" has earned the Member badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Well Connected")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Well Connected badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Inboxer")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Inboxer badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Frequent Flyer")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Frequent Flyer badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="News King")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" News King badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Wordsmith")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Wordsmith badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="ShareKhaan" || fbtwBSharepath=="Sharekhaan")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Sharekhaan badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Moderator")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Moderator badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Influencer")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Influencer badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Networker")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Networker badge on Timesofindia.com. Know more on ";
+							if(fbtwBSharepath=="Movie Buff")
+								var badgetext=" "+apifstnameonlyfl+" has earned the Level "+levelname+" Movie Buff badge on Timesofindia.com. Know more on ";
+							
+							getshortenURL(badgeurl,badgetext);
+							
+							//return false;
+						}
+						else
+						{
+							
+							//var tmpVr='https://www.facebook.com/sharer/sharer.php?u='+ badgeurl +'&t='+fbtwBSharepath;
+							
+							newwindow=window.open('https://www.facebook.com/sharer/sharer.php?u='+ badgeurl +'&t='+fbtwBSharepath,'Badgeshare','height=350,width=500,left=400,top=200');
+							if (window.focus) {newwindow.focus()}
+							//return false;
+							
+						}
+					}	
+					function setzindex(pos,totalslide)
+					{
+						for(i=0;i<totalslide;i++)
+						{
+							$('#slidebadge'+i).css("z-index", 100000);
+						}
+						$('#slidebadge'+pos).css("z-index", 100001);
+					}
+					function closeitnotification(pos)
+					{
+						$('#slidebadge'+pos).remove();
+					}
+					function badgenotification()
+					{
+						try
+						{
+							//http://myt.indiatimes.com
+							$.getJSON("http://myt.indiatimes.com/mytimes/notification?size=100&after=true&type=Reward&noteType=BADGE&callback=?", function(data) {					
+												
+								if(data!=null && data!=undefined && data!="undefined")
+								{		
+								var fstbadgestatus=data.length;
+								var notificationarea="";
+								//alert(fstbadgestatus);
+								for(i=0;i<fstbadgestatus;i++)
+								{
+									notificationde1="";
+									notificationde1='<div class="notiline1"><b>Congratulations!</b> '+ fstnameonly + ' you have just unlocked the <span style="color:#E5B458;"><b>' + data[i].tn;
+									if(data[i].badgeLevel!=null && data[i].badgeLevel!=undefined)badgelvlpath=data[i].badgeLevel.replace("Level ","");; 
+									if(data[i].badgeLevel!=null && data[i].badgeLevel!=undefined)notificationde1+=" "+data[i].badgeLevel; 
+									notificationde1+='</b></span> badge.</div>';
+									
+									if(data[i].levelDesc!=null && data[i].levelDesc!=undefined)
+									{
+										notibadgedescone=data[i].levelDesc;	
+										notibadgedesc_newone= "<b>You</b> have " + notibadgedescone.replace("has","");
+										notificationde2='<div class="notiline2">'+ notibadgedesc_newone +'</div>';	
+									}
+
+									notificationarea+='<div class="slidebadgenw" id="slidebadge'+ i +'" style="width:392px;" onclick="setzindex('+i+','+fstbadgestatus+')">';
+									notificationarea+='<div class="notificationdiv"><div class="PopUp"><a href="javascript:closeitnotification('+i+');" class="closeitnow"></a><div style="display:inline-block;"><img src="/photo/12702058.cms" alt="" title="" align="bottom" style="width:390px;height:9px;margin:0;padding:0;float:left"/><div style="float:left;background:url(/photo/12702067.cms)  repeat-y;width:366px;padding:0 12px;"><div class="topPart"><div class="title">';
+									if(data[i].badgeLevel!=null || data[i].badgeLevel!=undefined)
+									{
+										//notificationarea+='<div style="padding:1px 0px 0px 10px;">'+ data[i].tn +' '+ data[i].badgeLevel+'</div>'
+									}
+									else
+									{
+									//notificationarea+='<div style="padding:1px 0px 0px 10px;">'+data[i].tn+'</div>';
+									}
+									notificationarea+='</div><div class="midPart"><div class="cont"><div style="width:100%;"><div class="badges"><div class="badgeimages newsking"><img border="0" width="78" height="65" src="';
+									if(data[i].iu!=null && data[i].iu!=undefined)
+									notificationarea+=data[i].iu;
+									notificationarea+='"></img></div></div><div class="badgesDtl">';									
+									notificationarea+=notificationde1+notificationde2;
+									notificationarea+='</div></div><div class="clr"></div><div class="notiline3">';
+									if(data[0].nextLevelDesc!=null && data[0].nextLevelDesc!=undefined)
+									notificationarea+='<div class="notiline3">'+ data[i].nextLevelDesc +'</div>';
+									notificationarea+='</div><div class="clr"></div><div class="More"><div class="moreleft"><div style="font: bold 12px Arial,Helvetica,sans-serif; color: #fff;float:left;padding-top:6px;padding-right:2px;">Share this activity on</div><div style="float:left;padding-right:2px;"><a href="javascript:fbtwBShare(1,\''+data[i].tn+'\','+badgelvlpath+')">';
+									notificationarea+='<img border="0" src="/photo/12519124.cms"/></a></div><div style="padding-left:5px;float:left;"><a href="javascript:fbtwBShare(2,\''+data[i].tn+'\','+badgelvlpath+')"><img border="0" src="/photo/12519133.cms"/></a></div></div><div class="moreright"><a href="http://timesofindia.indiatimes.com/abouttimesrewards.cms" target="_blank">More about Times Rewards</a></div></div>';
+									notificationarea+='<div class="clr"></div></div></div></div></div></div></div></div></div>';
+									
+									document.getElementById('slidebadgearea').innerHTML=document.getElementById('slidebadgearea').innerHTML+notificationarea;
+									notificationarea="";
+									$('#slidebadge'+i).show();
+									
+								}
+								for(i=fstbadgestatus;i>-1;i--)
+								{
+									rightpos=460-(i*30)+"px";
+									bottompos=(i*30)+"px";
+									$('#slidebadge'+i).animate({'right':rightpos},"fast");
+									$('#slidebadge'+i).animate({'bottom':bottompos},"fast");
+								}
+							}
+							});
+						}catch(ex){}
+					}
+					
+					
+					if(isLoggedSsobadge!=null) 
+						{
+							badgenotification();
+							setInterval( function() {
+							badgenotification();
+							}, 90000 );
+						}
+					
+					function getpublicprofileurl(id,dnu)
+					{
+						if(dnu != null && dnu != undefined)
+						{
+							userInfo.getpublicprofileurl=dnu;
+						}
+						else
+						{
+							userInfo.getpublicprofileurl=id;
+						}
+					}
+
+					function commonuserimg()
+					{
+						if(isLoggedSsobadge!=null) 
+							{
+							try{
+							var isLoggedtmp = Get_Ckie('MSCSAuth');						
+							if(isLoggedtmp!=null) 
+							{
+							jQuery.getJSON("http://myt.indiatimes.com/mytimes/profile/info?callback=?", function(data) {							
+							var uidname="";
+							var tmplower;
+							var tmplower1;
+							try{
+							getpublicprofileurl(data._id,data.D_N_U);
+							if(data.F_N!=null && data.F_N!=undefined && data.F_N!="" && data.F_N!=" ")
+							{
+								apifstnameonly=data.F_N;
+								apifstnameonlyfl=data.F_N;
+								if(apifstnameonlyfl.indexOf(" ")!=-1)
+									{
+										var indexnodeval=apifstnameonlyfl.indexOf(" ");
+										apifstnameonlyfl=apifstnameonlyfl.substring(0,indexnodeval);
+									}
+							}
+							else
+							{
+								apifstnameonly=fstnameonly;
+								apifstnameonlyfl=fstnameonly;
+								if(apifstnameonlyfl.indexOf(" ")!=-1)
+									{
+										var indexnodeval=apifstnameonlyfl.indexOf(" ");
+										apifstnameonlyfl=apifstnameonlyfl.substring(0,indexnodeval);
+									}
+							}
+							if(data.F_N!=null || data.F_N!=undefined)
+							{
+							tmplower=data.F_N.toLowerCase();							
+							uidname+=data.F_N;
+							}
+							if(data.L_N!=null || data.L_N!=undefined)
+							{
+								tmplower1=data.L_N.toLowerCase();
+								//alert(tmplower);alert(tmplower1);
+								if (tmplower.indexOf(tmplower1) ==-1) {uidname+=" "+ data.L_N;}
+							}
+							}catch(ex){}
+							if(uidname=="")
+							{
+								if(_tp_uid.indexOf('@') !=-1)
+								{
+									uidname=_tp_uid;
+								}
+								else
+								{
+									var tmpspathh1=_tp_uid;
+									var tmpspathh=tmpspathh1.split('@');										
+									uidname=tmpspathh[0];
+								}
+							}
+							//$('#fname').html(uidname);
+							var srcptah=data.thumb;	
+							$("#profileimg2").attr("src", srcptah);							
+							apifstnameonly = (apifstnameonly.length>15)? apifstnameonly.substring(0,13)+'...':apifstnameonly;
+							$("#apifstnameonly").text(apifstnameonly);	
+							//$("#profileimg").attr("src", srcptah);
+																		
+							});
+							}
+							}catch(ex){}
+							}
+					}
+					function roundNumber(num, dec) 
+					{
+						num=num/1000;
+						var result = Math.floor(num*Math.pow(10,dec))/Math.pow(10,dec);
+						return result;
+					}
+					function commonuserpoints()
+					{
+					try{											
+						var isLoggedtmp = Get_Ckie('MSCSAuth');						
+						if(isLoggedtmp!=null) 
+						{
+							jQuery.getJSON("http://rewards.indiatimes.com/bp/api/urs/gps?format=json&uid="+_tp_uid+"&callback=?", function(data) {	
+								if(data.output.result!="no record found" && data!=null && data!=undefined && data!="undefined")
+									{	
+										var glbltpoints=data.output.userStat.statusPoints;
+										if(glbltpoints>9999)
+										{
+											glbltpoints=roundNumber(glbltpoints,1)+"K";
+										}
+										var tpbardiv ='<div class="tpbar'+ data.output.userStat.levelName +'">';
+										tpbardiv+='<span style="color:#fff;font-family:arial;font-size:11px;padding-right:2px;font-weight:bold;vertical-align:top;">'+ data.output.userStat.levelName +': '+ glbltpoints +'</span>';
+										tpbardiv+='<span><img src="/photo/12515056.cms" border="0"/></span>';
+										tpbardiv+='</div>';			
+										tpbardiv+='</div>';
+										//sript for tooltip
+										tpbardiv+='<div class="badgetooltip">';
+														tpbardiv+='<div class="toolone">';
+															tpbardiv+='<div class="fullspan tooltiptxtname">';
+																tpbardiv+='<div class="tooltiptxthead">';
+																	tpbardiv+='<div class="textone">TIMES REWARDS</div>';
+																tpbardiv+='</div>';
+																
+															tpbardiv+='</div>';
+															tpbardiv+='<div class="divclear"></div>';
+															tpbardiv+='<div class="fullspan toppadone_new1">';
+																tpbardiv+='<div class="tooltiptxtsyn">';
+																	tpbardiv+='<div class="tooltiptxtsyn1">';
+																		tpbardiv+= "You are a <b>"+ glbltlevel +" Member</b> on the site with "+ glbltpoints +' Points. <a href="/abouttimesrewards.cms" class="tooltiptxtsyn1a" style="color: #024E97;margin:0px; font: 13px normal Arial, Helvetica, sans-serif;font-weight:bold; ">Click here to know more about the Times Rewards.</a>';
+																	tpbardiv+='</div>';
+																tpbardiv+='</div>';
+															tpbardiv+='</div>';
+
+
+														tpbardiv+='</div>';
+														tpbardiv+='<div class="clr"></div>';
+														tpbardiv+='<div class="bot"></div>';
+													tpbardiv+='</div>';
+										document.getElementById("toptimespoints").innerHTML=tpbardiv;
+									}
+							});
+						}
+					}catch(ex){}
+					}
+function getrewardinfo()
+			{
+				try{
+					var istrack1 = Get_Ckie('MSCSAuth');									
+					if(istrack1!=null) 
+					{
+							//var locurl=document.location.href;
+							//locurl=locurl.replace('jcmsstg','timesofindia');						
+						//lbsubmit(locurl,"toi","b39b9b02b0ef4bc6a0f38eef3e4618fe","","visit",rewardemail);
+						//alert("UID:"+_tp_uid);alert("Email:"+_tp_email);alert(_tp_url);
+						_tp_async_data = {
+						host: "TOI",
+						channel : 'News',
+						URL: _tp_url,
+						userId : _tp_uid,
+						oid:"",
+						email:_tp_email
+						};			
+					}
+				}
+				catch(ex){}
+			}
+
+		

@@ -87,7 +87,7 @@ def validate_ipport(ipport):
 if __name__ == "__main__":
     ip = "0.0.0.0"
     port = "8000"
-    env = "dev"
+    env = "prod"
     l = len(sys.argv)
     if l < 1:
         print_usage()

@@ -1,0 +1,331 @@
+ul.bdg a{font-size:12px;}
+				ul.bdg {list-style-image:url(/photo/5614556.cms);font-size:12px;margin:0;padding-bottom:5px;}
+				ul.bdg li{margin-bottom:2px;font-size:12px;margin-left:7px;}				
+				.globalnav {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:normal;
+	color:#353535;
+	border-bottom::1px solid #aaaaaa;
+	}
+	
+.globalnav span {
+	color:#E6E6E6;
+	}
+
+.globalnav a {
+	color:#024E97;
+	text-decoration:none;
+	font-size:11px;
+	font-weight:normal;
+	margin:0 5px;
+	}
+	
+.topbrnw1 .glblnav {
+	font-family:Arial, Helvetica, sans-serif;font-size:11px;font-weight:normal; margin:0; padding:0 5px 0 5px; border:1px solid #ABABAB; border-top:0;
+	}
+.topbrnw1 .glblnav div {
+	 padding:3px 0 3px 0; margin:0 0 3px 0; border-bottom:1px dotted #EAEAEA;display:block; }
+.topbrnw1 .glblnav div a {
+	color:#024E97;
+	text-decoration:none;
+	font-size:11px;
+	font-weight:normal;padding:3px 0;}
+	
+	
+.tpgrynw1 #srchsel2 .rotimg2{
+/* for firefox, safari, chrome, etc. */
+/*margin-left:5px;*/
+-webkit-transform: rotate(-180deg);
+-moz-transform: rotate(-180deg);
+/* for ie */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+} 	
+
+.tpgrynw1 #srchsel2 .rotimg1{
+/* for firefox, safari, chrome, etc. */
+
+-webkit-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+/* for ie */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+}
+
+.moreim{width:90px;border-top:1px solid #ABABAB;cursor: pointer; display:block;padding: 3px 2px 4px 6px;color: rgb(2, 78, 151);}
+
+.tpgrynw1{padding:5px 0 5px 0; width:100%;margin-bottom:0; }
+.topbrnw1 div.dateclsnw {font-size:11px;color:#757575;float:left;text-align:left;padding-left:9px;padding-top:3px}
+.topbrnw1 {display:table;width:1003px;font-size:10px; margin:0 auto}
+.toprtnw1{float:right;padding-right:6px;}
+.toprtnw1 span { color:#E6E6E6;	}
+.toprtnw1 a {color:#024E97;text-decoration:none;font-size:11px;margin:0 5px;}
+.blk {color:#7F7F7F;overflow:hidden;position:absolute;z-index:530000000;width:90%;position:absolute;display:none;margin-top:20px;}
+#backgroundPopup{display:none;position:fixed;_position:absolute; /* hack for internet explorer 6*/height:100%;width:100%;top:0;left:0;background:#000000;border:1px solid #cecece;z-index:100;}
+#medal_div_one{float: left;height: 260px;width: 298px;border-right:1px solid #dee5ee;border-left:1px solid #dee5ee;}
+.channelbadges{width:260px;padding-left:22px;float:right;clear:both;height:27px;font-size:11px;letter-spacing: 1px;}
+			.channelbadges span{float:left;margin:2px 2px 0px 2px;cursor:pointer;font-weight:bold;padding:5px 5px 5px 4px;background-color:#eef5fd;}
+			.channelbadges span.current{float:left;margin:2px 2px 0px 2px;cursor:pointer;font-weight:bold;padding:3px 3px 11px;background:#fe0201 url('/photo/11093966.cms') no-repeat bottom center;color:#ffffff;}
+			.badgepoint{position:absolute;background:url(/photo/11537433.cms) no-repeat; width:13px; height:13px ;color:#ffffff;font-size:10px; font-weight:bold; padding:0px  !important;top:9px; left:68px;}	
+			.moderatorcss{background:url(/photo/11820473.cms) no-repeat -12px -19px;height: 79px; width: 73px;}
+			.Wordsmithcss{background:url(/photo/11820473.cms) no-repeat -209px -20px;height: 79px; width: 73px;}
+			.ffcss{background:url(/photo/11820473.cms) no-repeat -10px -128px;height: 79px; width: 73px;}
+			.nkcss{background:url(/photo/11820473.cms) no-repeat -10px -251px;height: 79px; width: 73px;}
+			.inboxercss{background:url(/photo/11820473.cms) no-repeat -208px -255px;height: 79px; width: 73px;}
+			.membercss{background:url(/photo/11820473.cms) no-repeat -14px -378px;height: 79px; width: 73px;}
+			.nwcss{background:url(/photo/11820473.cms) no-repeat -211px -378px;height: 79px; width: 73px;}
+			.wc1css{background:url(/photo/11820473.cms) no-repeat -210px -508px;height: 79px; width: 73px;}
+			.wc2css{background:url(/photo/11820473.cms) no-repeat -209px -508px;height: 79px; width: 73px;}
+			.infcss{background:url(/photo/11820473.cms) no-repeat -209px -130px;height: 79px; width: 73px;}
+			.user_image_left{margin:5px 0px 0px 0px;border: 2px solid #ffffff;}
+			.skcss{background:url(/photo/11820473.cms) no-repeat -211px -378px;height: 79px; width: 73px;}
+			.sknewone{background:url(/photo/12543574.cms) no-repeat -20px -22px;height: 79px; width: 73px;}
+
+			.modsmallone{background:url(/photo/11820473.cms) no-repeat scroll -13px -663px;width:50px;height:50px;}
+			.inbsmallone{background:url(/photo/11820473.cms) no-repeat scroll -13px -742px;width:50px;height:50px;}
+			.ffsmallone{background:url(/photo/11820473.cms) no-repeat scroll -10px -823px;width:50px;height:50px;}
+			.infsmallone{background:url(/photo/11820473.cms) no-repeat scroll -10px -909px;width:50px;height:50px;}
+			.nkismallone{background:url(/photo/11820473.cms) no-repeat scroll -207px -912px;width:50px;height:50px;}
+			.ntwsmallone{background:url(/photo/11820473.cms) no-repeat scroll -210px -991px;width:50px;height:50px;}
+			.wcsmallone{background:url(/photo/11820473.cms) no-repeat scroll -207px -822px;width:50px;height:50px;}
+			.memsmallone{background:url(/photo/11820473.cms) no-repeat scroll -212px -741px;width:50px;height:50px;}
+			.wssmallone{background:url(/photo/11820473.cms) no-repeat scroll -212px -663px;width:50px;height:50px;}
+			.sksmallone{background:url(/photo/12543574.cms) no-repeat scroll -35px -154px;width:50px;height:50px;}
+.nl_badgein{float:left;width:91px;padding-bottom:18px;background-color:#fbfbfb;border-right:1px solid #bec6d1;background:url(/photo/11790044.cms) repeat-x bottom;}
+					.nl_badgein_two{float:left;width:91px;padding-bottom:9px;background-color:#fbfbfb;border-right:1px solid #bec6d1;background:url(/photo/11790044.cms) repeat-x 0px 41px ;}
+					.nl_badgecaption {font-family:arial; font-size:11px; font-weight:bold;color:#4f4f4f;text-align:center;}
+					.nl_badgeimg{clear:both;position:relative;padding-top:10px;}
+					.nl_badgeimg img {float:none !important;}
+					.nl_badgeclassone{height:183px; overflow:auto;padding-top:5px;}
+#profile_blk{margin:0;padding:0px;float:left;width:300px;}
+			.col1{float:left;}
+			.col1 img{float:left;}
+			.col2{float:left;padding:0 1px 0;width:193px;}
+			.col2 span{color:#000;font: 13px arial;}
+			.pro_name{padding-top:7px;font-family:arial;color: #ffffff;float: left;font-size: 14px;font-weight: bold;width:90%; text-align:left;padding-bottom:8px;padding-left:6px;background:url("/photo/12530871.cms") no-repeat bottom;}
+			.pro_points{font-size: 13px;font-weight: bold;background:url('/photo/11093679.cms') no-repeat left top;float:left}
+			.col2 span.wp{font-size: 13px;font-weight: bold;display:inline;}
+			.col2 div.pro_full{font-weight:normal;font-size:12px;}
+			.col2 div.pro_full a{font-weight:normal;text-decoration:none;color:#024D99}
+			.col2 div.pro_full a:hover{font-weight:normal;text-decoration:underline;color:#024D99}
+			.col3{width:62px;float:left;height:62px;}			
+			#medal_div{float: left;height: 238px;margin-left: 1px;width: 297px;margin-top:-3px;border-right:1px solid #dee5ee;border-left:1px solid #dee5ee;}
+			.medal_blk{padding:0;width:71px;height:63px;float:left;}
+			.channelbadges{width:260px;padding-left:22px;float:left;clear:both;background-image:url("/photo/4410559.cms");height:27px;font-size:11px;letter-spacing: 1px;}
+			.channelbadges span{float:left;margin:2px 2px 0px 2px;cursor:pointer;font-weight:bold;padding:5px 5px 5px 4px;background-color:#eef5fd;}
+			.channelbadges span.current{float:left;margin:2px 2px 0px 2px;cursor:pointer;font-weight:bold;padding:3px 3px 11px;background:#fe0201 url('/photo/11093966.cms') no-repeat bottom center;color:#ffffff;}
+.login_text{ text-align:center;padding-top:123px; }
+			.login_link{color:#ffffff;font-size:20px;font-family:arial;text-decoration:none; }
+			.login_linkone{color:#ffffff;font-size:20px;font-family:arial;text-decoration:none; }
+.loginfollowbox{z-index:10000;position:absolute;left:0px;width:200px;top:6px;border:1px solid #4EB84A;background-color:#FFFFFF;padding: 10px;font-weight:normal;}
+
+#slidebadge1{z-index: 100000;z-index:10000;position:relative;border-top: none;bottom: 0;padding: 0;position: fixed;right:432px;bottom:-211px;width:399px;}
+#slidebadge{z-index: 100000;z-index:10000;position:relative;border-top: none;bottom: 0;padding: 0;position: fixed;right:461px;bottom:-211px;width:399px;}
+				
+					
+				.notificationdiv{}
+				.notiline1{}
+			.notiline2{padding-bottom:1px;font-size:13px;}
+			.notiline3{font-size:12px;font-weight:bold;padding-bottom:4px;}
+				a.closeitnow{background: url("/photo/11336081.cms") no-repeat 0 0; cursor: pointer;height: 10px;position: absolute;right: 15px;top: 12px;width: 10px;}
+				.PopUp{	z-index:9999;		}
+				.clr{ clear:both;}
+				.PopUp{ z-index:9999;}
+				.notify_mid{background:url(/photo/12234099.cms)  repeat-x;width:100%;height:201px;}
+				.notify_left{background:url(/photo/12234071.cms)  no-repeat left top;width:362px;height:201px;float:left;padding:8px 1px 3px 15px}
+				.notify_right{background:url(/photo/12234074.cms)  no-repeat left top;width:14px;height:201px;float:right;}
+				.topPart{color: #FFFFFF;font-family: Arial, Helvetica, sans-serif;font-size: 20px;font-weight: bold;padding:5px 0px;text-align: left;}
+				.midPart{padding-top:6px; }
+				.cont{ }
+				.badges{width:78px;height:84px; float:left; text-align:center; margin-right:14px;margin-top:5px;margin-left:6px; }
+				.badges img{ margin-bottom:8px;}
+				.badges a{font:bold 10px Arial, Helvetica, sans-serif; color:#4f4f4f; text-decoration:none;}
+				.badgeimages{ width:78px; height:73px;}
+				.More{ text-align:center; border-top:1px solid #c1c1c1; padding-top:3px; width:100%;}
+				.More a{ font:bold 11px Arial, Helvetica, sans-serif; color:#ffffff;}
+				.moreleft{float:left;width:53%;position:rleative;text-align:left;padding-left:5px;}
+				.moreright{float:right;width:39%;position:relative;text-align:right;padding-right:5px;}
+				.badgesDtl{text-align:left;font:12px/18px Arial, Helvetica, sans-serif; color:#FFFFFF;}
+				.shr{display:none;float:left;color:#71716F;font-family:georgia;font-weight:bold;font-size:12px;margin:0 0px 0 0px;padding:15px 2px 0 2px;border-right:1px solid #cccccc;height:60px;}
+				.rec_com{float:left;padding-left:3px; padding-top: 7px;width:93px}
+				.tw{float:left;padding-right:7px;padding-top:7px;}
+				.com_i{padding-right:1px;}
+				.gp1{float:left;padding-right:7px;padding-top:8px;}
+				.topdivset{float:left;padding-top:2px;}
+				.topdivsetsep{float:left;color:#E6E6E6;padding:2px 0px 0px 2px;}
+				.badgesyn_two p{margin:0px;padding:0px 0px 3px 0px;}
+				.badgesyn_two p:first-letter{text-transform:uppercase;}
+				.textnew_one{font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#fff;text-align:left;padding-left:5px;}
+				.followtext{padding-left:56px !important;margin-top:-4px !important;}
+				.followbtn{background:url(/photo/12623490.cms) no-repeat top left;width:55px; display:inline-block;height:15px;}
+				.topdivset{float:left;padding-top:2px;}
+						.topdivsetsep{float:left;color:#E6E6E6;padding:2px 0px 0px 2px;}
+						.toptimespoints{ height: 18px;}
+						.tpbarGold{ background:url("/photo/12530922.cms") no-repeat scroll -13px -120px;line-height:15px; height: 21px;padding-top: 2px;text-align: center;width: 111px;}
+						.tpbarBronze{ background:url("/photo/12530922.cms") no-repeat scroll -13px -20px;line-height:15px; height: 21px;padding-top: 2px;text-align: center;width: 111px;}
+						.tpbarSilver{ background:url("/photo/12530922.cms") no-repeat scroll -13px -70px; line-height:15px;height: 21px;padding-top: 2px;text-align: center;width: 111px;}
+						.tpbarPlatinum{ background:url("/photo/12530922.cms") no-repeat scroll -14px -220px;line-height:15px; height: 21px;padding-top: 2px;text-align: center;width: 111px;}
+						.tpbarDiamond{ background:url("/photo/12530922.cms") no-repeat scroll -14px -170px;line-height:15px; height: 21px;padding-top: 2px;text-align: center;width: 111px;}
+						.widgethead_text{font-family:georgia;font-size:24px;color:#ffffff;text-align:center;padding-top:6px;}
+						.top_head_bar{background:url(/photo/11788630.cms)  no-repeat -6px -6px;width:300px;height:50px;}
+						.timespoint_block{margin:0;padding:0;width:300px;}
+						.timespoint_block img{margin:0;padding:0;}
+						.timespoint_block img.topbottom{margin:0;padding:0;width:300px;}
+						.timespoint_m_block{margin:0;padding:0;width:300px;background:url('/photo/11045250.cms') repeat-x top left;height:409px;}
+						.block_title{margin:0 0 0 9px;padding:0 0 6px 0;width:284px;font:bold 18px Georgia,'Times New Roman',Times,serif;color:#4d5154}
+						.timespoint_center_block{width:300px;height:357px;background-color:#fff;}
+										
+						.timespoint_tab{width:300px;height:50px;float:left;background-color:#1f5593;}
+						.timespoint_tab ul{margin:0;padding:0;width:300px;height:43px;list-style:none;background:url('/photo/12246588.cms') no-repeat 0px -25px;}
+						.timespoint_tab ul li{margin:0;padding:0;height:50px;float:left;width:148px;}
+						.timespoint_tab ul li#timestab1{margin:0;padding:0;height:50px;float:left;width:149px;}
+						.timespoint_tab ul li#timestab1 a{height:37px;display:block;font:bold 12px/37px arial;color:#efefef;text-decoration:none;text-align:center;margin:6px 0 0 9px;}					
+					
+						.timespoint_tab ul li#timestab1.current{width:150px;}							
+						.timespoint_tab ul li#timestab1.current a{height:37px;display:block;font:bold 12px/37px arial;color:#000;text-decoration:none;text-align:center;margin:6px 0 0 9px;background:url("/photo/12246588.cms") no-repeat scroll -7px -86px transparent}
+
+						.timespoint_tab ul li#timestab2{margin:0;padding:0;height:50px;float:left;width:150px;}
+						.timespoint_tab ul li#timestab2 a{height:37px;display:block;font:bold 12px/37px arial;color:#efefef;text-decoration:none;text-align:center;margin:6px 9px 0 2px;}					
+					
+						.timespoint_tab ul li#timestab2.current{width:150px;}							
+						.timespoint_tab ul li#timestab2.current a{height:37px;display:block;font:bold 12px/37px arial;color:#000;text-decoration:none;text-align:center;margin:6px 9px 0 2px;background:url("/photo/12246588.cms") no-repeat scroll -151px -86px transparent}
+					
+						
+						.timespoint_sub_tab{margin:0 0 0 11px;margin/*\**/:0\9;padding:9px 0 2px;width:259px;background:url('/photo/11046451.cms') repeat-x bottom left;height:17px;}
+						.timespoint_sub_tab ul{margin:0;padding:0;width:259px;height:17px;list-style:none;}
+						.timespoint_sub_tab ul li{margin:0;padding:0 0 0 10px;height:17px;display:inline;float:left}
+						.timespoint_sub_tab ul li.vline{margin:0;padding:0;height:17px;display:inline;}
+						.timespoint_sub_tab ul li.vline img{margin:0;padding:0;}
+						.timespoint_sub_tab ul li a{margin:0;padding:0;height:17px;display:inline;font:bold 11px/17px arial;color:#496f93;text-decoration:none;text-align:right;}					
+						.timespoint_sub_tab ul li.current{margin:0;padding:0 10px 0 0;}
+						.timespoint_sub_tab ul li.current a{margin:0;padding:0;height:17px;display:inline;font:bold 11px/17px arial;color:#000;text-decoration:none;text-align:left;}
+						.knowmore{text-align:center;background:url(/photo/12366054.cms)  no-repeat -5px -108px;width:300px;height:61px;padding-top:4px;}
+						.knowmore a{font:bold 11px arial;color:#ffffff;text-decoration:none;}
+						.knowmore a:hover{font:bold 11px arial;color:#ffffff;text-decoration:underline;}
+						.tabdatadiv2{display: block;text-align: left;width: 298px;height:auto;float:left;}
+						
+
+						.col1{float:left;}
+						.col1 img{float:left;}
+						.col2{float:left;padding:0 1px 0;width:193px;}
+						.col2 span{color:#000;font: 13px arial;}
+						
+						.pro_points{font-size: 13px;font-weight: bold;background:url('/photo/11093679.cms') no-repeat left top;float:left}
+						.col2 span.wp{font-size: 13px;font-weight: bold;display:inline;}
+						.col2 div.pro_full{font-weight:normal;font-size:12px;}
+						.col2 div.pro_full a{font-weight:normal;text-decoration:none;color:#024D99}
+						.col2 div.pro_full a:hover{font-weight:normal;text-decoration:underline;color:#024D99}
+						.col3{width:62px;float:left;height:62px;}			
+						#medal_div{float: left;height: 233px;margin-left: 1px;width: 297px;margin-top:-3px;border-right:1px solid #dee5ee;border-left:1px solid #dee5ee;}
+						.medal_blk{padding:0;width:71px;height:63px;float:left;}
+						.nl_badgein{float:left;width:91px;padding-bottom:18px;background-color:#fbfbfb;border-right:1px solid #bec6d1;background:url(/photo/11790044.cms) repeat-x bottom;}
+						.nl_badgein_two{float:left;width:91px;padding-bottom:9px;background-color:#fbfbfb;border-right:1px solid #bec6d1;background:url(/photo/11790044.cms) repeat-x 0px 41px ;}
+						.nl_badgecaption {font-family:arial; font-size:11px; font-weight:bold;color:#4f4f4f;text-align:center;}
+						.nl_badgeimg{clear:both;position:relative;padding-top:10px;}
+						.nl_badgeimg img {float:none !important;}
+						.nl_badgeclassone{height:183px; overflow:auto;padding-top:5px;}
+						.nl_badgepoint{position:absolute;background:url(/photo/11537433.cms) no-repeat; width:13px; height:13px ;color:#ffffff;font-size:10px; font-weight:bold; padding:0px 0px 0px 0px  !important;top:21px; left:64px;}
+						div.new_badgetooltip{display:none;}
+						div.new_badgetooltip{display:none !important;width:280px; position:absolute; z-index:999 !important;left:10px;top:20px;}
+						.hoverblock_new_two{background:url(/photo/12290320.cms)  center repeat-y ; width:280px;padding:0px !important;display:table !important;}
+						.cont_pad{margin:14px 10px 10px 10px !important;}
+						.full_cont{width:100%;}
+						.full_cont_one{width:96%;}
+						.cont_mar{  margin-top: 2px !important;}
+						.cont_left{float:left;width:20%;poistion:relative;}
+						.cont_right{float:right;width:77%;poistion:relative;}
+						.textone_new{color:#fff; font-weight:bold; margin-left:14px !important;margin-top:8px !important;}
+						.badgesyn{color:#999999; font: 12px normal Arial,Helvetica,sans-serif; padding:1px 4px 0px 0px !important;text-align:left;}
+						.badgesyn_three{color:#999999; font: 12px normal Arial,Helvetica,sans-serif; padding:4px 4px 3px 0px !important;text-align:left;}
+						.badgesyn_two{color:#999999; font: 12px normal Arial,Helvetica,sans-serif; padding:1px 4px 0px 0px !important;text-align:left;}
+						.texttwo {color:#fff; text-align:right; margin-top:14px !important;font-size:11px;font-weight:bold;padding-right:14px;}
+						.leftone{float:left; width:60%; position:relative;}
+						.rightone{float:right; width:25%; position:relative; text-align:right !important;}
+						.fullspan{width:100%;}
+						.toppadone{ padding-top:15px !important;}
+						.textone{color:#fff; font-weight:bold; padding-left:10px !important;}
+						.divclear{ clear:both;}
+		.lefttwo{width:25%; float:left; position:relative;}
+		.righttwo{width:70%; float:left; position:relative}
+		.imgpad{padding:7px 2px 3px 13px !important;cursor:auto;}
+		.textthree{color:#999999; font: 12px normal Arial, Helvetica, sans-serif; padding:5px 2px 0px 0px !important;}
+		.padfour{width:90%;}
+		.bordertop{border-top:1px solid #999999;width:100%;margin-left:10px !important;padding-top:0px !important;}
+		.leftthree{float:left; position:relative; width:67%; border-right:1px solid #999999;padding-top:0px !important;text-align:center;}
+		.leftthree_logged{width:100%;text-align:center;}
+		.leftthree_logged_one{width:100%;text-align:center;margin-top:5px !important;}
+		.padfive{ padding-top:2px !important;width:100%;}
+		.padfive_one{margin-left:15px !important; padding-top:2px !important;}
+		.linkone{font:12px Arial, Helvetica, sans-serif bold; color:#0099CC; text-decoration:none;cursor:pointer;width:100%;}
+		.rightthree{float:right; position:relative; width:30%;text-align:center}
+		.padsix{ padding-top:1px !important;width:100%;}
+		.badgesyn{color:#999999; font: 12px normal Arial,Helvetica,sans-serif; padding:1px 4px 0px 0px !important;text-align:left;}
+		
+		.badgesyn_two{color:#999999; font: 12px normal Arial,Helvetica,sans-serif; padding:1px 4px 0px 0px !important;text-align:left;}
+		.badgergap_two{}
+		#cmtMainBox div.badgemore{position:absolute;left:-172px;top:44px;display:none;z-index:1000;width:270px;}
+		#cmtMainBox div.badgemorehover{position:absolute;padding:10px;left:-60px;top:62px;border:1px solid #858384;display:block;z-index:1000;width:270px;background-color:#ffdfbf;}
+		#cmtMainBox div.badgemore{display:none;}
+		#cmtMainBox a:hover  div.badgemore{display:block !important;width:299px; position:absolute; z-index:999 !important;right:-100px;}
+		#cmtMainBox .badgepointnw{z-index:2147483647;position:absolute;width:135px;height:41px;left:115px;top:-5px;padding-top:11px;display:none;background:url(/photo/12608903.cms) no-repeat;font: 11px bold Arial, Helvetica, sans-serif;text-align:center;font-weight:bold;color:#000;}
+		.upper{text-transform:uppercase;padding-right:2px;font-family:arial;color:#43474b;font-weight:bold;font-size:11px;}
+		.numtext{color:#2c2c2c;font-family:arial;font-size:11px;font-weight:normal;}
+		#cmtMainBox .badgemore div{display:table !important;padding:0px !important;}
+		#cmtMainBox div.hoverblock{background:url(/photo/11805786.cms)  center repeat-y ; width:300px;padding:0px !important;display:table !important;}
+		.badgemorein{font: 11px bold Arial, Helvetica, sans-serif;text-align:center;font-weight:bold; }
+		.bordertop_more{border-top:1px solid #999999;height:30px;width:90%;}
+		.tpointspan_one{font-size:13px;font-weight:bold;font-family:arial; vertical-align:bottom;padding-right:5px;line-height:12px;color:#000000 !important;}
+		#cmtMainBox div.badge_new{position:absolute;left:-131px;top:56px;display:none;z-index:1000;width:320px;}
+		#cmtMainBox div.badge_new{display:none;}
+		#cmtMainBox a:hover  div.badge_new{display:block !important;width:299px; position:absolute; z-index:999 !important;right:-100px;}
+		#cmtMainBox .badge_new div{display:table !important;padding:0px !important;}
+		#cmtMainBox div.hoverblock_new{background:url(/photo/12353743.cms)  center repeat-y ; width:320px;padding:0px !important;display:table !important;}
+		div.new_badgetooltip{display:none;}
+		div.new_badgetooltip{display:none !important;width:280px; position:absolute; z-index:999 !important;left:10px;top:20px;}
+		.hoverblock_new_two{background:url(/photo/12290320.cms)  center repeat-y ; width:280px;padding:0px !important;display:table !important;}
+		.nl_badgein_five{float:left;width:91px;padding-bottom:24px;background-color:#fbfbfb;border-right:1px solid #bec6d1;background:url(/photo/11790044.cms) repeat-x 0px 41px ;}
+		.left_badge{float:left; width:60%; position:relative;}
+		.right_badge{float:right; width:20%; position:relative; text-align:right !important;}
+		.textone_badge{color:#fff; font-weight:bold; margin-left:16px !important;margin-top:20px !important;}		
+		.texttwo_badge {color:#fff; text-align:right; margin-top:24px !important;font-size:11px;font-weight:bold;}
+		.linkone_badge{font:12px Arial, Helvetica, sans-serif bold; color:#0099CC; text-decoration:none;cursor:pointer;width:100%;margin-top:5px !important;}
+		.badgepoint{position:absolute;background:url(/photo/11537433.cms) no-repeat; width:13px; height:13px ;color:#ffffff;font-size:10px; font-weight:bold; padding:0px 0px 0px 4px  !important;top:10px; left:47px;}		
+		.badgepoint_one{position:absolute;background:url(/photo/11537433.cms) no-repeat; width:13px; height:13px ;color:#ffffff;font-size:10px; font-weight:bold; padding:0px 0px 0px 4px  !important;top:10px; left:62px;}	
+
+
+				.topnavnew{padding-left:12px;float:left;padding-top:5px;*padding-top:15px;}
+				.topnavnew h1 a{color: #FFFFFF;font-family: Arial;font-size: 12px;text-decoration:underline;font-weight: bold;letter-spacing:1px;line-height:20px;}
+				.jmp{border-bottom:1px solid #cccccc;font-size:11px;font-family:arial;text-align:left;}
+				.jmp div{padding:5px 0}
+				.jmp div span a{font-size:11px;padding:0 3px;}				
+				#badgemember:hover  div.badgetooltip{display:block !important;background:url(/photo/12936810.cms) no-repeat;width:270px; height: auto !important;position:absolute; z-index:999 !important;left:-82px;top:7px;}	
+				#badgemember div.badgetooltip{display:none;background:url(/photo/12936810.cms) no-repeat;width:270px;height: auto !important;position:absolute; z-index:999 !important;left:-82px;top:7px;}
+				#badgemember{position:relative;}
+				.tooltiptxtsyn1_n{color:#999999; font: 12px/19px Arial,Helvetica,sans-serif; padding:6px 5px 10px !important;line-height:18px !important;}
+
+.inampmid {height:34px;width:61px;left:89px;opacity:0.9; top:53px;}
+				.tcapm{display:inline-block;padding:5px 5px 5px 5px;color:#024d99;font-size:18px;text-align:center;line-height:21px;}
+				.tcapm a:hover{text-decoration:underline;}
+#LargeWrapper{width:672px; margin:0px; padding:0px}
+.HeadBg{background:#f1f1f1; height:21px; border:1px solid #e0e0e0; padding:2px;}
+.HeadBg .txt{font:normal 18px Georgia, "Times New Roman", Times, serif; color:#393939; text-transform:uppercase;}
+.ThumbBg{background:#f1f1f1; padding:6px;}
+.Thumb{margin:0px 3px; padding:4px; width:95px; height:124px; float:left;}
+.BlueTxtThumb a{font:11px Arial, Helvetica, sans-serif; color:#4dbcd5; width:90px; overflow:hidden; float:left; height:14px;}
+.GrayTxtThumb a{font:10px Arial, Helvetica, sans-serif; color:#606060; width:90px; overflow:hidden; float:left; height:14px;}
+.wid79{width:79px;}
+.ThumbTxt .Plybtn{background:url(/photo/11339010.cms) no-repeat -0px -0px; width:16px; height:16px; position:relative; margin:2px -2px 0 0;border:0px;}
+.cl{clear:both; font-size:1px;}
+.fl{float:left;}
+.fr{float:right;}
+.PoweredLogo{ background:url(/photo/11339279.cms) no-repeat 0 0px; width:70px; height:16px; margin:5px 0 0 0;}
+.Powered{font:10px Arial, Helvetica, sans-serif; color:#c1bfbf; padding:5px}
+
+#medal_div div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			#medal_div div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			#usermedal div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			#usermedal div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			#usermedalnw div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			#usermedalnw div.tooltip{display:none ;width:280px; position:absolute; z-index:9999999 !important;left:10px;top:20px;}
+			.tooltiptxtsyn1 a{color:#999999;text-decoration:none;}
+			.tooltiptxtsyn1 a:hover{color:#999999;text-decoration:underline;}
+

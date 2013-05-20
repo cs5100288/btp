@@ -1,0 +1,27 @@
+					
+					function showDCAdsRight1(Right1_msid,Right1_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0'><script>googletag.display('div-gpt-ad-1322745014627-0');</script></div>")
+						}
+					function showDCAdsRight2(Right2_msid,Right2_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-2'><script>googletag.display('div-gpt-ad-1322745014627-2');</script></div>")
+						}
+					function showDCAdsBottom(Bottom_msid,Bottom_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-3'><script>googletag.display('div-gpt-ad-1322745014627-3');</script></div>")
+						}
+					function showDCAdsInnov1(Innov1_msid,Innov1_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0-oop1'><script>googletag.display('div-gpt-ad-1322745014627-0-oop1');</script></div>")
+						}
+					function showDCAdsInnov2(Innov2_msid,Innov2_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0-oop2'><script>googletag.display('div-gpt-ad-1322745014627-0-oop2');</script></div>")
+						}
+					function showDCAdsInter(Inter_msid,Inter_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0-oop3'><script>googletag.display('div-gpt-ad-1322745014627-0-oop3');</script></div>")
+						}
+					function showDCAdsPop(Pop_msid,Pop_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0-oop4'><script>googletag.display('div-gpt-ad-1322745014627-0-oop4');</script></div>")
+						}
+					function showDCAdsShosh(Shosh_msid,Shosh_subid){
+						document.write("<div id='div-gpt-ad-1322745014627-0-oop5'><script>googletag.display('div-gpt-ad-1322745014627-0-oop5');</script></div>")
+						}
+					
+				

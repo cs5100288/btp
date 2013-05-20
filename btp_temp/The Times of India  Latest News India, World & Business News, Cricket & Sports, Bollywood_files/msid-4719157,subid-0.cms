@@ -1,0 +1,70 @@
+
+			googletag.defineSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_ATF_300', [[300, 250], [300, 1050]], 'div-gpt-ad-1322745014627-0')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_BTF_300', [300, 250], 'div-gpt-ad-1322745014627-2')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());	
+			  googletag.defineSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_BTF_2_300', [300, 250], 'div-gpt-ad-1359122796910-0')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());	 
+			googletag.defineSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_BTF_728', [[728, 90], [1003, 90]], 'div-gpt-ad-1322745014627-3')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineOutOfPageSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_OP_Innov1','div-gpt-ad-1322745014627-0-oop1')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineOutOfPageSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_OP_Innov2','div-gpt-ad-1322745014627-0-oop2')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineOutOfPageSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_OP_Inter','div-gpt-ad-1322745014627-0-oop3')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineOutOfPageSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_OP_Pop','div-gpt-ad-1322745014627-0-oop4')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.defineOutOfPageSlot('/7176/TOI/TOI_Home/TOI_Home_Home/TOI_HP_OP_Shosh','div-gpt-ad-1322745014627-0-oop5')  .setTargeting('L1', '')
+			  .setTargeting('L2', '')
+			  .setTargeting('L3', '')
+			  .setTargeting('H1', '')
+			  .setTargeting('ARC1', '')
+			  .setTargeting('Hyp1', '')
+			  .addService(googletag.pubads());
+			googletag.pubads().enableSyncRendering();
+			googletag.pubads().setTargeting('article', '');
+			 googletag.pubads().enableSingleRequest();
+			googletag.pubads().collapseEmptyDivs(); googletag.enableServices();
+			
+					

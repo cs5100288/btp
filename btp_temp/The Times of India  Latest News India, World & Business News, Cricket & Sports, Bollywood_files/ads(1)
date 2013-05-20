@@ -1,0 +1,29 @@
+{
+
+var google_ads = new Array();
+var google_ad;
+var google_radlinks = new Array();
+var google_radlink;
+var google_info = new Object();
+google_ad = {}; 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=CRq8znjsmUfyiE6vEigeDy4CACdLbmZ0D8rbGuD_AjbcBEAEgqPCmBlDry8y_BWDlwuSDpA6gAaSt_OsDyAEBqQK9u-K_tLJTPqgDAaoEkQFP0AqB6nRjTjl9psCFyg4glIleQqERv3f4DHmSjWyQUAuT3iSDe51rfF1xoFgMIGjhLovCFsdy5QA8G9bqEez40RRliKiXK-ebHVxZUvpfsxuiOzIck5fQ3ZFhpYWrxBMX_h-ixMWyNTvbjXiDYJV7igYn6D7LvChp6ag2B_57JYPmPAnqZJNrzONdGZ72HusEgAfE0oMU&amp;num=1&amp;sig=AOD64_0PGDoyiTZEigB5wm5PayxDIS-BVQ&amp;client=ca-timesofindia_site_js&amp;adurl=https://www.careerbuilder.co.in/INTL/RegisterResume/RegisterResumePosting.aspx%3FsslRedirectCnt%3D1%26lr%3DINT_INGOOGLEPAIDGEN"; 
+google_ad.visible_url = "www.careerbuilder.co.in"; 
+google_ad.line1 = "Upload Your CV For Jobs"; 
+google_ad.line2 = "The World\x26#8217;s No.1 Speedy Job Portal."; 
+google_ad.line3 = "Apply to Jobs Faster. Upload Now!"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://timesofindia.indiatimes.com/defaultinterstitial.cms%26gl%3DIN%26hl%3Den%26client%3Dca-timesofindia_site_js%26hideleadgen%3D1%26ai0%3DCRq8znjsmUfyiE6vEigeDy4CACdLbmZ0D8rbGuD_AjbcBEAEgqPCmBlDry8y_BWDlwuSDpA6gAaSt_OsDyAEBqQK9u-K_tLJTPqgDAaoEkQFP0AqB6nRjTjl9psCFyg4glIleQqERv3f4DHmSjWyQUAuT3iSDe51rfF1xoFgMIGjhLovCFsdy5QA8G9bqEez40RRliKiXK-ebHVxZUvpfsxuiOzIck5fQ3ZFhpYWrxBMX_h-ixMWyNTvbjXiDYJV7igYn6D7LvChp6ag2B_57JYPmPAnqZJNrzONdGZ72HusEgAfE0oMU\x26usg\x3dAFQjCNEWiKPGRpUYMFNbn1n86d9gYyqDXA";
+var google_attribution_text = "AdChoices";
+var google_is_rtl = false;
+if (window.google_ad_request_done) {
+google_ad_request_done(google_ads);
+}
+if (window.google_radlink_request_done) {
+google_radlink_request_done(google_radlinks);
+}
+}

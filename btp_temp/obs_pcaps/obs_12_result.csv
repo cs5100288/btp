@@ -1,0 +1,7 @@
+name,first_dns_addr,first_get_addr,dns_lookup_time,tcp_handshake_time,redirection_time,peak_bandwidth,rtt_mean,rtt_std_deviation
+m-toi,timesofindia.com,http://m.timesofindia.com/,5.7220759999999995,0.06463000000000019,0.595466,356.124,0.06018102222222221,0.22785139373074714
+toi,,,0.05091200000000384,0.03843599999999725,0.4568299999999965,215.418,0.08456915664845177,0.25235457657602883
+m-nytimes,www.nytimes.com,http://mobile.nytimes.com/,0.12522999999998774,0.42862299999998754,1.6067230000000166,115.49,0.2328869228486647,0.4930972237109752
+nytimes,www.nytimes.com,http://www.nytimes.com/,0.0,0.0,0.0,0.0,0.0,0.0
+m-cricinfo,www.cricinfo.com,http://m.espncricinfo.com/,0.0,0.0,0.0,0.0,0.0,0.0
+cricinfo,www.cricinfo.com,http://www.espncricinfo.com/,0.0,0.0,0.0,0.0,0.0,0.0
